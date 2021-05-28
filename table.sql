@@ -1,7 +1,7 @@
 
 /* Drop Tables */
 
-DROP TABLE BasicSetting CASCADE CONSTRAINTS;
+DROP TABLE basicsetting CASCADE CONSTRAINTS;
 DROP TABLE basket CASCADE CONSTRAINTS;
 DROP TABLE boardreply CASCADE CONSTRAINTS;
 DROP TABLE board CASCADE CONSTRAINTS;
@@ -24,7 +24,7 @@ DROP TABLE members CASCADE CONSTRAINTS;
 /* Create Tables */
 
 -- 대표설정테이블
-CREATE TABLE BasicSetting
+CREATE TABLE basicsetting
 (
 	-- 기본설정번호
 	bsnum number(10) NOT NULL,
@@ -228,6 +228,8 @@ CREATE TABLE members
 	answer varchar2(20) NOT NULL,
 	-- 캐쉬
 	money number(10),
+	-- 활성화
+	active number(2),
 	PRIMARY KEY (id)
 );
 
@@ -325,6 +327,7 @@ CREATE TABLE visit
 ALTER TABLE boardreply
 	ADD FOREIGN KEY (bnum)
 	REFERENCES board (bnum)
+	ON DELETE CASCADE
 ;
 
 
@@ -349,136 +352,119 @@ ALTER TABLE REFUND
 ;
 
 
-ALTER TABLE BasicSetting
+ALTER TABLE basicsetting
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE basket
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE board
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE boardreply
 	ADD FOREIGN KEY (hid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE boardreply
 	ADD FOREIGN KEY (gid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE diary
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE friend
 	ADD FOREIGN KEY (hid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE friend
 	ADD FOREIGN KEY (gid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE friendsay
 	ADD FOREIGN KEY (gid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE friendsay
 	ADD FOREIGN KEY (hid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE galery
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE histories
 	ADD FOREIGN KEY (hid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE histories
 	ADD FOREIGN KEY (gid)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE profiles
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE purchase
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE REFUND
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE schedule
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE visit
 	ADD FOREIGN KEY (id)
 	REFERENCES members (id)
-	ON DELETE CASCADE
 ;
 
 
-ALTER TABLE BasicSetting
+ALTER TABLE basicsetting
 	ADD FOREIGN KEY (purnum)
 	REFERENCES purchase (purnum)
 	ON DELETE CASCADE
+	
 ;
 
 
