@@ -28,7 +28,7 @@
 			<input class="typing" name="email" placeholder="이메일"><br>
 			<span id="pwdcheck" style="font-size: 10px;">*이메일을 입력해주세요</span><br>
 			<input class="typing" name="phone" placeholder="전화번호('-'는 제외)"><br><div style="height:10px"></div>
-			<select class="typing" name="pwdask" >
+			비밀번호질문  <select name="pwdask" >
 				<option value="">--- 선택하세요 ---</option>
 				<option value="출신 초등학교 이름은?">출신 초등학교 이름은?</option>
 				<option value="가장 좋아하는 음식은?">가장 좋아하는 음식은?</option>

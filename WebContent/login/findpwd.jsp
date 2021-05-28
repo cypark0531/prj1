@@ -22,7 +22,7 @@
 			<input class="typing" name="id" placeholder="아이디"><br><div style="height:10px"></div>
 			<span id="idcheck"></span>
 			<input class="typing" name="name" placeholder="이름"><br><div style="height:10px"></div>
-			<select class="typing" name="pwdAsk" >
+			비밀번호질문   <select  name="pwdAsk" >
 				<option value="">--- 선택하세요 ---</option>
 				<option value="출신 초등학교 이름은?">출신 초등학교 이름은?</option>
 				<option value="가장 좋아하는 음식은?">가장 좋아하는 음식은?</option>
