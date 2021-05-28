@@ -34,7 +34,7 @@
 		<form method="get" action="${pageContext.request.contextPath }/login/regist" style="float: left">
 			<input class="btn2" type="submit" name="loginbtn" value="회원가입"><br><div style="height:5px"></div>
 		</form>
-		<form method="get" action="${pageContext.request.contextPath }/login/find" style="float: right">
+		<form method="get" action="${pageContext.request.contextPath }/login/findid" style="float: right">
 			<input class="btn2" type="submit" name="loginbtn" value="아이디/비밀번호 찾기"><br><div style="height:5px"></div>
 		</form>
 		</div>
