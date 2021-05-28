@@ -24,7 +24,7 @@
 			<span id="idcheck"></span>
 			<input class="typing" type="password" name="pwd" placeholder="비밀번호"><br><div style="height:10px"></div>
 			<input type="checkbox" name="box"><span>   아이디 저장</span>
-			
+			 
 		</div>
 		<div id="buttons" style="padding-top:40px; padding-left:75px; width:450px;">
 			<input class="btn1" type="submit" name="loginbtn" value="로그인"><br><div style="height:5px"></div>
