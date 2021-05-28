@@ -10,7 +10,7 @@
 	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
 	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:#FF8224; color:white;}
 	.btn2{width:223px; height:40px; font-size:15px; border:2px solid black; background-color:#FF8224; color:white;}
-	
+	 
 </style>
 </head>
 <body>
