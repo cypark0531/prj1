@@ -181,7 +181,7 @@ CREATE TABLE GOODS
 	-- 상품가격
 	gprice number(10) NOT NULL,
 	-- 상품이름
-	gname varchar2(20) NOT NULL UNIQUE,
+	gname varchar2(100) NOT NULL UNIQUE,
 	-- 상품사진
 	gimg varchar2(30),
 	-- 카테고리
@@ -240,7 +240,9 @@ CREATE TABLE profiles
 	-- 아이디
 	id varchar2(20) NOT NULL,
 	-- 프로필이미지
-	pimg varchar2(20),
+	porgimg varchar2(20),
+	-- 프로필대화명(제목)
+	psaveimg varchar2(20),
 	-- 프로필대화명(제목)
 	ptitle varchar2(20),
 	-- 홈피 제목
