@@ -17,7 +17,6 @@ public class RegistController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int checking=0;
 		String id=req.getParameter("id");
 		String pwd=req.getParameter("pwd");
 		String name=req.getParameter("name");
@@ -26,6 +25,6 @@ public class RegistController extends HttpServlet{
 		String question=req.getParameter("question");
 		String answer=req.getParameter("answer");
 		
-		
+		MembersVO vo= new MembersVO(id, pwd, name, email, phone, question, answer, 0, 0);
 	}
 }
