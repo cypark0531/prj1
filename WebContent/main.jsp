@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%
 	request.setAttribute("id", "test");
+	request.setAttribute("gid","test");
 %>
 <html>
 <head>
@@ -11,5 +12,5 @@
 </head>
 <body>
 <h1>MAIN</h1>
-<a href= "${pageContext.request.contextPath }/board/list?id=${requestScope.id}">게시판</a>
+<a href= "${pageContext.request.contextPath }/board/list?id=${requestScope.id}&gid=${requestScope.gid}">게시판</a>
 </html>

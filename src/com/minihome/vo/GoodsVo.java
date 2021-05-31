@@ -1,15 +1,15 @@
 package com.minihome.vo;
 //CREATE TABLE GOODS
 //(
-//	-- »óÇ°ÄÚµå
+//	-- ï¿½ï¿½Ç°ï¿½Úµï¿½
 //	gcode varchar2(20) NOT NULL,
-//	-- »óÇ°°¡°Ý
+//	-- ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 //	gprice number(10) NOT NULL,
-//	-- »óÇ°ÀÌ¸§
+//	-- ï¿½ï¿½Ç°ï¿½Ì¸ï¿½
 //	gname varchar2(20) NOT NULL UNIQUE,
-//	-- »óÇ°»çÁø
+//	-- ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
 //	gimg varchar2(30),
-//	-- Ä«Å×°í¸®
+//	-- Ä«ï¿½×°ï¿½
 //	gcategory varchar2(10),
 //	PRIMARY KEY (gcode)
 //);
@@ -17,17 +17,19 @@ public class GoodsVo {
 	private String gcode;
 	private int gprice;
 	private String gname;
-	private String gimg;
+	private String gsaveimg;
+	private String gorgimg;
 	private String gcategory;
 	
 	public GoodsVo() {}
-
-	public GoodsVo(String gcode, int gprice, String gname, String gimg, String gcategory) {
+	
+	public GoodsVo(String gcode, int gprice, String gname, String gsaveimg, String gorgimg, String gcategory) {
 		super();
 		this.gcode = gcode;
 		this.gprice = gprice;
 		this.gname = gname;
-		this.gimg = gimg;
+		this.gsaveimg = gsaveimg;
+		this.gorgimg = gorgimg;
 		this.gcategory = gcategory;
 	}
 
@@ -55,12 +57,20 @@ public class GoodsVo {
 		this.gname = gname;
 	}
 
-	public String getGimg() {
-		return gimg;
+	public String getGsaveimg() {
+		return gsaveimg;
 	}
 
-	public void setGimg(String gimg) {
-		this.gimg = gimg;
+	public void setGsaveimg(String gsaveimg) {
+		this.gsaveimg = gsaveimg;
+	}
+
+	public String getGorgimg() {
+		return gorgimg;
+	}
+
+	public void setGorgimg(String gorgimg) {
+		this.gorgimg = gorgimg;
 	}
 
 	public String getGcategory() {
@@ -72,3 +82,5 @@ public class GoodsVo {
 	}
 	
 }
+
+

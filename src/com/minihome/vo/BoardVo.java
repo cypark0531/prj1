@@ -9,6 +9,7 @@ public class BoardVo {
 	private String bcontent;
 	private int bopen;
 	private Date regdate;
+	private int rnum;
 	public BoardVo() {
 		super();
 	}
@@ -20,6 +21,17 @@ public class BoardVo {
 		this.bcontent = bcontent;
 		this.bopen = bopen;
 		this.regdate = regdate;
+	}
+	
+	public BoardVo(int bnum, String id, String btitle, String bcontent, int bopen, Date regdate, int rnum) {
+		super();
+		this.bnum = bnum;
+		this.id = id;
+		this.btitle = btitle;
+		this.bcontent = bcontent;
+		this.bopen = bopen;
+		this.regdate = regdate;
+		this.rnum = rnum;
 	}
 	public int getBnum() {
 		return bnum;
@@ -57,5 +69,12 @@ public class BoardVo {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+	
 	
 }
