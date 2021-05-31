@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import com.minihome.db.MyDBCP;
 import com.minihome.vo.BoardVo;
-import com.minihome.vo.GoodsVo;
 
 public class BoardDao {
 	private static BoardDao instance = new BoardDao();
@@ -16,7 +15,28 @@ public class BoardDao {
 	public static BoardDao getInstance() {
 		return instance;
 	}
-	public ArrayList<BoardVo> boardList(String id){
+	public int getCount(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con =MyDBCP.getConnection();
+			String sql = "select NVL(count(bnum),0) from board where id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mnum = rs.getInt(1);
+			return mnum;
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				MyDBCP.close(con, pstmt, rs);
+			}
+		}
+	public ArrayList<BoardVo> boardList(String id,int startRow,int endRow){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,19 +44,24 @@ public class BoardDao {
 		
 		try {
 			con = MyDBCP.getConnection();
-			String sql= "select * from (select rownum rnum ,b.* from (SELECT * FROM BOARD WHERE ID = ? order by bnum desc)b) order by rnum desc" ;
+			String sql= "select * from (select rownum rnum ,b.* from "
+					+ "(SELECT * FROM BOARD WHERE ID = ? order by bnum desc)b)"
+					+ "where rnum >= ? and rnum <= ?"
+					+ " order by rnum desc ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println(rs.getInt(1));
 				BoardVo vo = new BoardVo(
-						rs.getInt(1),
+						rs.getInt("bnum"),
 						id,
 						rs.getString("btitle"),
 						rs.getString("bcontent"),
 						rs.getInt("bopen"),
-						rs.getDate("regdate"));
+						rs.getDate("regdate"),
+						rs.getInt(1));
 				boardlist.add(vo);
 			}
 			
@@ -47,5 +72,10 @@ public class BoardDao {
 		}finally {
 			MyDBCP.close(con, pstmt, rs);
 		}
+		
+		
+		
+		
 	}
+	
 }
