@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.MembersDao;
 import com.minihome.vo.MembersVO;
 @WebServlet("/login/regist")
 public class RegistController extends HttpServlet{
@@ -26,5 +27,12 @@ public class RegistController extends HttpServlet{
 		String answer=req.getParameter("answer");
 		
 		MembersVO vo= new MembersVO(id, pwd, name, email, phone, question, answer, 0, 0);
+		MembersDao dao=MembersDao.getIntstance();
+		int n=dao.insert(vo);
+		if(n>0) {
+			resp.sendRedirect(req.getContextPath()+"/login/login.jsp");
+		}else {
+			resp.sendRedirect(req.getContextPath()+"/login/fail.jsp");
+		}
 	}
 }

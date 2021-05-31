@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.MembersDao;
 import com.minihome.db.MyDBCP;
 @WebServlet("/login/idoverlapck")
 public class IdoverlapckController extends HttpServlet{
@@ -21,24 +22,11 @@ public class IdoverlapckController extends HttpServlet{
 		
 		String id=req.getParameter("id");
 		
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		String sql="select * from members where id=?";
-		String using="false";
-		try{
-			con=MyDBCP.getConnection();
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs=pstmt.executeQuery();
-			if(rs.next()){
-				using="true";
-			}
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			MyDBCP.close(con, pstmt, rs);
-		}
+		String using=null;
+		MembersDao dao=MembersDao.getIntstance();
+		if(dao.idCheck(id)) {
+			using="true";
+		}else using="false";
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
