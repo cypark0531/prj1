@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 공통 CSS -->
-<link rel="stylesheet--" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <body>
 <%	String id = request.getParameter("id");
