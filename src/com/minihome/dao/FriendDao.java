@@ -25,7 +25,6 @@ public class FriendDao {
 			pstmt.setString(2, gid);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				System.out.println(rs.getInt("friendState"));
 				if(rs.getInt("friendState")==3) {
 					friend = true;
 				}else {

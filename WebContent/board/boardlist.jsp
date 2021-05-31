@@ -59,9 +59,16 @@
 </div>
 <div>
 	<c:if test="${param.id==param.gid }">
-	<input type = "button" onclick="${pageContext.request.contextPath}/board/insert.jsp" value="글쓰기">
+	<input type = "button" value="글쓰기" id = btn1>
 	</c:if>
 </div>
+<script type="text/javascript">
+	var btn1 = document.getElementById("btn1");
+	btn1.addEventListener('click', function(e) {
+		location.href = "${pageContext.request.contextPath}/board/insert.jsp?id=${param.id}&gid=${param.gid}";
+		
+	});
+</script>
 
 
 </body>
