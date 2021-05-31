@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.minihome.db.MyDBCP;
 import com.minihome.vo.BoardVo;
+import com.minihome.vo.GoodsVo;
 
 public class BoardDao {
 	private static BoardDao instance = new BoardDao();
@@ -46,10 +47,5 @@ public class BoardDao {
 		}finally {
 			MyDBCP.close(con, pstmt, rs);
 		}
-		
-		
-		
-		
 	}
-	
 }

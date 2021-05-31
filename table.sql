@@ -183,7 +183,7 @@ CREATE TABLE GOODS
 	-- 상품이름
 	gname varchar2(100) NOT NULL UNIQUE,
 	-- 상품사진
-	gimg varchar2(30),
+	gsaveimg varchar2(30),
 	-- 카테고리
 	gcategory varchar2(10),
 	PRIMARY KEY (gcode)
