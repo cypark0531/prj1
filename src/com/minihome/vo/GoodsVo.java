@@ -18,16 +18,18 @@ public class GoodsVo {
 	private int gprice;
 	private String gname;
 	private String gsaveimg;
+	private String gorgimg;
 	private String gcategory;
 	
 	public GoodsVo() {}
-
-	public GoodsVo(String gcode, int gprice, String gname, String gsaveimg, String gcategory) {
+	
+	public GoodsVo(String gcode, int gprice, String gname, String gsaveimg, String gorgimg, String gcategory) {
 		super();
 		this.gcode = gcode;
 		this.gprice = gprice;
 		this.gname = gname;
 		this.gsaveimg = gsaveimg;
+		this.gorgimg = gorgimg;
 		this.gcategory = gcategory;
 	}
 
@@ -63,6 +65,14 @@ public class GoodsVo {
 		this.gsaveimg = gsaveimg;
 	}
 
+	public String getGorgimg() {
+		return gorgimg;
+	}
+
+	public void setGorgimg(String gorgimg) {
+		this.gorgimg = gorgimg;
+	}
+
 	public String getGcategory() {
 		return gcategory;
 	}
@@ -70,5 +80,7 @@ public class GoodsVo {
 	public void setGcategory(String gcategory) {
 		this.gcategory = gcategory;
 	}
+	
 }
+
 

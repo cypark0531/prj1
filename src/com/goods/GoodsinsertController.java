@@ -29,17 +29,19 @@ public class GoodsinsertController extends HttpServlet{
 		String gcode=mr.getParameter("gcode");
 		int gprice=Integer.parseInt(mr.getParameter("gprice"));
 		String gname=mr.getParameter("gname");
-		String gsaveimg=mr.getParameter("gsaveimg");
+		String gorgimg=mr.getOriginalFileName("gsaveimg");
+		String gsaveimg=mr.getFilesystemName("gsaveimg");
 		String gcategory=mr.getParameter("gcategory");
 		GoodsDao dao=GoodsDao.getInstance();
 		File f=new File(saveDir+"\\"+gsaveimg);
-		GoodsVo vo=new GoodsVo(gcode, gprice, gname, gsaveimg, gcategory);
+		GoodsVo vo=new GoodsVo(gcode, gprice, gname, gsaveimg, gorgimg, gcategory);
 		int n=dao.goodsinsert(vo);
 		if(n>0) {
 			req.setAttribute("code","success");
 		}else {
 			req.setAttribute("code","fail");
 		}
+		System.out.println(gsaveimg);
 		req.getRequestDispatcher("/goods/goodsresult.jsp").forward(req, resp);
 	}
 }

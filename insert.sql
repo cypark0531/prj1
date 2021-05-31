@@ -1,24 +1,24 @@
 select * from members;
-insert into members values('test','1234','Å×½ºÆ®','test@com','01000000000','hello','hi',0,1);
-insert into members values('test2','1234','È«±æµ¿','test1@com','01051215121','hello','12',0,1);
-insert into members values('test3','3457','±è±æµ¿','test2@com','01033545811','hello','34',0,1);
-insert into members values('test4','5321','±è»ç¶û','test3@com','01055321512','hello','45',0,1);
-insert into members values('test5','0011','¿øºó','test4@com','01070405052','hello','56',0,1);
+insert into members values('test','1234','ï¿½×½ï¿½Æ®','test@com','01000000000','hello','hi',0,1);
+insert into members values('test2','1234','È«ï¿½æµ¿','test1@com','01051215121','hello','12',0,1);
+insert into members values('test3','3457','ï¿½ï¿½æµ¿','test2@com','01033545811','hello','34',0,1);
+insert into members values('test4','5321','ï¿½ï¿½ï¿½ï¿½','test3@com','01055321512','hello','45',0,1);
+insert into members values('test5','0011','ï¿½ï¿½ï¿½ï¿½','test4@com','01070405052','hello','56',0,1);
 commit;
 
 select * from profiles;
-insert into profiles values('test','abcd','abcd01','³» ÇÁ·ÎÇÊ','³» ¹Ì´ÏÈ¨ÇÇ','¾È³ç~',1);
-insert into profiles values('test2','vasda','vasda','Å×½ºÆ® ÇÁ·ÎÇÊ','¹Ì´ÏÈ¨ÇÇ ¼³Á¤','ÇÏÀ§~',1);
-insert into profiles values('test3','vasda','vasda','Å×½ºÆ® ÇÁ·ÎÇÊ','¹Ì´ÏÈ¨ÇÇ ¼³Á¤','ÇÏÀ§~',1);
-insert into profiles values('test4','vasda','vasda','Å×½ºÆ® ÇÁ·ÎÇÊ','¹Ì´ÏÈ¨ÇÇ ¼³Á¤','ÇÏÀ§~',1);
-insert into profiles values('test5','vasda','vasda','Å×½ºÆ® ÇÁ·ÎÇÊ','¹Ì´ÏÈ¨ÇÇ ¼³Á¤','ÇÏÀ§~',1);
+insert into profiles values('test','abcd','abcd01','ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ ï¿½Ì´ï¿½È¨ï¿½ï¿½','ï¿½È³ï¿½~',1);
+insert into profiles values('test2','vasda','vasda','ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½Ì´ï¿½È¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½~',1);
+insert into profiles values('test3','vasda','vasda','ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½Ì´ï¿½È¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½~',1);
+insert into profiles values('test4','vasda','vasda','ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½Ì´ï¿½È¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½~',1);
+insert into profiles values('test5','vasda','vasda','ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½Ì´ï¿½È¨ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½~',1);
 
 select * from goods;
-insert into goods values('mu01',200,'ÇÁ¸®½ºÅ¸ÀÏ-Y','ÇÁ¸®½ºÅ¸ÀÏ.jpg','music');
-insert into goods values('mu02',190,'ÀÌÀº¹Ì-¾ÖÀÎÀÖ¾î¿ä','ÇÁ¸®½ºÅ¸ÀÏ.jpg','music');
-insert into goods values('mu03',210,'MC¸ù-180µµ','180µµ.jpg','music');
-insert into goods values('bg01',60,'¹ÝÂ¦¹è°æ','starbg.jpg','background');
-insert into goods values('bg02',70,'ÇÏ¿ÍÀÌ¹è°æ','hawai.jpg','background');
+insert into goods values('mu01',200,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½-Y','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½.jpg','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½.jpg','music');
+insert into goods values('mu02',190,'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½.jpg','ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½.jpg','music');
+insert into goods values('mu03',210,'MCï¿½ï¿½-180ï¿½ï¿½','180ï¿½ï¿½.jpg','180ï¿½ï¿½.jpg','music');
+insert into goods values('bg01',60,'ï¿½ï¿½Â¦ï¿½ï¿½ï¿½','starbg.jpg','starbg.jpg','background');
+insert into goods values('bg02',70,'ï¿½Ï¿ï¿½ï¿½Ì¹ï¿½ï¿½','hawai.jpg','hawai.jpg','background');
 
 select * from purchase;
 insert into purchase values(1,'test','mu01',sysdate);
@@ -28,9 +28,9 @@ select * from basicsetting;
 insert into basicsetting values(1,'music',1,'test',1);
 insert into basicsetting values(3,'bacground',1,'test3',3);
 select * from board;
-insert into board values(1,'test','Å×½ºÆ®Á¦¸ñ','Å×½ºÆ®³»¿ë',1,sysdate);
-insert into board values(2,'test','Å×½ºÆ®Á¦¸ñ','Å×½ºÆ®³»¿ë',1,sysdate);
-insert into board values(3,'test','Å×½ºÆ®Á¦¸ñ','Å×½ºÆ®³»¿ë',1,sysdate);
-insert into board values(4,'test','Å×½ºÆ®Á¦¸ñ','Å×½ºÆ®³»¿ë',1,sysdate);
+insert into board values(1,'test','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½',1,sysdate);
+insert into board values(2,'test','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½',1,sysdate);
+insert into board values(3,'test','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½',1,sysdate);
+insert into board values(4,'test','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½','ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½',1,sysdate);
 
 commit;

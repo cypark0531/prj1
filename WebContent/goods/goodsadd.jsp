@@ -14,7 +14,7 @@
 	상품이름 <input type="text" name="gname"><br>
 	카테코리 <input type="text" name="gcategory"><br>
 	첨부파일<br>
-	<input type="file" name="gimg" ><br>
+	<input type="file" name="gsaveimg" ><br>
 	<input type="submit" value="등록">
 </form>
 </body>

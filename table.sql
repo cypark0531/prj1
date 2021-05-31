@@ -184,6 +184,7 @@ CREATE TABLE GOODS
 	gname varchar2(100) NOT NULL UNIQUE,
 	-- 상품사진
 	gsaveimg varchar2(30),
+	gorgimg varchar2(30),
 	-- 카테고리
 	gcategory varchar2(10),
 	PRIMARY KEY (gcode)
