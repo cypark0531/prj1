@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,43 +8,284 @@
 <title>회원가입</title>
 <style type="text/css">
 	*{margin:0px;padding:0px;}
-	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
+	/*.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}*/
 	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:#FF8224; color:white;}
 	
 </style>
 </head>
 <body>
 <div id="wrap" style="margin:auto; width:600px; height: 800px; background-color:white;">
-	<div style="padding-top:50px; padding-left:75px; width:450px;">
+	<div style="padding-top:50px; ">
 	<h1 style="padding-top:50px; ">회원가입</h1>
 	
+	 
 	<form method="post" action="${pageContext.request.contextPath }/login/regist">
-		<div id="loginType" style="padding-top:60px;  width:450px;">
-			<input class="typing" name="id" placeholder="아이디"><br>
-			<span id="idcheck" style="font-size: 10px;">*아이디를 입력해주세요</span><br>
-			<input class="typing" type="password" id="pwd" name="pwd" placeholder="비밀번호"><br><div style="height:10px"></div>
-			<input class="typing" type="password" id="pwdchk" placeholder="비밀번호 확인"><br>
-			<span id="pwdcheck" style="font-size: 10px;">*비밀번호를 입력해주세요</span><br>
-			<input class="typing" name="name" placeholder="이름"><br><div style="height:10px"></div>
-			<input class="typing" name="email" placeholder="이메일"><br>
-			<span id="pwdcheck" style="font-size: 10px;">*이메일을 입력해주세요</span><br>
-			<input class="typing" name="phone" placeholder="전화번호('-'는 제외)"><br><div style="height:10px"></div>
-			비밀번호질문  <select name="pwdask" >
+		<div id="loginType" style="padding-top:60px; ">
+			아이디<br><input type="text" class="typing" name="id" id="id" value=>
+			<span id="idcheck" ></span><br>
+			<div style="height:30px"></div>
+			
+			비밀번호<br><input class="typing" type="password" id="pwd" name="pwd" value=>
+			<span id="pwdcheck"></span><br>
+			<div style="height:30px"></div>
+			
+			비밀번호 확인<br><input type="password" id="pwdchk" >
+			<span id="pccheck" ></span><br>
+			<div style="height:30px"></div>
+			
+			이름<br><input name="name" id="name" value="${vo.name }">
+			<span id="namecheck" ></span><br>
+			<div style="height:30px"></div>
+			
+			이메일<br><input type="email" name="email" id="email" >
+			<span id="emailcheck" ></span><br>
+			<div style="height:30px"></div>
+			
+			전화번호<br><input name="phone" id="phone" placeholder="('-'는 제외)" >
+			<span id="phonecheck" ></span><br>
+			<div style="height:30px"></div>
+			
+			비밀번호 질문<br><select name="question" id="question">
+
 				<option value="">--- 선택하세요 ---</option>
 				<option value="출신 초등학교 이름은?">출신 초등학교 이름은?</option>
 				<option value="가장 좋아하는 음식은?">가장 좋아하는 음식은?</option>
 				<option value="가장 좋아하는 책은?">가장 좋아하는 책은?</option>
 				<option value="가장 존경하는 사람은?">가장 존경하는 사람은?</option>
 				<option value="가장 좋아하는 장소는?">가장 좋아하는 장소는?</option>
-			</select><br><div style="height:10px"></div>
-			<input class="typing" name="pwdans" placeholder="비밀번호답안"><br>
+			</select>
+			<span id="questcheck" ></span><br>
+			<div style="height:30px"></div>
+			
+			비밀번호답안<br><input name="answer" id="answer" value="${vo.answer }">
+			<span id="answercheck" ></span>
+			<div style="height:30px"></div>
 			
 		</div>
-		<div id="buttons" style="padding-top:40px; width:450px;">
-			<input class="btn1" type="submit" name="loginbtn" value="회원가입"><br><div style="height:5px"></div>
+		<div id="buttons" style="padding-top:40px; padding-left:75px; width:450px;">		
+			<input class="btn1" type="submit" id="registbtn" value="회원가입" disabled="disabled" style="background-color: silver;">
 		</div>
+		<br><div style="height:70px"></div>	
 	</form>	
 	</div>
 </div>
+<script type="text/javascript">
+	var checking=0;
+	const id=document.getElementById("id");
+	const pwd=document.getElementById("pwd");
+	const pwdchk=document.getElementById("pwdchk");
+	const name=document.getElementById("name");
+	const email=document.getElementById("email");
+	const phone=document.getElementById("phone");
+	const question=document.getElementById("question");
+	const answer=document.getElementById("answer");
+	
+	const idcheck=document.getElementById("idcheck");
+	const pwdcheck=document.getElementById("pwdcheck");
+	const pccheck=document.getElementById("pccheck");
+	const namecheck=document.getElementById("namecheck");
+	const emailcheck=document.getElementById("emailcheck");
+	const phonecheck=document.getElementById("phonecheck");
+	const questcheck=document.getElementById("questcheck");
+	const answercheck=document.getElementById("answercheck");
+	
+	const buttons=document.getElementById("buttons");
+	id.onfocus=function(){
+		if(checking%2==1)checking-=1;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	pwd.onfocus=function(){
+		if(checking%4>=2)checking-=2;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	pwdchk.onfocus=function(){
+		if(checking%8>=4)checking-=4;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	name.onfocus=function(){
+		if(checking%16>=8)checking-=8;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	email.onfocus=function(){
+		if(checking%32>=16)checking-=16;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	phone.onfocus=function(){
+		if(checking%64>=32)checking-=32;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	question.onfocus=function(){
+		if(checking%128>=64)checking-=64;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	answer.onfocus=function(){
+		if(checking%256>=128)checking-=128;
+		console.log(checking);
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+	}
+	
+	id.onblur=function(){
+		let idValue=id.value;
+		let cck=false;
+
+		for(let i=0;i<idValue.length;i++){
+			let c=idValue.charCodeAt(i);
+			if((c>='A'.charCodeAt(0)&&c<='Z'.charCodeAt(0))||(c>='a'.charCodeAt(0)&&c<='z'.charCodeAt(0))||(c>='0'.charCodeAt(0)&&c<='9'.charCodeAt(0))){
+				cck=true;
+			}
+			else{cck=false;break;}
+		}
+		if(!cck||idValue.length<5){idcheck.innerHTML="영어 또는 숫자를 포함한 5자리 이상의 코드를 입력하세요";}
+		else{
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					let xml= xhr.responseXML;
+					let using = xml.getElementsByTagName("using")[0].textContent;
+					if(using=="true"){
+						idcheck.innerHTML="이미 존재하는 아이디입니다";
+					}
+					else {
+						idcheck.innerHTML="사용할 수 있는 아이디입니다.";
+						if(checking%2==0)checking+=1;	
+						console.log(checking);
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+					}
+				}		
+			};
+			xhr.open('get','idoverlapck?id='+idValue,true);
+			xhr.send();			
+		}
+	};
+	
+	pwd.onblur=function(){
+		let pwdValue=pwd.value;
+		let cck1=false;
+		let cck2=false;
+		let cck3=false;
+		let cck4=false;
+
+		for(let i=0;i<pwdValue.length;i++){
+			let c=pwdValue.charCodeAt(i);
+			if((c>='A'.charCodeAt(0)&&c<='Z'.charCodeAt(0))||(c>='a'.charCodeAt(0)&&c<='z'.charCodeAt(0))){
+				cck1=true;cck2=true;
+			}
+			else if((c>='0'.charCodeAt(0)&&c<='9'.charCodeAt(0))){
+				cck1=true;cck3=true;
+			}
+			else{cck1=false;break;}
+			if(cck2&&cck3)cck4=true;
+		}
+		if(!cck1||!cck4||pwdValue.length<8){pwdcheck.innerHTML="영어와 숫자를 포함한 8자리 이상의 코드를 입력하세요";}
+		else {
+			pwdcheck.innerHTML="사용할 수 있는 비밀번호입니다";		
+			if(checking%4<=2)checking+=2;	
+			console.log(checking);
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+		}
+	};
+	pwdchk.onblur=function(){
+		let pwdValue=pwd.value;
+		let chkValue=pwdchk.value;
+		if(chkValue!=null&&pwdValue==chkValue){
+			pccheck.innerHTML="비밀번호와 동일합니다";
+			if(checking%8<=4)checking+=4;
+			console.log(checking);
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+		}else{
+			pccheck.innerHTML="비밀번호와 일치하지 않습니다";
+		}
+	}
+	name.onblur=function(){
+		let nameValue=name.value;
+		if(nameValue==""){
+			namecheck.innerHTML="이름을 입력하세요";
+		}else{
+			namecheck.innerHTML="";
+			if(checking%16<=8)checking+=8;
+			console.log(checking);
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+		}
+	}
+	email.onblur=function(){
+		let emailValue=email.value;
+		if(emailValue==""){
+			emailcheck.innerHTML="이메일을 입력하세요";
+		}else{
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					let xml= xhr.responseXML;
+					let using = xml.getElementsByTagName("using")[0].textContent;
+					if(using=="true"){
+						emailcheck.innerHTML="이미 사용되는 이메일입니다";
+					}
+					else {
+						emailcheck.innerHTML="";		
+						if(checking%32<=16)checking+=16;
+						console.log(checking);
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+					}
+				}		
+			};
+			xhr.open('get','emailoverlapck?email='+emailValue,true);
+			xhr.send();			
+		}
+	};
+		
+	
+	phone.onblur=function(){
+		let phoneValue=phone.value;
+		let cck=false;
+		for(let i=0;i<phoneValue.length;i++){
+			let c=phoneValue.charCodeAt(i);
+			if((c>='0'.charCodeAt(0)&&c<='9'.charCodeAt(0))){
+				cck=true;
+			}
+			else{cck=false;break;}
+		}
+		console.log(cck+" "+phoneValue.length);
+		if(!cck){
+			phonecheck.innerHTML="숫자만 입력해 주세요";
+		}else if(!(phoneValue.length==10 || phoneValue.length==11)){
+			phonecheck.innerHTML="전화번호를 입력하세요";
+		}else{
+			phonecheck.innerHTML="";	
+			if(checking%64<=32)checking+=32;
+			console.log(checking);
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+		}
+	}
+	question.onblur=function(){
+		let questValue=question.value;
+		if(questValue==""){
+			questcheck.innerHTML="질문을 선택하세요";
+		}else{
+			questcheck.innerHTML="";	
+			if(checking%128<=64)checking+=64;
+			console.log(checking);
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+		}
+	}
+	answer.onblur=function(){
+		let answerValue=answer.value;
+		if(answerValue==""){
+			answercheck.innerHTML="답을 입력하세요";
+		}else{
+			answercheck.innerHTML="";	
+			if(checking%256<=128)checking+=128;
+			console.log(checking);
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+		}
+	}
+	
+</script>
 </body>
 </html>

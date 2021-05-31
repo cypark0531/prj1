@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.minihome.vo.MembersVO;
 @WebServlet("/login/regist")
 public class RegistController extends HttpServlet{
 	@Override
@@ -15,12 +17,15 @@ public class RegistController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int checking=0;
 		String id=req.getParameter("id");
 		String pwd=req.getParameter("pwd");
 		String name=req.getParameter("name");
 		String email=req.getParameter("email");
 		String phone=req.getParameter("phone");
-		String pwdask=req.getParameter("pwdask");
-		String pwdans=req.getParameter("pwdans");
+		String question=req.getParameter("question");
+		String answer=req.getParameter("answer");
+		
+		
 	}
 }
