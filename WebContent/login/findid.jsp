@@ -33,7 +33,7 @@
 		</c:when>
 		<c:otherwise>
 			<div style="padding-top:60px; width:450px;">
-				
+			 	
 			</div>			
 		</c:otherwise>
 	</c:choose>
