@@ -15,7 +15,6 @@ public class BoardInsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
-		System.out.println(id);
 		String btitle= req.getParameter("btitle");
 		String bcontent= req.getParameter("bcontent");
 		int bopen = Integer.parseInt(req.getParameter("bopen"));
@@ -24,7 +23,7 @@ public class BoardInsertController extends HttpServlet{
 		if(n>0) {
 			req.getRequestDispatcher("/board/list").forward(req, resp);
 		}else {
-			System.out.println("½ÇÆÐ");
+			System.out.println("ì‹¤íŒ¨");
 		}
 	}
 }

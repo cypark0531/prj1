@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <%
 	request.setAttribute("id", "test"); 
-	request.setAttribute("gid","test");
+	request.setAttribute("gid","test2");
 %>
 <html>
 <head>
