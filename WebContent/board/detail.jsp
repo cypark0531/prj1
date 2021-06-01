@@ -77,23 +77,35 @@
 			for(var i = 0; i<brcontent.length;i++){
 				var gid = xml.getElementsByTagName("gid")[i].textContent;
 				var regdate = xml.getElementsByTagName("regdate")[i].textContent;
+				var bgroup = xml.getElementsByTagName("bgroup")[i].textContent
 				var brcon = brcontent[i].textContent;
 				
 				var newTr = document.createElement("tr");
 				var newTd1 = document.createElement("td");
 				var newTd2 = document.createElement("td");
 				var newTd3 = document.createElement("td");
+				var newTd4 = document.createElement("td");
+				div
 				
 				
 				newTd1.innerHTML = brcon;
 				newTd2.innerHTML = gid;
 				newTd3.innerHTML = regdate;
+				newTd4.innerHTML = "<input type= 'button' id = 'repbtn' value= '↓' onclick=reply("+bgroup+")>";
 				
+				//그만
 				newTr.appendChild(newTd1);
 				newTr.appendChild(newTd2);
 				newTr.appendChild(newTd3);
-				
+				newTr.appendChild(newTd4);
 				table.appendChild(newTr);
+				
+				var newDiv = document.createElement("div");
+				newDiv.appendChild(table)
+				table.appendChild(tr);
+				tr.appendChild(td);
+				
+
 			}
 			
 			

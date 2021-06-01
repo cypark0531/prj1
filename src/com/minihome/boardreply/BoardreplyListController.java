@@ -16,8 +16,8 @@ import com.minihome.vo.BoardreplyVo;
 public class BoardreplyListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		 int bnum = Integer.parseInt(req.getParameter("bnum"));
+	int bnum= 14;
+		 //int bnum = Integer.parseInt(req.getParameter("bnum"));
 		
 		
 		ArrayList<BoardreplyVo> replylist = BoardReplyDao.getInstance().boardReplyList(bnum);
@@ -30,6 +30,7 @@ public class BoardreplyListController extends HttpServlet{
 			pw.print("<brcontent>"+vo.getBrcontent()+"</brcontent>");
 			pw.print("<regdate>"+vo.getRegdate()+"</regdate>");
 			pw.print("<gid>"+vo.getGid()+"</gid>");
+			pw.print("<bgroup>"+vo.getBgroup()+"</bgroup>");
 			pw.print("</reply>");
 		}
 		pw.print("</result>");
