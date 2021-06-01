@@ -1,10 +1,12 @@
-# prj1package jsp.visit.action;
+package com.minihome.visit;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import jsp.visit.model.VisitCountDAO;
+import com.minihome.dao.VisitCountDAO;
+
+
 
 
 /**
