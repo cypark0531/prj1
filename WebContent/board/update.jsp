@@ -18,13 +18,13 @@
 	<div style="text-align: center">
 	<span style="font-size: 20px;">글 작성</span><br><br>
 	</div>
-	<form action = "${pageContext.request.contextPath }/board/insert" method="post">
+	<form action = "${pageContext.request.contextPath }/board/update" method="post">
 	<div style="width: 400px;height: 50px;">
-	제목 :&nbsp;&nbsp;<input type = "text" name = "btitle" style="width:290px"><br>
+	제목 :&nbsp;&nbsp;<input type = "text" name = "btitle" value= "${vo.btitle }" style="width:290px"><br>
 	</div>
 	<div style="width: 400px;height: 300;">내용 :</div>	
 	<div style="width: 400px;height: 300; text-align: center">
-		<textarea name = "bcontent" rows="10" cols="40"></textarea>
+		<textarea name = "bcontent" rows="10" cols="40">${vo.bcontent }</textarea>
 	</div>
 	<div style="width: 400px;height: 50px;text-align: right">
 	<br>
@@ -35,8 +35,9 @@
 	</select>
 	<input type= "submit" value= "글쓰기">
 	</div>
-	<input type= "hidden" name = "id" value= "${param.id}">
-	<input type= "hidden" name = "gid" value= "${param.gid}">
+	<input type= "hidden" name = "id" value= "${vo.id}">
+	<input type= "hidden" name = "gid" value= "${vo.id}">
+	<input type= "hidden" name = "bnum" value= "${param.bnum}">
 	</form>
 	</div>
 	

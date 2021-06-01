@@ -121,5 +121,81 @@ public class BoardDao {
 		}
 		
 	}
+	public  int boardUpdate(BoardVo vo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "update board set id= ?,btitle=?,bcontent=?,bopen=? where bnum = ?";
+			pstmt = con.prepareStatement(sql);
+			System.out.println(vo.getId());
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getBtitle());;
+			pstmt.setString(3, vo.getBcontent());
+			pstmt.setInt(4, vo.getBopen());
+			pstmt.setInt(5, vo.getBnum());
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+		
+	}
+	public BoardVo getBoard(int bnum){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BoardVo> boardlist = new ArrayList<BoardVo>();
+		
+		try {
+			con = MyDBCP.getConnection();
+			String sql= "select * from board where bnum = ?";
+			
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bnum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				BoardVo vo = new BoardVo(
+						bnum,
+						rs.getString("id"),
+						rs.getString("btitle"),
+						rs.getString("bcontent"),
+						rs.getInt("bopen"),
+						rs.getDate("regdate"),
+						rs.getInt(1));
+				return vo;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	return null;	
+	}
+	public int boardDelete(int bnum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "delete from board where bnum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,bnum);
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
+		
+	
 	
 }

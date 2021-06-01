@@ -20,4 +20,8 @@ public class BoardReplyListController extends HttpServlet{
 		req.getRequestDispatcher("/board/detail.jsp").forward(req, resp);
 		
 	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
 }
