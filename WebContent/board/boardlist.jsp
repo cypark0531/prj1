@@ -22,7 +22,7 @@
 		<c:when test="${param.gid==param.id||(vo.bopen==2&&friend==true)||vo.bopen==3 }">
 		<tr>
 			<td>${vo.rnum }</td>
-			<td><a href = "${pageContext.request.contextPath }/boardreply/list?bnum=${vo.bnum}&btitle=${vo.btitle}
+			<td><a href = "${pageContext.request.contextPath }/board/detail?bnum=${vo.bnum}&btitle=${vo.btitle}
 			&rnum=${vo.rnum}&bcontent=${vo.bcontent}&regdate=${vo.regdate}&id=${param.id}&gid=${param.gid}">${vo.btitle }</a></td>
 			<td>${vo.regdate }</td>
 		</tr>
