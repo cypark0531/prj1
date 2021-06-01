@@ -76,9 +76,8 @@
 
  var btn1 = document.getElementById("btn1");
  btn1.addEventListener('click', function(e) {
-	 window.open('popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no"
+	 window.open('popup.jsp','',"width=400,height=700,resizable = no, scrollbars = n0"
 	}
- 
 	 
 	 
 	 
