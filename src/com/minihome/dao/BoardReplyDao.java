@@ -60,7 +60,6 @@ public class BoardReplyDao {
 		}
 	
 	public ArrayList<BoardreplyVo> boardReplyList(int bnum){
-		
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
