@@ -72,7 +72,7 @@ public class ProfilesDao {
 				String porgimg = rs.getString("porgimg");
 				String psaveimg = rs.getString("psaveimg");
 				String ptitle = rs.getString("ptitle");
-				String htitle = rs.getString("hptitle");
+				String htitle = rs.getString("htitle");
 				String pintro = rs.getString("pintro");
 				int popen = rs.getInt("popen");
 

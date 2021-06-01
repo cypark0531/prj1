@@ -20,6 +20,6 @@ public class ImgfileUpdateController extends HttpServlet {
 			req.setAttribute("vo", vo);
 			req.getRequestDispatcher("/profile/update.jsp").forward(req, resp);
 	}
-	
+		
 
 }
