@@ -8,44 +8,83 @@
 <title>회원가입</title>
 <style type="text/css">
 	*{margin:0px;padding:0px;}
-	/*.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}*/
-	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:#FF8224; color:white;}
-	
+	.btn1{width:100px; height:40px; font-size:16px; border:2px solid black; background-color:#FF8224; color:white;}
+	tr{height:50px;}
+	th{width:150px; background-color:#ccc}
+	td{width:650px; background-color: #eee}
+	.input{margin-left:20px;}
 </style>
 </head>
 <body>
-<div id="wrap" style="margin:auto; width:600px; height: 800px; background-color:white;">
+<div id="wrap" style="margin:auto; width:800px; height: 800px; background-color:white;">
 	<div style="padding-top:50px; ">
 	<h1 style="padding-top:50px; ">회원가입</h1>
 	
 	 
 	<form method="post" action="${pageContext.request.contextPath }/login/regist">
-		<div id="loginType" style="padding-top:60px; ">
-			아이디<br><input type="text" class="typing" name="id" id="id" value=>
-			<span id="idcheck" ></span><br>
-			<div style="height:30px"></div>
-			
-			비밀번호<br><input class="typing" type="password" id="pwd" name="pwd" value=>
-			<span id="pwdcheck"></span><br>
-			<div style="height:30px"></div>
-			
-			비밀번호 확인<br><input type="password" id="pwdchk" >
-			<span id="pccheck" ></span><br>
-			<div style="height:30px"></div>
-			
-			이름<br><input name="name" id="name" value="${vo.name }">
-			<span id="namecheck" ></span><br>
-			<div style="height:30px"></div>
-			
-			이메일<br><input type="email" name="email" id="email" >
-			<span id="emailcheck" ></span><br>
-			<div style="height:30px"></div>
-			
-			전화번호<br><input name="phone" id="phone" placeholder="('-'는 제외)" >
-			<span id="phonecheck" ></span><br>
-			<div style="height:30px"></div>
-			
-			비밀번호 질문<br><select name="question" id="question">
+		<div id="registBox" >
+		<table>
+		
+		<tr>
+			<th class="title">
+				아이디
+			</th>
+			<td>
+				<input type="text" class="input" name="id" id="id" value=>
+				<span id="idcheck" ></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				비밀번호
+			</th>
+			<td>
+				<input class="input" type="password" id="pwd" name="pwd" value=>
+				<span id="pwdcheck"></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				비밀번호 확인
+			</th>
+			<td>
+				<input type="password" id="pwdchk" class="input">
+				<span id="pccheck" ></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				이름
+			</th>
+			<td>
+				<input name="name" class="input" id="name" value="${vo.name }">
+			<span id="namecheck" ></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				이메일
+			</th>
+			<td>
+				<input type="email" class="input" name="email" id="email" >
+				<span id="emailcheck" ></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				전화번호
+			</th>
+			<td>
+				<input name="phone" class="input" id="phone" placeholder="('-'는 제외)" >
+				<span id="phonecheck" ></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				비밀번호 질문
+			</th>
+			<td>
+				<select name="question" class="input" id="question">
 
 				<option value="">--- 선택하세요 ---</option>
 				<option value="출신 초등학교 이름은?">출신 초등학교 이름은?</option>
@@ -54,15 +93,23 @@
 				<option value="가장 존경하는 사람은?">가장 존경하는 사람은?</option>
 				<option value="가장 좋아하는 장소는?">가장 좋아하는 장소는?</option>
 			</select>
-			<span id="questcheck" ></span><br>
-			<div style="height:30px"></div>
-			
-			비밀번호답안<br><input name="answer" id="answer" value="${vo.answer }">
+			<span id="questcheck" ></span>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				비밀번호답안
+			</th>
+			<td>
+				<input name="answer" class="input" id="answer" value="${vo.answer }">
 			<span id="answercheck" ></span>
-			<div style="height:30px"></div>
+			</td>
+		</tr>
+		</table>
+			
 			
 		</div>
-		<div id="buttons" style="padding-top:40px; padding-left:75px; width:450px;">		
+		<div id="buttons" style="padding-top:5px; padding-left:700px;">		
 			<input class="btn1" type="submit" id="registbtn" value="회원가입" disabled="disabled" style="background-color: silver;">
 		</div>
 		<br><div style="height:70px"></div>	
@@ -93,42 +140,42 @@
 	id.onfocus=function(){
 		if(checking%2==1)checking-=1;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	pwd.onfocus=function(){
 		if(checking%4>=2)checking-=2;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	pwdchk.onfocus=function(){
 		if(checking%8>=4)checking-=4;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	name.onfocus=function(){
 		if(checking%16>=8)checking-=8;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	email.onfocus=function(){
 		if(checking%32>=16)checking-=16;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	phone.onfocus=function(){
 		if(checking%64>=32)checking-=32;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	question.onfocus=function(){
 		if(checking%128>=64)checking-=64;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	answer.onfocus=function(){
 		if(checking%256>=128)checking-=128;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disable=\"disable\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
 	}
 	
 	id.onblur=function(){
