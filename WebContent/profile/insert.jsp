@@ -20,7 +20,7 @@
 	<table style= "width: 70%;"  class="table02"  >
 	<caption><strong style="font-size: 16px;"><span class="t_red"> *</span> 표시는 필수입력 항목입니다.</strong></caption>
 		<colgroup>
-			<col width="20%">
+			<col width="30%">
 			<col width="*">
 		</colgroup>
 		<tbody id="tbody">

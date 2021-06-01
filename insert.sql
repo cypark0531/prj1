@@ -1,36 +1,41 @@
-select * from members;
-insert into members values('test','1234','Е█═Л▄⌠Л▐≥Л≤≥М┼╦','test@com','01000000000','hello','hi',0,1);
-insert into members values('test2','1234','М≥█Е█═Л█╦К▐≥','test1@com','01051215121','hello','12',0,1);
-insert into members values('test3','3457','Е█═Л▐≥Л≤≥Е╫╧О©╫','test2@com','01033545811','hello','34',0,1);
-insert into members values('test4','5321','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','test3@com','01055321512','hello','45',0,1);
-insert into members values('test5','0011','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','test4@com','01070405052','hello','56',0,1);
-commit;
+Insert into SCOTT.MEMBERS (ID,PWD,NAME,EMAIL,PHONE,QUESTION,ANSWER,MONEY,ACTIVE) values ('test','1234','ев╫╨ф╝','test@com','01000000000','hello','hi',0,1);
+Insert into SCOTT.MEMBERS (ID,PWD,NAME,EMAIL,PHONE,QUESTION,ANSWER,MONEY,ACTIVE) values ('test5','0011','©Ь╨С','test4@com','01070405052','hello','56',0,1);
+Insert into SCOTT.MEMBERS (ID,PWD,NAME,EMAIL,PHONE,QUESTION,ANSWER,MONEY,ACTIVE) values ('test4','5321','╠Х╩Г╤Ш','test3@com','01055321512','hello','45',0,1);
+Insert into SCOTT.MEMBERS (ID,PWD,NAME,EMAIL,PHONE,QUESTION,ANSWER,MONEY,ACTIVE) values ('test3','3457','╠Х╠Ф╣©','test2@com','01033545811','hello','34',0,1);
+Insert into SCOTT.MEMBERS (ID,PWD,NAME,EMAIL,PHONE,QUESTION,ANSWER,MONEY,ACTIVE) values ('test2','1234','х╚╠Ф╣©','test1@com','01051215121','hello','12',0,1);
 
-select * from profiles;
-insert into profiles values('test','abcd','abcd01','Е█═Л▐≥Л≤≥ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▐≥Л≤≥ Е█═Л▀╠К▄░Л≤≥М≥┬Е█═Л▐≥Л≤≥','Е█═Л▀╚К├┌Л≤≥~',1);
-insert into profiles values('test2','vasda','vasda','Е█═Л▄⌠Л▐≥Л≤≥М┼╦ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▀╠К▄░Л≤≥М≥┬Е█═Л▐≥Л≤≥ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥~',1);
-insert into profiles values('test3','vasda','vasda','Е█═Л▄⌠Л▐≥Л≤≥М┼╦ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▀╠К▄░Л≤≥М≥┬Е█═Л▐≥Л≤≥ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥~',1);
-insert into profiles values('test4','vasda','vasda','Е█═Л▄⌠Л▐≥Л≤≥М┼╦ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▀╠К▄░Л≤≥М≥┬Е█═Л▐≥Л≤≥ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥~',1);
-insert into profiles values('test5','vasda','vasda','Е█═Л▄⌠Л▐≥Л≤≥М┼╦ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▀╠К▄░Л≤≥М≥┬Е█═Л▐≥Л≤≥ Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥~',1);
+Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test','abcd','abcd01','Ё╩ га╥нгй','Ё╩ ╧л╢ох╗гг','╬хЁГ~',1);
+Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test2','vasda','vasda','ев╫╨ф╝ га╥нгй','╧л╢ох╗гг ╪Ёа╓','гою╖~',1);
+Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test3','vasda','vasda','ев╫╨ф╝ га╥нгй','╧л╢ох╗гг ╪Ёа╓','гою╖~',1);
+Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test4','vasda','vasda','ев╫╨ф╝ га╥нгй','╧л╢ох╗гг ╪Ёа╓','гою╖~',1);
+Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test5','vasda','vasda','ев╫╨ф╝ га╥нгй','╧л╢ох╗гг ╪Ёа╓','гою╖~',1);
 
-select * from goods;
-insert into goods values('mu01',200,'Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥М┐─Е█═Л▐≥Л≤≥-Y','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥М┐─Е█═Л▐≥Л≤≥.jpg','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥М┐─Е█═Л▐≥Л≤≥.jpg','music');
-insert into goods values('mu02',190,'Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥-Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▄█Л√╣Л≤≥Е█═О©╫','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥М┐─Е█═Л▐≥Л≤≥.jpg','Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥М┐─Е█═Л▐≥Л≤≥.jpg','music');
-insert into goods values('mu03',210,'MCЕ█═Л▐≥Л≤≥-180Е█═Л▐≥Л≤≥','180Е█═Л▐≥Л≤≥.jpg','180Е█═Л▐≥Л≤≥.jpg','music');
-insert into goods values('bg01',60,'Е█═Л▐≥Л≤≥Л╖²Е█═Л▐≥Л≤≥Е█═О©╫','starbg.jpg','starbg.jpg','background');
-insert into goods values('bg02',70,'Е█═Л▀╧Л ╦Л≤≥Е█═Л▀╠К╠└Л≤≥Е█═О©╫','hawai.jpg','hawai.jpg','background');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu01',200,'га╦╝╫╨е╦юо-Y','га╦╝╫╨е╦юо.jpg','music');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu02',190,'юлю╨╧л-╬жюнюж╬Н©Д','га╦╝╫╨е╦юо.jpg','music');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu03',210,'MC╦Ы-180╣╣','180╣╣.jpg','music');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('bg01',60,'╧щб╕╧Х╟Ф','starbg.jpg','background');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('bg02',70,'го©мюл╧Х╟Ф','hawai.jpg','background');
 
-select * from purchase;
-insert into purchase values(1,'test','mu01',sysdate);
-insert into purchase values(2,'test2','mu02',sysdate);
-insert into purchase values(3,'test3','bg02',sysdate);
-select * from basicsetting;
-insert into basicsetting values(1,'music',1,'test',1);
-insert into basicsetting values(3,'background',1,'test3',3);
-select * from board;
-insert into board values(1,'test','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥',1,sysdate);
-insert into board values(2,'test','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥',1,sysdate);
-insert into board values(3,'test','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥',1,sysdate);
-insert into board values(4,'test','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥','Е█═Л▄⌠Л▐≥Л≤≥М┼╦Е█═Л▐≥Л≤≥Е█═Л▐≥Л≤≥',1,sysdate);
+Insert into SCOTT.PURCHASE (PURNUM,ID,GCODE,REGDATE) values (1,'test','mu01',to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.PURCHASE (PURNUM,ID,GCODE,REGDATE) values (2,'test2','mu02',to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.PURCHASE (PURNUM,ID,GCODE,REGDATE) values (3,'test3','bg02',to_date('21/05/31','RR/MM/DD'));
+
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (7,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (8,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (9,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (10,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (11,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (12,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (13,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (14,'test','ев╫╨ф╝1','юл╟г',3,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (15,'test','ев╫╨ф╝2','╦Т╤ЗаЖ',2,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (16,'test','a','b',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (1,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (2,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (3,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (4,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (5,'test2','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+Insert into SCOTT.BOARD (BNUM,ID,BTITLE,BCONTENT,BOPEN,REGDATE) values (6,'test','ев╫╨ф╝а╕╦Я','ев╫╨ф╝Ё╩©К',1,to_date('21/05/31','RR/MM/DD'));
+
 
 commit;
