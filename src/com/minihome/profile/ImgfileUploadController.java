@@ -1,5 +1,6 @@
 package com.minihome.profile;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,12 +37,15 @@ public class ImgfileUploadController extends HttpServlet {
 		String ptitle = mr.getParameter("ptitle");
 		String htitle = mr.getParameter("htitle");
 		String pintro = mr.getParameter("pintro");
-		String popen = mr.getParameter("popen");
-		
+		int popen = Integer.parseInt(mr.getParameter("popen"));
+		System.out.println(porgimg);
+		System.out.println(psaveimg);
+		System.out.println(pintro);
+		System.out.println();
 		//db에 파일정보 저장하기
 		ProfilesDao dao = ProfilesDao.getInstance();
 		File f = new File(saveDir+"\\"+psaveimg);
-		ProfilesVo vo  = new ProfilesVo(id, porgimg, psaveimg, ptitle, htitle, pintro, 0);
+		ProfilesVo vo  = new ProfilesVo(id, porgimg, psaveimg, ptitle, htitle, pintro, popen);
 		int n = dao.insert(vo);
 		
 		ArrayList<ProfilesVo> list = new ArrayList<>();

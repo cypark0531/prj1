@@ -50,7 +50,7 @@ public void setPtitle(String ptitle) {
 public String getHtitle() {
 	return htitle;
 }
-public void setHtitle(String htitle) {
+public void setHptitle(String htitle) {
 	this.htitle = htitle;
 }
 public String getPintro() {

@@ -68,15 +68,15 @@ public class ProfilesDao {
 				 * String ptitle; private String hptitle; private String pintro; private int
 				 * popen;
 				 */
-				String id1 = rs.getString("id");
+				//String id1 = rs.getString("id");
 				String porgimg = rs.getString("porgimg");
 				String psaveimg = rs.getString("psaveimg");
 				String ptitle = rs.getString("ptitle");
-				String htitle = rs.getString("htitle");
+				String htitle = rs.getString("hptitle");
 				String pintro = rs.getString("pintro");
-				int popen = rs.getInt(1);
+				int popen = rs.getInt("popen");
 
-				ProfilesVo vo = new ProfilesVo(id1, porgimg, psaveimg, ptitle, htitle, pintro, 0);
+				ProfilesVo vo = new ProfilesVo(id, porgimg, psaveimg, ptitle, htitle, pintro, popen);
 				list.add(vo);
 			}
 			return list;
@@ -89,4 +89,45 @@ public class ProfilesDao {
 		}
 
 	}
+	public ProfilesVo getinfoVo(String id) {
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select*from profiles where id =?";
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				/*
+				 * private String id; 
+				 * private String porgimg; 
+				 * private String psavegimg; 
+				 * private String ptitle; 
+				 * private String hptitle; 
+				 * private String pintro; 
+				 * private int popen;
+				 */
+				ProfilesVo vo = new ProfilesVo(rs.getString("id"),
+											   rs.getString("porgimg"),
+											   rs.getString("psaveimg"), 
+											   rs.getString("ptitle"), 
+											   rs.getString("hptitle"), 
+											   rs.getString("pintro"),
+											   rs.getInt("popen"));
+									return vo;
+								}
+			
+							
+		} catch (SQLException se) {
+			se.printStackTrace();
+			// TODO: handle exception
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+		return null;
+	}
+	
 }
