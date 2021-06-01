@@ -104,4 +104,49 @@ public class MembersDao {
 		}
 	}
 	
+	public String findPwd(MembersVO vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from members where id=? and name=? and question=? and answer=?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getQuestion());
+			pstmt.setString(4, vo.getAnswer());
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				return rs.getString("pwd");
+			}else return null;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	
+	public boolean login(String id,String pwd) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from members where id=? and pwd=?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				return true;
+			}else return false;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
 }

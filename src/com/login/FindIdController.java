@@ -1,5 +1,5 @@
 package com.login;
-
+ 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.startup.SetAllPropertiesRule;
 
 import com.minihome.dao.MembersDao;
 import com.minihome.vo.MembersVO;
@@ -32,7 +31,7 @@ public class FindIdController extends HttpServlet{
 		String id=dao.findId(vo);		
 
 		req.setAttribute("id", id);
-		req.getRequestDispatcher(req.getContextPath()+"/login/findid").forward(req, resp);
+		req.getRequestDispatcher("/login/findidresult.jsp").forward(req, resp);
 		
 			
 	}

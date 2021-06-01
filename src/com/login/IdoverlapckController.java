@@ -1,11 +1,7 @@
 package com.login;
-
+ 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.minihome.dao.MembersDao;
-import com.minihome.db.MyDBCP;
+
 @WebServlet("/login/idoverlapck")
 public class IdoverlapckController extends HttpServlet{
 	@Override
