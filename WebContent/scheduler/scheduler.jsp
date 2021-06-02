@@ -35,30 +35,55 @@ td {height: 40px; margin:0px; padding:0px;}
 			<th style="background-color: #6799FF; color: white">토</th>
 		</tr>		
 			<c:forEach var="array" items="${requestScope.arr }">
-			<c:if test="${ array.num%7==0}"><tr></c:if>
+			<c:if test="${array.num%7==0}"><tr class="calrow"></c:if>
 				<c:choose>
 					<c:when test="${array.day==-1 }">
 						<td></td>
 					</c:when>
 					<c:otherwise>
 						<td class="td">
-						<c:out value="${array.day}"/><br>
-						<c:out value="${array.sche }"/>
+						<div style="background-color: silver; width:100%; height:20px">
+							<c:out value="${array.day}"/>
+						</div>
+						<div style="width:100%; height:20px">
+							<c:out value="${array.sche }"/>
+						</div>
 						</td>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${ array.num%7==6}"></tr></c:if>
 	</table>
-	
+	<input type="button" id="savebtn" value="저장">
+	<input type="button" id="cancelbtn" value="취소">
 </div>
 </body>
 <script type="text/javascript">
+	var calrow=document.getElementsByClassName("calrow");
+	var cancelbtn=document.getElementById("cancelbtn");
 	var td=document.getElementsByClassName("td");
 	for(let i=0;i<td.length;i++){
 		td[i].onclick=function(){
-			td[i].parentElement;
-			td[i].style="height:120px";
+			for(let j=0;j<calrow.length;j++){
+				let child=calrow[j].childNodes;
+				for(let n=0;n<child.length;n++){
+					child[n].style="height:40px";			
+				}
+			}
+			let tr=td[i].parentElement;
+			let tds=tr.childNodes;
+			for(let j=0;j<tds.length;j++){
+				tds[j].style="height:120px";
+				console.log(tds[j].className);
+			}
+		}
+	}
+	cancelbtn.onclick=function(){
+		for(let j=0;j<calrow.length;j++){
+			let child=calrow[j].childNodes;
+			for(let n=0;n<child.length;n++){
+				child[n].style="height:40px";			
+			}
 		}
 	}
 </script>
