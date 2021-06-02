@@ -20,7 +20,7 @@
 	<div style="padding-top:50px; ">
 	<h1 style="padding-top:50px; ">회원가입</h1>
 	
-	 
+	아래의 내용을 모두 입력해 주세요
 	<form method="post" action="${pageContext.request.contextPath }/login/regist">
 		<div id="registBox" >
 		<table>

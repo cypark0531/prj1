@@ -1,13 +1,15 @@
-# prj1package jsp.visit.action;
+package com.minihome.visit;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import jsp.visit.model.VisitCountDAO;
+import com.minihome.dao.VisitCountDAO;
 
 
-/**
+
+
+/*
  * �湮�� ���� ����ϴ� Ŭ����<br>
  * web.xml�� listener ����� �صξ���. �̷��� �� ��� ��Ĺ�� ����Ǹ鼭
  * �����ʰ� ����ȴ�. 
