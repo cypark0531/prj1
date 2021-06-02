@@ -54,7 +54,7 @@
 		</tr>
 		<tr>
 			<th>
-				이름
+				닉네임
 			</th>
 			<td>
 				<input name="name" class="input" id="name" value="${vo.name }">
@@ -253,13 +253,27 @@
 	name.onblur=function(){
 		let nameValue=name.value;
 		if(nameValue==""){
-			namecheck.innerHTML="이름을 입력하세요";
+			namecheck.innerHTML="닉네임을 입력하세요";
 		}else{
-			namecheck.innerHTML="";
-			if(checking%16<=8)checking+=8;
-			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
-		}
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					let xml= xhr.responseXML;
+					let using = xml.getElementsByTagName("using")[0].textContent;
+					if(using=="true"){
+						namecheck.innerHTML="이미 사용되는 닉네임입니다";
+					}
+					else {
+						namecheck.innerHTML="";
+						if(checking%16<=8)checking+=8;
+						console.log(checking);
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+					}
+				}		
+			};
+			xhr.open('get','nameoverlapck?name='+nameValue,true);
+			xhr.send();
+			}
 	}
 	email.onblur=function(){
 		let emailValue=email.value;

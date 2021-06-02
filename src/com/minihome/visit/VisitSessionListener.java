@@ -9,7 +9,7 @@ import com.minihome.dao.VisitCountDAO;
 
 
 
-/**
+/*
  * �湮�� ���� ����ϴ� Ŭ����<br>
  * web.xml�� listener ����� �صξ���. �̷��� �� ��� ��Ĺ�� ����Ǹ鼭
  * �����ʰ� ����ȴ�. 

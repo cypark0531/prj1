@@ -19,18 +19,16 @@ public class FindPwdController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id=req.getParameter("id");
-		String name=req.getParameter("name");
 		String question=req.getParameter("question");
 		String answer=req.getParameter("answer");
 		MembersVO vo=new MembersVO();
 		vo.setId(id);
-		vo.setName(name);
 		vo.setQuestion(question);
 		vo.setAnswer(answer);
 		
 		MembersDao dao=MembersDao.getIntstance();
 		String pwd=dao.findPwd(vo);
-
+		
 		req.setAttribute("pwd", pwd);
 		req.getRequestDispatcher("/login/findpwdresult.jsp").forward(req, resp);
 	}
