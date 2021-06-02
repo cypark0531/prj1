@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%
 	request.setAttribute("id", "test"); 
@@ -13,5 +14,8 @@
 <body>
 <h1>MAIN</h1>
 <a href= "${pageContext.request.contextPath }/board/list?id=${requestScope.id}&gid=${requestScope.gid}">게시판</a>
-<a href= "${pageContext.request.contextPath }/profile/insert.jsp?id=${requestScope.id}">test</a>
+
+
+<a href= "${pageContext.request.contextPath }/profile/list.jsp?id=${requestScope.id}">test</a>
+
 </html>
