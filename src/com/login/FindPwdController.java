@@ -30,7 +30,7 @@ public class FindPwdController extends HttpServlet{
 		
 		MembersDao dao=MembersDao.getIntstance();
 		String pwd=dao.findPwd(vo);
-
+		
 		req.setAttribute("pwd", pwd);
 		req.getRequestDispatcher("/login/findpwdresult.jsp").forward(req, resp);
 	}

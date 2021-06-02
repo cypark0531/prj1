@@ -25,30 +25,19 @@ public class VisitCountDAO
 	{ 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
-		try {
-			
-		
+	
+		try {					
 			StringBuffer sql = new StringBuffer();
-			sql.append("INSERT INTO VISIT (V_DATE) VALUES (sysdate)");
-		
-			conn = MyDBCP.getConnection();
-						
-	
-			conn.setAutoCommit(false);
-			
-			pstmt = conn.prepareStatement(sql.toString());
-		
-			pstmt.executeUpdate();
-			
-			conn.commit(); 
-			
-		} catch (Exception sqle) {
-	
+			sql.append("INSERT INTO VISIT (V_DATE) VALUES (sysdate)");		
+			conn = MyDBCP.getConnection();							
+			conn.setAutoCommit(false);			
+			pstmt = conn.prepareStatement(sql.toString());		
+			pstmt.executeUpdate();			
+			conn.commit(); 			
+		} catch (Exception sqle) {	
 			conn.rollback(); 
 			throw new RuntimeException(sqle.getMessage());
-		} finally {
-		
+		} finally {		
 			try{
 				if ( pstmt != null ){ pstmt.close(); pstmt=null; }
 				if ( conn != null ){ conn.close(); conn=null;	}
@@ -64,24 +53,15 @@ public class VisitCountDAO
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int totalCount = 0;
-		
-		try {
-			
-			
+		int totalCount = 0;		
+		try {						
 			StringBuffer sql = new StringBuffer();
-			sql.append("SELECT COUNT(*) AS TotalCnt FROM VISIT");
-			
+			sql.append("SELECT COUNT(*) AS TotalCnt FROM VISIT");			
 			conn = MyDBCP.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
-			rs = pstmt.executeQuery();
-			
-		
-			if (rs.next()) 
-				totalCount = rs.getInt("TotalCnt");
-			
-			return totalCount;
-			
+			rs = pstmt.executeQuery();					
+			if (rs.next()) totalCount = rs.getInt("TotalCnt");			
+			return totalCount;			
 		} catch (Exception sqle) {
 			throw new RuntimeException(sqle.getMessage());
 		} finally {
@@ -100,28 +80,19 @@ public class VisitCountDAO
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int todayCount = 0;
-		
-		try {
-			
+		int todayCount = 0;		
+		try {			
 			StringBuffer sql = new StringBuffer();
 			sql.append("SELECT COUNT(*) AS TodayCnt FROM VISIT");
-			sql.append(" WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate, 'YYYY-MM-DD')");
-			
+			sql.append(" WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate, 'YYYY-MM-DD')");			
 			conn = MyDBCP.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
-			rs = pstmt.executeQuery();
-			
-			
-			if (rs.next()) 
-				todayCount = rs.getInt("TodayCnt");
-			
-			return todayCount;
-			
+			rs = pstmt.executeQuery();						
+			if (rs.next()) todayCount = rs.getInt("TodayCnt");			
+			return todayCount;			
 		} catch (Exception sqle) {
 			throw new RuntimeException(sqle.getMessage());
-		} finally {
-			
+		} finally {			
 			try{
 				if ( pstmt != null ){ pstmt.close(); pstmt=null; }
 				if ( conn != null ){ conn.close(); conn=null;	}
