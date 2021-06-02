@@ -18,17 +18,17 @@
 	<div class= "inner">
 		<h2>프로필 상세등록</h2>
 	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update" enctype="multipart/form-data" method="post" >
-	<div class="btn_right mt15" style="width: 69%">
-	
-	</div>
 	<table style= "width: 70%;"  class="table02"  >
 	<caption><strong style="font-size: 16px;"><span class="t_red"> *</span> 표시는 필수입력 항목입니다.</strong></caption>
 		<colgroup>
 			<col width="30%">
 			<col width="*">
 		</colgroup>
+		
 		<tbody id="tbody">
+		
 		<tr>
+		
 		<th>프로필제목<span class="t_red"> *</span></th>
 		<td><input id="ptitle" name="ptitle" value="${vo.ptitle }" class="tbox1"/></td>		
 		</tr>
@@ -43,7 +43,7 @@
 		<tr>
 			<th>프로필이미지<br>(첨부파일)</th>
 			
-			<td colspan="3" id="img_td">[기존파일명 ${vo.profile }]	<br><br><input type="file" name="imgfile" id="imgfile" onchange="readURL(this);" >
+			<td colspan="3" id="img_td">[기존파일명 ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"  >
 						
 <br />
 <img id="preview" />
@@ -51,7 +51,7 @@
 			</td>
 			
 		</tr>
-			
+	
 		<tr>
 		<th>프로필공개여부<span class="t_red"> *</span></th>
 		<td>
@@ -63,56 +63,17 @@
 		</td>
 		</tr>
 		</tbody>
+
 	</table>
 	<div class="btn_right mt15" style="width: 69%">
 	<input type="button" class="btn black mr5" value="메인으로">
-	<input type="button" class="btn black mr5"  id = 'btn1' value="미리보기" >
- 	<input type="submit" class="btn black" value="등록하기" style="display:none;" id ='btn2' >
+ 	<input type="submit" class="btn black" value="수정하기" >
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
-
 	 </div>
 	 </form>
- 
-
 	</div>
 </div>
 </div>
-<script type="text/javascript">
-var flag = false;
-function readURL(input) {
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			document.getElementById('preview').src = e.target.result;
-		};
-		reader.readAsDataURL(input.files[0]);
-	} else {
-		document.getElementById('preview').src = "";
-	} 
-}
-
-
-
-/*
-	function change(){
-		var imgfile = document.getElementById("imgfile")
-		var src = imgfile.value
-		console.log(src);
-	}
-
-*/
- var btn1 = document.getElementById("btn1");
- var btn2 = document.getElementById("btn2");
- 
- btn1.addEventListener('click', function(e) {
-	 window.open('popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no");
-	 btn1.style.display= 'none';
-	 btn2.style.display =  'inline';
- });
-
-
-</script>
-
 </body>
 </html>

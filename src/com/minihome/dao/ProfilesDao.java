@@ -113,7 +113,7 @@ public class ProfilesDao {
 											   rs.getString("porgimg"),
 											   rs.getString("psaveimg"), 
 											   rs.getString("ptitle"), 
-											   rs.getString("hptitle"), 
+											   rs.getString("htitle"), 
 											   rs.getString("pintro"),
 											   rs.getInt("popen"));
 									return vo;
@@ -129,6 +129,9 @@ public class ProfilesDao {
 		}
 		return null;
 	}
+	
+	
+	
 	public ArrayList<ProfilesVo> list() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -157,6 +160,32 @@ public class ProfilesDao {
 		}finally {
 			MyDBCP.close(con, pstmt, rs);
 		}
+		
+	}
+	public int update(ProfilesVo vo) {
+		String sql ="update profiles set porgimg=?,psaveimg=?,ptitle=?, htitle=?,pintro=?,popen=? where id=?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, vo.getPorgimg());
+			pstmt.setString(2, vo.getPsavegimg());
+			pstmt.setString(3, vo.getPtitle());
+			pstmt.setString(4, vo.getHtitle());
+			pstmt.setString(5, vo.getPintro());
+			pstmt.setInt(6, vo.getPopen());
+			pstmt.setString(7, vo.getId());
+			int n = pstmt.executeUpdate();
+			return n;
+		} catch (SQLException se) {
+			se.printStackTrace();
+			// TODO: handle exception
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+	
 	}
 	
 }

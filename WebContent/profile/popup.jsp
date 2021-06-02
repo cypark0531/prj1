@@ -41,8 +41,8 @@
 			<img id= "img"> 
 			
 			</div><br>	
-	<input type="submit" class="btn black" value="닫기">
-		<div align="right"  class="btn black"><a href = "javascript:self.close();">닫기</a></div>
+	<input type="submit" class="btn black" value="닫기" onclick="javascript:self.close()">
+		<!--  <div align="right"  class="btn black"><a href = "javascript:self.close();">닫기</a></div>-->
 
 	
 

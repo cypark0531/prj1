@@ -16,6 +16,6 @@
 <a href= "${pageContext.request.contextPath }/board/list?id=${requestScope.id}&gid=${requestScope.gid}">게시판</a>
 
 
-<a href= "${pageContext.request.contextPath }/profile/list.jsp?id=${requestScope.id}">test</a>
+<a href= "${pageContext.request.contextPath }/profile/list?id=${requestScope.id}">test</a>
 
 </html>
