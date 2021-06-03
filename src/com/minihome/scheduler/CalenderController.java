@@ -17,7 +17,6 @@ public class CalenderController extends HttpServlet{
 		Calendar c=null;
 		String year=(String)req.getParameter("year");
 		String month=(String)req.getParameter("month");
-		System.out.println(year+" "+month);
 		if(year!=null) {
 			c=Calendar.getInstance();
 			c.set(Integer.parseInt(year), Integer.parseInt(month), 1);
@@ -35,17 +34,17 @@ public class CalenderController extends HttpServlet{
 		int day=0;
 		for(int num=0;num<42;num++) {
 			if(num<firstDay-1||num>firstDay+lastDay-2) {
-				arr.add(new DateAndSche(num, -1, null));
+				arr.add(new DateAndSche(num, -1, -1, null,null));
 				continue;
 			}
 			day+=1;
-			arr.add(new DateAndSche(num, day, null));
+			arr.add(new DateAndSche(num, day, 0, null,null));
 		}
 		
 		
 		req.setAttribute("year", currYear);
 		req.setAttribute("month", currMonth+1);
 		req.setAttribute("arr", arr);
-		req.getRequestDispatcher("/scheduler/scheduler.jsp").forward(req, resp);
+		req.getRequestDispatcher("/scheduler/schedule").forward(req, resp);
 	}
 }
