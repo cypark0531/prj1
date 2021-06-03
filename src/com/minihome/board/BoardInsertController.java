@@ -14,7 +14,7 @@ import com.minihome.vo.BoardVo;
 @WebServlet("/board/insert")
 public class BoardInsertController extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		String btitle= req.getParameter("btitle");
 		String bcontent= req.getParameter("bcontent");
@@ -22,11 +22,17 @@ public class BoardInsertController extends HttpServlet{
 		BoardVo vo = new BoardVo(0, id, btitle, bcontent, bopen, null);
 		int n =BoardDao.getInstance().boardInsert(vo);
 		if(n>0) {
-			String path = "/board/insert.jsp";
+			String path = "/board/boardlist.jsp";
 			req.setAttribute("path", path);
 			req.getRequestDispatcher("/home").forward(req, resp);
 		}else {
 			System.out.println("실패");
 		}
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = "/board/insert.jsp";
+		req.setAttribute("path", path);
+		req.getRequestDispatcher("/home").forward(req, resp);
 	}
 }
