@@ -22,18 +22,23 @@ public class HomeController extends HttpServlet {
 //		}
 		//<a href= "${pageContext.request.contextPath }/profile/list?id=${requestScope.id}">test</a>
 	
-		  		
+		String path = "/semi_01/board/boardlist.jsp";
+		if(req.getParameter("path")!=null) {
+			path = req.getParameter("path");
+		}
 		if(content==null)	{
 			content ="/profile/profilelist(update).jsp";	
 			
 	}
-		
+	
+	System.out.println(path);
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
 	application.setAttribute("cp", cp);
 //	req.setAttribute("header", header);
 	req.setAttribute("id", "test");
-	req.setAttribute("content", content);
+//	req.setAttribute("content", content);
+	req.setAttribute("path", path);
 	req.getRequestDispatcher("/homepageframe/homeindex.jsp").forward(req, resp);
 	//req.getRequestDispatcher("/profile/profilelist(update).jsp").forward(req, resp);
 	

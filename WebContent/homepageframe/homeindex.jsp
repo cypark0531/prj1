@@ -132,9 +132,10 @@ font-weight: bold;
 
 	<div class="cp_tabpanels">
 		<div class="cp_tabpanel">
-		<jsp:include page= ${content }/>
+		<jsp:include page= "${content }"/>
 		</div>
 		<div class="cp_tabpanel">
+		<jsp:include page="${path}"/>
 		<h2>Second Tab</h2>
 		<p>Second Tab text</p>
 		</div>

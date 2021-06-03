@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
 
 import com.minihome.dao.BoardDao;
 import com.minihome.vo.BoardVo;
@@ -21,7 +22,9 @@ public class BoardInsertController extends HttpServlet{
 		BoardVo vo = new BoardVo(0, id, btitle, bcontent, bopen, null);
 		int n =BoardDao.getInstance().boardInsert(vo);
 		if(n>0) {
-			req.getRequestDispatcher("/board/list").forward(req, resp);
+			String path = "/board/insert.jsp";
+			req.setAttribute("path", path);
+			req.getRequestDispatcher("/home").forward(req, resp);
 		}else {
 			System.out.println("실패");
 		}
