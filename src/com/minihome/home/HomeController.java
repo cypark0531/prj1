@@ -22,7 +22,7 @@ public class HomeController extends HttpServlet {
 //		}
 		//<a href= "${pageContext.request.contextPath }/profile/list?id=${requestScope.id}">test</a>
 	
-		String path = "/semi_01/board/boardlist.jsp";
+		String path = "/board/boardlist.jsp";
 		if(req.getParameter("path")!=null) {
 			path = req.getParameter("path");
 		}
