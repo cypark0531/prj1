@@ -36,8 +36,8 @@ public class ImgfileUploadController extends HttpServlet {
 		String htitle = mr.getParameter("htitle");
 		String pintro = mr.getParameter("pintro");
 		int popen = Integer.parseInt(mr.getParameter("popen"));
-		System.out.println(id);
-
+		
+		
 		System.out.println(porgimg);
 		System.out.println(psaveimg);
 		System.out.println(ptitle);

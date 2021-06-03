@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
@@ -5,14 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>profile/update.jsp</title>
+<title>profilelist(update).jsp</title>
 
 <!-- 공통 CSS -->
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <body>
-<%	String id = request.getParameter("id");
-%>
+<% 
+	String id = request.getParameter("id");
+	System.out.print(id);
+	%>
 <div id="wrapper">
 	<div class="container">
 	<div class= "inner">
@@ -43,7 +46,7 @@
 		<tr>
 			<th>프로필이미지<br>(첨부파일)</th>
 			
-			<td colspan="3" id="img_td">[기존파일명 ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"  >
+			<td colspan="3" id="img_td">[기존파일명 ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"   >
 						
 <br />
 <img id="preview" />

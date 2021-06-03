@@ -38,7 +38,6 @@ public class ProfilesDao {
 			pstmt.setString(4, vo.getPtitle());
 			pstmt.setString(5, vo.getHtitle());
 			pstmt.setString(6, vo.getPintro());
-			pstmt.setString(6, vo.getPintro());
 			pstmt.setInt(7, vo.getPopen());
 			return pstmt.executeUpdate();
 		} catch (SQLException se) {
