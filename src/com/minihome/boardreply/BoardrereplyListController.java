@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.minihome.dao.BoardReplyDao;
 import com.minihome.vo.BoardreplyVo;
-
-@WebServlet("/boardreply/list")
-public class BoardreplyListController extends HttpServlet{
+@WebServlet("/boardrereply/list")
+public class BoardrereplyListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int bnum = Integer.parseInt(req.getParameter("bnum"));
-		ArrayList<BoardreplyVo> list = BoardReplyDao.getInstance().boardreplylist(bnum);
+		int bgroup = Integer.parseInt(req.getParameter("bgroup"));
+		ArrayList<BoardreplyVo> list = BoardReplyDao.getInstance().boardrereplyList(bgroup);
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw= resp.getWriter();
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -36,9 +35,5 @@ public class BoardreplyListController extends HttpServlet{
 			pw.print("</reply>");
 		}
 		pw.print("</result>");
-		
-		
-		
 	}
-	
 }
