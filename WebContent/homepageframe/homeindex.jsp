@@ -135,7 +135,7 @@ font-weight: bold;
 		<jsp:include page= "${content }"/>
 		</div>
 		<div class="cp_tabpanel">
-		<jsp:include page="${path}"/>
+		<jsp:include page="/board/boardlist.jsp"/>
 		<h2>Second Tab</h2>
 		<p>Second Tab text</p>
 		</div>
