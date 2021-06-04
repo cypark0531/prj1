@@ -22,8 +22,8 @@ public class CalenderController extends HttpServlet{
 			c.set(Integer.parseInt(year), Integer.parseInt(month), 1);
 		}else c=Calendar.getInstance();
 		
-		int currYear=c.get(c.YEAR);
-		int currMonth=c.get(c.MONTH);
+		int currYear=c.get(c.YEAR);//현재년
+		int currMonth=c.get(c.MONTH);//현재월
 
 		int lastDay=c.getActualMaximum(c.DAY_OF_MONTH);
 		Calendar fDay =Calendar.getInstance();
