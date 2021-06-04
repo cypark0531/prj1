@@ -65,8 +65,8 @@
 <script type="text/javascript">
 	var btn1 = document.getElementById("btn1");
 	btn1.addEventListener('click', function(e) {
+		location.href = "${pageContext.request.contextPath}/board/insert.jsp?id=${param.id}&gid=${param.gid}";
 		location.href = "${pageContext.request.contextPath}/board/insert?id=${param.id}&gid=${param.gid}";
-		
 	});
 </script>
 

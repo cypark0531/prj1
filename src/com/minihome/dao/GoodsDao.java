@@ -56,6 +56,12 @@ public class GoodsDao {
 			pstmt.setString(4, vo.getGsaveimg());
 			pstmt.setString(5, vo.getGorgimg());
 			pstmt.setString(6, vo.getGcategory());
+			System.out.println(vo.getGcode());
+			System.out.println(vo.getGname());
+			System.out.println(vo.getGsaveimg());
+			System.out.println(vo.getGorgimg());
+			System.out.println(vo.getGcategory());
+			System.out.println(vo.getGname());
 			return pstmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();

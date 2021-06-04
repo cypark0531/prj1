@@ -70,6 +70,6 @@ public class HomeController extends HttpServlet {
 	req.getRequestDispatcher("/homepageframe/homeindex.jsp").forward(req, resp);
 
 	
-	
+
 	}
 }

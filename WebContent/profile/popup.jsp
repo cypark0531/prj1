@@ -11,11 +11,6 @@
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <style>
-
-
-
-
-
 #sidebar-left {
 	float: left;
 	width: 160px;
@@ -26,7 +21,6 @@
 	float: left;
 	border: 1px solid #bcbcbc;
 }
-
 </style>
 <body>
 <%
@@ -40,6 +34,12 @@
 			<div id = "pt"></div>
 			<img id= "img"> 
 			
+<<<<<<< HEAD
+			<p>${param.ptitle}</p>
+			</div><br>	
+	<input type="submit" class="btn black" value="등록하기">
+	</form>
+=======
 			</div><br>	
 	<input type="submit" class="btn black" value="닫기" onclick="javascript:self.close()">
 		<!--  <div align="right"  class="btn black"><a href = "javascript:self.close();">닫기</a></div>-->
@@ -70,5 +70,6 @@ img.src = psaveimg;
 
 
 </script>
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 </body>
 </html>

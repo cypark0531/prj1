@@ -14,6 +14,7 @@ public class GatDataController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int year=Integer.parseInt(req.getParameter("year"));
 		int month=Integer.parseInt(req.getParameter("month"));
+		
 		System.out.println(year);
 	}
 }

@@ -18,6 +18,7 @@ public class BoardDetailController extends HttpServlet{
 		String btitle = req.getParameter("btitle");
 		int rnum = Integer.parseInt(req.getParameter("rnum"));
 		String bcontent = req.getParameter("bcontent");
+		int b = Integer.parseInt(req.getParameter("b"));
 		req.getRequestDispatcher("/board/detail.jsp").forward(req, resp);
 		
 		

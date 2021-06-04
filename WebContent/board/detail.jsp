@@ -16,9 +16,9 @@
 			<table class="table02" style="width: 50%">
 				<tr>
 
-					<td style="width: 50px; font-size: 20px">${param.rnum }aa</td>
-					<td style="width: 250px;">${param.btitle }aa</td>
-					<td style="font-size: 13px; text-align: right">${param.regdate}aa</td>
+					<td style="width: 50px; font-size: 20px">${param.rnum }</td>
+					<td style="width: 250px;">${param.btitle }</td>
+					<td style="font-size: 13px; text-align: right">${param.regdate}</td>
 
 				</tr>
 				<tr>
@@ -56,6 +56,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 	var btn1 = document.getElementById("btn1");
 	var btn2 = document.getElementById("btn2");
 	var brbtn1 = document.getElementById("brbtn1");
@@ -77,10 +78,10 @@
 			let replyDiv = document.getElementById("reply");
 			var xml = xhr.responseXML;
 			let brcontent = xml.getElementsByTagName("brcontent");
-			for(var i = 0; i<brcontent.length;i++){
+			for(let i = 0; i<brcontent.length;i++){
 				let gid = xml.getElementsByTagName("gid")[i].textContent;
 				let regdate = xml.getElementsByTagName("regdate")[i].textContent;
-				var bgroup = xml.getElementsByTagName("bgroup")[i].textContent
+				let bgroup = xml.getElementsByTagName("bgroup")[i].textContent
 				let brcon = brcontent[i].textContent;
 				let newTable = document.createElement("table");
 				let newTr = document.createElement("tr");
@@ -91,8 +92,8 @@
 				let newTd5 = document.createElement("td");
 				let newDiv = document.createElement("div");
 				
-				newTd1.innerHTML = brcon;
-				newTd2.innerHTML = gid;
+				newTd1.innerHTML = gid;
+				newTd2.innerHTML = brcon;
 				newTd3.innerHTML = regdate;
 				newTd4.innerHTML = "<input type= 'button' id = 'repbtn"+bgroup+"' value= '+' onclick=replylist("+bgroup+")>";
 				newTd5.innerHTML = "<input type= 'button' id = 'redelete' value= '삭제' onclick=redelete("+bgroup+")>";
@@ -111,14 +112,19 @@
 		xhr.open("get","${pageContext.request.contextPath}/boardreply/list?bnum=${param.bnum}",true);
 		xhr.send();
 	}
-	
+	console.log(${param.b})
+	if(${param.b==0}){
+		reload();
+	}
 	
 	list();
 	function redelete(bgroup){
+		
 		if (confirm(" 정말 삭제하시겠습니까?") == true){
+			
 			location.href = "${pageContext.request.contextPath}/boardreply/delete?bgroup="+bgroup+
 					"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
-					"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.content}";
+					"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.bcontent}";
 		}else{
 		 return;
 		}
@@ -133,10 +139,14 @@
 			if(xhr1.readyState==4&&xhr1.status==200){
 				var xml = xhr1.responseXML;
 				console.log(bgroup);
-				var replyDiv = document.getElementById("replyDiv"+bgroup);
+				let replyDiv = document.getElementById("replyDiv"+bgroup);
+				if(replyDiv==undefined){
+					
+				}
 				console.log(replyDiv);
-				var newTable = document.createElement("table");
-				for(var i=0;i<xml.getElementsByTagName("brnum").length;i++){
+				let newTable = document.createElement("table");
+				let length = xml.getElementsByTagName("brnum").length
+				for(let i=0;i<length;i++){
 					let newTr = document.createElement("tr");
 					let newTd1 = document.createElement("td");
 					let newTd2 = document.createElement("td");
@@ -153,22 +163,24 @@
 					replyDiv.appendChild(newTable);
 				}
 				
-				var input1 = document.createElement("input");
+				let input1 = document.createElement("input");
 				input1.type = "text";
 				input1.name = "brcontent1";
 				input1.id = "brcontent1";
-				var input2 = document.createElement("input");
+				let input2 = document.createElement("input");
 				input2.type = "button";
 				input2.id = "brbtn2";
 				input2.value = "입력";
+				replyDiv.appendChild(input1);
+				replyDiv.appendChild(input2);
 				input2.addEventListener('click', function(e) {
 					replyinsert(bgroup);
 				})
-				replyDiv.appendChild(input1);
-				replyDiv.appendChild(input2);
-				
+					
 				let repbtn = document.getElementById("repbtn"+bgroup);
-				repbtn.value= "-";
+					repbtn.value= "-";
+			
+				
 				
 			}
 			flag = false;
@@ -182,32 +194,46 @@
 		let childs = div.childNodes;
 		for(let i=childs.length-1;i>=0;i--){
 			div.removeChild(childs.item(i));
-			let repbtn = document.getElementById("repbtn"+bgroup);
-		repbtn.value= "+";
+				let repbtn = document.getElementById("repbtn"+bgroup);
+				repbtn.value= "+";
+		}
 		flag = true;
-		
+	
 	}
-	}
-	}
+}
 	var brbtn1 = document.getElementById("brbtn1");
 	function replyinsert(bgroup){
-		console.log(bgroup)
+		
 		var brcontent = null;
 		if(bgroup==0){
 			brcontent = document.getElementById("brcontent").value;
 		}else{
 			brcontent = document.getElementById("brcontent1").value;
 		}
+		if(brcontent==""){
+			alert("댓글을 입력해 주세요");
+			return;
+		}
 			console.log(brcontent);
 				
 	 	location.href = "${pageContext.request.contextPath}/boardreply/insert?bgroup="+bgroup+
 		"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
-		"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.content}"+
+		"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.bcontent}"+
 		"&brcontent="+brcontent;
 	}
-	 if(${param.b!=0}){
+	
+	 if(${param.b}){
+		 console.log(${param.b})
 			replylist(${param.b})
 		}
+	function reload(){
+		let div = document.getElementById("reply");
+		let childs = div.childNodes;
+		for(let i=childs.length-1;i>=0;i--){
+			div.removeChild(childs.item(i))
+		}
+	}
+	
 	</script>
 	
 </body>
