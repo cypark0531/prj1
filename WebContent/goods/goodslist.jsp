@@ -32,13 +32,10 @@
 		      <td>${vo.gname }</td>
 		      <td>${vo.gcategory }</td>
 		      <td>
-		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post">
+		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check()">
 		          <input type="hidden" name="id" value="admin123">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
-		          <c:if test="money < ${vo.gprice }">
-		            <a href="dfads.jsp"></a>
-		            return;
-		          </c:if>
+		          <input type="hidden" name="gmoney" value="${vo.gprice }">
 		          <input type="submit" value="구매">
 		        </form>
 			  </td>
@@ -55,5 +52,15 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+/* 	function check(){
+		if(parma. naskldfj){
+			alerrt
+			return false;
+		}else{
+			return true;
+		}
+	} */
+</script>
 </body>
 </html>

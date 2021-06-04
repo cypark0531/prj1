@@ -168,4 +168,43 @@ public class MembersDao {
 			MyDBCP.close(con, pstmt, rs);
 		}
 	}
+	public int getMoney(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from members money where id = ?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				return rs.getInt("money");
+			}
+			return -1;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return -1;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	public int moneyUpdate(String id,int gprice) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="update Members set money = money - ? where id = ?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,gprice);
+			pstmt.setString(2,id);
+			return pstmt.executeUpdate();
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			return -1;
+		}finally{
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
 }
