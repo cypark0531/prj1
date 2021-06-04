@@ -103,7 +103,7 @@ function readURL(input) {
  var btn2 = document.getElementById("btn2");
  
  btn1.addEventListener('click', function(e) {
-	 window.open('popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no");
+	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no");
 	 btn1.style.display= 'none';
 	 btn2.style.display =  'inline';
  });
