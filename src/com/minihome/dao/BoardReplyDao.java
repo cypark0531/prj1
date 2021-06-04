@@ -94,12 +94,12 @@ public class BoardReplyDao {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyDBCP.getConnection();
-			String sql = "delete from boardreply where bgroup = ? order by brnum asc";
+			String sql = "delete from boardreply where bgroup = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, bgroup);
 			return pstmt.executeUpdate();
 		}catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("메세지" + e.getMessage());
 			return -1;
 		}finally {
 			MyDBCP.close(con, pstmt, null );

@@ -42,6 +42,6 @@ public class HomeController extends HttpServlet {
 	req.getRequestDispatcher("/homepageframe/homeindex.jsp").forward(req, resp);
 	//req.getRequestDispatcher("/profile/profilelist(update).jsp").forward(req, resp);
 	
-	
+
 	}
 }

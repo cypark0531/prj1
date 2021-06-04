@@ -15,8 +15,8 @@ public class BoardReplyDeleteController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int bgroup = Integer.parseInt(req.getParameter("bgroup"));
 		int n =BoardReplyDao.getInstance().boardreplyDelete(bgroup);
-		if(n>1) {
-			req.getRequestDispatcher("/board/detail.jsp").forward(req, resp);
+		if(n>0) {
+			req.getRequestDispatcher("/board/detail.jsp?b=0").forward(req, resp);
 		}else {
 			System.out.println("실패");
 		}
