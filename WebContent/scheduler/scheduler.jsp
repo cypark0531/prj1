@@ -36,6 +36,9 @@
 		</tr>		
 			<c:forEach var="array" items="${requestScope.arr }">
 			<c:if test="${array.num%7==0}"><tr class="calrow"></c:if>
+				<input type="hidden" class="arrday" value="${array.day }">
+				<input type="hidden" class="arrschenum" value="${array.scheNum }">
+				<input type="hidden" class="arrtext" value="${array.text }">
 				<c:choose>
 					<c:when test="${array.day==-1 }">
 						<td>
@@ -61,10 +64,10 @@
 	</table>
 	</div>
 	<table id="sche">
-	<tr><th><input type="time"></th><td><input></td></tr>
-	<tr><th><input type="time"></th><td><input></td></tr>
-	<tr><th><input type="time"></th><td><input></td></tr>
-	<tr><th><input type="time"></th><td><input></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
 	</table>
 	<div style="margin-left:83%;">
 	<input style="padding-left:6px; padding-right:6px;" type="button" value="저장" id="savebtn">
@@ -73,48 +76,78 @@
 </div>
 </body>
 <script type="text/javascript">
+	var cal=document.getElementById("cal");
 	var calrow=document.getElementsByClassName("calrow");
 	var td=document.getElementsByClassName("td");
 	var prevmonth=document.getElementById("prevmonth");
 	var nextmonth=document.getElementById("nextmonth");
-
-	function getdata(){
-		var xhr=new XMLHttpRequest();
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState==5&&xhr.status==200){
-				
-			}
-		};
-		xhr.open('get','getdata',true);
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		let params="year="+${year}+"&month="+${month}+"&arr"+${arr};
-		xhr.send();
-	}
 	
-
+	var arrday=document.getElementsByClassName("arrday");
+	var arrschenum=document.getElementsByClassName("arrschenum");
+	var arrtext=document.getElementsByClassName("arrtext");
+	
+	var time=document.getElementsByClassName("time");
+	var schedule=document.getElementsByClassName("schedule");
+	
+	var savebtn=document.getElementById("savebtn");
+	var cancelbtn=document.getElementById("cancelbtn");
 	
 	for(let i=0;i<td.length;i++){
 			
 		td[i].onclick=function(){
 			for(let j=0;j<calrow.length;j++){
 				let child=calrow[j].children;
-				for(let n=0;n<child.length;n++){
+				for(let n=3;n<child.length;n+=4 ){
 					child[n].style="height:40px";				
 					child[n].childNodes[1].style="background-color:silver;";
-					child[n].childNodes[3].style="width:84px; height:20px;";
-					child[n].childNodes[3].innerHTML="";
-
+					child[n].childNodes[3].style="width:84px; height:20px;";					
 				}
 			}
 			let tr=td[i].parentElement;
 			let tds=tr.children;
-			for(let j=0;j<tds.length;j++){
+			for(let j=3;j<tds.length;j+=4){
 				tds[j].style="height:104px";
 				tds[j].childNodes[3].style="width:84px; height:80px;";
-				tds[j].childNodes[3].innerHTML="";
-
 			}
+			
 			td[i].childNodes[1].style="background-color:#FAED7D;";
+			
+			let day=0;
+			let num=0;
+			for(let j=0;j<42;j++){
+				for(let n=0;n<42;n++)if(arrday[n].value==td[i].childNodes[1].textContent.trim())num=n;
+				if(arrschenum[j].value==-1)continue;
+				if(Math.floor(num/7)==Math.floor(j/7) && arrtext[j].value!=""){
+					let timesche=arrtext[j].value.split("<br>");
+					let ts="";
+					for(let n=0;n<timesche.length;n++){
+						ts+=timesche[n].substring(0, 8)+"..<br>"
+					}
+					td[day].childNodes[3].innerHTML=ts.substr(0, ts.length-6);
+				}else{
+					
+					if(arrschenum[j].value=="0"){
+						//console.log(td[day].childNodes[1].textContent.trim());
+						td[day].childNodes[3].innerHTML="";
+					}else{
+						td[day].childNodes[3].innerHTML="일정: "+arrschenum[j].value;
+					}
+				}
+				day++;
+			}						
+					
+			let timesche=arrtext[num].value.split("<br>");
+			for(let j=0;j<timesche.length;j++){
+				let ts=timesche[j].split(" ");
+				let s="";
+				for(let n=1;n<ts.length;n++){
+					s+=ts[n]+" ";
+				}
+				time[j].value=ts[0];
+				schedule[j].value=s;
+				s="";
+			}
+			
 		}
 	}
 	
@@ -127,6 +160,36 @@
 		let year=${year};
 		let month=${month};
 		location.replace("calendar?year="+year+"&month="+month);
+	}
+	savebtn.onclick=function(){
+		
+	}
+	cancelbtn.onclick=function(){
+		let day=0;
+		let num=0;
+		for(let j=0;j<42;j++){			
+			if(arrschenum[j].value=="0"){
+					//console.log(td[day].childNodes[1].textContent.trim());
+				td[day].childNodes[3].innerHTML="";
+			}else{
+				td[day].childNodes[3].innerHTML="일정: "+arrschenum[j].value;
+			}
+		}
+		day++;
+		
+		for(let j=0;j<time.length;j++){
+			time[j].value=null;
+			schedule[j].value=null;
+		}
+		for(let j=0;j<calrow.length;j++){
+			let child=calrow[j].children;
+			for(let n=3;n<child.length;n+=4 ){
+				child[n].style="height:40px";				
+				child[n].childNodes[1].style="background-color:silver;";
+				child[n].childNodes[3].style="width:84px; height:20px;";					
+				child[n].childNodes[3].innerHTML="";					
+			}
+		}
 	}
 </script>
 </html>
