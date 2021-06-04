@@ -124,7 +124,7 @@
 			
 			location.href = "${pageContext.request.contextPath}/boardreply/delete?bgroup="+bgroup+
 					"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
-					"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.content}";
+					"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.bcontent}";
 		}else{
 		 return;
 		}
@@ -210,11 +210,15 @@
 		}else{
 			brcontent = document.getElementById("brcontent1").value;
 		}
+		if(brcontent==""){
+			alert("댓글을 입력해 주세요");
+			return;
+		}
 			console.log(brcontent);
 				
 	 	location.href = "${pageContext.request.contextPath}/boardreply/insert?bgroup="+bgroup+
 		"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
-		"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.content}"+
+		"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.bcontent}"+
 		"&brcontent="+brcontent;
 	}
 	

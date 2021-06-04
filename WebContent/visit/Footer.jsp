@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>하단 영역</title>
+	<title></title>
 </head>
 <body>
-	<br>
-        전체 투데이수 : <%=session.getAttribute("totalCount") %>
-	<br>
-	오늘 : <%=session.getAttribute("todayCount") %>
-	<br>
+	투데이 수 = ${requestScope.countToday}
+	전체 방문자 수 = ${requestScope.countAll}
+	 방문자수 업데이트 ${requestScope.update } 
 </body>
 </html>
