@@ -1,4 +1,4 @@
-package com.goods;
+package com.minihome.goods;
 
 import java.io.IOException;
 
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.minihome.dao.GoodsDao;
+import com.minihome.db.MyDBCP;
 @ WebServlet("/goods/goodslist")
 public class GoodslistController extends HttpServlet{
 	@Override

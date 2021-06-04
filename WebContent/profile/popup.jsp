@@ -12,11 +12,6 @@ opener.document.getElementById('htitle').value = ${#popup}.val();
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <style>
-
-
-
-
-
 #sidebar-left {
 	float: left;
 	width: 160px;
@@ -27,7 +22,6 @@ opener.document.getElementById('htitle').value = ${#popup}.val();
 	float: left;
 	border: 1px solid #bcbcbc;
 }
-
 </style>
 <body>
 <%
@@ -39,10 +33,6 @@ opener.document.getElementById('htitle').value = ${#popup}.val();
 		<!--  <h2><img src ="${cp}/home~~/img/${save}"</h1>-->
 			
 			<p>${param.ptitle}</p>
-			
-	
-
-
 			</div><br>	
 	<input type="submit" class="btn black" value="등록하기">
 	</form>

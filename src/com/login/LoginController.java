@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet{
 				idcook.setMaxAge(0);
 				resp.addCookie(idcook);
 			}
-			resp.sendRedirect("");
+			resp.sendRedirect("../goods/goodsmain.jsp");
 		}else {
 			req.setAttribute("fail", "true");
 			req.getRequestDispatcher("/login/login").forward(req, resp);

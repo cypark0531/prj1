@@ -1,4 +1,4 @@
-package com.goods;
+package com.minihome.goods;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +18,7 @@ public class GoodsinsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String saveDir=getServletContext().getRealPath("/goodsimgfile");
+		System.out.println(saveDir);
 		MultipartRequest mr=new MultipartRequest(
 				req, 
 				saveDir,

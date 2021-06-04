@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <body>
 <h1>GOODS 추가</h1>
