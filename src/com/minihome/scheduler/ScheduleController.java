@@ -34,7 +34,7 @@ public class ScheduleController extends HttpServlet{
 						Date d=vo.getSchdate();
 						SimpleDateFormat sdf= new SimpleDateFormat("HH:mm ");
 						text+=sdf.format(d);
-						text+=vo.getSchcontent().substring(0, 2)+"..<br>";
+						text+=vo.getSchcontent()+"<br>";
 						das.setText(text);
 						
 						int m=das.getScheNum()+1;
