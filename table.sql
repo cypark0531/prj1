@@ -76,7 +76,7 @@ CREATE TABLE board
 CREATE TABLE boardreply
 (
 	-- 게시판댓글번호
-	BRNUM varchar2(10) NOT NULL,
+	BRNUM number(10) NOT NULL,
 	-- 게시판번호
 	bnum number(10) NOT NULL,
 	-- 호스트아이디

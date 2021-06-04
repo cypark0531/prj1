@@ -36,7 +36,14 @@ public class ImgfileUploadController extends HttpServlet {
 		String htitle = mr.getParameter("htitle");
 		String pintro = mr.getParameter("pintro");
 		int popen = Integer.parseInt(mr.getParameter("popen"));
-
+		
+		
+		System.out.println(porgimg);
+		System.out.println(psaveimg);
+		System.out.println(ptitle);
+		System.out.println(htitle);
+		System.out.println(pintro);
+		System.out.println(popen);
 		//db에 파일정보 저장하기
 		ProfilesDao dao = ProfilesDao.getInstance();
 		File f = new File(saveDir+"\\"+psaveimg);

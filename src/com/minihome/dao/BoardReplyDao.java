@@ -58,90 +58,115 @@ public class BoardReplyDao {
 				MyDBCP.close(con, pstmt, rs);
 			}
 		}
-	
-	public ArrayList<BoardreplyVo> boardReplyList(int bnum){
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			ArrayList<BoardreplyVo> boardReplylist = new ArrayList<BoardreplyVo>();
-			
-			try {
-				con = MyDBCP.getConnection();
-				String sql = "select * from boardReply where bnum = ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, bnum);
-				rs = pstmt.executeQuery();
-				while(rs.next()) {
-					int brnum =	rs.getInt("brnum");
-					String hid = rs.getString("hid");
-					String brcontent = rs.getString("brcontent");
-					int brgroup = rs.getInt("bgroup");
-					int brlevel = rs.getInt("brlevel");
-					int brstep = rs.getInt("brstep");
-					String gid = rs.getString("gid");
-					Date date = rs.getDate("regdate");
-					
-					BoardreplyVo vo = new BoardreplyVo(brnum, bnum, hid, brcontent, brgroup, brlevel, brstep, gid, date);
-					boardReplylist.add(vo);
-				}
-				return boardReplylist;
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-				return null;
-			}finally {
-				MyDBCP.close(con, pstmt, rs);
-			}
-			
-		}
-	
-	public int insert(BoardreplyVo vo) {
+	public ArrayList<BoardreplyVo> boardreplylist(int bnum){
 		Connection con = null;
-		PreparedStatement pstmt1 = null;
-		PreparedStatement pstmt2 = null;
-			
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BoardreplyVo> list = new ArrayList<BoardreplyVo>();
 		try {
 		con = MyDBCP.getConnection();
-			int brnum = getmaxNum()+1; //글번호
-			int bnum = vo.getBnum();
-			int brgroup = vo.getBgroup();
-			int brlevel= vo.getBrlevel();
-			int brstep=vo.getBrstep();
-			if(brgroup==0) {
-				brgroup=bnum;
-				
-			}else {
-				String sql1="update boardreply set step=step+1 where brlevel=? and step>?";              		
-	                      pstmt2=con.prepareStatement(sql1);
-				pstmt2.setInt(1, brlevel);
-				pstmt2.setInt(2, brstep);
-				pstmt2.executeUpdate();
-				brlevel+=1;
-				brstep+=1;
-			}
-			String sql = "insert into boardreply values(?,?,?,?,?,?,?,?,?)";
-			pstmt1 = con.prepareStatement(sql);
-			pstmt1.setInt(1, brnum);
-			pstmt1.setInt(2, vo.getBnum());
-			pstmt1.setString(3, vo.getHid());
-			pstmt1.setString(4, vo.getBrcontent());
-			pstmt1.setInt(5, brgroup);
-			pstmt1.setInt(6, brlevel);
-			pstmt1.setInt(7, brstep);
-			pstmt1.setString(8,vo.getGid());
-			pstmt1.setDate(9, vo.getRegdate());
-			return pstmt1.executeUpdate();
-			}catch(SQLException se) {
-				se.printStackTrace();
-				return -1;
-			}finally {
-				MyDBCP.close(null,pstmt2,null);
-				MyDBCP.close(con,pstmt1,null);
-			
-			}
+		String sql = "select * from boardreply where bnum = ? and brlevel = 0 order by brnum asc";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bnum);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			int brnum = rs.getInt("brnum");
+			String id = rs.getString("hid");
+			String brcontent = rs.getString("brcontent");
+			int bgroup = rs.getInt("bgroup");
+			int brlevel = rs.getInt("brlevel");
+			int brstep = rs.getInt("brstep");
+			String gid = rs.getString("gid");
+			Date regdate = rs.getDate("regdate");
+			BoardreplyVo vo = new BoardreplyVo(brnum, bnum, id, brcontent, bgroup, brlevel, brstep, gid, regdate);
+			list.add(vo);
 		}
-	
+		return list;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
 	}
+	public int boardreplyDelete(int bgroup) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "delete from boardreply where bgroup = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bgroup);
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("메세지" + e.getMessage());
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null );
+		}
+	}
+	public ArrayList<BoardreplyVo> boardrereplyList(int bgroup){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BoardreplyVo> list = new ArrayList<BoardreplyVo>();
+		try {
+		con = MyDBCP.getConnection();
+		String sql = "select * from boardreply where bgroup = ? and brlevel = 1 order by brnum asc";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, bgroup);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			int brnum = rs.getInt("brnum");
+			String id = rs.getString("hid");
+			String brcontent = rs.getString("brcontent");
+			int bnum = rs.getInt("bnum");
+			int brlevel = rs.getInt("brlevel");
+			int brstep = rs.getInt("brstep");
+			String gid = rs.getString("gid");
+			Date regdate = rs.getDate("regdate");
+			BoardreplyVo vo = new BoardreplyVo(brnum, bnum, id, brcontent, bgroup, brlevel, brstep, gid, regdate);
+			list.add(vo);
+		}
+		return list;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	public int reinsert(BoardreplyVo vo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int brgroup = vo.getBgroup();
+		if(brgroup==0) {
+			brgroup = getmaxNum()+1;
+		}
+		try {
+		con = MyDBCP.getConnection();
+		String sql = "insert into boardreply values(?,?,?,?,?,?,?,?,sysdate)";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, getmaxNum()+1);
+		pstmt.setInt(2, vo.getBnum());
+		pstmt.setString(3, vo.getHid());
+		pstmt.setString(4, vo.getBrcontent());
+		pstmt.setInt(5, brgroup);
+		pstmt.setInt(6,vo.getBrlevel());
+		pstmt.setInt(7, vo.getBrstep());
+		pstmt.setString(8, vo.getGid());
+		
+		return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+		
+	}
+	
+}
 
 
 

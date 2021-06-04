@@ -6,9 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-opener.document.getElementById('htitle').value = ${#popup}.val();
-</script>
+
+
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <style>
@@ -27,14 +26,50 @@ opener.document.getElementById('htitle').value = ${#popup}.val();
 <%
 	String ptitle = request.getParameter("ptitle");
 %>
-		<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/upload" enctype="multipart/form-data" method="post" >
+		
 		<div id="sidebar-left">
 				<h2>Profile</h2>
 		<!--  <h2><img src ="${cp}/home~~/img/${save}"</h1>-->
+			<div id= "ht"></div><br>
+			<div id = "pt"></div>
+			<img id= "img"> 
 			
+<<<<<<< HEAD
 			<p>${param.ptitle}</p>
 			</div><br>	
 	<input type="submit" class="btn black" value="등록하기">
 	</form>
+=======
+			</div><br>	
+	<input type="submit" class="btn black" value="닫기" onclick="javascript:self.close()">
+		<!--  <div align="right"  class="btn black"><a href = "javascript:self.close();">닫기</a></div>-->
+
+	
+
+	
+	
+	
+	<script type="text/javascript">
+var ht = document.getElementById("ht");
+var pt = document.getElementById("pt");
+var img = document.getElementById("img");
+var htitle= opener.document.getElementById('htitle').value;
+var ptitle = opener.document.getElementById('ptitle').value;
+var psaveimg = opener.document.getElementById('preview').src;
+
+console.log(ht);
+console.log(htitle);
+console.log(psaveimg);
+pt.innerHTML = ptitle;
+ht.innerHTML = htitle;
+img.src = psaveimg;
+// form > submit
+//img.src = psaveimg;
+//console.log(img)
+
+
+
+</script>
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 </body>
 </html>

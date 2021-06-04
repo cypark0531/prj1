@@ -23,7 +23,7 @@
 		<tr>
 			<td>${vo.rnum }</td>
 			<td><a href = "${pageContext.request.contextPath }/board/detail?bnum=${vo.bnum}&btitle=${vo.btitle}
-			&rnum=${vo.rnum}&bcontent=${vo.bcontent}&regdate=${vo.regdate}&id=${param.id}&gid=${param.gid}">${vo.btitle }</a></td>
+			&rnum=${vo.rnum}&bcontent=${vo.bcontent}&regdate=${vo.regdate}&id=${param.id}&gid=${param.gid}&b=0">${vo.btitle }</a></td>
 			<td>${vo.regdate }</td>
 		</tr>
 		</c:when>
@@ -65,8 +65,13 @@
 <script type="text/javascript">
 	var btn1 = document.getElementById("btn1");
 	btn1.addEventListener('click', function(e) {
+<<<<<<< HEAD
 		location.href = "${pageContext.request.contextPath}/board/insert.jsp?id=${param.id}&gid=${param.gid}";
 		
+=======
+		location.href = "${pageContext.request.contextPath}/board/insert?id=${param.id}&gid=${param.gid}";
+		
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	});
 </script>
 

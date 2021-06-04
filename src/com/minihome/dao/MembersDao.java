@@ -36,11 +36,32 @@ public class MembersDao {
 		}
 	}
 	
+	public boolean nameCheck(String name) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from members where name=?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				return true;
+			}else return false;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	
 	public boolean emailCheck(String email) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from members where id=?";
+		String sql="select * from members where email=?";
 		try{
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
@@ -85,13 +106,12 @@ public class MembersDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from members where name=? and email=? and phone=?";
+		String sql="select * from members where email=? and phone=?";
 		try{
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, vo.getName());
-			pstmt.setString(2, vo.getEmail());
-			pstmt.setString(3, vo.getPhone());
+			pstmt.setString(1, vo.getEmail());
+			pstmt.setString(2, vo.getPhone());
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				return rs.getString("id");
@@ -108,14 +128,13 @@ public class MembersDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from members where id=? and name=? and question=? and answer=?";
+		String sql="select * from members where id=? and question=? and answer=?";
 		try{
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getName());
-			pstmt.setString(3, vo.getQuestion());
-			pstmt.setString(4, vo.getAnswer());
+			pstmt.setString(2, vo.getQuestion());
+			pstmt.setString(3, vo.getAnswer());
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				return rs.getString("pwd");

@@ -16,9 +16,9 @@
 			<table class="table02" style="width: 50%">
 				<tr>
 
-					<td style="width: 50px; font-size: 20px">${param.rnum }aa</td>
-					<td style="width: 250px;">${param.btitle }aa</td>
-					<td style="font-size: 13px; text-align: right">${param.regdate}aa</td>
+					<td style="width: 50px; font-size: 20px">${param.rnum }</td>
+					<td style="width: 250px;">${param.btitle }</td>
+					<td style="font-size: 13px; text-align: right">${param.regdate}</td>
 
 				</tr>
 				<tr>
@@ -27,12 +27,9 @@
 				<c:if test="${param.id==param.gid }">
 					<tr>
 						<td colspan="3" class="btn_right"><input type="button"
-							value="수정하기" class="btn black mr5" id="btn1" onclick="goUpdate()"> <input
-							type="button" value="삭제하기" class="btn black mr5" id="btn2" onclick="goDelete()">
-
-
-
-						</td>
+							value="수정하기" class="btn black mr5" id="btn1" onclick="goUpdate()">
+							<input type="button" value="삭제하기" class="btn black mr5" id="btn2"
+							onclick="goDelete()"></td>
 					</tr>
 				</c:if>
 			</table>
@@ -47,101 +44,193 @@
 					<td>내용</td>
 					<td>날짜</td>
 				</tr>
-				<tr>
-					<td>댓글</td>
-				</tr>
+	
 			</table>
-			<table id="table">
-			</table>
+			<div id="reply"></div>
 			<table>
 				<tr>
 					<td colspan="3"><input type="text" placeholder="댓글을 입력하세요"
-						name="brcontent"> <input type="button" value="확인"
-						id="brbtn"></td>
+						id = "brcontent" name="brcontent"> <input type="button" value="입력"id="brbtn1" onclick="replyinsert(0)"></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 	var btn1 = document.getElementById("btn1");
 	var btn2 = document.getElementById("btn2");
-	var brbtn = document.getElementById("brbtn");
+	var brbtn1 = document.getElementById("brbtn1");
 	var xhr = null;
+	var flag = true;
+	function goUpdate(){
+		location.href = "${pageContext.request.contextPath}/board/update?bnum=${param.bnum}";
+	}
+	function goDelete(){
+		if (confirm(" 정말 삭제하시겠습니까?") == true){
+			location.href = "${pageContext.request.contextPath}/board/delete?bnum=${param.bnum}";
+		 return;
+		}
+	}
 	function list(){
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange= function(){
 		if(xhr.readyState==4&&xhr.status==200){
-			var table = document.getElementById("table");
+			let replyDiv = document.getElementById("reply");
 			var xml = xhr.responseXML;
-			var brcontent = xml.getElementsByTagName("brcontent");
-			for(var i = 0; i<brcontent.length;i++){
-				var gid = xml.getElementsByTagName("gid")[i].textContent;
-				var regdate = xml.getElementsByTagName("regdate")[i].textContent;
-				var bgroup = xml.getElementsByTagName("bgroup")[i].textContent
-				var brcon = brcontent[i].textContent;
+			let brcontent = xml.getElementsByTagName("brcontent");
+			for(let i = 0; i<brcontent.length;i++){
+				let gid = xml.getElementsByTagName("gid")[i].textContent;
+				let regdate = xml.getElementsByTagName("regdate")[i].textContent;
+				let bgroup = xml.getElementsByTagName("bgroup")[i].textContent
+				let brcon = brcontent[i].textContent;
+				let newTable = document.createElement("table");
+				let newTr = document.createElement("tr");
+				let newTd1 = document.createElement("td");
+				let newTd2 = document.createElement("td");
+				let newTd3 = document.createElement("td");
+				let newTd4 = document.createElement("td");
+				let newTd5 = document.createElement("td");
+				let newDiv = document.createElement("div");
 				
-				var newTr = document.createElement("tr");
-				var newTd1 = document.createElement("td");
-				var newTd2 = document.createElement("td");
-				var newTd3 = document.createElement("td");
-				var newTd4 = document.createElement("td");
-				div
-				
-				
-				newTd1.innerHTML = brcon;
-				newTd2.innerHTML = gid;
+				newTd1.innerHTML = gid;
+				newTd2.innerHTML = brcon;
 				newTd3.innerHTML = regdate;
-				newTd4.innerHTML = "<input type= 'button' id = 'repbtn' value= '↓' onclick=reply("+bgroup+")>";
-				
-				//그만
+				newTd4.innerHTML = "<input type= 'button' id = 'repbtn"+bgroup+"' value= '+' onclick=replylist("+bgroup+")>";
+				newTd5.innerHTML = "<input type= 'button' id = 'redelete' value= '삭제' onclick=redelete("+bgroup+")>";
+				newDiv.id = "replyDiv"+bgroup;
 				newTr.appendChild(newTd1);
 				newTr.appendChild(newTd2);
 				newTr.appendChild(newTd3);
 				newTr.appendChild(newTd4);
-				table.appendChild(newTr);
-				
-				var newDiv = document.createElement("div");
-				newDiv.appendChild(table)
-				table.appendChild(tr);
-				tr.appendChild(td);
-				
-
+				newTr.appendChild(newTd5);
+				newTable.appendChild(newTr);
+				replyDiv.appendChild(newTable);
+				replyDiv.appendChild(newDiv);
 			}
-			
-			
-
-			
 		}
 	}
-	xhr.open("post","${pageContext.request.contextPath}/boardreply/list",true);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	let param = 'bnum=${param.bnum}&gid=${param.gid}&id=${param.id}';
-	xhr.send(param);
+		xhr.open("get","${pageContext.request.contextPath}/boardreply/list?bnum=${param.bnum}",true);
+		xhr.send();
 	}
-	list();
+	console.log(${param.b})
+	if(${param.b==0}){
+		reload();
+	}
 	
-	function goUpdate(){
-		location.href = "${pageContext.request.contextPath}/board/update?&bnum=${param.bnum}";
-	}
-	function goDelete(){
+	list();
+	function redelete(bgroup){
+		
 		if (confirm(" 정말 삭제하시겠습니까?") == true){
-			location.href = "${pageContext.request.contextPath}/board/delete?&bnum=${param.bnum}";
+			
+			location.href = "${pageContext.request.contextPath}/boardreply/delete?bgroup="+bgroup+
+					"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
+					"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.content}";
 		}else{
 		 return;
 		}
 	}
-/*	var brbtn.onclick = function(e){
-		xhr = new XMLHttpRequest();
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState==4&&xhr.status==200){
+	var xhr1 = null;
+	function replylist(bgroup){
+		if(flag){
+			
+		
+		xhr1 = new XMLHttpRequest();
+		xhr1.onreadystatechange = function(){
+			if(xhr1.readyState==4&&xhr1.status==200){
+				var xml = xhr1.responseXML;
+				console.log(bgroup);
+				let replyDiv = document.getElementById("replyDiv"+bgroup);
+				if(replyDiv==undefined){
+					
+				}
+				console.log(replyDiv);
+				let newTable = document.createElement("table");
+				let length = xml.getElementsByTagName("brnum").length
+				for(let i=0;i<length;i++){
+					let newTr = document.createElement("tr");
+					let newTd1 = document.createElement("td");
+					let newTd2 = document.createElement("td");
+					let newTd3 = document.createElement("td");
+					let newTd4 = document.createElement("td");
+					
+					newTd1.innerHTML = xml.getElementsByTagName("gid")[i].textContent;
+					newTd2.innerHTML = xml.getElementsByTagName("brcontent")[i].textContent;
+					newTd3.innerHTML = xml.getElementsByTagName("regdate")[i].textContent;
+					newTr.appendChild(newTd1);
+					newTr.appendChild(newTd2);
+					newTr.appendChild(newTd3);
+					newTable.appendChild(newTr);
+					replyDiv.appendChild(newTable);
+				}
+				
+				let input1 = document.createElement("input");
+				input1.type = "text";
+				input1.name = "brcontent1";
+				input1.id = "brcontent1";
+				let input2 = document.createElement("input");
+				input2.type = "button";
+				input2.id = "brbtn2";
+				input2.value = "입력";
+				replyDiv.appendChild(input1);
+				replyDiv.appendChild(input2);
+				input2.addEventListener('click', function(e) {
+					replyinsert(bgroup);
+				})
+					
+				let repbtn = document.getElementById("repbtn"+bgroup);
+					repbtn.value= "-";
+			
+				
 				
 			}
+			flag = false;
 		}
-		xhr.open("post","${pageContext.request.contextPath}/boardreply/list",true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		let param = 'bnum=${param.bnum}&gid=${param.gid}&id=${param.id}&';
-		xhr.send();*/
-
-</script>
+		xhr1.open("get","${pageContext.request.contextPath}/boardrereply/list?bnum=${param.bnum}&brlevel=1&bgroup="+bgroup,true)
+		xhr1.send();
+		
+		
+	}else{
+		let div = document.getElementById("replyDiv"+bgroup);
+		let childs = div.childNodes;
+		for(let i=childs.length-1;i>=0;i--){
+			div.removeChild(childs.item(i));
+				let repbtn = document.getElementById("repbtn"+bgroup);
+				repbtn.value= "+";
+		}
+		flag = true;
+	
+	}
+}
+	var brbtn1 = document.getElementById("brbtn1");
+	function replyinsert(bgroup){
+		
+		var brcontent = null;
+		if(bgroup==0){
+			brcontent = document.getElementById("brcontent").value;
+		}else{
+			brcontent = document.getElementById("brcontent1").value;
+		}
+			console.log(brcontent);
+				
+	 	location.href = "${pageContext.request.contextPath}/boardreply/insert?bgroup="+bgroup+
+		"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
+		"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.content}"+
+		"&brcontent="+brcontent;
+	}
+	
+	 if(${param.b}){
+		 console.log(${param.b})
+			replylist(${param.b})
+		}
+	function reload(){
+		let div = document.getElementById("reply");
+		let childs = div.childNodes;
+		for(let i=childs.length-1;i>=0;i--){
+			div.removeChild(childs.item(i))
+		}
+	}
+	
+	</script>
+	
 </body>
 </html>

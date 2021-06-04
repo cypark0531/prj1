@@ -16,32 +16,50 @@
 <body>
 <div id="wrap" style="margin:auto; width:600px; height: 800px; background-color:white;">
 	<div style="padding-top:50px; padding-left:75px; width:450px;">
-	<h1 style="padding-top:50px;">아이디 찾기</h1>
+	<h1 style="padding-top:50px;">아이디 찾기</h1>	
 	
-	<c:choose>
-		<c:when test="${id==null }">
-			<form method="post" action="${pageContext.request.contextPath }/login/findid">
-				<div id="loginType" style="padding-top:60px; width:450px;">			
-					<input class="typing" name="name" placeholder="이름"><br><div style="height:10px"></div>
-					<input class="typing" name="email" placeholder="이메일"><br><div style="height:10px"></div>
-					<input class="typing" name="phone" placeholder="전화번호('-'는 제외)"><br><div style="height:10px"></div>			
-				</div>
-				<div id="buttons" style="padding-top:40px; width:450px;">
-					<input class="btn1" type="submit" name="loginbtn" value="아이디 찾기"><br><div style="height:5px"></div>
-				</div>
-			</form>	
-		</c:when>
-		<c:otherwise>
-			<div style="padding-top:60px; width:450px;">
-			 	
-			</div>			
-		</c:otherwise>
-	</c:choose>
-		<div style="width:450px;">	
-			<a href="${pageContext.request.contextPath }/login/findpwd">비밀번호 찾기</a>
+	<form method="post" action="${pageContext.request.contextPath }/login/findid">
+		<div id="loginType" style="padding-top:60px; width:450px;">			
+			<input class="typing" id="email" name="email" placeholder="이메일"><br><div style="height:10px"></div>
+			<input class="typing" id="phone" name="phone" placeholder="전화번호('-'는 제외)"><br><div style="height:10px"></div>			
 		</div>
+		<div id="buttons" style="padding-top:40px; width:450px;">
+			<input class="btn1" type="submit" value="아이디 찾기" disabled="disabled" style="background-color: silver";>
+		</div>
+	</form>	
+	<div style="width:450px;">	
+		<a href="${pageContext.request.contextPath }/login/findpwd">비밀번호 찾기</a>
+	</div>
 	</div>
 </div>
 
 </body>
+<script type="text/javascript">
+	var checking=0;
+	const button=document.getElementById("buttons");
+	const email=document.getElementById("email");
+	const phone=document.getElementById("phone");
+	email.onfocus=function(){	
+		if(checking%2==1)checking-=1;
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" disabled=\"disabled\" style=\"background-color: silver;\">";
+	}
+	phone.onfocus=function(){
+		if(checking%4>=2)checking-=2;		
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" disabled=\"disabled\" style=\"background-color: silver;\">";
+	}
+	email.onblur=function(){
+		if(email.value!="" && email.value!=null){
+			if(checking%2==0)checking+=1;
+			if(checking==3)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" style=\"background-color: #FF8224;\">";			
+			
+		}
+	}
+	phone.onblur=function(){
+		if(phone.value!="" && phone.value!=null){
+			if(checking%4<2)checking+=2;
+			if(checking==3)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" style=\"background-color: #FF8224;\">";
+			
+		}
+	}
+</script>
 </html>

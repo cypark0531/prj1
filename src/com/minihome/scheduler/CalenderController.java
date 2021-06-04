@@ -10,14 +10,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/scheduler/calender")
+@WebServlet("/scheduler/calendar")
 public class CalenderController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Calendar c=Calendar.getInstance();
-		int currYear=c.get(c.YEAR);
-		int currMonth=c.get(c.MONTH);
-		int currDay=c.get(c.DATE);
+		Calendar c=null;
+		String year=(String)req.getParameter("year");
+		String month=(String)req.getParameter("month");
+		if(year!=null) {
+			c=Calendar.getInstance();
+			c.set(Integer.parseInt(year), Integer.parseInt(month), 1);
+		}else c=Calendar.getInstance();
+		
+		int currYear=c.get(c.YEAR);//현재년
+		int currMonth=c.get(c.MONTH);//현재월
+
 		int lastDay=c.getActualMaximum(c.DAY_OF_MONTH);
 		Calendar fDay =Calendar.getInstance();
 		fDay.set(currYear, currMonth, 1);
@@ -27,17 +34,17 @@ public class CalenderController extends HttpServlet{
 		int day=0;
 		for(int num=0;num<42;num++) {
 			if(num<firstDay-1||num>firstDay+lastDay-2) {
-				arr.add(new DateAndSche(num, -1, null));
+				arr.add(new DateAndSche(num, -1, -1, null,null));
 				continue;
 			}
 			day+=1;
-			arr.add(new DateAndSche(num, day, null));
+			arr.add(new DateAndSche(num, day, 0, null,null));
 		}
 		
 		
 		req.setAttribute("year", currYear);
 		req.setAttribute("month", currMonth+1);
 		req.setAttribute("arr", arr);
-		req.getRequestDispatcher("/scheduler/scheduler.jsp").forward(req, resp);
+		req.getRequestDispatcher("/scheduler/schedule").forward(req, resp);
 	}
 }
