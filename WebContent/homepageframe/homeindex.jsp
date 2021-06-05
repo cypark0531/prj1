@@ -6,6 +6,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+top.window.moveTo(0,0);
+if (document.all) {
+top.window.resizeTo(screen.availWidth,screen.availHeight);
+}
+else if (document.layers||document.getElementById) {
+if (top.window.outerHeight<screen.availHeight||top.window.outerWidth<screen.availWidth){
+top.window.outerHeight = screen.availHeight;
+top.window.outerWidth = screen.availWidth;
+}
+}
+	window.onload = function () {
+		window.focus();
+		window.moveTo(0, 0);
+		window.resizeTo(1280,800);
+		window.scrollTo(0,250);
+	}
+	function NextPage() {
+		window.location.href= 'profile/profilelist(update).jsp';
+	}
+</script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 <style type="text/css">
@@ -53,11 +74,7 @@
      <span>5 Min Read</span>
     </div>
     <p style="font-size: 20px;">${pintro}</p>
-    <a href="#">
-     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
-      <path d="M15 10l5 5-5 5" />
-      <path d="M4 4v7a4 4 0 004 4h12" />
-     </svg>
+    <a href="#" onclick="NextPage()">
      See More
     </a>
    </div>
@@ -75,7 +92,9 @@
      <span>5 Min Read</span>
     </div>
     <p>Having traveled to Turkey multiple times, with critics praising Ocean's introspective lyrics and the album's unconventional</p>
-    <a href="#">
+    <!--  <input  id='seemore' type="button"  onclick="nextPage()" value="SEE MORE">-->
+    
+    <a href="#" >
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
@@ -177,5 +196,6 @@
   </div>
  </div>
 </div>
+
 </body>
 </html>
