@@ -32,6 +32,6 @@ public class DiaryController extends HttpServlet{
 			int currMonth1 = currMonth+1;
 			System.out.println(currDay);
 			resp.sendRedirect(req.getContextPath()+"/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth1+
-			"&fisrtDay="+firstDay+"&lastDay="+lastDay);
+			"&fisrtDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay);
 	}
 }
