@@ -8,7 +8,7 @@
 <title>profile/insert.jsp</title>
 
 <!-- 공통 CSS -->
-<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css"  href="${pageContext.request.contextPath }/profile/css/common.css"/>
 </head>
 <body>
 <%
