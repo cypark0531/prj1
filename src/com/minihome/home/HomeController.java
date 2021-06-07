@@ -49,6 +49,7 @@ public class HomeController extends HttpServlet {
 		}
 		
 		
+		
 //		String path = "/board/boardlist.jsp";
 //		System.out.println(req.getAttribute("path"));
 //		if(req.getAttribute("path")!=null) {
