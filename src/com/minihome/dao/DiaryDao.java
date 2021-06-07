@@ -48,4 +48,49 @@ public class DiaryDao {
 		
 		
 	}
+	public int getmaxNum() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con =MyDBCP.getConnection();
+			String sql = "select NVL(max(dnum),0) mnum from diary";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mnum = rs.getInt("mnum");
+			return mnum;
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				MyDBCP.close(con, pstmt, rs);
+			}
+		}
+	public int insert(DiaryVo vo,int year,int month,int date) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "insert into Diary values(?,?,?,?,?)";
+			String regdate = year +"-"+month+"-"+date;
+			System.out.println(regdate);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, getmaxNum()+1);
+			pstmt.setString(2, vo.getId());
+			pstmt.setString(3, vo.getDcontent());
+			pstmt.setInt(4, vo.getDopen());
+			pstmt.setString(5, regdate);
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+	
+	}
 }

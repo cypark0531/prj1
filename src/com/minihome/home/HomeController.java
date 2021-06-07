@@ -20,6 +20,7 @@ public class HomeController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProfilesDao dao = ProfilesDao.getInstance();
 		String id = "moa1004";
+		String gid = "test1";
 		req.setAttribute("id", id);
 		ArrayList<ProfilesVo> list = dao.list(id);
 		//String content = (String) req.getAttribute("content");
@@ -53,16 +54,15 @@ public class HomeController extends HttpServlet {
 		String dPath = getDiary(req, resp);
 		//String dPath = "/diary/main?id=test&gid=test";
 //		System.out.println("path" + req.getParameter("path"));
-//		if(req.getParameter("path")!=null) {
-//			dPath = (String) req.getParameter("path");
-//		}
-		System.out.println(dPath);
+		if(req.getParameter("dPath")!=null) {
+			dPath = (String) req.getParameter("dPath");
+		}
 		req.setAttribute("dPath", dPath);
 //		if(content==null)	{
 //			content ="/profile/insert.jsp";	
 //			
 //	}
-	
+	System.out.println(dPath);
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
 	application.setAttribute("cp", cp);
@@ -80,7 +80,8 @@ public class HomeController extends HttpServlet {
 		Calendar c=null;
 //		String id= req.getParameter("id");
 		String id= "test";
-		String gid= req.getParameter("gid");
+//		String gid= req.getParameter("gid");
+		String gid = "test";
 		String year=(String)req.getParameter("year");
 		String month=(String)req.getParameter("month");
 		if(year!=null) {
