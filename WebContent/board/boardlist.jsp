@@ -41,12 +41,12 @@
 </div>
 <div>
 	<c:if test="${startPageNum>10}">
-		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}">[이전]</a>
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}&id=${param.id}&gid=${param.gid}">[이전]</a>
 		</c:if>
 	<c:forEach var ="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i}">
-				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:blue">[${i}]</span></a>
+				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:black;font-weight: 900">[${i}]</span></a>
 			</c:when>
 			<c:otherwise>
 				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:gray">[${i}]</span></a>
@@ -54,7 +54,7 @@
 		</c:choose>
 	</c:forEach>
 	<c:if test="${endPagenum<pageCount}">
-		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}">[다음]</a>
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}&id=${param.id}&gid=${param.gid}">[다음]</a>
 		</c:if>
 
 </div>

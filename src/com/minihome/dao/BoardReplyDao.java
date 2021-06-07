@@ -22,7 +22,7 @@ public class BoardReplyDao {
 		ResultSet rs = null;
 		try {
 			con =MyDBCP.getConnection();
-			String sql = "select NVL(count(bnum),0) from boardreply where bnum = ?";
+			String sql = "select NVL(count(bnum),0) from boardreply where bnum = ? and brlevel=0";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1,bnum);
 			rs = pstmt.executeQuery();
@@ -58,16 +58,18 @@ public class BoardReplyDao {
 				MyDBCP.close(con, pstmt, rs);
 			}
 		}
-	public ArrayList<BoardreplyVo> boardreplylist(int bnum){
+	public ArrayList<BoardreplyVo> boardreplylist(int bnum,int startRow,int endRow){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<BoardreplyVo> list = new ArrayList<BoardreplyVo>();
 		try {
 		con = MyDBCP.getConnection();
-		String sql = "select * from boardreply where bnum = ? and brlevel = 0 order by brnum asc";
+		String sql = "select * from (select rownum rnum, b.* from (select * from boardreply where bnum = ?  and brlevel = 0 order by brnum asc)b) where rnum>=? and rnum<=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, bnum);
+		pstmt.setInt(2, startRow);
+		pstmt.setInt(3, endRow);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			int brnum = rs.getInt("brnum");
@@ -105,6 +107,22 @@ public class BoardReplyDao {
 			MyDBCP.close(con, pstmt, null );
 		}
 	}
+	public int boardreplyewDelete(int brnum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "delete from boardreply where brnum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, brnum);
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			System.out.println("메세지" + e.getMessage());
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null );
+		}
+	} 
 	public ArrayList<BoardreplyVo> boardrereplyList(int bgroup){
 		Connection con = null;
 		PreparedStatement pstmt = null;

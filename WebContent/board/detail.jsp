@@ -54,9 +54,32 @@
 				</tr>
 			</table>
 		</div>
+	<div>
+	<c:if test="${startPageNum>10}">
+		<a href="${pageContext.request.contextPath }/board/detail?pageNum=${startPagenum-1}">[이전]</a>
+		</c:if>
+	<c:forEach var ="i" begin="${startPageNum }" end="${endPageNum }">
+		<c:choose>
+			<c:when test="${pageNum==i}">
+				<a href = "${pageContext.request.contextPath }/board/detail?pageNum=${i}&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&bcontent=${param.bcontent}&rnum=${param.rnum}&btitle=${param.btitle}&b=0"><span style="color:black;font-weight: 900">[${i}]</span></a>
+			</c:when>
+			<c:otherwise>
+				<a href = "${pageContext.request.contextPath }/board/detail?pageNum=${i}&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&bcontent=${param.bcontent}&rnum=${param.rnum}&btitle=${param.btitle}&b=0"><span style="color:gray">[${i}]</span></a>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	<c:if test="${endPagenum<pageCount}">
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}">[다음]</a>
+		</c:if>
+
+</div>
 	</div>
-	<script type="text/javascript">
 	
+	
+	<script type="text/javascript">
+	console.log(${param.regdate})
+	console.log(${requestScope.startPageNum});
+	console.log(${param.rnum})
 	var btn1 = document.getElementById("btn1");
 	var btn2 = document.getElementById("btn2");
 	var brbtn1 = document.getElementById("brbtn1");
@@ -109,10 +132,9 @@
 			}
 		}
 	}
-		xhr.open("get","${pageContext.request.contextPath}/boardreply/list?bnum=${param.bnum}",true);
+		xhr.open("get","${pageContext.request.contextPath}/boardreply/list?bnum=${param.bnum}&pageNum=${requestScope.pageNum}",true);
 		xhr.send();
 	}
-	console.log(${param.b})
 	if(${param.b==0}){
 		reload();
 	}
@@ -129,6 +151,17 @@
 		 return;
 		}
 	}
+function reredelete(brnum,bgroup){
+			console.log("gd");
+		if (confirm(" 정말 삭제하시겠습니까?") == true){
+			
+			location.href = "${pageContext.request.contextPath}/boardreply/redelete?brnum="+brnum+"&bgroup="+bgroup+
+					"&id=${param.id}&gid=${param.gid}&bnum=${param.bnum}&rnum=${param.rnum}"+
+					"&regdate=${param.regdate}&btitle=${param.btitle}&bcontent=${param.bcontent}";
+		}else{
+		 return;
+		}
+}
 	var xhr1 = null;
 	function replylist(bgroup){
 		if(flag){
@@ -138,12 +171,10 @@
 		xhr1.onreadystatechange = function(){
 			if(xhr1.readyState==4&&xhr1.status==200){
 				var xml = xhr1.responseXML;
-				console.log(bgroup);
 				let replyDiv = document.getElementById("replyDiv"+bgroup);
 				if(replyDiv==undefined){
 					
 				}
-				console.log(replyDiv);
 				let newTable = document.createElement("table");
 				let length = xml.getElementsByTagName("brnum").length
 				for(let i=0;i<length;i++){
@@ -152,13 +183,20 @@
 					let newTd2 = document.createElement("td");
 					let newTd3 = document.createElement("td");
 					let newTd4 = document.createElement("td");
-					
+					let brnum = xml.getElementsByTagName("brnum")[i].textContent;
 					newTd1.innerHTML = xml.getElementsByTagName("gid")[i].textContent;
 					newTd2.innerHTML = xml.getElementsByTagName("brcontent")[i].textContent;
 					newTd3.innerHTML = xml.getElementsByTagName("regdate")[i].textContent;
+					newTd4.innerHTML = "<input type = 'button' value= '삭제'>"
+					newTd4.addEventListener('click', function(e) {
+						console.log('gd');
+						reredelete(brnum,bgroup);
+					})
+					console.log(newTd4.onclick)
 					newTr.appendChild(newTd1);
 					newTr.appendChild(newTd2);
 					newTr.appendChild(newTd3);
+					newTr.appendChild(newTd4);
 					newTable.appendChild(newTr);
 					replyDiv.appendChild(newTable);
 				}
@@ -233,6 +271,7 @@
 			div.removeChild(childs.item(i))
 		}
 	}
+
 	
 	</script>
 	
