@@ -35,11 +35,11 @@ public class CalenderController extends HttpServlet{
 		int day=0;
 		for(int num=0;num<42;num++) {
 			if(num<firstDay-1||num>firstDay+lastDay-2) {
-				arr.add(new DateAndSche(num, -1, -1, null,null));
+				arr.add(new DateAndSche(num, -1, -1, null));
 				continue;
 			}
 			day+=1;
-			arr.add(new DateAndSche(num, day, 0, null,null));
+			arr.add(new DateAndSche(num, day, 0, null));
 		}
 		
 		

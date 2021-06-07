@@ -17,7 +17,7 @@
 #sche th{width:112px;}
 #sche th input{width:100%; height:100%;}
 #sche td{width:470px;}
-#sche td input{margin-left:4px; width:100%; height:100%;}
+#sche td input{margin-left:4px; width:370px; height:100%;}
 </style>
 </head>
 <body>
@@ -38,7 +38,7 @@
 			<c:if test="${array.num%7==0}"><tr class="calrow"></c:if>
 				<input type="hidden" class="arrday" value="${array.day }">
 				<input type="hidden" class="arrschenum" value="${array.scheNum }">
-				<input type="hidden" class="arrtext" value="${array.text }">
+				<input type="hidden" class="arrsche" value="${array.sche }">
 				<c:choose>
 					<c:when test="${array.day==-1 }">
 						<td>
@@ -64,10 +64,10 @@
 	</table>
 	</div>
 	<table id="sche">
-	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
-	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
-	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
-	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td><td><select class="open"><option value="1">전체공개</option><option value="2">일촌공개</option><option value="3">비공개</option></select></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td><td><select class="open"><option value="1">전체공개</option><option value="2">일촌공개</option><option value="3">비공개</option></select></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td><td><select class="open"><option value="1">전체공개</option><option value="2">일촌공개</option><option value="3">비공개</option></select></td></tr>
+	<tr><th><input type="time" class="time"></th><td><input class="schedule"></td><td><select class="open"><option value="1">전체공개</option><option value="2">일촌공개</option><option value="3">비공개</option></select></td></tr>
 	</table>
 	<div style="margin-left:83%;">
 	<input style="padding-left:6px; padding-right:6px;" type="button" value="저장" id="savebtn">
@@ -84,16 +84,17 @@
 	
 	var arrday=document.getElementsByClassName("arrday");
 	var arrschenum=document.getElementsByClassName("arrschenum");
-	var arrtext=document.getElementsByClassName("arrtext");
+	var arrsche=document.getElementsByClassName("arrsche");
 	
 	var time=document.getElementsByClassName("time");
 	var schedule=document.getElementsByClassName("schedule");
+	var open=document.getElementsByClassName("open");
 	
 	var savebtn=document.getElementById("savebtn");
 	var cancelbtn=document.getElementById("cancelbtn");
 	
-	for(let i=0;i<td.length;i++){
-			
+	
+	for(let i=0;i<td.length;i++){			
 		td[i].onclick=function(){
 			for(let j=0;j<calrow.length;j++){
 				let child=calrow[j].children;
@@ -117,17 +118,32 @@
 			for(let j=0;j<42;j++){
 				for(let n=0;n<42;n++)if(arrday[n].value==td[i].childNodes[1].textContent.trim())num=n;
 				if(arrschenum[j].value==-1)continue;
-				if(Math.floor(num/7)==Math.floor(j/7) && arrtext[j].value!=""){
-					let timesche=arrtext[j].value.split("<br>");
-					let ts="";
-					for(let n=0;n<timesche.length;n++){
-						ts+=timesche[n].substring(0, 8)+"..<br>"
+				if(Math.floor(num/7)==Math.floor(j/7) && arrsche[j].value!=null){
+					                     
+					for(let n=0;n<arrsche[j].length;n++){
+						function getData(){
+							let xhr= new XMLHttpRequest();
+							xhr.onreadystatechange=function(){
+								if(xhr.readyState==4 &&xhr.status==200){
+									var time=xhr.responseXML.getElementsByTagName("time")[i].textContent;
+									var text=xhr.responseXML.getElementsByTagName("text")[i].textContent;
+									var open=xhr.responseXML.getElementsByTagName("open")[i].textContent;
+								}
+							}
+							xhr.open('get','${pageContext.request.contextPath}/scheduler/getdata&sche='+arrsche[j][n].value,true);
+							xhr.send();
+						};
+						console.log(arrsche[j][n].value);
 					}
-					td[day].childNodes[3].innerHTML=ts.substr(0, ts.length-6);
+//					let timesche=arrsche[j].value.split("<br>");
+//					let ts="";
+//					for(let n=0;n<timesche.length;n++){
+//						ts+=timesche[n].substring(0, 8)+"..<br>"
+//					}
+//					td[day].childNodes[3].innerHTML=ts.substr(0, ts.length-6);
 				}else{
 					
 					if(arrschenum[j].value=="0"){
-						//console.log(td[day].childNodes[1].textContent.trim());
 						td[day].childNodes[3].innerHTML="";
 					}else{
 						td[day].childNodes[3].innerHTML="일정: "+arrschenum[j].value;
@@ -136,7 +152,7 @@
 				day++;
 			}						
 					
-			let timesche=arrtext[num].value.split("<br>");
+/*			let timesche=arrtext[num].value.split("<br>");
 			for(let j=0;j<timesche.length;j++){
 				let ts=timesche[j].split(" ");
 				let s="";
@@ -145,9 +161,11 @@
 				}
 				time[j].value=ts[0];
 				schedule[j].value=s;
+				currtime[j].value=ts[0];
+				currschedule[j].value=s;
 				s="";
 			}
-			
+*/			
 		}
 	}
 	
@@ -162,25 +180,13 @@
 		location.replace("calendar?year="+year+"&month="+month);
 	}
 	savebtn.onclick=function(){
-		
-	}
-	cancelbtn.onclick=function(){
-		let day=0;
-		let num=0;
-		for(let j=0;j<42;j++){			
-			if(arrschenum[j].value=="0"){
-					//console.log(td[day].childNodes[1].textContent.trim());
-				td[day].childNodes[3].innerHTML="";
-			}else{
-				td[day].childNodes[3].innerHTML="일정: "+arrschenum[j].value;
-			}
-		}
-		day++;
-		
 		for(let j=0;j<time.length;j++){
 			time[j].value=null;
 			schedule[j].value=null;
 		}
+	}
+	cancelbtn.onclick=function(){		
+		
 		for(let j=0;j<calrow.length;j++){
 			let child=calrow[j].children;
 			for(let n=3;n<child.length;n+=4 ){
@@ -189,6 +195,19 @@
 				child[n].childNodes[3].style="width:84px; height:20px;";					
 				child[n].childNodes[3].innerHTML="";					
 			}
+		}
+		
+		let day=0;
+		for(let j=0;j<42;j++){			
+			if(arrschenum[j].value==-1)continue;
+			if(arrschenum[j].value==0){
+				console.log(arrschenum[j].value);
+				td[day].childNodes[3].innerHTML="";
+			}else{
+				console.log(arrschenum[j].value);
+				td[day].childNodes[3].innerHTML="일정: "+arrschenum[j].value;
+			}
+			day++;
 		}
 	}
 </script>
