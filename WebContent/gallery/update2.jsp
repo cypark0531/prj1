@@ -28,6 +28,7 @@ body {
 </head>
 <body>
 <% 
+	
 	String id = request.getParameter("id");
 	System.out.print(id);
 	%>
@@ -35,7 +36,7 @@ body {
 	<div class="container">
 	<div class= "inner">
 		<h1>Gallery</h1>
-	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/upload" enctype="multipart/form-data" method="post">
+	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
@@ -46,17 +47,17 @@ body {
 		<tbody id="tbody" >
 		<tr>
 		<th>GALLERY TITLE<span class="t_red"> *</span></th>
-		<td><input  type= "text" id="ptitle" name="ptitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
+		<td><input  type= "text" id="galtitle" name="galtitle" value="${vo.galtitle }" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
 		</tr>
 
 		<tr>
 		<th>CONTENTS<span class="t_red"> *</span></th>
-        <td><textarea id="CONTENT" name="CONTENT" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
+        <td><textarea id="content" name="content" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.content }</textarea></td>
 		</tr>
 		<tr>
 			<th>MY PICTURE<br>(Attached File)</th>
 			
-			<td colspan="3" id="img_td"><br><br><input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 340px; height: auto; position:absolute;  margin-top:130px; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none; margin: center;" onchange="readURL(this)" >					
+			<td colspan="3" id="img_td">[Exisiting File Name ${vo.galorgname }] <br><br><input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 340px; height: auto; position:absolute;  margin-top:130px; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none; margin: center;" onchange="readURL(this)" >					
 			
 			<img id="preview"  style="width: 300px; height: 300px; margin-right:  20px; margin-bottom: 50px; float: right;" />
 			</td>
@@ -65,7 +66,7 @@ body {
 		<tr>
 		<th>OPEN CHECK<span class="t_red"> *</span></th>
 		<td>
-		<select name= "popen" style="font-size: 18px; background-color: #121418; color: white;">
+		<select name= "galopen" style="font-size: 18px; background-color: #121418; color: white;">
 		<option value= "1">비공개</option>
 		<option value= "2">일촌공개</option>
 		<option value= "3">전체공개</option>
@@ -79,7 +80,7 @@ body {
 
 	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
- 	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+ 	<!--  	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;-->  font-size: 16px;">
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>
@@ -90,7 +91,7 @@ body {
 <script type="text/javascript">
 function moveFocus(e) {
 	if(event.keyCode==13) {
-		var f =document.getElementById("profileForm");
+		var f =document.getElementById("galleryForm");
 		f.elements[e.tabIndex].focus();
 	}
 }
