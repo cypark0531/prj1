@@ -10,15 +10,15 @@ public class DateAndSche {
 	private int num;
 	private int day;
 	private int scheNum;
-	private ArrayList<ScheduleVo> sche;
-	private String text;
-	public DateAndSche(int num, int day, int scheNum,ArrayList<ScheduleVo> sche, String text) {
+	private ArrayList<Integer> sche;
+	
+	public DateAndSche(int num, int day, int scheNum,ArrayList<Integer> sche) {
 		super();
 		this.num = num;
 		this.day = day;
 		this.scheNum = scheNum;
 		this.sche = sche;
-		this.text = text;
+		
 	}
 	
 	public int getNum() {
@@ -44,19 +44,11 @@ public class DateAndSche {
 		this.scheNum = scheNum;
 	}
 
-	public ArrayList<ScheduleVo> getSche() {
+	public ArrayList<Integer> getSche() {
 		return sche;
 	}
-	public void setSche(ArrayList<ScheduleVo> sche) {
+	public void setSche(ArrayList<Integer> sche) {
 		this.sche = sche;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
 	}
 	
 	
