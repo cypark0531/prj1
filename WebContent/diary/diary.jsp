@@ -20,29 +20,27 @@
 	</c:forEach>
 		</select>
 	<br>
-		
-	<c:forEach var= "j" begin = "1" end = "2">
 	<table>
 		<tr>
 		<c:forEach var = "i" begin = "1" end = "16">
-		<c:choose>
-			<c:when test="${j==2 }">
-			<td><div class = "day" id= "d${i+16}"></div></td>
-			</c:when>
-			<c:otherwise>
-			<td><div class = "day" id= "d${i}"></div></td>
-			</c:otherwise>
-		</c:choose>
+		<td><div class = "day" id= "d${i}"></div></td>
 		</c:forEach>
 		</tr>
-	</table>
-	</c:forEach>
+		<tr>
+		<c:forEach var = "i" begin = "17" end = "${param.lastDay }">
+		<td><div class = "day" id= "d${i}"></div></td>
+		</c:forEach>
+		</tr>
+		</table>
+		
+	
 	<script type="text/javascript">
+	
 	let days = document.getElementsByClassName("day");
 	for(let i =0;i<days.length;i++){
 		let k = i+1;
-		let a = days[i].id;
-		days[i].innerHTML = "<a href = 'javascript:content("+a+");'>"+k+"</a>";
+		days[i].innerHTML = "<a href = 'javascript:content("+k+");'>"+k+"</a>";
+		console.log(days[i].id);
 		
 	}
 		for(let i=0;i<${param.lastDay};i++){
@@ -57,10 +55,18 @@
 		var day = document.getElementById("d${param.day}");
 		year.selected = "selected";
 		month.selected= "selected";
-		function content(a){
-			let year = document.getElementById("year").value;
-			let month = document.getElementById("month").value;
-			console.log(a)
+		var xhr = null;
+		function content(k){
+			console.log(k);
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					
+				}
+			}
+			xhr.open("get","${pageContext.request.contextPath}/diary/list?id=${param.id}&year=${param.year}&month=${param.month}&date="+k)
+			xhr.send();
+			
 		}
 		
 	</script>
