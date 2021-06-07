@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/diary")
+@WebServlet("/diary/main")
 public class DiaryController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Calendar c=null;
-		String id= req.getParameter("id");
+		String id= "test";
+//		String id= req.getParameter("id");
 		String gid= req.getParameter("gid");
 		String year=(String)req.getParameter("year");
 		String month=(String)req.getParameter("month");
@@ -27,11 +28,16 @@ public class DiaryController extends HttpServlet{
 		int currDay= c.get(c.DAY_OF_MONTH);
 		int lastDay=c.getActualMaximum(c.DAY_OF_MONTH);
 		Calendar fDay =Calendar.getInstance();
-		fDay.set(currYear, currMonth, 1);
+		fDay.set(currYear, currMonth-1, 1);
 		int firstDay=fDay.get(fDay.DAY_OF_WEEK);
-			int currMonth1 = currMonth+1;
+		Calendar cc =Calendar.getInstance();
+		int realYear = cc.get(c.YEAR);
 			System.out.println(currDay);
-			resp.sendRedirect(req.getContextPath()+"/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth1+
-			"&fisrtDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay);
+			resp.sendRedirect(req.getContextPath()+"/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth+
+			"&fisrtDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay+"&realYear="+realYear);
+//			String path = req.getContextPath()+"/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth1+
+//					"&fisrtDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay;
+//			resp.sendRedirect(req.getContextPath()+"/home?path="+path);
+//			req.getRequestDispatcher().forward(req, resp);
 	}
 }
