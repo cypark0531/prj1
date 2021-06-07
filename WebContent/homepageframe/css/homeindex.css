@@ -15,6 +15,7 @@ img {
 
 body {
 	margin:0;
+	color: black;
   background-color: #121418;
   display: flex;
   font-family: "Inter", sans-serif;

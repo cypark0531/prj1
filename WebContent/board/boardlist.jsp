@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- h1타이틀 지워도 될듯 -->
 <h1>${param.id }님의 게시판</h1>
 <div>
 <table>

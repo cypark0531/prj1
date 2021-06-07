@@ -35,7 +35,7 @@ top.window.outerWidth = screen.availWidth;
 </style>
 
 </head>
-<body>
+<body style="color:#383a3d;">
 <div class="blog">
  <div class="blog-part is-menu">
   <a href="#" class="blog-menu">
@@ -61,6 +61,7 @@ top.window.outerWidth = screen.availWidth;
   </div>
  </div>
  <div class="blog-header-container">
+ 	 <!-- 프로필profile -->
   <div class="blog-header">
    <div class="blog-article header-article">
     <div class="blog-big__title">Profile</div>
@@ -75,13 +76,18 @@ top.window.outerWidth = screen.availWidth;
     </div>
     <p style="font-size: 20px;">${pintro}</p>
     <a href="#" onclick="NextPage()">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
      See More
     </a>
    </div>
   </div>
+  <!-- 게시판Board -->
   <div class="blog-header">
    <div class="blog-article header-article">
-    <div class="blog-big__title">Love</div>
+    <div class="blog-big__title">Board</div>
     <div class="blog-menu small-title date">12.06.2021</div>
    </div>
    <div class="blog-article">
@@ -94,7 +100,7 @@ top.window.outerWidth = screen.availWidth;
     <p>Having traveled to Turkey multiple times, with critics praising Ocean's introspective lyrics and the album's unconventional</p>
     <!--  <input  id='seemore' type="button"  onclick="nextPage()" value="SEE MORE">-->
     
-    <a href="#" >
+     <a href="#">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />

@@ -58,19 +58,19 @@ top.window.outerWidth = screen.availWidth;
 	String id = request.getParameter("id");
 	System.out.print(id);
 	%>
-<div class="wrap">
+<div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
 		<h2>PROFILE REGISTER</h2>
 	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update" enctype="multipart/form-data" method="post">
-	<table style= "w "  class="table02"  >
+	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
 			<col width="30%">
 			<col width="*">
 		</colgroup>
 		
-		<tbody id="tbody">
+		<tbody id="tbody" >
 		
 		<tr>
 		
@@ -83,7 +83,7 @@ top.window.outerWidth = screen.availWidth;
 		</tr>
 		<tr>
 		<th>MY INRODUCE<span class="t_red"> *</span></th>
-                            <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="2" onkeyup="moveFocus(this);" >${vo.pintro }</textarea></td>
+                            <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.pintro }</textarea></td>
 		</tr>
 		<tr>
 			<th>MY PROFILE<br>(Attached File)</th>
