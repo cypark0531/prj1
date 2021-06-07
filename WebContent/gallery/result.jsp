@@ -4,14 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>result.jsp</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-결과코드: ${code }<br>
-출력코드코드:${code }
 <script type="text/javascript">
-	
+	${code}
 </script>
 </body>
 </html>

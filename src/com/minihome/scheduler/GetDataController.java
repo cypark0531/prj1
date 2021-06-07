@@ -21,9 +21,7 @@ public class GetDataController extends HttpServlet{
 		int num=Integer.parseInt(req.getParameter("sche"));
 		ScheduleDao dao=ScheduleDao.getInstance();
 		ScheduleVo vo= dao.getSchedule(num);
-		Date t1=vo.getSchdate();
-		SimpleDateFormat t2= new SimpleDateFormat("HH:mm");
-		String time=t2.format(t1);
+		String time=vo.getSchtitle();
 		String text=vo.getSchcontent();
 		int open=vo.getSchopen();
 		

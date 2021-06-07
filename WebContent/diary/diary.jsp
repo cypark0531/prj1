@@ -9,7 +9,11 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	<div id="wrap">
+=======
+	<div id="wrap" style="width: 400px;height: 400px; ">
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	년도 : <select id = "year" style="color: black; font-weight: 900;">
 	<c:forEach var ="i" begin="1990" end = "${param.realYear }">
 	<option id = "y${i }">${i } </option>
@@ -23,7 +27,7 @@
 		</select>
 		<input type= "button" value= "선택" onclick="change()">
 	<br>
-	<table>
+	<table  >
 		<tr>
 		<c:forEach var = "i" begin = "1" end = "16">
 		<td><div class = "day" id= "d${i}"></div></td>
@@ -49,6 +53,10 @@
 	for(let i =0;i<days.length;i++){
 		let k = i+1;
 		days[i].innerHTML = "<a style='font-size:20px;' href = 'javascript:content("+k+");'>"+k+"</a>";
+<<<<<<< HEAD
+=======
+		
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	}
 		for(let i=0;i<${param.lastDay};i++){
 		let year = document.getElementById("year");

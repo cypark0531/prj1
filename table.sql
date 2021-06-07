@@ -151,7 +151,7 @@ CREATE TABLE friendsay
 
 
 -- °¶·¯¸®
-CREATE TABLE galery
+CREATE TABLE gallery
 (
 	-- °¶·¯¸®¹øÈ£
 	galnum number(10) NOT NULL,
