@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.BoardDao;
 import com.minihome.dao.BoardReplyDao;
+import com.minihome.dao.FriendDao;
+import com.minihome.vo.BoardVo;
 import com.minihome.vo.BoardreplyVo;
 
 @WebServlet("/boardreply/list")
@@ -18,7 +21,15 @@ public class BoardreplyListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int bnum = Integer.parseInt(req.getParameter("bnum"));
-		ArrayList<BoardreplyVo> list = BoardReplyDao.getInstance().boardreplylist(bnum);
+		String spageNum=req.getParameter("pageNum");
+		int pageNum=1;
+		if(spageNum!=null) {
+			pageNum= Integer.parseInt(spageNum);
+		}
+		int startRow= (pageNum-1)*5+1;
+		int endRow= startRow+4;
+		
+		ArrayList<BoardreplyVo> list = BoardReplyDao.getInstance().boardreplylist(bnum,startRow,endRow);
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw= resp.getWriter();
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -36,7 +47,6 @@ public class BoardreplyListController extends HttpServlet{
 			pw.print("</reply>");
 		}
 		pw.print("</result>");
-		
 		
 		
 	}

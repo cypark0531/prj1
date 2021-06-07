@@ -10,6 +10,11 @@ Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('
 Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test4','vasda','vasda','테스트 프로필','미니홈피 설정','하위~',1);
 Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('test5','vasda','vasda','테스트 프로필','미니홈피 설정','하위~',1);
 
+
+create sequence gallery_seq;
+
+
+
 Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu01',200,'프리스타일-Y','프리스타일.jpg','music');
 Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu02',190,'이은미-애인있어요','프리스타일.jpg','music');
 Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu03',210,'MC몽-180도','180도.jpg','music');

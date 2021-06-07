@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- h1타이틀 지워도 될듯 -->
 <h1>${param.id }님의 게시판</h1>
 <div>
 <table>
@@ -40,12 +41,12 @@
 </div>
 <div>
 	<c:if test="${startPageNum>10}">
-		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}">[이전]</a>
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}&id=${param.id}&gid=${param.gid}">[이전]</a>
 		</c:if>
 	<c:forEach var ="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i}">
-				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:blue">[${i}]</span></a>
+				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:black;font-weight: 900">[${i}]</span></a>
 			</c:when>
 			<c:otherwise>
 				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:gray">[${i}]</span></a>
@@ -53,7 +54,7 @@
 		</c:choose>
 	</c:forEach>
 	<c:if test="${endPagenum<pageCount}">
-		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}">[다음]</a>
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}&id=${param.id}&gid=${param.gid}">[다음]</a>
 		</c:if>
 
 </div>
@@ -65,13 +66,8 @@
 <script type="text/javascript">
 	var btn1 = document.getElementById("btn1");
 	btn1.addEventListener('click', function(e) {
-<<<<<<< HEAD
 		location.href = "${pageContext.request.contextPath}/board/insert.jsp?id=${param.id}&gid=${param.gid}";
-		
-=======
 		location.href = "${pageContext.request.contextPath}/board/insert?id=${param.id}&gid=${param.gid}";
-		
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	});
 </script>
 

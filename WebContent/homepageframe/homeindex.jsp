@@ -1,163 +1,207 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html>
-<% request.setAttribute("id", "test"); %>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>homeindex.jsp</title>
-<link rel="stylesheet" type="text/css" href="css/test.css?ver=1">
-<link rel="stylesheet" type="text/css" href="/profile/css/common.css?ver=1"/>
-
+<title>Insert title here</title>
+<script type="text/javascript">
+top.window.moveTo(0,0);
+if (document.all) {
+top.window.resizeTo(screen.availWidth,screen.availHeight);
+}
+else if (document.layers||document.getElementById) {
+if (top.window.outerHeight<screen.availHeight||top.window.outerWidth<screen.availWidth){
+top.window.outerHeight = screen.availHeight;
+top.window.outerWidth = screen.availWidth;
+}
+}
+	window.onload = function () {
+		window.focus();
+		window.moveTo(0, 0);
+		window.resizeTo(1280,800);
+		window.scrollTo(0,250);
+	}
+	function NextPage() {
+		window.location.href= 'profile/profilelist(update).jsp';
+	}
+</script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 <style type="text/css">
-#container {
-	width: 1500px;
-	height: 1000px; 
-	margin-right: auto;
-	margin-left: auto;
-}
-#header {
-	height: 100px;
-	width: 100%;
-	background-color:#ff00ff;
-}
-
-#content {
-	width: 70%;
-	padding: 10px;
-	margin-right: 160px;
-	margin-left: 160px;
-}
 
 
-#leftnav {
-	float: left;
-	width: 15%;
-	height: 100%; 
-	background-color: #30D9F4;
-	padding: 5px;
-		
-}
-
-#leftnav ul{
-	margin-left: 0;
-	padding-left: 0;
-	list-style-type: none;
-	font-family: '돋움', Helvetica, sans-serif;
-	font-size: 12px;
-}
-
-#leftnav a{
-	display: block;
-	width: 130px;
-	padding-top: 3px;
-	padding-right: 3px;
-	padding-bottom: 3px;
-	padding-left: 3px;
-	border-bottom-width: 1px;
-}
-
-#leftnav a:link, .navlist a:visited{
-color: #ffffff;
-text-decoration: underline;
-font-weight: bold;
-}
-
-#leftnav a:visited{
-   color: #ffffff;
-   text-decoration: underline;
-   font-weight: bold;
-}
-
-#leftnav a:hover{
-	text-decoration: none;
-	color: #0000ff;
-}
-
-#sidebar {
-	padding: 10px;
-	float: right;
-	width: 15%;
-	background-color: #30D9F4;
-	height: 100%;
-
-}
-
-#footer {
-	background-color: #2F77F1;
-	padding: 10px;
-	clear: both;
-	font-family: '돋움', Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-}
 </style>
+
 </head>
-<body> 
+<body style="color:#383a3d;">
+<div class="blog">
+ <div class="blog-part is-menu">
+  <a href="#" class="blog-menu">
+   Work
+   <svg fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right" viewBox="0 0 24 24">
+    <path d="M7 17L17 7M7 7h10v10" />
+   </svg>
+  </a>
+  <a href="#" class="blog-menu">Studio</a>
+  <a href="#" class="blog-menu">Blog</a>
+  <a href="#" class="blog-menu">Contact</a>
+  <a href="#" class="blog-menu mention">@MagazineDope</a>
+  <a href="#" class="blog-menu subscribe">Subscribe</a>
+ </div>
+ <div class="blog-header blog-is-sticky">
+  <div class="blog-article header-article">
+   <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px; padding-left:1.5em;text-indent:-1.5em;">&nbsp;${htitle}</div>
+   <div class="blog-menu rounded small-title">Pinned Issue</div>
+  </div>
+  <div class="blog-article page-number">
+  <jsp:include page="${musicBox }"></jsp:include>
+   NO. 01
+  </div>
+ </div>
+ <div class="blog-header-container">
+ 	 <!-- 프로필profile -->
+  <div class="blog-header">
+   <div class="blog-article header-article">
+    <div class="blog-big__title">Profile</div>
+    <div class="blog-menu small-title date">12.06.2021</div>
+   </div>
+   <div class="blog-article">
+    <img alt="" src="${pageContext.request.contextPath }/homepageframe/img/${psaveimg}" style="border-radius: 50%; width: 220px;  height:220px; margin-left: 100px;"/>
+    <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${ptitle}</h2>
+    <div class="blog-detail">
+     <span>By Richard Carnation</span>
+     <span>5 Min Read</span>
+    </div>
+    <p style="font-size: 20px;">${pintro}</p>
+    <a href="#" onclick="NextPage()">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
+     See More
+    </a>
+   </div>
+  </div>
+  <!-- 게시판Board -->
+  <div class="blog-header">
+   <div class="blog-article header-article">
+    <div class="blog-big__title">Board</div>
+    <div class="blog-menu small-title date">12.06.2021</div>
+   </div>
+   <div class="blog-article">
+    <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+    <h2>Talking About <span>Vulnerability</span> During Quarantine</h2>
+    <div class="blog-detail">
+     <span>By Tom Hiddleston</span>
+     <span>5 Min Read</span>
+    </div>
+    <p>Having traveled to Turkey multiple times, with critics praising Ocean's introspective lyrics and the album's unconventional</p>
+    <!--  <input  id='seemore' type="button"  onclick="nextPage()" value="SEE MORE">-->
+    
+     <a href="#">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
+     See More
+    </a>
+   </div>
+  </div>
+  <div class="blog-header">
+   <div class="blog-article header-article">
+    <div class="blog-big__title">Control</div>
+    <div class="blog-menu small-title date">12.06.2021</div>
+   </div>
+   <div class="blog-article">
+    <img src="https://images.unsplash.com/photo-1616248249518-b16013cd4e42?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTkzfHxibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+    <h2>How 2020 Changed <span>Understanding</span> Of Mental Health</h2>
+    <div class="blog-detail">
+     <span>By Scarlett Witch</span>
+     <span>5 Min Read</span>
+    </div>
+    <p>Time is defines ad the indefinete continued progress, with critics praising Ocean's introspective lyrics and the album's</p>
+    <a href="#">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
+     See More
+    </a>
+   </div>
+  </div>
+ </div>
+ <div class="blog-part right-blog">
 
-<div id="container">
+  <marquee width="100%" direction="left">
+   <span>Now And Then You Miss It Sounds Make You Cry</span>
+   <span>Now In - MoMa Sharing Exhibition NOW</span>
+   <span>NYC Opens After Long Lockdown Check</span>
+  </marquee>
+  <div class="blog-right-title-container">
 
-	<div id="header">
-		<span class="style1">헤더영역</span>
-	</div>
-
-
-	<!--메뉴영역-->
-	<div id="leftnav">
-		<ul id="navlist"> 
-		<li>Profile</li>
-		</ul>
-	</div>
-
-
-	<div id="sidebar">
-	Music box
-		
-	</div>
-	
-	<div id="content">
-<div class="cp_tab">
-
-	<input type="radio" name="cp_tab" id="tab2_1" aria-controls="first_tab02" checked >
-	<label for="tab2_1">Profile</label>
-	
-	
-	<input type="radio" name="cp_tab" id="tab2_2" aria-controls="second_tab02">
-	<label for="tab2_2">Second Tab</label>
-	<input type="radio" name="cp_tab" id="tab2_3" aria-controls="third_tab02">
-	<label for="tab2_3">Third Tab</label>
-	<input type="radio" name="cp_tab" id="tab2_4" aria-controls="force_tab02">
-	<label for="tab2_4">Force Tab</label>
-
-	<div class="cp_tabpanels">
-		<div class="cp_tabpanel">
-		<jsp:include page= "${content }"/>
-		</div>
-		<div class="cp_tabpanel">
-		<jsp:include page="/board/boardlist.jsp"/>
-		<h2>Second Tab</h2>
-		<p>Second Tab text</p>
-		</div>
-		<div class="cp_tabpanel">
-		<h2>Third Tab</h2>
-		<p>Third Tab text</p>
-		</div>
-		<div class="cp_tabpanel">
-		<h2>Force Tab</h2>
-		<p>Force Tab text</p>
-		</div>
-	</div>
+   <div class="blog-right-title" >
+   </div>
+   <div class="blog-menu rounded">See All</div>
+  </div>
+  <div class="blog-right">
+   <div class="blog-right-container">
+    <div class="blog-title-date">
+     <div class="blog-right-page">1</div>
+     <div class="date">12.06.2021</div>
+    </div>
+    <div class="blog-right-page-title">Blonde - Widespread Acclaim</div>
+    <div class="blog-right-page-subtitle">Blonde received widespread acclaim, with critics praising Ocean's introspective lyrics and the album's</div>
+   </div>
+   <div class="blog-right-container">
+    <div class="blog-title-date">
+     <div class="blog-right-page">2</div>
+     <div class="date">12.06.2021</div>
+    </div>
+    <div class="blog-right-page-title">Introspective Lyrics and Beats</div>
+    <div class="blog-right-page-subtitle">When we toured Scotland we stopped at several selft-sealing hpuses because hotels would</div>
+   </div>
+   <div class="blog-right-container">
+    <div class="blog-title-date">
+     <div class="blog-right-page">3</div>
+     <div class="date">12.06.2021</div>
+    </div>
+    <div class="blog-right-page-title">The Language Of Gris: Comples Beauty Of Monochrome</div>
+    <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio Anne Holtrop who cleverly emulated</div>
+   </div>
+   <div class="blog-right-container">
+    <div class="blog-title-date">
+     <div class="blog-right-page">4</div>
+     <div class="date">12.06.2021</div>
+    </div>
+    <div class="blog-right-page-title">A24 IS LAUNCHING ITS OWN BEAUTY BRAND</div>
+    <div class="blog-right-page-subtitle">Blonde received widespread acclaim, with critics praising Ocean's introspective lyrics and the album's</div>
+   </div>
+   <div class="blog-right-container">
+    <div class="blog-title-date">
+     <div class="blog-right-page">5</div>
+     <div class="date">12.06.2021</div>
+    </div>
+    <div class="blog-right-page-title">Elon Musk's SpaceX is launching a moon satellite</div>
+    <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio Anne Holtrop who cleverly emulated</div>
+   </div>
+   <div class="blog-right-container">
+    <div class="blog-title-date">
+     <div class="blog-right-page">6</div>
+     <div class="date">12.06.2021</div>
+    </div>
+    <div class="blog-right-page-title">What Happens When You Leave Your Old life Behind</div>
+    <div class="blog-right-page-subtitle">The interior concept was conceived of by Dutch archtitect Studio Anne Holtrop who cleverly emulated</div>
+   </div>
+   <div class="circle">
+    <div class="circle-title">Leave Your Old Life Behind</div>
+    <div class="circle-subtitle">Don't try to be like someone else, be yourself. Be secure with yourself.</div>
+    <div class="circle-footer">Explore</div>
+   </div>
+  </div>
+ </div>
 </div>
-	 </div>
-
-
-	<div align="center" id="footer">
-	하단 푸터
-	</div>
-
-</div>
-
 
 </body>
 </html>

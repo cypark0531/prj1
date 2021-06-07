@@ -2,7 +2,7 @@ package com.minihome.vo;
 
 import java.sql.Date;
 
-public class GaleryVo {
+public class GalleryVo {
 	private int galnum;
 	private String id;
 	private String galtitle;
@@ -11,10 +11,10 @@ public class GaleryVo {
 	private String galsavename;
 	private int galopen;
 	private Date regdate;
-	public GaleryVo() {
+	public GalleryVo() {
 		super();
 	}
-	public GaleryVo(int galnum, String id, String galtitle, String galcontent, String galorgname, String galsavename,
+	public GalleryVo(int galnum, String id, String galtitle, String galcontent, String galorgname, String galsavename,
 			int galopen, Date regdate) {
 		super();
 		this.galnum = galnum;
