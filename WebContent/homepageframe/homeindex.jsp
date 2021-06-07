@@ -86,27 +86,28 @@ top.window.outerWidth = screen.availWidth;
   </div>
   <!-- 다이어리 Daily -->
   <div class="blog-header">
-   <div class="blog-article header-article">
+  	<div class="blog-article header-article">
     <div class="blog-big__title">Board</div>
     <div class="blog-menu small-title date">12.06.2021</div>
    </div>
    <div class="blog-article">
-    <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+   ${requestScope.dPath } ::
+   <jsp:include page="${requestScope.dPath}"/>안녕
+     <!-- <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
     <h2>Talking About <span>Vulnerability</span> During Quarantine</h2>
     <div class="blog-detail">
      <span>By Tom Hiddleston</span>
      <span>5 Min Read</span>
     </div>
     <p>Having traveled to Turkey multiple times, with critics praising Ocean's introspective lyrics and the album's unconventional</p>
-    <!--  <input  id='seemore' type="button"  onclick="nextPage()" value="SEE MORE">-->
-    
+     <input  id='seemore' type="button"  onclick="nextPage()" value="SEE MORE">
      <a href="#">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
      </svg>
      See More
-    </a>
+    </a> -->
    </div>
   </div>
   

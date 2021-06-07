@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.minihome.dao.DiaryDao;
-import com.minihome.vo.BoardreplyVo;
 import com.minihome.vo.DiaryVo;
 @WebServlet("/diary/list")
 public class DiaryListController extends HttpServlet{
@@ -28,7 +27,7 @@ public class DiaryListController extends HttpServlet{
 		pw.print("<result>");
 		for(DiaryVo vo : list) {
 			pw.print("<reply>");
-			pw.print("<dnum>"+vo.getDnum()+"</drnum>");
+			pw.print("<dnum>"+vo.getDnum()+"</dnum>");
 			pw.print("<dcontent>"+vo.getDcontent()+"</dcontent>");
 			pw.print("<dopen>"+vo.getDopen()+"</dopen>");
 			pw.print("<id>"+vo.getId()+"</id>");

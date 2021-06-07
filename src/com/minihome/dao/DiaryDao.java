@@ -20,7 +20,7 @@ public class DiaryDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String cal = year+"-"+month+"-"+date;
+		String cal = year+"-"+month+"-"+date;;
 		ArrayList<DiaryVo> list = new ArrayList<DiaryVo>();
 		try {
 			con = MyDBCP.getConnection();

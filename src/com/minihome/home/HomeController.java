@@ -2,6 +2,7 @@ package com.minihome.home;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -36,7 +37,7 @@ public class HomeController extends HttpServlet {
 			pintro = vo.getPintro();
 			
 		}
-		System.out.println("Á¤´ä : " +psaveimg);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ : " +psaveimg);
 		
 		req.setAttribute("psaveimg", psaveimg);
 		req.setAttribute("ptitle", ptitle);
@@ -49,12 +50,14 @@ public class HomeController extends HttpServlet {
 		}
 		
 		
-		
-//		String path = "/board/boardlist.jsp";
-//		System.out.println(req.getAttribute("path"));
-//		if(req.getAttribute("path")!=null) {
-//			path = (String) req.getAttribute("path");
+		String dPath = getDiary(req, resp);
+		//String dPath = "/diary/main?id=test&gid=test";
+//		System.out.println("path" + req.getParameter("path"));
+//		if(req.getParameter("path")!=null) {
+//			dPath = (String) req.getParameter("path");
 //		}
+		System.out.println(dPath);
+		req.setAttribute("dPath", dPath);
 //		if(content==null)	{
 //			content ="/profile/insert.jsp";	
 //			
@@ -63,8 +66,8 @@ public class HomeController extends HttpServlet {
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
 	application.setAttribute("cp", cp);
-
-	//req.setAttribute("id", "test");
+	getDiary(req,resp);
+	req.setAttribute("id", "test");
 	//req.setAttribute("content", content);
 	//req.setAttribute("path", path);
 	req.setAttribute("musicBox", musicBox);
@@ -73,4 +76,30 @@ public class HomeController extends HttpServlet {
 	
 
 	}
+	public String getDiary(HttpServletRequest req, HttpServletResponse resp) {
+		Calendar c=null;
+//		String id= req.getParameter("id");
+		String id= "test";
+		String gid= req.getParameter("gid");
+		String year=(String)req.getParameter("year");
+		String month=(String)req.getParameter("month");
+		if(year!=null) {
+		c=Calendar.getInstance();
+		c.set(Integer.parseInt(year), Integer.parseInt(month)-1, 1);
+		}else c=Calendar.getInstance();
+		int currYear=c.get(c.YEAR);//í˜„ìž¬ë…„
+		int currMonth=c.get(c.MONTH)+1;//í˜„ìž¬ì›”
+		int currDay= c.get(c.DAY_OF_MONTH);
+		int lastDay=c.getActualMaximum(c.DAY_OF_MONTH);
+		Calendar fDay =Calendar.getInstance();
+		fDay.set(currYear, currMonth, 1);
+		int firstDay=fDay.get(fDay.DAY_OF_WEEK);
+		
+		Calendar cc =Calendar.getInstance();
+		int realYear = cc.get(c.YEAR);
+			String path = "/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth+
+					"&firstDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay+"&realYear="+realYear;
+			return path;
+	}
+	
 }

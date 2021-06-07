@@ -3,6 +3,7 @@ package com.minihome.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServlet;
@@ -37,13 +38,13 @@ public class GalleryDao  {
 				private int galopen;
 				private Date regdate;
 			 */
-			pstmt.setInt(1, vo.getGalnum());
-			pstmt.setString(2, vo.getId());
-			pstmt.setString(3, vo.getGaltitle());
-			pstmt.setString(4, vo.getGalcontent());
-			pstmt.setString(5, vo.getGalorgname());
-			pstmt.setString(6, vo.getGalsavename());
-			pstmt.setInt(7, vo.getGalopen());
+			//pstmt.setInt(1, vo.getGalnum());
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getGaltitle());
+			pstmt.setString(3, vo.getGalcontent());
+			pstmt.setString(4, vo.getGalorgname());
+			pstmt.setString(5, vo.getGalsavename());
+			pstmt.setInt(6, vo.getGalopen());
 			return pstmt.executeUpdate();
 		}catch (SQLException se) {
 			se.printStackTrace();
@@ -53,4 +54,13 @@ public class GalleryDao  {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
+	public GalleryVo getinfoVo(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs  null;
+		
+	}
+	
+	
+	
 }
