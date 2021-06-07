@@ -43,7 +43,7 @@
 					<c:when test="${array.day==-1 }">
 						<td>
 						<div style="width:100%; height:20px"></div>
-						<div style="width:100%; height:20px"></div>
+						<div class="disp" style="width:100%; height:20px"></div>
 						</td>
 					</c:when>
 					<c:otherwise>
@@ -51,7 +51,7 @@
 						<div style="background-color: silver; width:100%; height:20px">
 							<c:out value="${array.day}"/>
 						</div>
-						<div style="width:84px; height:20px">
+						<div class="disp" style="width:84px; height:20px">
 							<c:if test="${array.scheNum!=0 }">
 								<c:out value="일정: ${array.scheNum }"/>
 							</c:if>
@@ -79,12 +79,15 @@
 	var cal=document.getElementById("cal");
 	var calrow=document.getElementsByClassName("calrow");
 	var td=document.getElementsByClassName("td");
+	var disp=document.getElementsByClassName("disp");
 	var prevmonth=document.getElementById("prevmonth");
 	var nextmonth=document.getElementById("nextmonth");
 	
 	var arrday=document.getElementsByClassName("arrday");
 	var arrschenum=document.getElementsByClassName("arrschenum");
 	var arrsche=document.getElementsByClassName("arrsche");
+	var arrnum=[-1,-1,-1,-1];
+	var currday=-1;
 	
 	var time=document.getElementsByClassName("time");
 	var schedule=document.getElementsByClassName("schedule");
@@ -93,9 +96,8 @@
 	var savebtn=document.getElementById("savebtn");
 	var cancelbtn=document.getElementById("cancelbtn");
 	
-	
 	for(let i=0;i<td.length;i++){			
-		td[i].onclick=function(){
+		td[i].onclick=function show(){
 			for(let j=0;j<calrow.length;j++){
 				let child=calrow[j].children;
 				for(let n=3;n<child.length;n+=4 ){
@@ -112,35 +114,36 @@
 			}
 			
 			td[i].childNodes[1].style="background-color:#FAED7D;";
+			currday=i;
 			
 			let day=0;
 			let num=0;
 			for(let j=0;j<42;j++){
-				for(let n=0;n<42;n++)if(arrday[n].value==td[i].childNodes[1].textContent.trim())num=n;
+				for(let n=0;n<42;n++)if(arrday[n].value==td[i].childNodes[1].textContent.trim()){num=n;}
 				if(arrschenum[j].value==-1)continue;
-				if(Math.floor(num/7)==Math.floor(j/7) && arrsche[j].value!=null){
-					                     
-					for(let n=0;n<arrsche[j].length;n++){
-						function getData(){
+				if(Math.floor(num/7)==Math.floor(j/7) && arrsche[j].value!=null){                      
+					let a=arrsche[j].value;
+					let as= a.substring(1, a.length-1).split(","); 
+					let text="";
+					for(let n=0;n<as.length;n++){		                     
+						as[n]=as[n].trim();
+						if(as[n]!=""){						
 							let xhr= new XMLHttpRequest();
 							xhr.onreadystatechange=function(){
 								if(xhr.readyState==4 &&xhr.status==200){
-									var time=xhr.responseXML.getElementsByTagName("time")[i].textContent;
-									var text=xhr.responseXML.getElementsByTagName("text")[i].textContent;
-									var open=xhr.responseXML.getElementsByTagName("open")[i].textContent;
+									let text1=xhr.responseXML.getElementsByTagName("time")[0].textContent;
+									let text2=xhr.responseXML.getElementsByTagName("text")[0].textContent;
+									let text3=xhr.responseXML.getElementsByTagName("open")[0].textContent;
+									text+=text1+" "+text2.substr(0, 2)+"..<br>";									
+									disp[j].innerHTML=text;
+										
 								}
 							}
-							xhr.open('get','${pageContext.request.contextPath}/scheduler/getdata&sche='+arrsche[j][n].value,true);
+							xhr.open('get','${pageContext.request.contextPath}/scheduler/getdata?sche='+as[n],true);
 							xhr.send();
-						};
-						console.log(arrsche[j][n].value);
-					}
-//					let timesche=arrsche[j].value.split("<br>");
-//					let ts="";
-//					for(let n=0;n<timesche.length;n++){
-//						ts+=timesche[n].substring(0, 8)+"..<br>"
-//					}
-//					td[day].childNodes[3].innerHTML=ts.substr(0, ts.length-6);
+						}
+					}						
+					
 				}else{
 					
 					if(arrschenum[j].value=="0"){
@@ -152,20 +155,41 @@
 				day++;
 			}						
 					
-/*			let timesche=arrtext[num].value.split("<br>");
-			for(let j=0;j<timesche.length;j++){
-				let ts=timesche[j].split(" ");
-				let s="";
-				for(let n=1;n<ts.length;n++){
-					s+=ts[n]+" ";
+			for(let n=0;n<42;n++){
+				if(arrday[n].value==td[i].childNodes[1].textContent.trim()){
+					let a=arrsche[n].value;
+					a=a.substring(1, a.length-1);
+					let as=a.split(",");
+					for(let j=0;j<as.length;j++){
+						as[j]=as[j].trim();
+
+						if(as[j]!="" && as[j]!=null){
+							let xhr= new XMLHttpRequest();
+							xhr.onreadystatechange=function(){
+								if(xhr.readyState==4 &&xhr.status==200){
+									let text1=xhr.responseXML.getElementsByTagName("time")[0].textContent;
+									let text2=xhr.responseXML.getElementsByTagName("text")[0].textContent;
+									let text3=xhr.responseXML.getElementsByTagName("open")[0].textContent;
+									time[j].value=text1;
+									schedule[j].value=text2;
+									open[j].value=text3;
+									arrnum[j]=as[j];
+								}
+							}
+							xhr.open('get','${pageContext.request.contextPath}/scheduler/getdata?sche='+as[j],true);
+							xhr.send();
+							
+						}						
+					}
+					for(let j=as.length-1;j<time.length;j++){
+						time[j].value=null;
+						schedule[j].value=null;
+						open[j].value=null;
+						arrnum[j]=-1;
+					}
 				}
-				time[j].value=ts[0];
-				schedule[j].value=s;
-				currtime[j].value=ts[0];
-				currschedule[j].value=s;
-				s="";
 			}
-*/			
+			
 		}
 	}
 	
@@ -181,9 +205,24 @@
 	}
 	savebtn.onclick=function(){
 		for(let j=0;j<time.length;j++){
-			time[j].value=null;
-			schedule[j].value=null;
+			let t=${year}+"-"+${month}+"-"+(currday+1)+","+time[j].value;
+			console.log(arrnum[j]+" "+t+" "+schedule[j].value+open[j].value);
+			if(arrnum[j]!=-1){
+				let xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){};
+				xhr.open('get','${pageContext.request.contextPath}/scheduler/updatedata?schnum='+arrnum[j]+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
+				xhr.send();
+			}else if(arrnum[j]==-1 && open[j].value!="" && schedule[j].value!=""&& open[j].value!=null && schedule[j].value!=null){
+				let xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4 && xhr.status==200)console.log(t);
+				};				
+				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"test11"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
+				xhr.send();
+			}
+			
 		}
+		location.replace("calendar?year="+${year}+"&month="+(${month}-1));
 	}
 	cancelbtn.onclick=function(){		
 		

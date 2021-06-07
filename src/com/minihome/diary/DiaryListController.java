@@ -17,9 +17,9 @@ import com.minihome.vo.DiaryVo;
 public class DiaryListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		int year = Integer.parseInt(req.getParameter("year"));
-//		int month = Integer.parseInt(req.getParameter("month"));
-//		int date = Integer.parseInt(req.getParameter("date"));
+		int year = Integer.parseInt(req.getParameter("year"));
+		int month = Integer.parseInt(req.getParameter("month"));
+		int date = Integer.parseInt(req.getParameter("date"));
 		String id = req.getParameter("id");
 		ArrayList<DiaryVo> list = DiaryDao.getInstance().getDiary(id, year, month, date);
 		resp.setContentType("text/xml;charset=utf-8");
