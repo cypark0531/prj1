@@ -1,23 +1,54 @@
 @charset "UTF-8";
 body {
+
+text-align: center;
+ overflow-x:hidden;
+  overflow-y:hidden;
+
+  color:white;
   padding: 20px;
   font-family: sans-serif;
-  background: #f2f2f2;
+  background: #121418;
 }
 img {
   width: 100%; /* need to overwrite inline dimensions */
   height: auto;
 }
+h1{
+	margin-left: 11em;
+	display:flex;
+	font-size: 50pt;	
+	
+	
+	}
 h2 {
   margin-bottom: .5em;
 }
+.child-page-listing {
+	margin-bottom: 10em;
+	margin-left: 10em;
+	margin-right: 10em;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1em;
 }
+ .wraps{
+ margin-left:35em;
+ 	border-top-left-radius: 10%;
+ 	height: 600px; width: 600px; border: 1px solid white;
+ }
+ 
+  #hello {background-color:#121418; z-index:1; margin-left:3vh;  margin-top:3.5vh; height:600px; overflow-y: auto; border-style: dashed groove none dotted; border-bottom-style: dotted; border-color :white;  width: 600px;}
+  #hello::-webkit-scrollbar { width: 5px; /*스크롤바의 너비*/ } 
+  #hello::-webkit-scrollbar-thumb { background-color: black; /*스크롤바의 색상*/ } 
+  #hello::-webkit-scrollbar-track { background-color: white; /*스크롤바 트랙 색상*/ }
+  
 
 
+ 
 /* hover styles */
 .location-listing {
   position: relative;
@@ -63,15 +94,7 @@ h2 {
   filter: blur(2px);
 }
 
-  .child-page-listing {
-    width: 650px;
-    height: 640px;
-    overflow: auto;
-  }
-  .child-page-listing::-webkit-scrollbar {
-    width: 10px;
-    background-color: none;
-  }
+
 /* for touch screen devices */
 @media (hover: none) { 
   .location-title {

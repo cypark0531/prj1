@@ -11,15 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProfilesDao dao = ProfilesDao.getInstance();
-		String id = "moa1004";
+		String id = "test4";
 		String gid = "test1";
 		req.setAttribute("id", id);
 		ArrayList<ProfilesVo> list = dao.list(id);
@@ -61,7 +62,11 @@ public class HomeController extends HttpServlet {
 //		if(content==null)	{
 //			content ="/profile/insert.jsp";	
 //			
-//	}
+//	}	
+//		String id = "test4";
+		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
+		req.setAttribute("gvo", gvo);
+		System.out.println("galcontent : "+gvo.getGalcontent());
 	System.out.println(dPath);
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
@@ -103,5 +108,6 @@ public class HomeController extends HttpServlet {
 					"&firstDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay+"&realYear="+realYear;
 			return path;
 	}
+	
 	
 }

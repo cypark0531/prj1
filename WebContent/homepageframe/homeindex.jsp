@@ -90,7 +90,7 @@ top.window.outerWidth = screen.availWidth;
   <!-- 다이어리 Daily -->
   <div class="blog-header">
   	<div class="blog-article header-article">
-    <div class="blog-big__title">Board</div>
+    <div class="blog-big__title">Diary</div>
     <div class="blog-menu small-title date">12.06.2021</div>
    </div>
    <div class="blog-article" >
@@ -115,7 +115,7 @@ top.window.outerWidth = screen.availWidth;
   
   <div class="blog-header">
    <div class="blog-article header-article">
-    <div class="blog-big__title">Control</div>
+    <div class="blog-big__title">Gallery</div>
     <div class="blog-menu small-title date">12.06.2021</div>
    </div>
    <div class="blog-article">
