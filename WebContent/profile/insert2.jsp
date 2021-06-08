@@ -36,7 +36,7 @@ body {
 	<div class="container">
 	<div class= "inner">
 		<h2>PROFILE REGISTER</h2>
-	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/profile/upload" enctype="multipart/form-data" method="post">
+	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/profile/upload?id=${param.id}&gid=${param.id}" enctype="multipart/form-data" method="post">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>

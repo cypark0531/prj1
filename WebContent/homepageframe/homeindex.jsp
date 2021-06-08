@@ -1,6 +1,6 @@
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,6 +75,8 @@ top.window.outerWidth = screen.availWidth;
      <span>5 Min Read</span>
     </div>
     <p style="font-size: 20px;">${pintro}</p>
+    <c:if test="${requestScope.id==requestScope.gid}">
+    
     <a href="#" onclick="NextPage()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
@@ -82,6 +84,7 @@ top.window.outerWidth = screen.availWidth;
      </svg>
      See More
     </a>
+     </c:if>
    </div>
   </div>
   <!-- 다이어리 Daily -->

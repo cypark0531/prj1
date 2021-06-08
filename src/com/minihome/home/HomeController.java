@@ -37,7 +37,7 @@ public class HomeController extends HttpServlet {
 			pintro = vo.getPintro();
 			
 		}
-		System.out.println("���� : " +psaveimg);
+		System.out.println("占쏙옙占쏙옙 : " +psaveimg);
 		
 		req.setAttribute("psaveimg", psaveimg);
 		req.setAttribute("ptitle", ptitle);
@@ -68,6 +68,7 @@ public class HomeController extends HttpServlet {
 	application.setAttribute("cp", cp);
 	getDiary(req,resp);
 	req.setAttribute("id", "test");
+	req.setAttribute("gid", "test1");
 	//req.setAttribute("content", content);
 	//req.setAttribute("path", path);
 	req.setAttribute("musicBox", musicBox);
@@ -87,8 +88,8 @@ public class HomeController extends HttpServlet {
 		c=Calendar.getInstance();
 		c.set(Integer.parseInt(year), Integer.parseInt(month)-1, 1);
 		}else c=Calendar.getInstance();
-		int currYear=c.get(c.YEAR);//현재년
-		int currMonth=c.get(c.MONTH)+1;//현재월
+		int currYear=c.get(c.YEAR);//�쁽�옱�뀈
+		int currMonth=c.get(c.MONTH)+1;//�쁽�옱�썡
 		int currDay= c.get(c.DAY_OF_MONTH);
 		int lastDay=c.getActualMaximum(c.DAY_OF_MONTH);
 		Calendar fDay =Calendar.getInstance();

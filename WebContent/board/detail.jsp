@@ -179,6 +179,7 @@ function reredelete(brnum,bgroup){
 				let length = xml.getElementsByTagName("brnum").length
 				for(let i=0;i<length;i++){
 					let newTr = document.createElement("tr");
+						newTr.className("wrap")
 					let newTd1 = document.createElement("td");
 					let newTd2 = document.createElement("td");
 					let newTd3 = document.createElement("td");

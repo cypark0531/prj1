@@ -22,10 +22,10 @@
 		</select>
 		<input type= "button" value= "선택" onclick="change()">
 	<br>
-	<table  >
-		<tr>
+	<table >
+		<tr style="margin-left:30px; text-align: center;">
 		<c:forEach var = "i" begin = "1" end = "16">
-		<td><div class = "day" id= "d${i}"></div></td>
+		<td><div class  = "day" id= "d${i}"></div></td>
 		</c:forEach>
 		</tr>
 		<tr>
