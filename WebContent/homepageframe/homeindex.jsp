@@ -93,9 +93,8 @@ top.window.outerWidth = screen.availWidth;
     <div class="blog-big__title">Board</div>
     <div class="blog-menu small-title date">12.06.2021</div>
    </div>
-   <div class="blog-article">
-   ${requestScope.dPath } ::
-   <jsp:include page="${requestScope.dPath}"/>안녕
+   <div class="blog-article" >
+   <jsp:include page="${requestScope.dPath}"/>
      <!-- <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
     <h2>Talking About <span>Vulnerability</span> During Quarantine</h2>
     <div class="blog-detail">

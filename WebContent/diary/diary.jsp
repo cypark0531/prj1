@@ -6,9 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
+<<<<<<< HEAD
+	<div id="wrap">
+=======
 	<div id="wrap" style="width: 400px;height: 400px; ">
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	년도 : <select id = "year" style="color: black; font-weight: 900;">
 	<c:forEach var ="i" begin="1990" end = "${param.realYear }">
 	<option id = "y${i }">${i } </option>
@@ -38,7 +43,7 @@
 		<div id = "main">
 		</div>
 		<div>
-		<input type= "button" value= "글쓰기" onclick='dinsert()'>
+		<input type= "button" value= "글쓰기" id = btnn>
 		
 		</div>
 	</div>
@@ -48,7 +53,10 @@
 	for(let i =0;i<days.length;i++){
 		let k = i+1;
 		days[i].innerHTML = "<a style='font-size:20px;' href = 'javascript:content("+k+");'>"+k+"</a>";
+<<<<<<< HEAD
+=======
 		
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	}
 		for(let i=0;i<${param.lastDay};i++){
 		let year = document.getElementById("year");
@@ -90,7 +98,7 @@
 						newInput1 = document.createElement("input");
 						newInput1.type= "button";
 						newInput1.value= "삭제";
-						newInput1.onclick = "ddelete("+dnum+")"
+						newInput1.onclick = "ddelete("+dnum+")";
 						
 						newTd2.appendChild(newInput1);
 						newTd1.innerHTML = dcontent;
@@ -115,10 +123,14 @@
 				div.removeChild(childs.item(i))
 		}
 		}
-		function dinsert(){
-			location.href = "${pageContext.request.contextPath}/diary/insert?&id=${param.id}&gid=${param.gid}"
+		var btnn = document.getElementById("btnn")
+		btnn.onclick = "dinsert(${param.id},${param.gid})";
+		function dinsert(id,pid){
+			var path = "${pageContext.request.contextPath}/diary/insert.jsp?id="+id+"&gid="+gid;
+			location.href = "${pageContext.request.contextPath}/home?dPath="+path;
 		}
 		
 	</script>
+	
 </body>
 </html>
