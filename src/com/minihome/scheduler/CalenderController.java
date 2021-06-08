@@ -16,6 +16,7 @@ public class CalenderController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Calendar c=null;
 		String host=req.getParameter("host");
+		//String host="test11";
 		String year=req.getParameter("year");
 		String month=req.getParameter("month");
 		if(year!=null) {

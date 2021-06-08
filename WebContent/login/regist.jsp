@@ -8,7 +8,8 @@
 <title>회원가입</title>
 <style type="text/css">
 	*{margin:0px;padding:0px;}
-	.btn1{width:100px; height:40px; font-size:16px; border:2px solid black; background-color:black; color:white;}
+	body{background-color: black;}
+	.btn1{width:100px; height:40px; font-size:16px; border:2px solid black; background-color:black; color:white; border:2px solid white;}
 	tr{height:50px;}
 	th{width:150px; background-color:#ccc}
 	td{width:650px; background-color: #eee}
@@ -16,12 +17,12 @@
 </style>
 </head>
 <body>
-<div id="wrap" style="margin:auto; width:800px; height: 800px; background-color:white;">
+<div id="wrap" style="margin:auto; margin-top:100px; width:800px; height: 800px; padding-left:100px; padding-right:100px; border-color: white; border-style: dotted;">
 	<div style="padding-top:50px; ">
-	<h1 style="padding-top:50px; ">회원가입</h1>
+	<h1 style="padding-top:50px; margin-bottom:10px; color:white;">회원가입</h1>
 	
-	아래의 내용을 모두 입력해 주세요
-	<form method="post" action="${pageContext.request.contextPath }/login/regist">
+	<span style="color:white;">아래의 내용을 모두 입력해 주세요</span>
+	<form method="post" action="${pageContext.request.contextPath }/login/regist" style="margin-top:50px;">
 		<div id="registBox" >
 		<table>
 		
@@ -140,42 +141,42 @@
 	id.onfocus=function(){
 		if(checking%2==1)checking-=1;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	pwd.onfocus=function(){
 		if(checking%4>=2)checking-=2;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	pwdchk.onfocus=function(){
 		if(checking%8>=4)checking-=4;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	name.onfocus=function(){
 		if(checking%16>=8)checking-=8;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	email.onfocus=function(){
 		if(checking%32>=16)checking-=16;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	phone.onfocus=function(){
 		if(checking%64>=32)checking-=32;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	question.onfocus=function(){
 		if(checking%128>=64)checking-=64;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	answer.onfocus=function(){
 		if(checking%256>=128)checking-=128;
 		console.log(checking);
-		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver;\">";
+		buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" disabled=\"disabled\" style=\"background-color: silver; border:2px solid white;\">";
 	}
 	
 	id.onblur=function(){
@@ -203,7 +204,7 @@
 						idcheck.innerHTML="사용할 수 있는 아이디입니다.";
 						if(checking%2==0)checking+=1;	
 						console.log(checking);
-						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 					}
 				}		
 			};
@@ -235,7 +236,7 @@
 			pwdcheck.innerHTML="사용할 수 있는 비밀번호입니다";		
 			if(checking%4<=2)checking+=2;	
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 		}
 	};
 	pwdchk.onblur=function(){
@@ -245,7 +246,7 @@
 			pccheck.innerHTML="비밀번호와 동일합니다";
 			if(checking%8<=4)checking+=4;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 		}else{
 			pccheck.innerHTML="비밀번호와 일치하지 않습니다";
 		}
@@ -267,7 +268,7 @@
 						namecheck.innerHTML="";
 						if(checking%16<=8)checking+=8;
 						console.log(checking);
-						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 					}
 				}		
 			};
@@ -292,7 +293,7 @@
 						emailcheck.innerHTML="";		
 						if(checking%32<=16)checking+=16;
 						console.log(checking);
-						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 					}
 				}		
 			};
@@ -321,7 +322,7 @@
 			phonecheck.innerHTML="";	
 			if(checking%64<=32)checking+=32;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 		}
 	}
 	question.onblur=function(){
@@ -332,7 +333,7 @@
 			questcheck.innerHTML="";	
 			if(checking%128<=64)checking+=64;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 		}
 	}
 	answer.onblur=function(){
@@ -343,7 +344,7 @@
 			answercheck.innerHTML="";	
 			if(checking%256<=128)checking+=128;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black; border:2px solid white;\">";}
 		}
 	}
 	

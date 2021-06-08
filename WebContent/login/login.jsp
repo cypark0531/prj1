@@ -8,21 +8,22 @@
 <title>로그인 페이지</title>
 <style type="text/css">
 	*{margin:0px;padding:0px;}
+	body{background-color: black;}
 	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
-	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:black; color:white;}
-	.btn2{width:223px; height:40px; font-size:15px; border:2px solid black; background-color:black; color:white;}
+	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color: white; color:black;}
+	.btn2{width:223px; height:40px; font-size:15px; border:2px solid black; background-color: white; color:black;}
 	 
 </style>
 </head>
 <body>
-<div id="wrap" style="margin:auto; width:600px; height: 800px; background-color:white;">
+<div id="wrap" style="margin:auto;margin-top:100px; width:600px; height: 800px; border-color: white; border-style: dotted;">
 	<div style="padding-top:50px; padding-left:75px; width:450px;">
 	
 	<form method="post" action="${pageContext.request.contextPath }/login/login">
 		<img src="${pageContext.request.contextPath }/login/loginlogo450x150.png">
 		<c:if test="${fail!=null }">
-			<div style="padding-top:60px; width:450px; height:30px; border:2px solid red">
-				에러: 올바른 아이디와 비밀번호를 입력해주세요
+			<div style="margin-top:60px; width:450px; height:30px; background-color: black; text-align: center;">
+				<span style="color:white;">올바른 아이디와 비밀번호를 입력해주세요</span>
 			</div>
 		</c:if>
 		<div id="loginType" style="padding-top:60px; width:450px;">
@@ -31,10 +32,10 @@
 			<input class="typing" type="password" name="pwd" placeholder="비밀번호"><br><div style="height:10px"></div>
 			<c:choose>
 				<c:when test="${id!=null }">
-				<input type="checkbox" name="box" value="true" checked="checked"><span>   아이디 저장</span>
+				<input type="checkbox" name="box" value="true" checked="checked"><span style="color:white">   아이디 저장</span>
 				</c:when>
 				<c:otherwise>
-				<input type="checkbox" name="box" value="true"><span>   아이디 저장</span>
+				<input type="checkbox" name="box" value="true"><span style="color:white">   아이디 저장</span>
 				</c:otherwise>
 			</c:choose>
 			   

@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 <style>
 *{margin:0px; padding:0px;}
+body{background-color: black;}
 #cal, #cal td, #cal th {  border: 1px solid #ddd;text-align: left;}
 #cal {border-collapse:collapse; width: 100%;}
-#cal th {text-align: center;}
+#cal th {text-align: center; color:white;}
 #cal td {height: 40px; margin:0px; padding:0px;}
 
 
@@ -21,8 +22,9 @@
 </style>
 </head>
 <body>
-<div style="width:600px; height: 500px; border:1px solid gray">
-	<div style="margin-left:35%;">
+<div id="wrap" style="margin:auto; margin-top:100px; padding: 100px 60px 100px 60px; width:800px; border-color: white; border-style: dotted;">
+<div style="width:600px; height: 500px; border:1px solid gray; margin:auto;">
+	<div style="margin-left:35%; color:white;">
 		<input type="button" id="prevmonth" value="<<">
 		<span style="font-size: large;">${year }년 ${month }월</span>
 		<input type="button" id="nextmonth" value=">>">
@@ -51,7 +53,7 @@
 						<div style="background-color: silver; width:100%; height:20px">
 							<c:out value="${array.day}"/>
 						</div>
-						<div class="disp" style="width:84px; height:20px">
+						<div class="disp" style="width:84px; height:20px; color:white;">
 							<c:if test="${array.scheNum!=0 }">
 								<c:out value="일정: ${array.scheNum }"/>
 							</c:if>
@@ -73,6 +75,7 @@
 	<input style="padding-left:6px; padding-right:6px;" type="button" value="저장" id="savebtn">
 	<input style="padding-left:6px; padding-right:6px;" type="button" value="취소" id="cancelbtn">
 	</div>
+</div>
 </div>
 </body>
 <script type="text/javascript">
@@ -111,18 +114,18 @@
 				let child=calrow[j].children;
 				for(let n=3;n<child.length;n+=4 ){
 					child[n].style="height:40px";				
-					child[n].childNodes[1].style="background-color:silver;";
-					child[n].childNodes[3].style="width:84px; height:20px;";					
+					child[n].childNodes[1].style="background-color:silver; color:white;";
+					child[n].childNodes[3].style="width:84px; height:20px; color:white;";					
 				}
 			}
 			let tr=td[i].parentElement;
 			let tds=tr.children;
 			for(let j=3;j<tds.length;j+=4){
 				tds[j].style="height:104px";
-				tds[j].childNodes[3].style="width:84px; height:80px;";
+				tds[j].childNodes[3].style="width:84px; height:80px; color:white;";
 			}
 			
-			td[i].childNodes[1].style="background-color:#FAED7D;";
+			td[i].childNodes[1].style="background-color:#FAED7D; color:white;";
 			currday=i;
 			
 			let day=0;
@@ -239,8 +242,8 @@
 			let child=calrow[j].children;
 			for(let n=3;n<child.length;n+=4 ){
 				child[n].style="height:40px";				
-				child[n].childNodes[1].style="background-color:silver;";
-				child[n].childNodes[3].style="width:84px; height:20px;";					
+				child[n].childNodes[1].style="background-color:silver;color:white;";
+				child[n].childNodes[3].style="width:84px; height:20px;color:white;";					
 				child[n].childNodes[3].innerHTML="";					
 			}
 		}
