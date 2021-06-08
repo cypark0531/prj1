@@ -56,6 +56,8 @@ public class HomeController extends HttpServlet {
 //		System.out.println("path" + req.getParameter("path"));
 		if(req.getParameter("dPath")!=null) {
 			dPath = (String) req.getParameter("dPath");
+			dPath += "?id="+ req.getParameter("id")+ "&gid="+req.getParameter("gid");
+			
 		}
 		req.setAttribute("dPath", dPath);
 //		if(content==null)	{
@@ -66,7 +68,6 @@ public class HomeController extends HttpServlet {
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
 	application.setAttribute("cp", cp);
-	getDiary(req,resp);
 	req.setAttribute("id", "test");
 	req.setAttribute("gid", "test1");
 	//req.setAttribute("content", content);

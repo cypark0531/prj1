@@ -41,7 +41,7 @@
 		<div id = "main">
 		</div>
 		<div>
-		<input type= "button" value= "글쓰기" id = btnn>
+		<input type= "button" value= "글쓰기" id = "btnn">
 		
 		</div>
 	</div>
@@ -92,7 +92,10 @@
 						newInput1 = document.createElement("input");
 						newInput1.type= "button";
 						newInput1.value= "삭제";
-						newInput1.onclick = "ddelete("+dnum+")";
+						newInput1.addEventListener('click', function(e) {
+							console.log(dnum)
+							ddelete(dnum);
+						});
 						
 						newTd2.appendChild(newInput1);
 						newTd1.innerHTML = dcontent;
@@ -118,11 +121,20 @@
 		}
 		}
 		var btnn = document.getElementById("btnn")
-		btnn.onclick = "dinsert(${param.id},${param.gid})";
-		function dinsert(id,pid){
-			var path = "${pageContext.request.contextPath}/diary/insert.jsp?id="+id+"&gid="+gid;
-			location.href = "${pageContext.request.contextPath}/home?dPath="+path;
+		btnn.onclick = function(){
+			var dPath = "/diary/insert.jsp";
+			
+			location.href = "${pageContext.request.contextPath}/home?dPath="+dPath+"&id=${param.id}&gid=${param.gid}";
+;
+		};
+		function ddelete(dnum){
+			console.log("${pageContext.request.contextPath}/diary/delete?id=${param.id}&gid=${param.gid}&dnum="+dnum)
+			location.href = "${pageContext.request.contextPath}/diary/delete?id=${param.id}&gid=${param.gid}&dnum="+dnum;
+			
 		}
+			
+			
+			
 		
 	</script>
 	

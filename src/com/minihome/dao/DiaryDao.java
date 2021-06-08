@@ -93,4 +93,21 @@ public class DiaryDao {
 		}
 	
 	}
+	public int delete(int dnum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "delete from Diary where dnum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dnum);
+			
+			return pstmt.executeUpdate();
+	}catch (Exception e) {
+		e.printStackTrace();
+		return -1;
+	}finally {
+		MyDBCP.close(con, pstmt, null);
+	}
+	}
 }
