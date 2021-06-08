@@ -7,18 +7,19 @@
 <title>비밀번호 찾기</title>
 <style type="text/css">
 	*{margin:0px;padding:0px;}
+	body{background-color: black;}
 	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
-	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:#FF8224; color:white;}
+	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:black; color:white;}
 	
 </style>
 </head>
 <body>
-<div id="wrap" style="margin:auto; width:600px; height: 800px; background-color:white;">
+<div id="wrap" style="margin:auto; margin-top:100px; width:600px; height: 800px; border-color: white; border-style: dotted;">
 	<div style="padding-top:50px; padding-left:75px; width:450px;">
-	<h1 style="padding-top:50px;">비밀번호 찾기</h1>
+	<h1 style="padding-top:50px; color:white">비밀번호 찾기</h1>
 	
 	<form method="post" action="${pageContext.request.contextPath }/login/findpwd">
-		<div id="loginType" style="padding-top:60px; width:450px;">
+		<div id="loginType" style="padding-top:60px; width:450px; color:white">
 			<input class="typing" id="id" name="id" placeholder="아이디"><br><div style="height:10px"></div>
 			비밀번호질문   <select id="question" name="question" >
 				<option value="">--- 선택하세요 ---</option>
@@ -34,6 +35,7 @@
 		<div id="buttons" style="padding-top:40px; width:450px;">
 			<input class="btn1" type="submit" value="비밀번호 찾기" disabled="disabled" style="background-color: silver;"><br><div style="height:5px"></div>
 		</div>
+		<a href="${pageContext.request.contextPath }/login/login" style="color:white">로그인</a>
 	</form>	
 	</div>
 </div>
@@ -63,21 +65,21 @@
 		if(id.value!="" && id.value!=null){
 			if(checking%2==0)checking+=1;
 			console.log(checking);
-			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: white; color:black;\">";
 		}
 	}
 	question.onblur=function(){
 		if(question.value!="" && question.value!=null){
 			if(checking%4<2)checking+=2;
 			console.log(checking);
-			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: white; color:black;\">";
 		}
 	}
 	answer.onblur=function(){
 		if(answer.value!="" && answer.value!=null){
 			if(checking%8<4)checking+=4;
 			console.log(checking);
-			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: white; color:black;\">";
 		}
 	}
 </script>

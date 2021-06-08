@@ -15,8 +15,10 @@ public class CalenderController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Calendar c=null;
-		String year=(String)req.getParameter("year");
-		String month=(String)req.getParameter("month");
+		String host=req.getParameter("host");
+		//String host="test11";
+		String year=req.getParameter("year");
+		String month=req.getParameter("month");
 		if(year!=null) {
 			c=Calendar.getInstance();
 			c.set(Integer.parseInt(year), Integer.parseInt(month), 1);
@@ -43,6 +45,7 @@ public class CalenderController extends HttpServlet{
 		}
 		
 		
+		req.setAttribute("host", host);
 		req.setAttribute("year", currYear);
 		req.setAttribute("month", currMonth+1);
 		req.setAttribute("arr", arr);

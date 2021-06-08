@@ -19,16 +19,14 @@ public class FindIdController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String name=req.getParameter("name");
 		String email=req.getParameter("email");
 		String phone=req.getParameter("phone");
 		MembersVO vo=new MembersVO();
-		vo.setName(name);
 		vo.setEmail(email);
 		vo.setPhone(phone);
 		
 		MembersDao dao=MembersDao.getIntstance();
-		String id=dao.findId(vo);		
+		String id=dao.findId(vo);	
 
 		req.setAttribute("id", id);
 		req.getRequestDispatcher("/login/findidresult.jsp").forward(req, resp);

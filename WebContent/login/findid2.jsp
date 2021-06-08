@@ -42,6 +42,7 @@
 	</c:choose>
 		<div style="width:450px;">	
 			<a href="${pageContext.request.contextPath }/login/findpwd">비밀번호 찾기</a>
+			<a href="${pageContext.request.contextPath }/login/login">로그인</a>
 		</div>
 	</div>
 </div>
