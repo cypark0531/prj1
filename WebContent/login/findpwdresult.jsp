@@ -9,7 +9,7 @@
 <style type="text/css">
 	*{margin:0px;padding:0px;}
 	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
-	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:#FF8224; color:white;}
+	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:black; color:white;}
 	
 </style>
 </head>

@@ -28,6 +28,7 @@
 		</div>
 	</form>	
 	<div style="width:450px;">	
+		<a href="${pageContext.request.contextPath }/login/login">로그인</a>
 		<a href="${pageContext.request.contextPath }/login/findpwd">비밀번호 찾기</a>
 	</div>
 	</div>
@@ -50,14 +51,14 @@
 	email.onblur=function(){
 		if(email.value!="" && email.value!=null){
 			if(checking%2==0)checking+=1;
-			if(checking==3)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" style=\"background-color: #FF8224;\">";			
+			if(checking==3)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" style=\"background-color: black;\">";			
 			
 		}
 	}
 	phone.onblur=function(){
 		if(phone.value!="" && phone.value!=null){
 			if(checking%4<2)checking+=2;
-			if(checking==3)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==3)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"아이디 찾기\" style=\"background-color: black;\">";
 			
 		}
 	}

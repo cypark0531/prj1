@@ -96,8 +96,17 @@
 	var savebtn=document.getElementById("savebtn");
 	var cancelbtn=document.getElementById("cancelbtn");
 	
+	if("${requestScope.host}"!="${sessionScope.id}"){
+		savebtn.disabled="disabled";
+		for(let i=0;i<4;i++){
+			arrday[i].readonly="readonly";
+			schedule[i].readonly="readonly";
+			open[i].disabled="disabled";
+		}
+	}
+	
 	for(let i=0;i<td.length;i++){			
-		td[i].onclick=function show(){
+		td[i].onclick=function(){
 			for(let j=0;j<calrow.length;j++){
 				let child=calrow[j].children;
 				for(let n=3;n<child.length;n+=4 ){
@@ -196,12 +205,12 @@
 	prevmonth.onclick=function(){
 		let year=${year};
 		let month=${month}-2;
-		location.replace("calendar?year="+year+"&month="+month);
+		location.replace("calendar?host=${host}&year="+year+"&month="+month);
 	}
 	nextmonth.onclick=function(){
 		let year=${year};
 		let month=${month};
-		location.replace("calendar?year="+year+"&month="+month);
+		location.replace("calendar?host=${host}&year="+year+"&month="+month);
 	}
 	savebtn.onclick=function(){
 		for(let j=0;j<time.length;j++){
@@ -217,7 +226,7 @@
 				xhr.onreadystatechange=function(){
 					if(xhr.readyState==4 && xhr.status==200)console.log(t);
 				};				
-				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"test11"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
+				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"${sessionScope.id}"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
 				xhr.send();
 			}
 			

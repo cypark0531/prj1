@@ -16,16 +16,17 @@ public class ScheduleDao {
 	public static ScheduleDao getInstance() {
 		return dao;
 	}
-	public ArrayList<Integer> getNum(String id){
+	public ArrayList<Integer> getNum(String id,int rel){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		ArrayList<Integer> list=new ArrayList<>();
-		String sql="select * from schedule where id=?";
+		String sql="select * from schedule where id=? and schopen<=?";
 		try {
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			pstmt.setInt(2, rel);
 			rs=pstmt.executeQuery();
 			rs.next();
 			{
@@ -111,6 +112,5 @@ public class ScheduleDao {
 		} finally {
 			MyDBCP.close(con, pstmt, null);
 		}
-	}
-	
+	}	
 }

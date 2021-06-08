@@ -8,7 +8,7 @@
 <title>회원가입</title>
 <style type="text/css">
 	*{margin:0px;padding:0px;}
-	.btn1{width:100px; height:40px; font-size:16px; border:2px solid black; background-color:#FF8224; color:white;}
+	.btn1{width:100px; height:40px; font-size:16px; border:2px solid black; background-color:black; color:white;}
 	tr{height:50px;}
 	th{width:150px; background-color:#ccc}
 	td{width:650px; background-color: #eee}
@@ -203,7 +203,7 @@
 						idcheck.innerHTML="사용할 수 있는 아이디입니다.";
 						if(checking%2==0)checking+=1;	
 						console.log(checking);
-						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 					}
 				}		
 			};
@@ -235,7 +235,7 @@
 			pwdcheck.innerHTML="사용할 수 있는 비밀번호입니다";		
 			if(checking%4<=2)checking+=2;	
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 		}
 	};
 	pwdchk.onblur=function(){
@@ -245,7 +245,7 @@
 			pccheck.innerHTML="비밀번호와 동일합니다";
 			if(checking%8<=4)checking+=4;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 		}else{
 			pccheck.innerHTML="비밀번호와 일치하지 않습니다";
 		}
@@ -267,7 +267,7 @@
 						namecheck.innerHTML="";
 						if(checking%16<=8)checking+=8;
 						console.log(checking);
-						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 					}
 				}		
 			};
@@ -292,7 +292,7 @@
 						emailcheck.innerHTML="";		
 						if(checking%32<=16)checking+=16;
 						console.log(checking);
-						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+						if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 					}
 				}		
 			};
@@ -321,7 +321,7 @@
 			phonecheck.innerHTML="";	
 			if(checking%64<=32)checking+=32;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 		}
 	}
 	question.onblur=function(){
@@ -332,7 +332,7 @@
 			questcheck.innerHTML="";	
 			if(checking%128<=64)checking+=64;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 		}
 	}
 	answer.onblur=function(){
@@ -343,7 +343,7 @@
 			answercheck.innerHTML="";	
 			if(checking%256<=128)checking+=128;
 			console.log(checking);
-			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: #FF8224;\">";}
+			if(checking==255){buttons.innerHTML="<input class=\"btn1\" type=\"submit\" id=\"registbtn\" value=\"회원가입\" style=\"background-color: black;\">";}
 		}
 	}
 	
