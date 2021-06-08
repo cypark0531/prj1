@@ -58,7 +58,7 @@ public class galleryupdateController extends HttpServlet{
 		}else {
 				
 		}
-		resp.sendRedirect(req.getContextPath()+"/gallery/list.jsp?id="+id+"gid"+//gid);
+		resp.sendRedirect(req.getContextPath()+"/gallery/list.jsp?id="+id+"gid");//gid);
 		
 		
 		
