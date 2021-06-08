@@ -7,20 +7,8 @@
 <meta charset="UTF-8">
 <title>diary/insert.jsp</title>
 <style type="text/css">
-body {
-	margin:0;
-  background-color: #121418;
-  display: flex;
-  font-family: "Inter", sans-serif;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 200vh;
-  padding: 0 2em;
 
-  height: 100vh;
-	font-size: 16px;
-}
+
 
 </style>
 
@@ -32,13 +20,13 @@ body {
 	String id = request.getParameter("id");
 	System.out.print(id);
 	%>
-<div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
-	<div class="container">
-	<div class= "inner">
+<div class="wrap" >
+	<div class="container"  >
+	<div class= "inner" style=" display: block;">
 		<h2>PROFILE REGISTER</h2>
 	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/diary/insert" method="post">
-	<table   class="table02"  >
-	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
+	<table   class="table02" >
+	<caption><strong >'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
 			<col width="30%">
 			<col width="*">

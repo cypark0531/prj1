@@ -1,6 +1,7 @@
 package com.minihome.home;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -69,6 +70,16 @@ public class HomeController extends HttpServlet {
 		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
 		req.setAttribute("gvo", gvo);
 		System.out.println("galcontent : "+gvo.getGalcontent());
+		String galtitle = gvo.getGaltitle();
+		String galcontent = gvo.getGalcontent();
+		String galsavename = gvo.getGalsavename();
+		Date regdate = gvo.getRegdate();
+		
+		req.setAttribute("galtitle",galtitle);
+		req.setAttribute("galcontent", galcontent);
+		req.setAttribute("galsavename", galsavename);
+		req.setAttribute("regdate", regdate);
+		
 	System.out.println(dPath);
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
