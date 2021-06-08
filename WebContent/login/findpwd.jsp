@@ -8,7 +8,7 @@
 <style type="text/css">
 	*{margin:0px;padding:0px;}
 	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
-	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:#FF8224; color:white;}
+	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color:black; color:white;}
 	
 </style>
 </head>
@@ -34,6 +34,7 @@
 		<div id="buttons" style="padding-top:40px; width:450px;">
 			<input class="btn1" type="submit" value="비밀번호 찾기" disabled="disabled" style="background-color: silver;"><br><div style="height:5px"></div>
 		</div>
+		<a href="${pageContext.request.contextPath }/login/login">로그인</a>
 	</form>	
 	</div>
 </div>
@@ -63,21 +64,21 @@
 		if(id.value!="" && id.value!=null){
 			if(checking%2==0)checking+=1;
 			console.log(checking);
-			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: black;\">";
 		}
 	}
 	question.onblur=function(){
 		if(question.value!="" && question.value!=null){
 			if(checking%4<2)checking+=2;
 			console.log(checking);
-			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: black;\">";
 		}
 	}
 	answer.onblur=function(){
 		if(answer.value!="" && answer.value!=null){
 			if(checking%8<4)checking+=4;
 			console.log(checking);
-			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: #FF8224;\">";
+			if(checking==7)buttons.innerHTML="<input class=\"btn1\" type=\"submit\" value=\"비밀번호 찾기\" style=\"background-color: black;\">";
 		}
 	}
 </script>
