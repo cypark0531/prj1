@@ -17,7 +17,6 @@ body {
   flex-direction: column;
   width: 200vh;
   padding: 0 2em;
-
   height: 100vh;
 	font-size: 16px;
 }
@@ -82,9 +81,13 @@ body {
 	</table>
 	<div class="btn_right mt15" style=" float: right;" >
 
-	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
+	<input type="button" class="btn mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+<<<<<<< HEAD
+ 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+=======
  	 <input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.gid}"> 
 	 </div>

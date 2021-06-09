@@ -79,7 +79,10 @@
 	let days = document.getElementsByClassName("day");
 	for(let i =0;i<days.length;i++){
 		let k = i+1;
+
 		days[i].innerHTML = "<a style='font-weight:600; font-size:20px; border-top: none;' href = 'javascript:content("+k+");'>"+k+"</a>";
+
+
 	}
 		for(let i=0;i<${param.lastDay};i++){
 		let year = document.getElementById("year");
