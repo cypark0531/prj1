@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
+
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -42,12 +45,7 @@ top.window.outerWidth = screen.availWidth;
 	}
 	
 </script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
-<style type="text/css">
 
-
-</style>
 
 </head>
 <body style="color:#383a3d;">
