@@ -177,6 +177,7 @@ public class MembersDao {
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,id);
+			System.out.println(id);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				return rs.getInt("money");
@@ -192,14 +193,30 @@ public class MembersDao {
 	public int moneyUpdate(String id,int gprice) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		String sql="update Members set money = money - ? where id = ?";
+		String sql="update Members set money=money-? where id=?";
 		try{
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,gprice);
 			pstmt.setString(2,id);
 			return pstmt.executeUpdate();
-			
+		}catch(SQLException e){
+			e.printStackTrace();
+			return -1;
+		}finally{
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
+	public int moneyRefund(String id,int gprice) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="update Members set money=money+? where id=?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,gprice);
+			pstmt.setString(2,id);
+			return pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
 			return -1;

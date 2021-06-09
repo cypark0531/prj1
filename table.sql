@@ -47,6 +47,13 @@ CREATE TABLE basket
 	basnum number(10) NOT NULL,
 	-- 아이디
 	id varchar2(20) NOT NULL,
+    --사진
+    gsaveimg varchar2(30),
+	gorgimg varchar2(30),
+    -- 상품가격
+	gprice number(10) NOT NULL,
+    --상품이름
+    gname varchar2(100) NOT NULL UNIQUE,
 	-- 상품코드
 	gcode varchar2(20) NOT NULL,
 	PRIMARY KEY (basnum)

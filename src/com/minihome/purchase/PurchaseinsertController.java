@@ -18,21 +18,25 @@ public class PurchaseinsertController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id=req.getParameter("id");
 		String gcode=req.getParameter("gcode");
-		PurchaseDao dao=PurchaseDao.getInstance();
-		PurchaseVo vo=new PurchaseVo(0, id, gcode, null);
 		int gprice = Integer.parseInt(req.getParameter("gprice"));
-		if(gprice > MembersDao.getIntstance().getMoney(id)) {
-			int n = MembersDao.getIntstance().moneyUpdate(id, gprice);
+		System.out.println(id);
+		System.out.println(gprice);
+		if(gprice <= MembersDao.getIntstance().getMoney(id)) {
+			int b = MembersDao.getIntstance().moneyUpdate(id, gprice);
+			PurchaseDao dao=PurchaseDao.getInstance();
+			PurchaseVo vo=new PurchaseVo(0, id, gcode, null);
+			int n=dao.PurchaseInsert(vo);
 			if(n>0) {
-				
-			}else {
-				req.getRequestDispatcher("/goods/goodsresult.jsp?fail=1").forward(req, resp);
+				if(b>0) {
+//					req.setAttribute("money", MembersDao.getIntstance().getMoney(id));
+//					req.getRequestDispatcher("../goods/goodslist.jsp").forward(req, resp);
+					resp.sendRedirect(req.getContextPath()+"/goods/goodsmain.jsp");
+					return;
+				}else {
+					req.setAttribute("code", "fail");
+					req.getRequestDispatcher("/goods/goodsresult.jsp").forward(req, resp);
+				}
 			}
-		}
-		
-		int n=dao.PurchaseInsert(vo);
-		if(n>0) {
-			req.setAttribute("code", "success");
 		}else {
 			req.setAttribute("code", "fail");
 		}
