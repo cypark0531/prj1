@@ -21,14 +21,18 @@ public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProfilesDao dao = ProfilesDao.getInstance();
-		String id = "test4";
-		String gid = "test1";
+		String id = "test";
+		String gid = "test";
 		req.setAttribute("id", id);
+		req.setAttribute("gid", gid);
+		
+		//Profiles 프로필
 		ArrayList<ProfilesVo> list = dao.list(id);
-		//String content = (String) req.getAttribute("content");
-//		String id = req.getParameter("id");
-		
-		
+		if(list.size()<1) {
+			req.setAttribute("profile", 1);
+		}else {
+			req.setAttribute("profile",2);
+		}
 		String psaveimg = null;
 		String ptitle = null;
 		String pintro = null;
@@ -42,10 +46,13 @@ public class HomeController extends HttpServlet {
 		}
 		System.out.println("占쏙옙占쏙옙 : " +psaveimg);
 		
+		req.setAttribute("list", list);
 		req.setAttribute("psaveimg", psaveimg);
 		req.setAttribute("ptitle", ptitle);
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
+		
+		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
 		if(musicBox==null) {
@@ -53,6 +60,7 @@ public class HomeController extends HttpServlet {
 		}
 		
 		
+		//Dairy 다이어리
 		String dPath = getDiary(req, resp);
 		//String dPath = "/diary/main?id=test&gid=test";
 //		System.out.println("path" + req.getParameter("path"));
@@ -84,8 +92,8 @@ public class HomeController extends HttpServlet {
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
 	application.setAttribute("cp", cp);
-	req.setAttribute("id", "test");
-	req.setAttribute("gid", "test1");
+	//req.setAttribute("id", "test");
+	//req.setAttribute("gid", "test1");
 	//req.setAttribute("content", content);
 	//req.setAttribute("path", path);
 	req.setAttribute("musicBox", musicBox);

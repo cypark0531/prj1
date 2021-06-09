@@ -18,13 +18,13 @@ public class DiaryInsertController extends HttpServlet{
 		String id = req.getParameter("id");
 		String gid= req.getParameter("gid");
 		String dcontent = req.getParameter("dcontent");
-		int dopen = Integer.parseInt(req.getParameter("dopen"));
+		//int dopen = Integer.parseInt(req.getParameter("dopen"));
 		
 		Calendar c = Calendar.getInstance();
 		int currYear=c.get(c.YEAR);//현재년
 		int currMonth=c.get(c.MONTH)+1;//현재월
 		int currDay= c.get(c.DAY_OF_MONTH);
-		DiaryVo vo = new DiaryVo(0, id, dcontent,dopen, null);
+		DiaryVo vo = new DiaryVo(0, id, dcontent,0, null);
 		int n = DiaryDao.getInstance().insert(vo, currYear, currMonth, currDay);
 		if(n>0) {
 			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);

@@ -86,7 +86,7 @@ public class HistoriesDao {
 		
 		try {
 			con = MyDBCP.getConnection();
-			String sql= "select * from histories where id = ?";
+			String sql= "select * from histories where id = ? order by regdate desc";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -108,4 +108,25 @@ public class HistoriesDao {
 			MyDBCP.close(con, pstmt, rs);
 		}
 	}
+	public int getCount(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con =MyDBCP.getConnection();
+			String sql = "select NVL(count(hnum),0) from histories where id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mnum = rs.getInt(1);
+			return mnum;
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				MyDBCP.close(con, pstmt, rs);
+			}
+		}
 }

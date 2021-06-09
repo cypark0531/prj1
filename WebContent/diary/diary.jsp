@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script type="text/javascript">
+		
+	</script>
 </head>
 <body>
 
@@ -41,8 +43,13 @@
 		<div id = "main">
 		</div>
 		<div>
+		<input type= "text"  id = "insertContent" style="color: black;">
 		<input type= "button" value= "글쓰기" id = "btnn">
 		
+		</div>
+	
+		<div id = "pageDiv">
+		${param.id}
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -71,7 +78,7 @@
 			location.href = "${pageContext.request.contextPath}/home?year="+year+"&month="+month+"&id=${param.id}&gid=${param.gid}"
 		}
 		
-		function content(k){
+		function content(k,pageNum){
 			reload();
 			xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function(){
@@ -104,15 +111,47 @@
 						newTr.appendChild(newTd2)
 						newTable.appendChild(newTr);
 						main.appendChild(newTable);
+						/* 
+						pw.print("<page>");
+						pw.print("<pageNum>"+pageNum+"</pageNum>");
+						pw.print("<startPageNum>"+startPageNum+"</startPageNum>");
+						pw.print("<endPageNum>"+endPageNum+"</endPageNum>");
+						pw.print("<startRow>"+startRow+"</startRow>");
+						pw.print("<endRow>"+endRow+"</endRow>");
+						pw.print("</page>");
+						*/
+						let pageNum = xml.getElementsByTagName("pageNum")[0].textContent;
+						let startPageNum = xml.getElementsByTagName("startPageNum")[0].textContent;
+						let endPageNum = xml.getElementsByTagName("endPageNum")[0].textContent; 
+						let startRow = xml.getElementsByTagName("startRow")[0].textContent; 
+						let endRow = xml.getElementsByTagName("endRow")[0].textContent;
+						console.log(startPageNum)
+						console.log(endPageNum);
+						let str = "";
+						pageDiv = document.getElementById("pageDiv");
+						for(let i=startPageNum;i<=endPageNum;i++){
+							if(pageNum==i){
+								str = str +"<a href = 'javascript:content("+k+","+i+")'>" +"<span style='color:black;font-weight: 900'>"+[i] +"</span>"+"</a>";
+								
+							}else{
+								str = str +"<a href = 'javascript:content("+k+","+i+")'>" +"<span style='color:gray;font-weight: 900'>"+[i] +"</span>"+"</a>";
+								
+							}
+						}
+						console.log(str);
+						pageDiv.innerHTML = str;
+						console.log(pageDiv);
+						
 					}
-					
 				}
 			}
-			xhr.open("get","${pageContext.request.contextPath}/diary/list?gid=${param.gid}&id=${param.id}&year=${param.year}&month=${param.month}&date="+k)
+			xhr.open("get","${pageContext.request.contextPath}/diary/list?gid=${param.gid}&id=${param.id}&year=${param.year}&month=${param.month}&date="+k+"&pageNum="+pageNum)
 			xhr.send();
 			
 		}
-		content(${param.day})
+		
+		content(${param.day},1)
+		
 		function reload(){
 			let div = document.getElementById("main");
 			let childs = div.childNodes;
@@ -120,20 +159,21 @@
 				div.removeChild(childs.item(i))
 		}
 		}
-		var btnn = document.getElementById("btnn")
+		var xhr1 = null;
+		var btnn = document.getElementById("btnn");
 		btnn.onclick = function(){
-			var dPath = "/diary/insert.jsp";
-			
-			location.href = "${pageContext.request.contextPath}/home?dPath="+dPath+"&id=${param.id}&gid=${param.gid}";
-;
-		};
+			let insertContent = document.getElementById("insertContent").value;
+			location.href = "${pageContext.request.contextPath}/diary/insert?id=${param.id}&gid=${param.gid}&dcontent="+insertContent;
+				
+			};
 		function ddelete(dnum){
 			console.log("${pageContext.request.contextPath}/diary/delete?id=${param.id}&gid=${param.gid}&dnum="+dnum)
 			location.href = "${pageContext.request.contextPath}/diary/delete?id=${param.id}&gid=${param.gid}&dnum="+dnum;
 			
 		}
+		
 			
-			
+	
 			
 		
 	</script>

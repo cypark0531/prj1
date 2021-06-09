@@ -30,14 +30,13 @@ body {
 <body>
 <% 
 	String id = request.getParameter("id");
-	String gid = request.getParameter("gid");
 	System.out.print(id);
 	%>
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
-		<h2>PROFILE REGISTER</h2>
-	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/profile/upload?id=${param.id}&gid=${param.id}" enctype="multipart/form-data" method="post">
+		<h2>VISITOR'S BOOK</h2>
+	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/histories/insert?id=${param.id}&gid=${param.id}" method="post">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
@@ -47,36 +46,14 @@ body {
 		
 		<tbody id="tbody" >
 		<tr>
-		<th>POFILE TITLE<span class="t_red"> *</span></th>
-		<td><input  type= "text" id="ptitle" name="ptitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
+		<th>VISITOR'S BOOK TITLE<span class="t_red"> *</span></th>
+		<td><input  type= "text" id="ptitle" name="htitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
 		</tr>
 		<tr>
-			<th>MYPAGE MAIN TITLE<span class="t_red"> *</span></th>
-			<td><input type= "text" id="htitle" name="htitle" value="" class="tbox2" style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="2" onkeyup="moveFocus(this);"></td>
-		</tr>
-		<tr>
-		<th>MY INRODUCE<span class="t_red"> *</span></th>
-                            <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
-		</tr>
-		<tr>
-			<th>MY PROFILE<br>(Attached File)</th>
-			
-			<td colspan="3" id="img_td"> <input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 400px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" onchange="readURL(this)" >					
-			<br /><br />
-			<img id="preview" style="width: 300px; height: 300px; margin-right:  20px; margin-bottom: 50px; float: right;" />
-			</td>
+		<th>VISITOR'S BOOK CONTENT<span class="t_red"> *</span></th>
+                            <td><textarea id="pintro" name="hcontent" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
 		</tr>
 	
-		<tr>
-		<th>OPEN CHECK<span class="t_red"> *</span></th>
-		<td>
-		<select name= "popen" style="font-size: 18px; background-color: #121418; color: white;">
-		<option value= "1">비공개</option>
-		<option value= "2">일촌공개</option>
-		<option value= "3">전체공개</option>
-		</select>
-		</td>
-		</tr>
 		</tbody>
 
 	</table>
@@ -86,7 +63,7 @@ body {
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
  	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	<input type= "hidden" name = "id" value= "${param.id}"> 
-	<input type= "hidden" name = "gid" value= "${param.gid}"> 
+	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>
 	 </form>
 	</div>
@@ -118,7 +95,7 @@ var btn2 = document.getElementById("btn2");
 
  
  btn1.addEventListener('click', function(e) {
-	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=600,height=800,resizable = no, scrollbars = no");
+	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no");
 	 btn1.style.display= 'none';
 	 btn2.style.display =  'inline';
  });
