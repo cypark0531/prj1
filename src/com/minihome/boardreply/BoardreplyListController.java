@@ -29,6 +29,7 @@ public class BoardreplyListController extends HttpServlet{
 		int startRow= (pageNum-1)*5+1;
 		int endRow= startRow+4;
 		
+		
 		ArrayList<BoardreplyVo> list = BoardReplyDao.getInstance().boardreplylist(bnum,startRow,endRow);
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw= resp.getWriter();
@@ -46,7 +47,6 @@ public class BoardreplyListController extends HttpServlet{
 			pw.print("<regdate>"+vo.getRegdate()+"</regdate>");
 			pw.print("</reply>");
 		}
-		pw.print("</result>");
 		
 		
 	}

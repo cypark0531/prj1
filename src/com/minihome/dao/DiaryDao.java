@@ -16,7 +16,7 @@ public class DiaryDao {
 		return instance;
 	}
 	
-	public ArrayList<DiaryVo> getDiary(String id, int year, int month, int date) {
+	public ArrayList<DiaryVo> getDiary(String id, int year, int month, int date,int startRow,int endRow) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -24,10 +24,12 @@ public class DiaryDao {
 		ArrayList<DiaryVo> list = new ArrayList<DiaryVo>();
 		try {
 			con = MyDBCP.getConnection();
-			String sql = "select * from diary where id = ? and regdate = ?";
+			String sql = "select * from (select rownum rnum , d.* from (select * from diary where id = ? and regdate = ?)d) where rnum>=? and rnum<=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, cal);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int dnum = rs.getInt("dnum");
@@ -110,4 +112,26 @@ public class DiaryDao {
 		MyDBCP.close(con, pstmt, null);
 	}
 	}
+	public int getCount(String id, int year, int month,int date) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String cal = year+"-"+month+"-"+date;;
+		try {
+			con =MyDBCP.getConnection();
+			String sql = "select NVL(count(dnum),0) from diary where id = ? and regdate = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, cal);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mnum = rs.getInt(1);
+			return mnum;
+			}catch(Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				MyDBCP.close(con, pstmt, rs);
+			}
+		}
 }
