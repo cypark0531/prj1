@@ -33,10 +33,6 @@ public class PurchaselistController extends HttpServlet{
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
-		System.out.println(id);
-		System.out.println(pageCount);
-		System.out.println(startPageNum);
-		System.out.println(endPageNum);
 		req.setAttribute("list", list);
 	    req.setAttribute("id", id);
 	    req.setAttribute("pageCount", pageCount);

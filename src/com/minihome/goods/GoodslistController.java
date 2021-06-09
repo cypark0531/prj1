@@ -35,8 +35,6 @@ public class GoodslistController extends HttpServlet{
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
-		System.out.println(pageCount);
-		System.out.println(endPageNum);
 		req.setAttribute("goodslist", goodslist);
 		req.setAttribute("money", dao1.getMoney(id));
 		req.setAttribute("pageCount", pageCount);
