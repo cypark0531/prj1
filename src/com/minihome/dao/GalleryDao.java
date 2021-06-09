@@ -130,21 +130,21 @@ public class GalleryDao  {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
-	public ArrayList<GalleryVo> galleryList(int galnum) {
+	public ArrayList<GalleryVo> galleryList(String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<GalleryVo> list = new ArrayList<GalleryVo>();
 		try {
-		String sql = "select*from gallery where galnum=?";
+			con = MyDBCP.getConnection();
+		String sql = "select*from gallery where id =? order by regdate desc";
 		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, galnum);
+		pstmt.setString(1,id);
 		rs = pstmt.executeQuery();
 		while(rs.next()) {
 			int galnum1 = rs.getInt("galnum");
-			String id = rs.getString("id");
 			String galtitle = rs.getString("galtitle");
-			String galcontent = rs.getString("galconent");
+			String galcontent = rs.getString("galcontent");
 			String galorgname = rs.getString("galorgname");
 			String galsavename = rs.getString("galsavename");
 			int galopen = rs.getInt("galopen");
@@ -161,6 +161,37 @@ public class GalleryDao  {
 			MyDBCP.close(con, pstmt, rs);
 		}
 		
+	}
+	public GalleryVo getRecent(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select*from gallery where id=? order by regdate desc";
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {		
+				GalleryVo vo = new GalleryVo(rs.getInt("galnum"),
+										rs.getString("id"),
+										rs.getString("galtitle"),
+										rs.getString("galcontent"),
+										rs.getString("galorgname"),
+										rs.getString("galsavename"),
+										rs.getInt("galopen"),
+										rs.getDate("regdate"));
+						return vo;
+			}
+		
+		}catch (SQLException se) {
+			se.printStackTrace();
+			
+			// TODO: handle exception
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+		return null;
 	}
 
 

@@ -16,9 +16,9 @@ import com.minihome.vo.GalleryVo;
 public class GalleryListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			int galnum =  Integer.parseInt(req.getParameter("galnum"));
-			ArrayList<GalleryVo> list = GalleryDao.getInstance().galleryList(galnum);
-			resp.setContentType("text/xml;charset=utf-8:");
+			String id = req.getParameter("id");
+			ArrayList<GalleryVo> list = GalleryDao.getInstance().galleryList(id);
+			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
 			pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 			pw.print("<result>");
@@ -29,7 +29,7 @@ public class GalleryListController extends HttpServlet {
 				pw.print("<galtitle>"+vo.getGaltitle()+"</galtitle>");
 				pw.print("<galcontent>"+vo.getGalcontent()+"</galcontent>");
 				pw.print("<galorgname>"+vo.getGalorgname()+"</galorgname>" );
-				pw.print("<galsavename>"+vo.getGalorgname()+"</galsavegname>" );
+				pw.print("<galsavename>"+vo.getGalsavename()+"</galsavename>");
 				pw.print("<galopen>"+vo.getGalopen()+"</galopen>");
 				pw.print("<regdate>"+vo.getRegdate()+"</regdate>");
 				pw.print("</gallery>");

@@ -32,7 +32,7 @@
 	</div>		
 					
 	<div style="width:450px;">	
-		<a href="${pageContext.request.contextPath }/login/login">로그인</a>
+		<a href="${pageContext.request.contextPath }/login/login" style="color:white;">로그인</a>
 	</div>
 	</div>
 </div>
