@@ -207,4 +207,25 @@ public class MembersDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
+	public String getName(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select name from members money where id = ?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				return rs.getString(1);
+			}
+			return null;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
 }
