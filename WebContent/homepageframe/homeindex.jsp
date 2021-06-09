@@ -1,4 +1,6 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@page import="com.minihome.vo.ProfilesVo"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -7,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 top.window.moveTo(0,0);
 if (document.all) {
 top.window.resizeTo(screen.availWidth,screen.availHeight);
@@ -23,9 +26,21 @@ top.window.outerWidth = screen.availWidth;
 		window.resizeTo(1280,800);
 		window.scrollTo(0,250);
 	}
-	function NextPage() {
-		window.location.href= 'profile/profilelist(update).jsp';
+	function SetUp1() {
+		window.location.href= "${pageContext.request.contextPath }/profile/insert2.jsp?id=${id}";
+		
 	}
+	
+	function SetUp2() {
+		window.location.href= "${pageContext.request.contextPath }/profile/list?id=${id}";
+		
+	}
+	
+	function SeeMore() {
+		window.location.href= "${pageContext.request.contextPath }/gallery/list.jsp?id=${id}&gid=${gid}";
+			
+	}
+	
 </script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
@@ -60,6 +75,7 @@ top.window.outerWidth = screen.availWidth;
    NO. 01
   </div>
  </div>
+ 
  <div class="blog-header-container">
  	 <!-- 프로필profile -->
   <div class="blog-header">
@@ -67,25 +83,55 @@ top.window.outerWidth = screen.availWidth;
     <div class="blog-big__title">Profile</div>
     <div class="blog-menu small-title date">12.06.2021</div>
    </div>
+   
+ 
+   <c:choose>
+   
+   <c:when test="${profile==2}">
+  
    <div class="blog-article">
+   
     <img alt="" src="${pageContext.request.contextPath }/homepageframe/img/${psaveimg}" style="border-radius: 50%; width: 220px;  height:220px; margin-left: 100px;"/>
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${ptitle}</h2>
     <div class="blog-detail">
-     <span>By Richard Carnation</span>
-     <span>5 Min Read</span>
+     <span>♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</span>
+     
     </div>
     <p style="font-size: 20px;">${pintro}</p>
     <c:if test="${requestScope.id==requestScope.gid}">
-    
-    <a href="#" onclick="NextPage()">
+    <a href="#" onclick="SetUp2()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
      </svg>
-     See More
+    SET UP
     </a>
-     </c:if>
+    </c:if>
    </div>
+     </c:when>
+    <c:otherwise>
+    	   <div class="blog-article">
+   
+    <img alt="" src="homepageframe/gimg/none1.jpg" style="border-radius: 50%; width: 220px;  height:220px; margin-left: 100px;"/>
+    <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->Profile dosen't not exist.</h2>
+    <div class="blog-detail">
+     <span>By Richard Carnation</span>
+     <span>5 Min Read</span>
+    </div>
+    <p style="font-size: 20px;"> If u  Want to upload your Profile Please Click 'SETUP'!</p>
+    <a href="#" onclick="SetUp1()">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
+    SET UP
+    </a>
+    
+   </div>
+   </c:otherwise>
+     </c:choose>
+    
+    
   </div>
   <!-- 다이어리 Daily -->
   <div class="blog-header">
@@ -113,29 +159,31 @@ top.window.outerWidth = screen.availWidth;
    </div>
   </div>
   
+  <!-- Gallery갤러리 -->
   <div class="blog-header">
    <div class="blog-article header-article">
     <div class="blog-big__title">Gallery</div>
     <div class="blog-menu small-title date">${regdate}</div>
    </div>
    <div class="blog-article">
-    <img src="${pageContext.request.contextPath }/homepageframe/gimg/${galsavename}" >
+    <img src="${pageContext.request.contextPath }/homepageframe/gimg/${galsavename}" style="border-radius: 80%; width: 300px;  height:300px; margin-left: 60px;" >
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${galtitle}</h2>
     <div class="blog-detail">
      <span>By Scarlett Witch</span>
      <span>5 Min Read</span>
     </div>
     <p style="font-size: 20px;">${galcontent }</p>
-    <a href="#">
+    <a href="#" onclick="SeeMore()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
      </svg>
-     See More
+     SEE MORE
     </a>
    </div>
   </div>
  </div>
+ 
  <div class="blog-part right-blog">
 
   <marquee width="100%" direction="left">

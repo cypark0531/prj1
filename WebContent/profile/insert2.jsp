@@ -30,6 +30,7 @@ body {
 <body>
 <% 
 	String id = request.getParameter("id");
+	String gid = request.getParameter("gid");
 	System.out.print(id);
 	%>
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
@@ -62,7 +63,7 @@ body {
 			
 			<td colspan="3" id="img_td"> <input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 400px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" onchange="readURL(this)" >					
 			<br /><br />
-			<img id="preview" />
+			<img id="preview" style="width: 300px; height: 300px; margin-right:  20px; margin-bottom: 50px; float: right;" />
 			</td>
 		</tr>
 	
@@ -85,7 +86,7 @@ body {
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
  	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	<input type= "hidden" name = "id" value= "${param.id}"> 
-	<input type= "hidden" name = "gid" value= "${param.id}"> 
+	<input type= "hidden" name = "gid" value= "${param.gid}"> 
 	 </div>
 	 </form>
 	</div>
@@ -117,7 +118,7 @@ var btn2 = document.getElementById("btn2");
 
  
  btn1.addEventListener('click', function(e) {
-	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no");
+	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=600,height=800,resizable = no, scrollbars = no");
 	 btn1.style.display= 'none';
 	 btn2.style.display =  'inline';
  });

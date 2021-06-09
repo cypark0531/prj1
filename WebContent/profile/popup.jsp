@@ -13,35 +13,38 @@
 <style>
 #sidebar-left {
 	float: left;
-	width: 160px;
-	height: 380px; 
+	width: 280px;
+	height: 500px; 
 	padding: 20px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	float: left;
 	border: 1px solid #bcbcbc;
 }
+
+
+
 </style>
 <body>
 <%
+	
 	String ptitle = request.getParameter("ptitle");
+	
 %>
 		
 		<div id="sidebar-left">
 				<h2>Profile</h2>
 		<!--  <h2><img src ="${cp}/home~~/img/${save}"</h1>-->
-			<div id= "ht"></div><br>
-			<div id = "pt"></div>
-			<img id= "img"> 
+			<div id= "intro" style="border-top: 30em; color: black;">${param.htitle }</div><br>
+			<img id= "img" style="width: 220px; height: 220px; margin-top: -5em; margin-left: 1.5em;"> 
+			<div id = "pt" style="border-top: 30em; color: black;">${param.ptitle}</div>
 			
-<<<<<<< HEAD
-			<p>${param.ptitle}</p>
-			</div><br>	
-	<input type="submit" class="btn black" value="등록하기">
-	</form>
-=======
-			</div><br>	
-	<input type="submit" class="btn black" value="닫기" onclick="javascript:self.close()">
+			
+
+		<input type="button" class="btn black" value="닫기" onclick="javascript:self.close()" 
+		style="margin-left: 8em; margin-bottom: -30em; ">
+			</div>	
+	
 		<!--  <div align="right"  class="btn black"><a href = "javascript:self.close();">닫기</a></div>-->
 
 	
@@ -50,19 +53,20 @@
 	
 	
 	<script type="text/javascript">
-var ht = document.getElementById("ht");
+var intro = document.getElementById("intro");
 var pt = document.getElementById("pt");
 var img = document.getElementById("img");
-var htitle= opener.document.getElementById('htitle').value;
-var ptitle = opener.document.getElementById('ptitle').value;
 var psaveimg = opener.document.getElementById('preview').src;
+var ptitle = opener.document.getElementById('ptitle').value;
+var ptintro= opener.document.getElementById('pintro').value;
+
 
 console.log(ht);
 console.log(htitle);
 console.log(psaveimg);
-pt.innerHTML = ptitle;
-ht.innerHTML = htitle;
 img.src = psaveimg;
+pt.innerHTML = ptitle;
+intro.innerHTML = pintro;
 // form > submit
 //img.src = psaveimg;
 //console.log(img)
@@ -70,6 +74,6 @@ img.src = psaveimg;
 
 
 </script>
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
+
 </body>
 </html>
