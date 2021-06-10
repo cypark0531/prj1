@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
@@ -21,6 +22,51 @@ body {
   height: 100vh;
 	font-size: 16px;
 }
+
+
+
+
+.del {
+	 position: relative; 
+	width: 300px; 
+	height: 300px; 
+	margin-right:  20px; 
+	margin-bottom: 50px; 
+	float: right;
+}
+
+.del:before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;left:0;right:0;
+  background-color:rgba(0,0,0,0);
+}
+
+.del:hover::before {
+  background-color:rgba(0,0,0,0.5);
+}
+
+
+.del input {
+	  position: absolute;
+	  top: 60%;
+ 	 left: 50%;
+ 	 transform: translate(-50%, -50%);
+ 	 -ms-transform: translate(-50%, -50%);
+ 	 opacity:0;
+
+}
+
+
+.del:hover input {  
+	
+  opacity: 1;
+}
+
+
+
 
 </style>
 <script type="text/javascript">
@@ -54,8 +100,11 @@ top.window.outerWidth = screen.availWidth;
 </head>
 <body>
 <% 
+	
 	String id = request.getParameter("id");
-	System.out.print(id);
+	System.out.print("업데이트쪽에왔음"+id);
+	
+	
 	%>
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
@@ -82,16 +131,18 @@ top.window.outerWidth = screen.availWidth;
 		</tr>
 		<tr>
 		<th>MY INRODUCE<span class="t_red"> *</span></th>
-                            <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.pintro }</textarea></td>
+        <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.pintro }</textarea></td>
 		</tr>
 		<tr>
 			<th>MY PROFILE<br>(Attached File)</th>
 			
-			<td colspan="3" id="img_td">[Exisiting File Name ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"  style="font-size: 16px; width: 400px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" >
+			<td colspan="3" id="img_td">[Exisiting File Name ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"  style="font-size: 16px; width: 360px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" >
 						
-<br />
-<img id="preview" />
-			
+			<br/>
+			<div class="del">
+			<img id="preview" src="${pageContext.request.contextPath }/homepageframe/img/${vo.porgimg }" style="width: 100%; display: block; height:100%;top:0;left:0;right:0;"/>
+				<input id="del" type="button" value="Delete" onclick="proDelete()" >
+			</div>
 			</td>
 			
 		</tr>
@@ -119,6 +170,22 @@ top.window.outerWidth = screen.availWidth;
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+	function  proDelete() {
+		if(confirm("삭제를 하시겠습니까?")==true){
+			console.log(${requestScope.id})
+			location.href = "${pageContext.request.contextPath}/profile/delete?id=${param.id}";
+	
+		}
+		
+	}
+	if(${param.code==1}) 
+		alert('${param.code}');
+	
+	
+</script>
+
+
 
 </body>
 </html>

@@ -27,7 +27,7 @@ public class HomeController extends HttpServlet {
 		req.setAttribute("gid", gid);
 		
 		//Profiles 프로필
-		ArrayList<ProfilesVo> list = dao.list(id);
+		ArrayList<ProfilesVo> list = dao.list(id);	
 		if(list.size()<1) {
 			req.setAttribute("profile", 1);
 		}else {
@@ -51,12 +51,10 @@ public class HomeController extends HttpServlet {
 		req.setAttribute("ptitle", ptitle);
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
-		
-		
-		
+				
 		String musicBox = (String)req.getAttribute("musicBox");
 		if(musicBox==null) {
-			musicBox ="/homepageframe/music.jsp";
+		   musicBox ="/homepageframe/music.jsp";
 		}
 		
 		

@@ -10,7 +10,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
+<%
+	request.getAttribute("id");
 
+%>
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
