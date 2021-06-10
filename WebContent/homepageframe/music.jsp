@@ -44,7 +44,6 @@
       </div>
     </div>
 	
-	
     <audio crossorigin autoplay="autoplay">
       <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Swing_Jazz_Drum.mp3" type="audio/mpeg">
     </audio>
