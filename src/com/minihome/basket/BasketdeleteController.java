@@ -13,11 +13,15 @@ import com.minihome.dao.BasketDao;
 public class BasketdeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id=req.getParameter("id");
 		int basnum=Integer.parseInt(req.getParameter("basnum"));
-		int n=BasketDao.getInstance().delete(basnum);
+		BasketDao dao =BasketDao.getInstance();
+		int n=dao.delete(basnum);
+		System.out.println(id);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/basket/basketlist.jsp");
-			return;
+			req.setAttribute("id", id);
+			resp.sendRedirect("../basket/basketlist?id="+id);
+			//req.getRequestDispatcher("../goods/goodslist").forward(req, resp);
 		}else {
 			req.setAttribute("code", "fail");
 			req.getRequestDispatcher("/goods/goodsresult.jsp").forward(req, resp);

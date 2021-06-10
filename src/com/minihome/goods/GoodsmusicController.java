@@ -15,9 +15,9 @@ import com.minihome.vo.GoodsVo;
 public class GoodsmusicController extends HttpServlet{
   @Override
 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	  String gcategory=req.getParameter("gcategory");
 	  String id=req.getParameter("id");
 	  String spageNum=req.getParameter("pageNum");
+	  String gcategory=req.getParameter("gcategory");
 	  int pageNum=1;
 	  if(spageNum!=null) {
 		pageNum=Integer.parseInt(spageNum);

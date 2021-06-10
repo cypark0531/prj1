@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
@@ -23,6 +24,9 @@ public class HomeController extends HttpServlet {
 		ProfilesDao dao = ProfilesDao.getInstance();
 		String id = "test";
 		String gid = "test";
+		//로그인 세션 아이디값 가져옴
+//	    Object loginid=req.getAttribute("id");
+//	    String id1=(String)loginid;
 		req.setAttribute("id", id);
 		req.setAttribute("gid", gid);
 		

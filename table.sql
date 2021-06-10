@@ -272,6 +272,8 @@ CREATE TABLE purchase
 	id varchar2(20) NOT NULL,
 	-- 상품코드
 	gcode varchar2(20) NOT NULL,
+	-- 상품가격
+	gprice number(10) NOT NULL,
 	-- 날짜
 	regdate date,
 	PRIMARY KEY (purnum)

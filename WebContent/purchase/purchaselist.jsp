@@ -81,6 +81,7 @@ body {
 		    <th>구매번호</th>
 		    <th>ID</th>
 		    <th>상품코드</th>
+		    <th>가격</th>
 		    <th>구입한 날짜</th>
 		    <th colspan="2">환불</th>
 		  </tr>
@@ -89,13 +90,15 @@ body {
 		      <td>${vo.purnum }</td>
 		      <td>${vo.id }</td>
 		      <td>${vo.gcode }</td>
+		      <td>${vo.gprice }</td>
 		      <td>${vo.regdate }</td>
 		      <td>
+		      <!-- 환불 버튼 누르면 /purchase/purchasedeleteController로 감 -->
 			    <form action="${pageContext.request.contextPath }/purchase/delete" method="post">
 		          <input type="hidden" name="id" value="${vo.id }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="purnum" value="${vo.purnum }">
-		          <input type="hidden" name="gprice" value="12">
+		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="submit" value="환불" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 			    </form>
 			  </td>
@@ -128,11 +131,11 @@ body {
 		</div>
 		<div class="btn_right mt15"> 
 		  <form action="${pageContext.request.contextPath }/home">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id }">
 		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>  
 		  <form action="${pageContext.request.contextPath }/goods/goodslist">
-		    <input type="hidden" name="id" value="test">
+		    <input type="hidden" name="id" value="${requestScope.id }">
   			<input type="submit" value="상품목록" class="btn mr5" style="float: rigth; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
         </div>

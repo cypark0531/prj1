@@ -22,10 +22,11 @@ public class PurchaseDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=MyDBCP.getConnection();
-			String sql="insert into purchase values(purchase_seq.nextval,?,?,sysdate)";
+			String sql="insert into purchase values(purchase_seq.nextval,?,?,?,sysdate)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getGcode());
+			pstmt.setInt(3, vo.getGprice());
 			return pstmt.executeUpdate();
 		}catch (SQLException se) {
 			se.printStackTrace();
@@ -76,6 +77,7 @@ public class PurchaseDao {
 						rs.getInt("purnum"), 
 						rs.getString("id"), 
 						rs.getString("gcode"),
+						rs.getInt("gprice"), 
 						rs.getDate("regdate"));
 				plist.add(vo);
 			}

@@ -6,15 +6,17 @@ public class PurchaseVo {
 	private int purnum;
 	private String id;
 	private String gcode;
+	private int gprice;
 	private Date regdate;
 	
 	public PurchaseVo() {}
-
-	public PurchaseVo(int purnum, String id, String gcode, Date regdate) {
+	
+	public PurchaseVo(int purnum, String id, String gcode, int gprice, Date regdate) {
 		super();
 		this.purnum = purnum;
 		this.id = id;
 		this.gcode = gcode;
+		this.gprice = gprice;
 		this.regdate = regdate;
 	}
 
@@ -42,6 +44,14 @@ public class PurchaseVo {
 		this.gcode = gcode;
 	}
 
+	public int getGprice() {
+		return gprice;
+	}
+
+	public void setGprice(int gprice) {
+		this.gprice = gprice;
+	}
+
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -49,5 +59,6 @@ public class PurchaseVo {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
 
 }

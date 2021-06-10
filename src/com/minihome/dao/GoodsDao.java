@@ -53,6 +53,33 @@ public class GoodsDao {
 		}
 	}
 	
+	public int goodsmoney(int gprice) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=MyDBCP.getConnection();
+			String sql="select * from goods where gprice=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, gprice);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				rs.getString("gcode");
+				rs.getInt("gprice");
+				rs.getString("gname");
+				rs.getString("gsaveimg"); 
+				rs.getString("gorgimg"); 
+				rs.getString("gcategory");
+			}
+			return -1;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	
 	public int getCount() {
 		Connection con=null;
 		PreparedStatement pstmt=null;

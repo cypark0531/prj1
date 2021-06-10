@@ -85,16 +85,16 @@ body {
       <div class="btn_right mt15">
         <form action="${pageContext.request.contextPath }/goods/goodslist">
         <span class="t_red" style="margin-right: 30px; float: left; font-size: 30px;">카테고리:</span>
-          <input type="hidden" name="id" value="test1">
+          <input type="hidden" name="id" value="${requestScope.id }">
           <input type="submit" value="전체" class="btn mr5" style="float: left; margin-bottom:5px; width: 100px; height: 40px; font-weight:900;  font-size: 16px;  ">
         </form>
         <form action="${pageContext.request.contextPath }/music/select">
-          <input type="hidden" name="id" value="test1">
+          <input type="hidden" name="id" value="${requestScope.id }">
           <input type="hidden" name="gcategory" value="music">
           <input type="submit" value="음악" class="btn mr5" style=" float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
         </form>
         <form action="${pageContext.request.contextPath }/background/select">
-          <input type="hidden" name="id" value="test1">
+          <input type="hidden" name="id" value="${requestScope.id }">
           <input type="hidden" name="gcategory" value="background">
           <input type="submit" value="배경" class="btn mr5" style="float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
         </form>
@@ -114,10 +114,9 @@ body {
 		      <td>${vo.gname }</td>
 		      <td>${vo.gcategory }</td>
 		      <td>
-		      
 		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check(${requestScope.money},${vo.gprice })">
 		      <%--   <input type="hidden" name="money" value="${requestScope.money}"> --%>
-		          <input type="hidden" name="id" value="test1">
+		          <input type="hidden" name="id" value="${requestScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="submit" value="구매" class="btn mr5" style="width: 60px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
@@ -125,7 +124,7 @@ body {
 			  </td>
 		      <td>
 	            <form action="${pageContext.request.contextPath }/basket/insert" method="post">
-	              <input type="hidden" name="id" value="test1">
+	              <input type="hidden" name="id" value="${requestScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="gname" value="${vo.gname }">
@@ -162,15 +161,16 @@ body {
 		</div>
 	    <div class="btn_right mt15">
 		  <form action="${pageContext.request.contextPath }/home">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id }">
 		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	      <form action="${pageContext.request.contextPath }/purchase/purchaselist">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="gprice" value="${requestScope.gprice }">
 		    <input type="submit" value="구매목록" class="btn mr5" style="float: right; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	      <form action="${pageContext.request.contextPath }/basket/basketlist">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id }">
 		    <input type="submit" value="장바구니 목록" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	    </div>
@@ -179,13 +179,13 @@ body {
 </div>
 <script type="text/javascript">
    function check(money,gprice){
-   	if(gprice>money){
-   		alert('금액 부족함');
-   		return false;
-   	}else{
-   		return true;
-   	}
-  } 
- </script>
+	   if(gprice>money){
+	     alert('금액 부족함');
+	   	 return false;
+	   }else{
+	     return true;
+	   }
+   }
+</script>
 </body>
 </html>

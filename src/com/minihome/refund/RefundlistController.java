@@ -20,6 +20,7 @@ public class RefundlistController extends HttpServlet{
 		RefundDao dao=RefundDao.getInstance();
 		ArrayList<RefundVo> vo=dao.list(id);
 		req.setAttribute("refundlist", vo);
+		req.setAttribute("id", id);
 		req.getRequestDispatcher("/refund/refundlist.jsp").forward(req, resp);
 	}
 }

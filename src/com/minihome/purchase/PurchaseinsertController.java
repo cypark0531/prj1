@@ -24,13 +24,14 @@ public class PurchaseinsertController extends HttpServlet{
 		if(gprice <= MembersDao.getIntstance().getMoney(id)) {
 			int b = MembersDao.getIntstance().moneyUpdate(id, gprice);
 			PurchaseDao dao=PurchaseDao.getInstance();
-			PurchaseVo vo=new PurchaseVo(0, id, gcode, null);
+			PurchaseVo vo=new PurchaseVo(0, id, gcode,gprice, null);
 			int n=dao.PurchaseInsert(vo);
 			if(n>0) {
 				if(b>0) {
+					req.setAttribute("id", id);
 //					req.setAttribute("money", MembersDao.getIntstance().getMoney(id));
-//					req.getRequestDispatcher("../goods/goodslist.jsp").forward(req, resp);
-					resp.sendRedirect(req.getContextPath()+"/goods/goodsmain.jsp");
+					req.getRequestDispatcher("../goods/goodslist").forward(req, resp);
+					
 					return;
 				}else {
 					req.setAttribute("code", "fail");

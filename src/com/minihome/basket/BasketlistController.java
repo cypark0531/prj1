@@ -19,6 +19,7 @@ public class BasketlistController extends HttpServlet{
 		BasketDao dao=BasketDao.getInstance();
 		ArrayList<BasketVo> basketlist = dao.blist(id);
 		req.setAttribute("basketlist", basketlist);
+		req.setAttribute("id", id);
 		req.getRequestDispatcher("/basket/basketlist.jsp").forward(req, resp);
 	}
 }

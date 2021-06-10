@@ -21,19 +21,21 @@ public class PurchasedeleteController extends HttpServlet{
 		int purnum=Integer.parseInt(req.getParameter("purnum"));
 		String gcode=req.getParameter("gcode");
 		int gprice = Integer.parseInt(req.getParameter("gprice"));
+		System.out.println(gprice);
 		//환불목록에 추가
 		RefundVo vo=new RefundVo(0, id, gcode, 0, purnum, null);
 		RefundDao dao= RefundDao.getInstance();
-		System.out.println(id);
-		System.out.println(purnum);
-		System.out.println(gcode);
-		System.out.println(gprice);
+//		System.out.println(id);
+//		System.out.println(purnum);
+//		System.out.println(gcode);
+//		System.out.println(gprice);
 		int n=dao.RefundInsert(vo);
 		if(n>0) {
 			MembersDao.getIntstance().getMoney(id);//돈 조회
 			MembersDao.getIntstance().moneyRefund(id, gprice);//환불
 			req.setAttribute("code", "success");
-			req.getRequestDispatcher("/goods/goodsresult.jsp").forward(req, resp);
+			req.setAttribute("gprice", gprice);
+			req.getRequestDispatcher("/goods/goodslist").forward(req, resp);
 		}else {
 			System.out.println("실패");
 		}
