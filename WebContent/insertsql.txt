@@ -1,0 +1,44 @@
+select * from friendsay;
+insert into friendsay values(1,'test','1122',0,1,sysdate,'test2');
+insert into friendsay values(2,'test','3344',0,2,sysdate,'test2');
+insert into friendsay values(3,'test','5566',0,3,sysdate,'test2');
+insert into friendsay values(4,'test','7788',0,4,sysdate,'test2');
+commit;
+select * from (select rownum rnum, b.* from (select * from friendsay where hid = 'test'  and fsstep = 0 order by fsnum desc)b) where rnum>=1 and rnum<=9;
+insert into friendsay values(5,'test','7788',1,4,sysdate,'test2');
+insert into friendsay values(6,'test2','7788',0,4,sysdate,'test2');
+insert into friendsay values(7,'test','7788',1,4,sysdate,'test2');
+insert into friendsay values(8,'test','7788',1,4,sysdate,'test2');
+commit;
+select * from histories;
+insert into histories values(1,'test','aaaa','asdfasdfasdf','test2',sysdate);
+insert into histories values(2,'test','bbbb','fggsdaf','test2',sysdate);
+insert into histories values(3,'test','cccc','fggsdfdfs','test2',sysdate);
+insert into histories values(4,'test','dddd','fggsdfdfs','test2',sysdate);
+insert into histories values(5,'test','ffff','asdffdsa','test2',sysdate);
+insert into histories values(6,'test','gggg','asdffdsad','test2',sysdate);
+insert into histories values(7,'test','aaaa','ddsfasdfs','test2',sysdate);
+commit;
+
+
+select rownum rnum,h.* from (select * from histories where hid = 'test' order by regdate desc)h;
+select * from (select rownum rnum,h.* from (select * from histories where hid = 'test' order by regdate desc)h)where rnum >=1 and rnum <=5;
+
+select * from histories;
+
+select NVL(count(hnum),0) from histories where hid = 'test';
+
+insert into histories values(8,'test','aaaa','asdfasdfasdf','test2',sysdate);
+insert into histories values(9,'test','bbbb','fggsdaf','test2',sysdate);
+insert into histories values(10,'test','cccc','fggsdfdfs','test2',sysdate);
+insert into histories values(11,'test','dddd','fggsdfdfs','test2',sysdate);
+insert into histories values(12,'test','ffff','asdffdsa','test2',sysdate);
+insert into histories values(13,'test','gggg','asdffdsad','test2',sysdate);
+insert into histories values(14,'test','aaaa','ddsfasdfs','test2',sysdate);
+insert into histories values(15,'test','bbbb','fggsdaf','test2',sysdate);
+insert into histories values(16,'test','cccc','fggsdfdfs','test2',sysdate);
+insert into histories values(17,'test','dddd','fggsdfdfs','test2',sysdate);
+insert into histories values(18,'test','ffff','asdffdsa','test2',sysdate);
+insert into histories values(19,'test','gggg','asdffdsad','test2',sysdate);
+insert into histories values(20,'test','aaaa','ddsfasdfs','test2',sysdate);
+commit;

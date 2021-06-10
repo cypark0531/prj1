@@ -78,7 +78,7 @@ public class HistoriesDao {
 		}
 		
 	}
-	public ArrayList<HistoriesVo> list(String id){
+	public ArrayList<HistoriesVo> list(String id,int startRow, int endRow){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -86,10 +86,12 @@ public class HistoriesDao {
 		
 		try {
 			con = MyDBCP.getConnection();
-			String sql= "select * from histories where id = ? order by regdate desc";
+			String sql= "select * from (select rownum rnum,h.* from (select * from histories where hid = ? order by regdate desc)h)where rnum >=? and rnum <=?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				HistoriesVo vo = new HistoriesVo(rs.getInt("hnum"),
@@ -98,8 +100,9 @@ public class HistoriesDao {
 						rs.getString("HCONTENT"), 
 						rs.getString("GID"),
 						rs.getDate("regdate"));
+				list.add(vo);
 				}
-			
+					
 			return list;
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -114,7 +117,7 @@ public class HistoriesDao {
 		ResultSet rs = null;
 		try {
 			con =MyDBCP.getConnection();
-			String sql = "select NVL(count(hnum),0) from histories where id = ? ";
+			String sql = "select NVL(count(hnum),0) from histories where hid = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();

@@ -30,7 +30,6 @@ public class FriendsayListController extends HttpServlet{
 		int endRow= startRow+9;
 		
 		int pageCount=(int)Math.ceil(FriendsayDao.getInstance().getCount(id)/10.0);
-		System.out.println(pageCount);
 		int startPageNum= ((pageNum-1)/10*10)+1;
 		int endPageNum= startPageNum+9;
 		if(endPageNum>pageCount) {

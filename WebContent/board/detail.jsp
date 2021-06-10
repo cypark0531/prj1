@@ -179,7 +179,7 @@ function reredelete(brnum,bgroup){
 				let length = xml.getElementsByTagName("brnum").length
 				for(let i=0;i<length;i++){
 					let newTr = document.createElement("tr");
-						newTr.className("wrap")
+						newTr.className="wrap";
 					let newTd1 = document.createElement("td");
 					let newTd2 = document.createElement("td");
 					let newTd3 = document.createElement("td");
@@ -222,12 +222,11 @@ function reredelete(brnum,bgroup){
 				
 				
 			}
-			flag = false;
+			
 		}
 		xhr1.open("get","${pageContext.request.contextPath}/boardrereply/list?bnum=${param.bnum}&brlevel=1&bgroup="+bgroup,true)
 		xhr1.send();
-		
-		
+		flag = false;
 	}else{
 		let div = document.getElementById("replyDiv"+bgroup);
 		let childs = div.childNodes;
@@ -235,8 +234,9 @@ function reredelete(brnum,bgroup){
 			div.removeChild(childs.item(i));
 				let repbtn = document.getElementById("repbtn"+bgroup);
 				repbtn.value= "+";
+				flag = true;
 		}
-		flag = true;
+		
 	
 	}
 }
