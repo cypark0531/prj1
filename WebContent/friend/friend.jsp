@@ -24,6 +24,7 @@
 		<tr class="tr" >
 			<td>
 			${list.id }
+			<input class="fid" type="hidden" value="${list.id }">
 			<input class="fnum" type="hidden" value="${list.friendnum }">
 			</td>
 			<td>${list.name }</td>
@@ -34,9 +35,16 @@
 			</c:choose></td>
 			<td><a href="${pageContext.request.contextPath }/home?id=${list.id }">이동</a></td>
 			<td><c:choose>
-			<c:when test="${list.state==1 }"><input class="cbtn" type="button" value="취소" ></c:when>
-			<c:when test="${list.state==2 }"><input class="abtn" type="button" value="승락"><input class="rbtn" type="button" value="거절"></c:when>
+			<c:when test="${host }">
+			<c:choose>
+			<c:when test="${list.state==1 }"><input class="dbtn" type="button" value="취소" ></c:when>
+			<c:when test="${list.state==2 }"><input class="abtn" type="button" style="margin-right:10px" value="승락"><input class="dbtn" type="button" value="거절"></c:when>
 			<c:otherwise><input class="dbtn" type="button" value="삭제"></c:otherwise>
+			</c:choose>
+			</c:when>
+			<c:otherwise>
+			<input class="addbtn" type="button" value="일촌 신청" >
+			</c:otherwise>
 			</c:choose></td>
 		</tr>
 	</c:forEach>
@@ -57,28 +65,75 @@
 	var tr=document.getElementsByClassName("tr");
 	var select=document.getElementById("select");
 	for(let i=0;i<tr.length;i++){
-		console.log(i);
+		let fid=tr[i].getElementsByClassName("fid")[0].value;
 		let fnum=tr[i].getElementsByClassName("fnum")[0].value;
-		let cbtn=tr[i].getElementsByClassName("cbtn")[0];
 		let abtn=tr[i].getElementsByClassName("abtn")[0];
-		let rbtn=tr[i].getElementsByClassName("rbtn")[0];
 		let dbtn=tr[i].getElementsByClassName("dbtn")[0];
-		if(cbtn!=null)cbtn.onclick=function(){
-			
-			location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");
-		}
+		let addbtn=tr[i].getElementsByClassName("addbtn")[0];
+		
 		if(abtn!=null)abtn.onclick=function(){
-			
-			location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					let xml=xhr.responseXML;
+					let result=xml.getElementsByTagName("code")[0].textContent;
+					if(result=="success"){
+						location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");											
+					}
+					else alert("오류로 인해 실패했습니다.");
+				}
+			}
+			xhr.open('get','${pageContext.request.contextPath}/friend/accept?fnum='+fnum,true);
+			xhr.send();
 		}
-		if(rbtn!=null)rbtn.onclick=function(){
-			
-			location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");
-		}
+		
 		if(dbtn!=null)dbtn.onclick=function(){
-			
-			location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					let xml=xhr.responseXML;
+					let result=xml.getElementsByTagName("code")[0].textContent;
+					if(result=="success"){
+						location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");											
+					}
+					else alert("오류로 인해 실패했습니다.");
+				}
+			}
+			xhr.open('get','${pageContext.request.contextPath}/friend/delete?fnum='+fnum,true);
+			xhr.send();
 		}
+		
+		function friendOK(){
+		let xhr= new XMLHttpRequest()
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				let xml=xhr.responseXML;
+				let result=xml.getElementsByTagName("code")[0].textContent;
+				console.log("result:"+result);
+				if(result=="success"){
+					if(addbtn!=null)addbtn.disabled="disabled";
+				}
+			}
+		}
+		xhr.open('get','${pageContext.request.contextPath}/friend/friendOK?hid=${sessionScope.id}&gid='+fid,true);
+		xhr.send();
+		}
+		friendOK();
+		
+		if(addbtn!=null)addbtn.onclick=function(){
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					let xml=xhr.responseXML;
+					let result=xml.getElementsByTagName("code")[0].textContent;
+					if(result=="success")alert("신청되었습니다");
+					else alert("오류로 인해 실패했습니다.");
+				}
+			}
+			xhr.open('get','${pageContext.request.contextPath}/friend/addfriend?hid=${sessionScope.id}&gid='+fid,true);
+			xhr.send();
+		}
+		
 	}
 	select.onblur=function(){
 		let page=select.value;
