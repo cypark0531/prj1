@@ -13,6 +13,7 @@
 	상품코드 <input type="text" name="gcode"><br>
 	상품가격 <input type="text" name="gprice"><br>
 	상품이름 <input type="text" name="gname"><br>
+	url <input type="text" name="glink"><br>
 	카테코리 <input type="text" name="gcategory"><br>
 	첨부파일<br>
 	<input type="file" name="gsaveimg" ><br>

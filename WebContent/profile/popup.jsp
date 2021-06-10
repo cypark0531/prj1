@@ -41,7 +41,8 @@ font-family:Space Grotesk, sans-serif;
 	String ptitle = request.getParameter("ptitle");
 	String pintro = request.getParameter("pintro");
 	
-%>		<h2 style="margin-bottom:-20px; margin-top:10px; margin-left: .9em; color:white; font-family:Space Grotesk, sans-serif; font-weight: 900; font-size: 60pt; text-align: center;"  >Profile</h2>
+%>		
+		<h2 style="margin-bottom:-20px; margin-top:10px; margin-left: .9em; color:white; font-family:Space Grotesk, sans-serif; font-weight: 900; font-size: 60pt; text-align: center;"  >Profile</h2>
 		<div style="margin-left:3em; margin-top: 2em; width: 390px; height: 610px; color: #e9e6e4; border:3px dotted white;">	
 		<div id="sidebar-left">
 		<div id = "ht" style=" color: black; font-size: 20pt; text-align: center;">${param.htitle }</div>

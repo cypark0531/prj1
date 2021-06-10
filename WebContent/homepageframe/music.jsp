@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,11 @@
 <body>
 <div class="holder" style= "margin-block-end:auto;">
   <div class="audio green-audio-player" style="display: contents;">
+    <form action="${pageContext.request.contextPath}/storagebox/storageboxlist" style="float: right; margin-top: -8px;">
+      <input type="hidden" name="id" value="${requestScope.id }">
+      <input type="submit" value="edit" >
+    </form>
+  	<!-- <input type="button" style="float: right;" value="edit" id="musicedit"> -->
     <div class="loading">
       <div class="spinner"></div>
     </div>
@@ -18,9 +24,10 @@
         <path fill="#566574" fill-rule="evenodd" d="M18 12L0 24V0" class="play-pause-icon" id="playPause"/>
       </svg>
     </div>
+  
 
     <div class="controls">
-      <span class="current-time">0:00</span>
+      <span class="current-time">0 : 00</span>
       <div class="slider" data-direction="horizontal">
         <div class="progress">
           <div class="pin" id="progress-pin" data-method="rewind"></div>
@@ -42,10 +49,14 @@
           </div>
         </div>
       </div>
+      
     </div>
-    <audio crossorigin autoplay="autoplay">
+    <!-- 음악 플레이어 -->
+    <!-- <audio crossorigin autoplay="autoplay">
       <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Swing_Jazz_Drum.mp3" type="audio/mpeg">
-    </audio>
+    </audio> -->
+    <!-- 음악 변경 어떻게해? -->
+    <audio src="https://drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV" autoplay="autoplay" controls="controls" loop style="display: none"></audio>
   </div>
   
   
@@ -230,6 +241,12 @@ function directionAware() {
     volumeControls.style.bottom = '52px';
     volumeControls.style.left = '-3px';
   }
+  
+  /*  뮤직박스 버튼 클릭시 새창으로 띄움 
+  var musicedit = document.getElementById("musicedit");
+  musicedit.addEventListener('click', function(e) {
+	  window.open('${pageContext.request.contextPath}/storagebox/storageboxlist.jsp','','width=300,height=330,left=1400,top=200 width= 400,height= 640,resizable = no, scrollbars = no');
+  }); */
 }
 </script>
 </body>

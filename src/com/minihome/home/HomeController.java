@@ -19,19 +19,18 @@ import com.minihome.dao.ProfilesDao;
 import com.minihome.vo.FriendVo;
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
+
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProfilesDao dao = ProfilesDao.getInstance();
-		String id = "test";
+		String id = req.getParameter("id");
 		String gid = "test";
-		//로그인 세션 아이디값 가져옴
-//	    Object loginid=req.getAttribute("id");
-//	    String id1=(String)loginid;
 		req.setAttribute("id", id);
 		req.setAttribute("gid", gid);
-		
+		String glink=req.getParameter("glink");
+		System.out.println(glink);
 		//Profiles 프로필
 		ArrayList<ProfilesVo> list = dao.list(id);	
 		if(list.size()<1) {
@@ -57,7 +56,9 @@ public class HomeController extends HttpServlet {
 		req.setAttribute("ptitle", ptitle);
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
+		
 				
+		//뮤직박스
 		String musicBox = (String)req.getAttribute("musicBox");
 		if(musicBox==null) {
 		   musicBox ="/homepageframe/music.jsp";
