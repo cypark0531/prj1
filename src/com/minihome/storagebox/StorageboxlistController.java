@@ -16,6 +16,7 @@ public class StorageboxlistController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id=req.getParameter("id");
+		String glink=req.getParameter("glink");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;
 		if(spageNum!=null) {
@@ -38,6 +39,7 @@ public class StorageboxlistController extends HttpServlet{
 		req.setAttribute("startPageNum", startPageNum);
 		req.setAttribute("endPageNum",endPageNum);
 		req.setAttribute("pageNum", pageNum);
+		req.setAttribute("glink", glink);
 		req.setAttribute("id", id);
 		req.getRequestDispatcher("/storagebox/storageboxlist.jsp").forward(req, resp);
 	}
