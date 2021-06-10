@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.vo.FriendVo;
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
 @WebServlet("/home")
@@ -59,6 +61,19 @@ public class HomeController extends HttpServlet {
 			musicBox ="/homepageframe/music.jsp";
 		}
 		
+		//일촌 목록
+		FriendDao fridao=FriendDao.getInstance();
+		ArrayList<String> frilist=fridao.getFriend("test11");
+		ArrayList<String[]> friendlist=new ArrayList<String[]>();
+		if(frilist!=null)for(String hostid:frilist) {
+			String[] str= {hostid,"home?id="+hostid}; 
+			friendlist.add(str);
+		}
+		else {
+			String[] str= {"-","-"}; 
+			friendlist.add(str);
+		}
+		req.setAttribute("friendlist", friendlist);
 		
 		//Dairy 다이어리
 		String dPath = getDiary(req, resp);
@@ -75,18 +90,18 @@ public class HomeController extends HttpServlet {
 //			
 //	}	
 //		String id = "test4";
-		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
-		req.setAttribute("gvo", gvo);
-		System.out.println("galcontent : "+gvo.getGalcontent());
-		String galtitle = gvo.getGaltitle();
-		String galcontent = gvo.getGalcontent();
-		String galsavename = gvo.getGalsavename();
-		Date regdate = gvo.getRegdate();
-		
-		req.setAttribute("galtitle",galtitle);
-		req.setAttribute("galcontent", galcontent);
-		req.setAttribute("galsavename", galsavename);
-		req.setAttribute("regdate", regdate);
+//		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
+//		req.setAttribute("gvo", gvo);
+//		System.out.println("galcontent : "+gvo.getGalcontent());
+//		String galtitle = gvo.getGaltitle();
+//		String galcontent = gvo.getGalcontent();
+//		String galsavename = gvo.getGalsavename();
+//		Date regdate = gvo.getRegdate();
+//		
+//		req.setAttribute("galtitle",galtitle);
+//		req.setAttribute("galcontent", galcontent);
+//		req.setAttribute("galsavename", galsavename);
+//		req.setAttribute("regdate", regdate);
 		
 	System.out.println(dPath);
 	String cp = req.getContextPath();
