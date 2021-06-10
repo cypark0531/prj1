@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/music.css">
 <%
+	String id=request.getParameter("id");
+	System.out.println("id="+id);
     String glink=request.getParameter("glink");
 	if(glink!=null){
 	     pageContext.setAttribute("glink", glink);
