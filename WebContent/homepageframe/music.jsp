@@ -7,6 +7,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/music.css">
+<%
+    String glink=request.getParameter("glink");
+	if(glink!=null){
+	     pageContext.setAttribute("glink", glink);
+	}else{
+	     glink="https:/"+"/drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV";
+	     pageContext.setAttribute("glink", glink);
+	     System.out.println(glink);
+	}
+    %>
 </head>
 <body>
 <div class="holder" style= "margin-block-end:auto;">
@@ -52,13 +62,11 @@
       
     </div>
     <!-- 음악 플레이어 -->
-    <!-- <audio crossorigin autoplay="autoplay">
-      <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Swing_Jazz_Drum.mp3" type="audio/mpeg">
-    </audio> -->
-    <!-- 음악 변경 어떻게해? -->
-    <audio src="https://drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV" autoplay="autoplay" controls="controls" loop style="display: none"></audio>
+   <!--  <audio crossorigin autoplay="autoplay"> -->
+    <audio loop autoplay="autoplay">
+      <source src="${glink }"/>
+    </audio> 
   </div>
-  
   
 </div>
 <script type="text/javascript">

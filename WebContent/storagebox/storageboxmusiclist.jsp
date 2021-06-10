@@ -102,7 +102,7 @@ body {
 		    <th>카테고리</th>
 		    <th colspan='2'>적용</th>
 		  </tr>
-		  <c:forEach var="vo" items="${storageboxlist }">
+		  <c:forEach var="vo" items="${sclist }">
 		    <tr>
 		      <td><img alt="상품이미지" src="${pageContext.request.contextPath }/goodsimgfile/${vo.gsaveimg}" width="100" height="100"></td>
 		      <td>${vo.gname }</td>

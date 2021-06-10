@@ -29,6 +29,7 @@ public class HomeController extends HttpServlet {
 		String gid = "test";
 		req.setAttribute("id", id);
 		req.setAttribute("gid", gid);
+		System.out.println("id="+id);
 		String glink=req.getParameter("glink");
 		System.out.println(glink);
 		//Profiles 프로필
