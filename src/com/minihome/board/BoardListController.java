@@ -31,7 +31,7 @@ public class BoardListController extends HttpServlet{
 		int startPageNum= ((pageNum-1)/10*10)+1;
 		int endPageNum= startPageNum+9;
 		if(endPageNum>pageCount) {
-			endPageNum=pageCount;
+			endPageNum=pageCount; 
 			boolean friend = FriendDao.getInstance().friendOK(id, gid);
 		req.setAttribute("friend", friend);
 		req.setAttribute("boardlist", boardlist);

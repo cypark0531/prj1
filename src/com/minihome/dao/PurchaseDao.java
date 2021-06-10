@@ -16,19 +16,7 @@ public class PurchaseDao {
 	public static PurchaseDao getInstance() {
 		return instance;
 	}
-//	id 갖고와서
-//	id 맞는 cash를 수정
-//	update members set cash = cash-money;멤버업데이트
-//	public int update(String id) {
-//		connection con=null;
-//		preparedstatement pstmt=null;
-//		ResultSet rs=null;
-//		try {
-//			con=MyDBCP.getConnection();
-//			String sql="update members set money(?)=money(?)-gprice(?) where id=?" ;
-//			위에 sql을 쓸려면 join을 써야되는데 공통된 컬럼이 없어도 가능
-//		}
-//	}
+	
 	public int PurchaseInsert(PurchaseVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -47,15 +35,40 @@ public class PurchaseDao {
 		}
 	}
 	
-	public ArrayList<PurchaseVo> list(String id){
+	public int PurchaseDelete(int purnum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=MyDBCP.getConnection();
+			String sql="delete from purchase where purnum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, purnum);
+			return pstmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
+	
+	public ArrayList<PurchaseVo> list(String id, int startRow, int endRow){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=MyDBCP.getConnection();
-			String sql="select * from purchase where id=?";
+			String sql="select * from "
+					+ "("
+					+ "select purchase.*,rownum rnum from "
+					+  "("
+					+   "select * from purchase where id=? order by purnum desc"
+					+ ")purchase"
+					+ "  )where rnum>=? and rnum<=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs=pstmt.executeQuery();
 			ArrayList<PurchaseVo> plist=new ArrayList<PurchaseVo>();
 			while(rs.next()) {
@@ -74,4 +87,28 @@ public class PurchaseDao {
 			MyDBCP.close(con, pstmt, rs);
 		}
 	}
+	public int getCount(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=MyDBCP.getConnection();
+			String sql="select NVL(count(*),0) from purchase where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int mnum=rs.getInt(1);
+				return mnum;
+			}
+			return -1;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	
+	
 }

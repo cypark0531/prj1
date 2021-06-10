@@ -20,6 +20,12 @@ body {
   height: 100vh;
 	font-size: 16px;
 }
+  .container {background-color:#121418; z-index:1; margin-left:3vh;  margin-top:3.5vh; height:600px; overflow-y: auto;  border-bottom-style: dotted; border-color :white;  width:900px;}
+  .container::-webkit-scrollbar { width: 5px; /*스크롤바의 너비*/ } 
+  .container::-webkit-scrollbar-thumb { background-color: black; /*스크롤바의 색상*/ } 
+  .container::-webkit-scrollbar-track { background-color: white; /*스크롤바 트랙 색상*/ } 
+
+
 
 </style>
 
@@ -32,10 +38,12 @@ body {
 	String id = request.getParameter("id");
 	System.out.print(id);
 	%>
-<div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
+
+ <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
+	<h1 style="margin-left: 1em; font-size: 50pt; text-shadow:#999999 5px 5px 5px;" > Upload Gallery</h1>
 	<div class="container">
 	<div class= "inner">
-		<h1>Gallery</h1>
+		
 	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
@@ -57,7 +65,7 @@ body {
 		<tr>
 			<th>MY PICTURE<br>(Attached File)</th>
 			
-			<td colspan="3" id="img_td"><br><br><input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 340px; height: auto; position:absolute;  margin-top:130px; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none; margin: center;" onchange="readURL(this)" >					
+			<td colspan="3" id="img_td"><br><br><input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 340px; height: auto;  margin-top:130px; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none; margin: center;" onchange="readURL(this)" >					
 			
 			<img id="preview"  style="width: 300px; height: 300px; margin-right:  20px; margin-bottom: 50px; float: right;" />
 			</td>
@@ -88,6 +96,7 @@ body {
 	</div>
 </div>
 </div>
+
 <script type="text/javascript">
 function moveFocus(e) {
 	if(event.keyCode==13) {

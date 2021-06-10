@@ -6,6 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+	
+	#wrap{
+		margin-left: 1em;
+		width: 400px;
+		height: 400px;
+		margin-left: 
+		
+	 }
+	 #year {
+	 	color: black; 
+	 	font-weight: 900;
+
+	 }
+	 
+
+	 
+	
+</style>
 <script type="text/javascript">
 		
 	</script>
@@ -13,21 +33,22 @@
 <body>
 
 
-	<div id="wrap" style="width: 400px;height: 400px; ">
-	년도 : <select id = "year" style="color: black; font-weight: 900;">
+	<div id="wrap" >
+	<span id="yt" style="margin-left: 4em;">년도 :</span>
+	<select id = "year">
 	<c:forEach var ="i" begin="1990" end = "${param.realYear }">
 	<option id = "y${i }">${i } </option>
 	</c:forEach>
 	</select>
-	
-	월 : <select id= "month" style="color: black; font-weight: 900;" >
+	<span id="mt" style="margin-left: 1em;">월 :</span>
+	<select id= "month"  >
 		<c:forEach var ="i" begin="1" end = "12">
 	<option id = "m${i }">${i } </option>
 	</c:forEach>
 		</select>
 		<input type= "button" value= "선택" onclick="change()">
 	<br>
-	<table >
+	<table style="border-bottom: none; border-top: none;">
 		<tr style="margin-left:30px; text-align: center;">
 		<c:forEach var = "i" begin = "1" end = "16">
 		<td><div class  = "day" id= "d${i}"></div></td>
@@ -48,16 +69,20 @@
 		
 		</div>
 	
-		<div id = "pageDiv">
+		<div id = "pageDiv" style="display: inline-flex; margin-left: 10em; border:0;">
 		${param.id}
 		</div>
+	
 	</div>
 	<script type="text/javascript">
 	
 	let days = document.getElementsByClassName("day");
 	for(let i =0;i<days.length;i++){
 		let k = i+1;
-		days[i].innerHTML = "<a style='font-size:20px;' href = 'javascript:content("+k+");'>"+k+"</a>";
+
+		days[i].innerHTML = "<a style='font-weight:600; font-size:20px; border-top: none;' href = 'javascript:content("+k+");'>"+k+"</a>";
+
+
 	}
 		for(let i=0;i<${param.lastDay};i++){
 		let year = document.getElementById("year");
@@ -132,10 +157,10 @@
 						pageDiv = document.getElementById("pageDiv");
 						for(let i=startPageNum;i<=endPageNum;i++){
 							if(pageNum==i){
-								str = str +"<a href = 'javascript:content("+k+","+i+")'>" +"<span style='color:black;font-weight: 900'>"+[i] +"</span>"+"</a>";
+								str = str +"<a style='border-top:none';  href = 'javascript:content("+k+","+i+")' >" +"<span style='color:black;font-weight: 700; font-size:15pt; border-top: none;'>"+[i] +"</span>"+"</a>";
 								
 							}else{
-								str = str +"<a href = 'javascript:content("+k+","+i+")'>" +"<span style='color:gray;font-weight: 900'>"+[i] +"</span>"+"</a>";
+								str = str +"<a style='border-top:none'; href = 'javascript:content("+k+","+i+")'>" +"<span style='color:gray;font-weight: 700; font-size:15pt; border-top: none;'>"+[i] +"</span>"+"</a>";
 								
 							}
 						}
