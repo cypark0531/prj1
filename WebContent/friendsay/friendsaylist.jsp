@@ -83,7 +83,7 @@ function list(pageNum){
 					}
 				}
 				pageDiv.innerHTML = str;
-				console.log(pageDiv);
+				
 				
 			
 		}
