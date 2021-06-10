@@ -80,7 +80,7 @@ body {
 
 	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
- 	<!--  	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;-->  font-size: 16px;">
+ 	<!--  	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;-->
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>

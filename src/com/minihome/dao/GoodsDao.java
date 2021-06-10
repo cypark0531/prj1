@@ -41,7 +41,6 @@ public class GoodsDao {
 						rs.getString("gname"),
 						rs.getString("gsaveimg"), 
 						rs.getString("gorgimg"), 
-						rs.getString("glink"), 
 						rs.getString("gcategory"));
 				glist.add(vo);
 			}
@@ -70,7 +69,6 @@ public class GoodsDao {
 				rs.getString("gname");
 				rs.getString("gsaveimg"); 
 				rs.getString("gorgimg"); 
-				rs.getString("glink"); 
 				rs.getString("gcategory");
 			}
 			return -1;
@@ -154,7 +152,6 @@ public class GoodsDao {
 						rs.getString("gname"),
 						rs.getString("gsaveimg"), 
 						rs.getString("gorgimg"), 
-						rs.getString("glink"), 
 						rs.getString("gcategory"));
 				gclist.add(vo);
 			}
@@ -171,21 +168,19 @@ public class GoodsDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=MyDBCP.getConnection();
-			String sql="insert into goods values(?,?,?,?,?,?,?)";
+			String sql="insert into goods values(?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getGcode());
 			pstmt.setInt(2, vo.getGprice());
 			pstmt.setString(3, vo.getGname());
 			pstmt.setString(4, vo.getGsaveimg());
 			pstmt.setString(5, vo.getGorgimg());
-			pstmt.setString(6, vo.getGlink());
-			pstmt.setString(7, vo.getGcategory());
+			pstmt.setString(6, vo.getGcategory());
 			System.out.println(vo.getGcode());
 			System.out.println(vo.getGname());
 			System.out.println(vo.getGsaveimg());
 			System.out.println(vo.getGorgimg());
 			System.out.println(vo.getGcategory());
-			System.out.println(vo.getGlink());
 			System.out.println(vo.getGname());
 			return pstmt.executeUpdate();
 		}catch (SQLException e) {

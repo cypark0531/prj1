@@ -31,7 +31,9 @@ public class ImgfileUpdateController extends HttpServlet {
 		
 		ProfilesDao dao = ProfilesDao.getInstance();
 		String id = mr.getParameter("id");
+		String gid = mr.getParameter("gid");
 		System.out.println("upatecontroller¾ÆÀÌµð"+id);
+		System.out.println("gid"+gid);
 		ProfilesVo vo = dao.getinfoVo(id);
 		System.out.println(vo);
 		String ptitle = mr.getParameter("ptitle"); 
@@ -48,12 +50,13 @@ public class ImgfileUpdateController extends HttpServlet {
 			String psaveImg = mr.getFilesystemName("imgfile");
 			File f1 = mr.getFile("imgfile");
 			ProfilesVo vo1 = new ProfilesVo(id, porgimg, psaveImg, ptitle, htitle, pintro, popen);
-			n = dao.update(vo1);
+			n = dao.update(vo1);	
 		}else{
 			ProfilesVo vo2 = new ProfilesVo(id, vo.getPorgimg(), vo.getPsavegimg(), ptitle, htitle, pintro, popen);
 				n = dao.update(vo2);
 		}
-		req.getRequestDispatcher("/main.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
+		//req.getRequestDispatcher("/home?update=1").forward(req, resp);
 	}
 		
 
