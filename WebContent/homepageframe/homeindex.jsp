@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
+
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -46,12 +49,7 @@ top.window.outerWidth = screen.availWidth;
 	}
 	
 </script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
-<style type="text/css">
 
-
-</style>
 
 </head>
 <body style="color:#383a3d;">
@@ -66,6 +64,7 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Studio</a>
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="#" class="blog-menu">Contact</a>
+  <a href="${pageContext.request.contextPath }/goods/goodslist" class="blog-menu">shop</a>
   <a href="#" class="blog-menu mention">@MagazineDope</a>
   <a href="#" class="blog-menu subscribe">Subscribe</a>
  </div>

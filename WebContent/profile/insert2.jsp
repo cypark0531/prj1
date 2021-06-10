@@ -17,7 +17,6 @@ body {
   flex-direction: column;
   width: 200vh;
   padding: 0 2em;
-
   height: 100vh;
 	font-size: 16px;
 }
@@ -56,7 +55,7 @@ body {
 		</tr>
 		<tr>
 		<th>MY INRODUCE<span class="t_red"> *</span></th>
-                            <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
+        <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
 		</tr>
 		<tr>
 			<th>MY PROFILE<br>(Attached File)</th>
@@ -82,9 +81,13 @@ body {
 	</table>
 	<div class="btn_right mt15" style=" float: right;" >
 
-	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
+	<input type="button" class="btn mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
- 	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+<<<<<<< HEAD
+ 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+=======
+ 	 <input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.gid}"> 
 	 </div>
@@ -118,7 +121,7 @@ var btn2 = document.getElementById("btn2");
 
  
  btn1.addEventListener('click', function(e) {
-	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=600,height=800,resizable = no, scrollbars = no");
+	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','','width=300,height=330,left=1400,top=200 width= 400,height= 640,resizable = no, scrollbars = no');
 	 btn1.style.display= 'none';
 	 btn2.style.display =  'inline';
  });

@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>요청 완료!</h1>
-결과코드 : ${code }<br>
+결과코드 : ${code }  <br>
 </body>
 </html>

@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css?ver=1"/>
-<%
- //int money=Integer.parseInt(request.getParameter("money"));
-
-%> 
 <style type="text/css">
 body {
 	margin:0;
@@ -74,93 +70,89 @@ body {
 	border:1px solid #42454c;
 }
 
+
 </style>
 </head>
 <body>
-<div id="wrapper" style=" padding: 30px 30px;  border-style: dotted;">
+  <div id="wrapper" style=" padding: 30px 30px ;  border-style: dotted;">
   <div class="container">
     <div class="inner">
       <h2>상품목록</h2>
-      <!-- 카테고리 -->
       <div class="btn_right mt15">
         <form action="${pageContext.request.contextPath }/goods/goodslist">
-        <span class="t_red" style="margin-right: 30px; float: left; font-size: 30px;">카테고리:</span>
-          <input type="hidden" name="id" value="test1">
+        <span class="t_red" style="margin-right: 30px; float: left;">카테고리:</span>
+          <input type="hidden" name="id" value="${requestScope.id }">
           <input type="submit" value="전체" class="btn mr5" style="float: left; margin-bottom:5px; width: 100px; height: 40px; font-weight:900;  font-size: 16px;  ">
         </form>
         <form action="${pageContext.request.contextPath }/music/select">
-          <input type="hidden" name="id" value="test1">
+          <input type="hidden" name="id" value="${requestScope.id }">
           <input type="hidden" name="gcategory" value="music">
           <input type="submit" value="음악" class="btn mr5" style=" float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
         </form>
         <form action="${pageContext.request.contextPath }/background/select">
-          <input type="hidden" name="id" value="test1">
+          <input type="hidden" name="id" value="${requestScope.id }">
           <input type="hidden" name="gcategory" value="background">
           <input type="submit" value="배경" class="btn mr5" style="float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
         </form>
       </div> 
-		<table style="width: 100%; "class="table02" >
+		<table style="width: 100%"class="table02" >
 		  <tr>
 		    <th>상품이미지</th>
-		    <th>상품가격</th>
 		    <th>상품이름</th>
+		    <th>상품가격</th>
 		    <th>상품카테코리</th>
-		    <th colspan='2'>fdsfd</th>
+		    <th colspan="2">fds</th>
 		  </tr>
-		  <c:forEach var="vo" items="${goodslist }">
+		  <c:forEach var="vo" items="${gclist }">
 		    <tr>
 		      <td><img alt="상품이미지" src="${pageContext.request.contextPath }/goodsimgfile/${vo.gsaveimg}" width="100" height="100"></td>
 		      <td>${vo.gprice }</td>
 		      <td>${vo.gname }</td>
 		      <td>${vo.gcategory }</td>
 		      <td>
-		      
 		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check(${requestScope.money},${vo.gprice })">
 		      <%--   <input type="hidden" name="money" value="${requestScope.money}"> --%>
 		          <input type="hidden" name="id" value="test1">
-		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
+		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="submit" value="구매" class="btn mr5" style="width: 60px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
 		        </form>
 			  </td>
 		      <td>
-	            <form action="${pageContext.request.contextPath }/basket/insert" method="post">
-	              <input type="hidden" name="id" value="test1">
-		          <input type="hidden" name="gprice" value="${vo.gprice }">
+	            <form action="${pageContext.request.contextPath }/purchase/list" method="post">
+	              <input type="hidden" name="id" value="admin123">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
-		          <input type="hidden" name="gname" value="${vo.gname }">
-		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
 	              <input type="submit" value="장바구니" class="btn mr5" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	            </form>
 	          </td>
 		    </tr>
 		    </c:forEach>
 		</table>
-	    <div class="page_wrap">
+		<div class="page_wrap">
 	      <div class="page_nation">
 			  <c:if test="${startPageNum>5 }">
-			    <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${startPageNum-1 }&id=${requestScope.id}"><</a>
+			    <a href="${pageContext.request.contextPath }/background/select?pageNum=${startPageNum-1 }&id=${requestScope.id}&gcategory=${requestScope.gcategory}"><</a>
 			  </c:if>
 			  <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 			    <c:choose>
 			      <c:when test="${pageNum==i }">
-			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/background/select?pageNum=${i }&id=${requestScope.id}&gcategory=${requestScope.gcategory}">
 			          <span style="color: black; ">${i }</span>
 			        </a>
 			      </c:when>
 			      <c:otherwise>
-			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/background/select?pageNum=${i }&id=${requestScope.id}&gcategory=${requestScope.gcategory}">
 			          <span style="color: red">${i }</span>
 			        </a>
 			      </c:otherwise>
 			    </c:choose>
 			  </c:forEach>
 			  <c:if test="${endPageNum < pageCount }">
-			     <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${endPageNum+1 }&id=${requestScope.id}">></a>
+			     <a href="${pageContext.request.contextPath }/background/select?pageNum=${endPageNum+1 }&id=${requestScope.id}&gcategory=${requestScope.gcategory}">></a>
 			  </c:if>
 		  </div>
 		</div>
-	    <div class="btn_right mt15">
+		 <div class="btn_right mt15">
 		  <form action="${pageContext.request.contextPath }/home">
 		    <input type="hidden" name="id" value="test1">
 		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
@@ -177,6 +169,7 @@ body {
     </div>
   </div>
 </div>
+</body>
 <script type="text/javascript">
    function check(money,gprice){
    	if(gprice>money){
@@ -187,5 +180,4 @@ body {
    	}
   } 
  </script>
-</body>
 </html>
