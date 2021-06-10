@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
@@ -18,18 +19,20 @@ import com.minihome.dao.ProfilesDao;
 import com.minihome.vo.FriendVo;
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
+
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ProfilesDao dao = ProfilesDao.getInstance();
-		String id = "test";
+		String id = req.getParameter("id");
 		String gid = "test";
 		req.setAttribute("id", id);
 		req.setAttribute("gid", gid);
-		
+		String glink=req.getParameter("glink");
+		System.out.println(glink);
 		//Profiles 프로필
-		ArrayList<ProfilesVo> list = dao.list(id);
+		ArrayList<ProfilesVo> list = dao.list(id);	
 		if(list.size()<1) {
 			req.setAttribute("profile", 1);
 		}else {
@@ -54,11 +57,11 @@ public class HomeController extends HttpServlet {
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
 		
-		
-		
+				
+		//뮤직박스
 		String musicBox = (String)req.getAttribute("musicBox");
 		if(musicBox==null) {
-			musicBox ="/homepageframe/music.jsp";
+		   musicBox ="/homepageframe/music.jsp";
 		}
 		
 		//일촌 목록

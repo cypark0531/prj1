@@ -25,10 +25,11 @@ public class BasketinsertController extends HttpServlet{
 		BasketVo vo=new BasketVo(0, id, gcode, gprice, gname, gsaveimg, gorgimg);
 		int n=dao.binsert(vo);
 		if(n>0) {
-		  	req.setAttribute("code", "success");
+		  	req.setAttribute("id", id);
+		  	req.getRequestDispatcher("../goods/goodslist").forward(req, resp);
 		}else {
 			req.setAttribute("code", "fail");
-			req.getRequestDispatcher("/goods/goodsresult.jsp").forward(req, resp);
+			req.getRequestDispatcher("/goods/goodslist").forward(req, resp);
 		}
 	}
 }

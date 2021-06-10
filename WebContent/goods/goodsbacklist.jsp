@@ -95,7 +95,7 @@ body {
           <input type="submit" value="배경" class="btn mr5" style="float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
         </form>
       </div> 
-		<table style="width: 100%"class="table02" >
+		<table style="width: 100%;"class="table02" >
 		  <tr>
 		    <th>상품이미지</th>
 		    <th>상품이름</th>
@@ -112,16 +112,19 @@ body {
 		      <td>
 		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check(${requestScope.money},${vo.gprice })">
 		      <%--   <input type="hidden" name="money" value="${requestScope.money}"> --%>
-		          <input type="hidden" name="id" value="test1">
+		          <input type="hidden" name="id" value="${requestScope.id}">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="submit" value="구매" class="btn mr5" style="width: 60px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
 		        </form>
 			  </td>
 		      <td>
-	            <form action="${pageContext.request.contextPath }/purchase/list" method="post">
-	              <input type="hidden" name="id" value="admin123">
+	            <form action="${pageContext.request.contextPath }/basket/insert" method="post">
+	              <input type="hidden" name="id" value="${requestScope.id}">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
+		          <input type="hidden" name="gprice" value="${vo.gprice }">
+		          <input type="hidden" name="gname" value="${vo.gname }">
+		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
 	              <input type="submit" value="장바구니" class="btn mr5" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	            </form>
 	          </td>
@@ -154,15 +157,15 @@ body {
 		</div>
 		 <div class="btn_right mt15">
 		  <form action="${pageContext.request.contextPath }/home">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id}">
 		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	      <form action="${pageContext.request.contextPath }/purchase/purchaselist">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id}">
 		    <input type="submit" value="구매목록" class="btn mr5" style="float: right; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	      <form action="${pageContext.request.contextPath }/basket/basketlist">
-		    <input type="hidden" name="id" value="test1">
+		    <input type="hidden" name="id" value="${requestScope.id}">
 		    <input type="submit" value="장바구니 목록" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	    </div>

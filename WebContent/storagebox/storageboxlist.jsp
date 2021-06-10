@@ -7,10 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css?ver=1"/>
-<%
- //int money=Integer.parseInt(request.getParameter("money"));
-
-%> 
 <style type="text/css">
 body {
 	margin:0;
@@ -80,7 +76,7 @@ body {
 <div id="wrapper" style=" padding: 30px 30px;  border-style: dotted;">
   <div class="container">
     <div class="inner">
-      <h2>상품목록</h2>
+      <h2>보관함</h2>
       <!-- 카테고리 -->
       <div class="btn_right mt15">
         <form action="${pageContext.request.contextPath }/goods/goodslist">
@@ -101,96 +97,60 @@ body {
       </div> 
 		<table style="width: 100%; "class="table02" >
 		  <tr>
-		    <th>상품이미지</th>
-		    <th>상품가격</th>
-		    <th>상품이름</th>
-		    <th>상품카테코리</th>
-		    <th colspan='2'>구매</th>
+		    <th>이미지</th>
+		    <th>이름</th>
+		    <th>카테고리</th>
+		    <th colspan='2'>적용</th>
 		  </tr>
-		  <c:forEach var="vo" items="${goodslist }">
+		  <c:forEach var="vo" items="${storageboxlist }">
 		    <tr>
 		      <td><img alt="상품이미지" src="${pageContext.request.contextPath }/goodsimgfile/${vo.gsaveimg}" width="100" height="100"></td>
-		      <td>${vo.gprice }</td>
 		      <td>${vo.gname }</td>
 		      <td>${vo.gcategory }</td>
 		      <td>
-		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check(${requestScope.money},${vo.gprice })">
-		      <%--   <input type="hidden" name="money" value="${requestScope.money}"> --%>
+		        <form action="${pageContext.request.contextPath }/home" method="post">
 		          <input type="hidden" name="id" value="${requestScope.id }">
-		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="glink" value="${vo.glink }">
 		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
-		          <input type="hidden" name="gname" value="${vo.gname }">
-		          <input type="hidden" name="gcategory" value="${vo.gcategory }">
-		          <input type="submit" value="구매" class="btn mr5" style="width: 60px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
+		          <input type="hidden" name="gsaveimg" value="${vo.gname }">
+		          <input type="submit" value="적용" class="btn mr5" style="width: 60px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
 		        </form>
 			  </td>
-		      <td>
-	            <form action="${pageContext.request.contextPath }/basket/insert" method="post">
-	              <input type="hidden" name="id" value="${requestScope.id }">
-		          <input type="hidden" name="gprice" value="${vo.gprice }">
-		          <input type="hidden" name="gcode" value="${vo.gcode }">
-		          <input type="hidden" name="gname" value="${vo.gname }">
-		          <input type="hidden" name="glink" value="${vo.glink }">
-		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
-	              <input type="submit" value="장바구니" class="btn mr5" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
-	            </form>
-	          </td>
 		    </tr>
 		    </c:forEach>
 		</table>
 	    <div class="page_wrap">
 	      <div class="page_nation">
 			  <c:if test="${startPageNum>5 }">
-			    <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${startPageNum-1 }&id=${requestScope.id}"><</a>
+			    <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${startPageNum-1 }&id=${requestScope.id}"><</a>
 			  </c:if>
 			  <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 			    <c:choose>
 			      <c:when test="${pageNum==i }">
-			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${i }&id=${requestScope.id}">
 			          <span style="color: black; ">${i }</span>
 			        </a>
 			      </c:when>
 			      <c:otherwise>
-			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${i }&id=${requestScope.id}">
 			          <span style="color: red">${i }</span>
 			        </a>
 			      </c:otherwise>
 			    </c:choose>
 			  </c:forEach>
 			  <c:if test="${endPageNum < pageCount }">
-			     <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${endPageNum+1 }&id=${requestScope.id}">></a>
+			     <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${endPageNum+1 }&id=${requestScope.id}">></a>
 			  </c:if>
 		  </div>
 		</div>
-	    <div class="btn_right mt15">
-		  <form action="${pageContext.request.contextPath }/home">
+	      <form action="${pageContext.request.contextPath }/home">
 		    <input type="hidden" name="id" value="${requestScope.id }">
-		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
-		  </form>
-	      <form action="${pageContext.request.contextPath }/purchase/purchaselist">
-		    <input type="hidden" name="id" value="${requestScope.id }">
-		    <input type="hidden" name="gprice" value="${requestScope.gprice }">
-		    <input type="submit" value="구매목록" class="btn mr5" style="float: right; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
-		  </form>
-	      <form action="${pageContext.request.contextPath }/basket/basketlist">
-		    <input type="hidden" name="id" value="${requestScope.id }">
-		    <input type="submit" value="장바구니 목록" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
+		    <input type="hidden" name="glink" value="${requestScope.glink }">
+		    <input type="submit" value="닫기" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	    </div>
     </div>
   </div>
-</div>
-<script type="text/javascript">
-   function check(money,gprice){
-	   if(gprice>money){
-	     alert('금액 부족함');
-	   	 return false;
-	   }else{
-	     return true;
-	   }
-   }
-</script>
 </body>
 </html>

@@ -18,6 +18,7 @@ public class ImgfileUpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			String id =  req.getParameter("id");
+			System.out.println("업데이트컨트롤러doget id:"+id);
 			ProfilesDao dao = ProfilesDao.getInstance();
 			ProfilesVo vo = dao.getinfoVo(id);
 			req.setAttribute("vo", vo);
@@ -30,7 +31,7 @@ public class ImgfileUpdateController extends HttpServlet {
 		
 		ProfilesDao dao = ProfilesDao.getInstance();
 		String id = mr.getParameter("id");
-		System.out.println(id);
+		System.out.println("upatecontroller아이디"+id);
 		ProfilesVo vo = dao.getinfoVo(id);
 		System.out.println(vo);
 		String ptitle = mr.getParameter("ptitle"); 

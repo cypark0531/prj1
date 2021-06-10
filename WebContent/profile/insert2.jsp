@@ -20,6 +20,17 @@ body {
   height: 100vh;
 	font-size: 16px;
 }
+  .container {background-color:#121418; z-index:1; margin-left:3vh;  margin-top:3.5vh; height:600px; overflow-y: auto;  border-bottom-style: dotted; border-color :white;  width:900px;}
+  .container::-webkit-scrollbar { width: 5px; /*스크롤바의 너비*/ } 
+  .container::-webkit-scrollbar-thumb { background-color: black; /*스크롤바의 색상*/ } 
+  .container::-webkit-scrollbar-track { background-color: white; /*스크롤바 트랙 색상*/ }
+
+
+	 
+	 
+	 
+	
+	
 
 </style>
 
@@ -35,7 +46,7 @@ body {
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
-		<h2>PROFILE REGISTER</h2>
+	<h1 style="margin-left: 1em; font-size: 50pt; text-shadow:#999999 5px 5px 5px;" >PROFILE REGISTER</h1>
 	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/profile/upload?id=${param.id}&gid=${param.id}" enctype="multipart/form-data" method="post">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
@@ -62,7 +73,10 @@ body {
 			
 			<td colspan="3" id="img_td"> <input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 400px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" onchange="readURL(this)" >					
 			<br /><br />
+			
 			<img id="preview" style="width: 300px; height: 300px; margin-right:  20px; margin-bottom: 50px; float: right;" />
+			
+		
 			</td>
 		</tr>
 	
@@ -83,11 +97,8 @@ body {
 
 	<input type="button" class="btn mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
-<<<<<<< HEAD
  	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
-=======
- 	 <input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
+
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.gid}"> 
 	 </div>

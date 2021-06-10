@@ -32,10 +32,11 @@ public class GoodsinsertController extends HttpServlet{
 		String gname=mr.getParameter("gname");
 		String gorgimg=mr.getOriginalFileName("gsaveimg");
 		String gsaveimg=mr.getFilesystemName("gsaveimg");
+		String glink=mr.getParameter("glink");
 		String gcategory=mr.getParameter("gcategory");
 		GoodsDao dao=GoodsDao.getInstance();
 		File f=new File(saveDir+"\\"+gsaveimg);
-		GoodsVo vo=new GoodsVo(gcode, gprice, gname, gsaveimg, gorgimg, gcategory);
+		GoodsVo vo=new GoodsVo(gcode, gprice, gname, gsaveimg, gorgimg, glink, gcategory);
 		int n=dao.goodsinsert(vo);
 		if(n>0) {
 			req.setAttribute("code","success");

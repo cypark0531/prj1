@@ -187,4 +187,48 @@ public class ProfilesDao {
 	
 	}
 	
+	public int fileupdate(String id) {	
+		String sql = "update profiles set porgimg=null, psaveimg=null where id= ?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			int n = pstmt.executeUpdate();
+			return n;
+		}catch (SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	public int delete(String id) {
+		String sql = "delete from profiles where id=?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			int n = pstmt.executeUpdate();
+			return n;
+		}catch(SQLException se) {
+			se.printStackTrace();
+		return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+			
+		}
+	}
+	
 }

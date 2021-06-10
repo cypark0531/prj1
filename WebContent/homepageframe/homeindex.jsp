@@ -8,6 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
+<%
+	request.getAttribute("id");
+
+%>
+
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -66,6 +74,7 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Studio</a>
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="#" class="blog-menu">Contact</a>
+  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">shop</a>
   <a href="#" class="blog-menu mention">@MagazineDope</a>
   <a href="#" class="blog-menu subscribe">Subscribe</a>
  </div>
