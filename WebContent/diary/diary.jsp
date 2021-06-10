@@ -136,6 +136,7 @@
 						newTr.appendChild(newTd2)
 						newTable.appendChild(newTr);
 						main.appendChild(newTable);
+					}
 						/* 
 						pw.print("<page>");
 						pw.print("<pageNum>"+pageNum+"</pageNum>");
@@ -169,7 +170,7 @@
 						
 					}
 				}
-			}
+			
 			xhr.open("get","${pageContext.request.contextPath}/diary/list?gid=${param.gid}&id=${param.id}&year=${param.year}&month=${param.month}&date="+k+"&pageNum="+pageNum)
 			xhr.send();
 			

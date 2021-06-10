@@ -181,7 +181,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
-  font-size: 72px;
+  /*font-size: 72px;*/
   text-align: center;
   letter-spacing: -3px;
   font-weight: lighter;
@@ -232,7 +232,7 @@ body {
   line-height: 1.5;
   margin: 14px 0;
 }
-.blog-article a {
+ .blog-article a {
   color: #161419;
   text-decoration: none;
   font-size: 26px;

@@ -47,6 +47,7 @@ public class BoardreplyListController extends HttpServlet{
 			pw.print("<regdate>"+vo.getRegdate()+"</regdate>");
 			pw.print("</reply>");
 		}
+		pw.print("</result>");
 		
 		
 	}

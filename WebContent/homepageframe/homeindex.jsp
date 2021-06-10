@@ -8,12 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
 <%
 	request.getAttribute("id");
 
 %>
+
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -32,6 +34,10 @@ top.window.outerWidth = screen.availWidth;
 		window.resizeTo(1280,800);
 		window.scrollTo(0,250);
 	}
+	function GOFriend() {
+		window.location.href= "${pageContext.request.contextPath }/friend/friend?host=${id}";
+		
+	}
 	function SetUp1() {
 		window.location.href= "${pageContext.request.contextPath }/profile/insert2.jsp?id=${id}";
 		
@@ -48,7 +54,12 @@ top.window.outerWidth = screen.availWidth;
 	}
 	
 </script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
+<style type="text/css">
 
+
+</style>
 
 </head>
 <body style="color:#383a3d;">
@@ -63,7 +74,6 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Studio</a>
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="#" class="blog-menu">Contact</a>
-  <a href="${pageContext.request.contextPath }/goods/goodslist" class="blog-menu">shop</a>
   <a href="#" class="blog-menu mention">@MagazineDope</a>
   <a href="#" class="blog-menu subscribe">Subscribe</a>
  </div>
@@ -74,7 +84,32 @@ top.window.outerWidth = screen.availWidth;
   </div>
   <div class="blog-article page-number">
   <jsp:include page="${musicBox }"></jsp:include>
-   NO. 01
+  <div style="height:400px; max-width:227px;">
+   <table id="friend">
+   <tr>
+   	<th style="font-size:x-large; text-align: left; color:black;">일촌 목록</th>
+   </tr>
+   	<tr>
+   		<th style="font-size:large; color:black; width:70%; border-bottom: 1px solid #94918f;">아이디</th>
+   		<th style="font-size:large; color:black; width:100%; border-bottom: 1px solid #94918f;">홈페이지</th>
+   	</tr>
+   	<c:forEach var="list" items="${requestScope.friendlist }">
+   		<tr>
+   			<td style="font-size:medium; color:black; border-bottom: 1px solid #94918f;">${list[0] }</td>
+   			<td style="color:black; border-bottom: 1px solid #94918f;">
+   				<a href="${pageContext.request.contextPath }/${list[1]}" style="border-top: 0px; font-size: medium; padding-top: 0px;">이동</a>
+   			</td>
+   		</tr>
+   	</c:forEach>
+   </table>
+  </div>
+   <a href="#" onclick="GOFriend()">
+   	<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+   	<path d="M15 10l5 5-5 5" />
+   	<path d="M4 4v7a4 4 0 004 4h12" />
+   	</svg>
+    SEE MORE
+   </a>
   </div>
  </div>
  

@@ -68,12 +68,12 @@ public class ProfilesDao {
 				 * popen;
 				 */
 				//String id1 = rs.getString("id");
-				String porgimg = rs.getString("porgimg");
-				String psaveimg = rs.getString("psaveimg");
-				String ptitle = rs.getString("ptitle");
-				String htitle = rs.getString("htitle");
-				String pintro = rs.getString("pintro");
-				int popen = rs.getInt("popen");
+				String porgimg = rs.getString(2);
+				String psaveimg = rs.getString(3);
+				String ptitle = rs.getString(4);
+				String htitle = rs.getString(5);
+				String pintro = rs.getString(6);
+				int popen = rs.getInt(7);
 
 				ProfilesVo vo = new ProfilesVo(id, porgimg, psaveimg, ptitle, htitle, pintro, popen);
 				list.add(vo);
