@@ -66,7 +66,7 @@ body {
 		</tr>
 		<tr>
 		<th>MY INRODUCE<span class="t_red"> *</span></th>
-        <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style="text-align:center; width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
+        <td><textarea id="pintro" name="pintro" cols="10" rows="5" class="textarea01" style=" width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
 		</tr>
 		<tr>
 			<th>MY PROFILE<br>(Attached File)</th>

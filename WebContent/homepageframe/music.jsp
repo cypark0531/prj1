@@ -23,7 +23,7 @@
 <body>
 <div class="holder" style= "margin-block-end:auto;">
   <div class="audio green-audio-player" style="display: contents;">
-    <form action="${pageContext.request.contextPath}/storagebox/storageboxlist" style="float: right; margin-top: -8px;">
+    <form action="${pageContext.request.contextPath}/storagebox/storageboxlist" style="float: right; margin-top: -63px;">
       <input type="hidden" name="id" value="${requestScope.id }">
       <input type="hidden" name="glink" value="${glink}">
       <input type="submit" value="edit" >

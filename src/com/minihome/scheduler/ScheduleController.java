@@ -22,7 +22,7 @@ import com.minihome.vo.ScheduleVo;
 public class ScheduleController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=(String)req.getSession().getAttribute("id");
+		String id=(String)req.getSession().getAttribute("gid");
 		
 		String host=(String)req.getAttribute("host");
 		int year=(Integer)req.getAttribute("year");

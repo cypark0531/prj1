@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.minihome.dao.PurchaseDao;
+import com.minihome.dao.RefundDao;
 import com.minihome.vo.PurchaseVo;
+import com.minihome.vo.RefundVo;
 @WebServlet("/purchase/purchaselist")
 public class PurchaselistController extends HttpServlet{
 	@Override
@@ -21,6 +23,7 @@ public class PurchaselistController extends HttpServlet{
 		if(spageNum!=null) {
 			pageNum=Integer.parseInt(spageNum);
 		}
+		ArrayList<RefundVo> relist = RefundDao.getInstance().list(id);
 		//글 갯수
 		int startRow=(pageNum-1)*8+1;
 		int endRow=startRow+7;
@@ -33,6 +36,7 @@ public class PurchaselistController extends HttpServlet{
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
+		req.setAttribute("relist", relist);
 		req.setAttribute("list", list);
 	    req.setAttribute("id", id);
 	    req.setAttribute("pageCount", pageCount);

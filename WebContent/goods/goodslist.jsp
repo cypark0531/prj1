@@ -127,7 +127,7 @@ body {
 		        </form>
 			  </td>
 		      <td>
-	            <form action="${pageContext.request.contextPath }/basket/insert" method="post">
+	            <form action="${pageContext.request.contextPath }/basket/insert" method="post" onsubmit="return ccheck()">
 	              <input type="hidden" name="id" value="${requestScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
@@ -185,12 +185,20 @@ body {
 <script type="text/javascript">
    function check(money,gprice){
 	   if(gprice>money){
-	     alert('금액 부족함');
+	     alert('금액이 부족합니다');
 	   	 return false;
 	   }else{
 	     return true;
 	   }
    }
+   function ccheck(){
+		if (confirm(" 추가하시겠습니까?") == true){
+			alert("추가되었습니다");
+			return true;
+		}else{
+			return false;
+		}
+	}
 </script>
 </body>
 </html>
