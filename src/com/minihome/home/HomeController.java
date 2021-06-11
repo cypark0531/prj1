@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
 import com.minihome.vo.GalleryVo;
@@ -53,7 +54,19 @@ public class HomeController extends HttpServlet {
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
 				
-		
+		//일촌 목록
+				FriendDao fridao=FriendDao.getInstance();
+				ArrayList<String> frilist=fridao.getFriend("test11");
+				ArrayList<String[]> friendlist=new ArrayList<String[]>();
+				if(frilist!=null)for(String hostid:frilist) {
+					String[] str= {hostid,"home?id="+hostid}; 
+					friendlist.add(str);
+				}
+				else {
+					String[] str= {"-","-"}; 
+					friendlist.add(str);
+				}
+				req.setAttribute("friendlist", friendlist);
 		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
