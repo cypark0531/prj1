@@ -37,7 +37,7 @@
   bgm을 src로 저장하기 
   goods테이블에 컬럼을 추가해서 거기에 link를 주고 홈컨트롤러에서 새창(보관함)으로뛰워서 음악 변경(버튼에 hidden으로 link값을 넘김)누르면 
   music.jsp에 requestScope.link로 넘겨서 변경할 수 있도록 하면될것같은데...? 할려고 그랬으나 내 능력으론 안됨....
-  그래서 일단은 페이지 이동으로 해야될듯하다.
+  그래서 일단은 페이지 이동으로 해야될듯하다.(완료)
   https://sites.google.com/site/gdocs2direct/(다이렉트연결 링크 생성)
   https://drive.google.com/uc?export=download&id=1Wj2TOzTKCwpWjilAJSlstLKAlrjycIRK 눈사람
   https://drive.google.com/uc?export=download&id=1ieBCxuxTAxEUF9RnqHd5p28PaIp8xGRX 상상더하기
@@ -46,7 +46,7 @@
   구매하면 보관함에 insert 시켜야됨
   환불되면 보관함에서 delete 되야됨
   
-  보관함 목록(링크있어야됨) 구현<= 이거 구매목록 테이블 재사용하면 안되나?
+  보관함 목록(링크있어야됨)
   create table STORAGE_BOX(보관함)(
   --보관 번호 (시퀸스)
    anum number(10) not null primary key,
@@ -63,7 +63,7 @@
 	gcategory varchar2(20)
   );
   
-  아이디가 없을경우 구매,장바구니,목록을 누르면 로그인창으로 갈수있도록 만들고싶음
+  아이디가 없을경우 구매를 누르면 로그인창으로 갈수있도록 만들고싶음
  
 -->
 </form>

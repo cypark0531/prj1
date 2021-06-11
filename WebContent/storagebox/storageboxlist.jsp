@@ -147,7 +147,7 @@ body {
 	      <form action="${pageContext.request.contextPath }/home">
 		    <input type="hidden" name="id" value="${requestScope.id }">
 		    <input type="hidden" name="glink" value="${requestScope.glink }">
-		    <input type="submit" value="닫기" class="btn mr5" style="float: right; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
+		    <input type="submit" value="닫기" class="btn mr5" style="float: right; width: 13dqwe0px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	    </div>
     </div>
