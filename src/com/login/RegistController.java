@@ -31,7 +31,6 @@ public class RegistController extends HttpServlet{
 		
 		MembersVO vo= new MembersVO(id, pwd, name, email, phone, question, answer, 0, 0);
 		ProfilesDao pdao= ProfilesDao.getInstance();
-		pdao.insert(new ProfilesVo());
 		MembersDao dao=MembersDao.getIntstance();
 		int n=dao.insert(vo);
 		
@@ -49,7 +48,7 @@ public class RegistController extends HttpServlet{
 		
 		
 	
-		if(n>0 && pro>0) {
+		if(n>0 ) {
 			resp.sendRedirect(req.getContextPath()+"/login/login.jsp");
 			req.setAttribute("list", list);
 		}else {

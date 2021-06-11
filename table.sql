@@ -248,13 +248,13 @@ CREATE TABLE profiles
 	-- 아이디
 	id varchar2(20) NOT NULL,
 	-- 프로필이미지
-	porgimg varchar2(20),
+	porgimg varchar2(100),
 	-- 프로필대화명(제목)
-	psaveimg varchar2(20),
+	psaveimg varchar2(100),
 	-- 프로필대화명(제목)
-	ptitle varchar2(20),
+	ptitle varchar2(100),
 	-- 홈피 제목
-	hptitle varchar2(20),
+	hptitle varchar2(100),
 	-- 프로필자기소개
 	pintro varchar2(100),
 	-- 프로필공개
