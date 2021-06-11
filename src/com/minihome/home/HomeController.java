@@ -47,7 +47,7 @@ public class HomeController extends HttpServlet {
 			
 		}
 		System.out.println("파일명 : " +psaveimg);
-		
+		 
 		req.setAttribute("list", list);
 		req.setAttribute("psaveimg", psaveimg);
 		req.setAttribute("ptitle", ptitle);
