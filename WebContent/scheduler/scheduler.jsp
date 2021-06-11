@@ -114,7 +114,7 @@ body{background-color: black;}
 				let child=calrow[j].children;
 				for(let n=3;n<child.length;n+=4 ){
 					child[n].style="height:40px";				
-					child[n].childNodes[1].style="background-color:silver; color:white;";
+					child[n].childNodes[1].style="background-color:silver; color:black;";
 					child[n].childNodes[3].style="width:84px; height:20px; color:white;";					
 				}
 			}
@@ -125,7 +125,7 @@ body{background-color: black;}
 				tds[j].childNodes[3].style="width:84px; height:80px; color:white;";
 			}
 			
-			td[i].childNodes[1].style="background-color:#FAED7D; color:white;";
+			td[i].childNodes[1].style="background-color:#FAED7D; color:black;";
 			currday=i;
 			
 			let day=0;
