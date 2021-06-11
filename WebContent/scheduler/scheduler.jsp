@@ -99,7 +99,7 @@ body{background-color: black;}
 	var savebtn=document.getElementById("savebtn");
 	var cancelbtn=document.getElementById("cancelbtn");
 	
-	if("${requestScope.host}"!="${sessionScope.id}"){
+	if("${requestScope.host}"!="${sessionScope.gid}"){
 		savebtn.disabled="disabled";
 		for(let i=0;i<4;i++){
 			arrday[i].readonly="readonly";
@@ -229,7 +229,7 @@ body{background-color: black;}
 				xhr.onreadystatechange=function(){
 					if(xhr.readyState==4 && xhr.status==200)console.log(t);
 				};				
-				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"${sessionScope.id}"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
+				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"${sessionScope.gid}"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
 				xhr.send();
 			}
 			

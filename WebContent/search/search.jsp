@@ -17,7 +17,7 @@
 <div style="width:100%;">
 <h1 style="color:white;">회원 검색</h1>
 <div style="width:100%; margin-top:60px; height:40px;">
-	<input id="search" style="font-size:x-large; width:87%; height:40px; background-color: black; border:2px solid white; color:white;">
+	<input id="search" value="${requestScope.str }" style="font-size:x-large; width:87%; height:40px; background-color: black; border:2px solid white; color:white;">
 	<input id="sbtn" type="button" value="검색" style="background-color: black; border:2px solid white; color:white; width:50px; height:40px;">
 </div>
 <table id="friendtable" style="background-color: white; width:100%; margin-top:60px;">

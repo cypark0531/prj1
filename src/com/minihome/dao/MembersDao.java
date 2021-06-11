@@ -255,6 +255,7 @@ public class MembersDao {
 		try{
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,"%"+str+"%");
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				System.out.println("asdf:"+rs.getString(1));

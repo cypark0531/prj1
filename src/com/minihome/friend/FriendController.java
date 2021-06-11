@@ -20,10 +20,10 @@ import com.minihome.vo.FriendVo;
 public class FriendController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//String host=req.getParameter("host");
-		//String gid=req.getSession().getAttribute("id");
-		String host="test11";
-		String gid="test";
+		String host=req.getParameter("host");
+		String gid=(String)req.getSession().getAttribute("gid");
+		//String host="test11";
+		//String gid="test";
 		int page=1;
 		if(req.getParameter("page")!=null)page=Integer.parseInt(req.getParameter("page"));
 		FriendDao dao=FriendDao.getInstance();
@@ -40,7 +40,6 @@ public class FriendController extends HttpServlet{
 			flist.add(ck);
 		}
 		int lastpage = dao.lastPage(host);
-		req.getSession().setAttribute("id", gid);//임시 설정
 		if(host.equals(gid))req.setAttribute("host", true);
 		else req.setAttribute("host", false);
 		req.setAttribute("list", flist);
