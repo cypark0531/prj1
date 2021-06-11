@@ -20,8 +20,7 @@ import com.minihome.vo.ProfilesVo;
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		String id = "test4";
+		String id = req.getParameter("id");
 		String gid = "test4";
 		req.setAttribute("id", id);
 		req.setAttribute("gid", gid);
