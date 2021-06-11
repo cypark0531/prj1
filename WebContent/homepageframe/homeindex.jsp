@@ -211,10 +211,10 @@ top.window.outerWidth = screen.availWidth;
    	<div class="blog-article">
    	<c:choose>
    	<c:when test="${gvo.galsavename=='none' }">
-   	<img src="homepageframe/gimg/none1.jpg" style="display:fixed;   border-radius: 10%; width: 300px;  height:300px; margin-left: 13px;" >
+   	<img src="homepageframe/gimg/none1.jpg" style=" display:flex;   border-radius: 10%; width: 300px;  height:300px; margin-left: 3em;" >
    	</c:when>
    	<c:otherwise>
-    <img src="${pageContext.request.contextPath }/homepageframe/gimg/${gvo.galsavename}" style=" border-radius: 10%; width: 400px;  height:300px; margin-left: 13px;" >
+    <img src="${pageContext.request.contextPath }/homepageframe/gimg/${gvo.galsavename}" style=" display:flex; border-radius: 10%; width: 300px;  height:300px; margin-left: 3em; " >
    	</c:otherwise>
    	</c:choose>
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${gvo.galtitle}</h2>
