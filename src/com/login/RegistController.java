@@ -30,6 +30,8 @@ public class RegistController extends HttpServlet{
 		String answer=req.getParameter("answer");
 		
 		MembersVO vo= new MembersVO(id, pwd, name, email, phone, question, answer, 0, 0);
+		ProfilesDao pdao= ProfilesDao.getInstance();
+		pdao.insert(new ProfilesVo());
 		MembersDao dao=MembersDao.getIntstance();
 		int n=dao.insert(vo);
 		

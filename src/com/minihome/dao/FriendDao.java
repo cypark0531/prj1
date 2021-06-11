@@ -66,6 +66,39 @@ public class FriendDao {
 		}
 		return friend;
 	}
+	public int getFriendState(String id , String gid) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int friend = 0;
+		try {
+			con = MyDBCP.getConnection();
+			String sql = "Select * from friend where (hid = ? and gid = ?) or (hid = ? and gid = ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, gid);
+			pstmt.setString(3, gid);
+			pstmt.setString(4, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				String id1=rs.getString(2);
+				String id2=rs.getString(3);
+				String state=rs.getString(4);
+				if(id1.equals(id)) {
+					return Integer.parseInt(state);
+				}
+				else{
+					if(state.equals("3")) return Integer.parseInt(state);
+					else return 2;
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+		return friend;
+	}
 	public ArrayList<FriendVo> getFriend(String host,int page) { 
 		Connection con = null;
 		PreparedStatement pstmt = null;

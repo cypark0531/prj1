@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.minihome.db.MyDBCP;
 import com.minihome.vo.MembersVO;
@@ -238,6 +239,29 @@ public class MembersDao {
 				return rs.getString(1);
 			}
 			return null;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	public ArrayList<MembersVO> getMembers(String str) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<MembersVO> list=new ArrayList<>();
+		String sql="select * from members where id like ?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,"%"+str+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				System.out.println("asdf:"+rs.getString(1));
+				list.add(new MembersVO(rs.getString(1), null, rs.getString(3), null, null, null, null, 0, 0));
+			}
+			return list;
 		}catch(SQLException e){
 			e.printStackTrace();
 			return null;

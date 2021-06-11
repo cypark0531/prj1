@@ -91,7 +91,9 @@
 	function goDelete(){
 		if (confirm(" 정말 삭제하시겠습니까?") == true){
 			location.href = "${pageContext.request.contextPath}/board/delete?bnum=${param.bnum}";
-		 return;
+		 
+		}else{
+			return;
 		}
 	}
 	function list(){

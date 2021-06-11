@@ -35,7 +35,7 @@ public class LoginController extends HttpServlet{
 		String box=req.getParameter("box");
 		MembersDao dao=MembersDao.getIntstance();
 		if(dao.login(id, pwd)) {
-			req.getSession().setAttribute("id", id);
+			req.getSession().setAttribute("gid", id);
 			if(box!=null) {
 				System.out.println("쿠키 활성화");
 				Cookie idcook=new Cookie("minihomeid",id);

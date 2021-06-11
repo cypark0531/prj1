@@ -93,14 +93,27 @@ body {
 		      <td>${vo.gprice }</td>
 		      <td>${vo.regdate }</td>
 		      <td>
+		      <c:set var="a" value="1"/>
 		      <!-- 환불 버튼 누르면 /purchase/purchasedeleteController로 감 -->
-			    <form action="${pageContext.request.contextPath }/purchase/delete" method="post">
-		          <input type="hidden" name="id" value="${vo.id }">
-		          <input type="hidden" name="gcode" value="${vo.gcode }">
-		          <input type="hidden" name="purnum" value="${vo.purnum }">
-		          <input type="hidden" name="gprice" value="${vo.gprice }">
-		          <input type="submit" value="환불" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
-			    </form>
+		          <c:forEach var = "vo1" items="${relist }">
+		            <c:if test="${vo.purnum!= vo1.purnum}">
+		          	  <c:set var="a" value="2"/>		          
+		            </c:if>
+		          </c:forEach>
+		          <c:choose>
+		            <c:when test="${a==2 }">
+		          	  <form action="${pageContext.request.contextPath }/purchase/delete" method="post">
+		          		<input type="hidden" name="id" value="${vo.id }">
+			            <input type="hidden" name="gcode" value="${vo.gcode }">
+			            <input type="hidden" name="purnum" value="${vo.purnum }">
+			            <input type="hidden" name="gprice" value="${vo.gprice }">
+			            <input type="submit" value="환불" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
+			    	  </form>
+		          	</c:when>
+		          	<c:otherwise>
+		          	  이미 환불되었습니다.
+		          	</c:otherwise>
+				  </c:choose>
 			  </td>
 		    </tr>
 		  </c:forEach>
