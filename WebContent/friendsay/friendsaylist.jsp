@@ -5,10 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.ftable {
+		border: 2px solid aqua;
+	
+	}	
+	
+
+
+
+
+</style>
 </head>
 <body>
 <div id = "all">
-
+	<h1>Friend Talk Talk </h1>
+	
+	
+	
 </div>
 <div> <input type= "text" id = "inputContent"> <input type= "button" value = "입력" onclick="fsinsert(0)">
 </div>
@@ -36,11 +50,19 @@ function list(pageNum){
 				let newDiv = document.createElement("div");
 				newDiv.id = "reply"+fsgroup;
 				let newTable = document.createElement("table");
+				newTable.className = "ftable"
 				let newTr = document.createElement("tr");
+				newTr.className = "ftr"
 				let newTd1 = document.createElement("td"); //일촌 이름
 				let newTd2 = document.createElement("td");//내용
 				let newTd3 = document.createElement("td"); // 삭제
 				let newTd4 = document.createElement("td"); // 삭제
+				newTd1.className = "ftd";
+				newTd2.className = "ftd";
+				newTd3.className = "ftd";
+				newTd4.className = "ftd";
+				
+				
 				newTd3.innerHTML = "<a href = 'javascript:reply("+fsgroup+","+spageNum+")'><span id = 'span"+fsgroup+"' style='color:black;font-weight: 900'>↓</span>"+"</a>";
 				newTd1.innerHTML = gid
 				newTd2.innerHTML = fscontent
