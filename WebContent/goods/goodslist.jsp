@@ -127,7 +127,7 @@ body {
 		        </form>
 			  </td>
 		      <td>
-	            <form action="${pageContext.request.contextPath }/basket/insert" method="post">
+	            <form action="${pageContext.request.contextPath }/basket/insert" method="post" onsubmit="return ccheck()">
 	              <input type="hidden" name="id" value="${requestScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
@@ -191,6 +191,14 @@ body {
 	     return true;
 	   }
    }
+   function ccheck(){
+		if (confirm(" 추가하시겠습니까?") == true){
+			alert("추가되었습니다");
+			return true;
+		}else{
+			return false;
+		}
+	}
 </script>
 </body>
 </html>

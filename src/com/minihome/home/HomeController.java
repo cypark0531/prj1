@@ -137,7 +137,6 @@ public class HomeController extends HttpServlet {
 		Calendar fDay =Calendar.getInstance();
 		fDay.set(currYear, currMonth, 1);
 		int firstDay=fDay.get(fDay.DAY_OF_WEEK);
-		
 		Calendar cc =Calendar.getInstance();
 		int realYear = cc.get(c.YEAR);
 			String path = "/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth+
