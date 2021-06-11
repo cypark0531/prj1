@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>profilelist(update).jsp</title>
 <style type="text/css">
@@ -65,7 +66,10 @@ body {
   opacity: 1;
 }
 
-
+  .container {background-color:#121418; z-index:1; margin-left:3vh;  margin-top:3.5vh; height:600px; overflow-y: auto;  border-bottom-style: dotted; border-color :white;  width:900px;}
+  .container::-webkit-scrollbar { width: 5px; /*스크롤바의 너비*/ } 
+  .container::-webkit-scrollbar-thumb { background-color: black; /*스크롤바의 색상*/ } 
+  .container::-webkit-scrollbar-track { background-color: white; /*스크롤바 트랙 색상*/ }
 
 
 </style>
@@ -110,7 +114,7 @@ top.window.outerWidth = screen.availWidth;
 	<div class="container">
 	<div class= "inner">
 		<h2>PROFILE REGISTER</h2>
-	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update" enctype="multipart/form-data" method="post">
+	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update" enctype="multipart/form-data" method="post" onsubmit="return UpdateCommit()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
@@ -136,7 +140,7 @@ top.window.outerWidth = screen.availWidth;
 		<tr>
 			<th>MY PROFILE<br>(Attached File)</th>
 			
-			<td colspan="3" id="img_td">[Exisiting File Name ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"  style="font-size: 16px; width: 360px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" >
+			<td colspan="3" id="img_td">[Exisiting File Name ${vo.porgimg }]	<br><br><input type="file" name="imgfile" id="imgfile"  style="font-size: 16px; width: 360px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" onchange="readURL(this)">
 						
 			<br/>
 			<div class="del">
@@ -161,16 +165,39 @@ top.window.outerWidth = screen.availWidth;
 
 	</table>
 	<div class="btn_right mt15" style=" float: right;" >
-	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
+	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;" onclick="toMain()">
  	<input type="submit" class="btn " value="수정하기"  style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; "  >
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
-	 </div>
+	<input type = "hidden" name = "code" value = "1">
+ 	 </div>
 	 </form>
 	</div>
 </div>
 </div>
 <script type="text/javascript">
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('preview').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	} else {
+		document.getElementById('preview').src = "";
+	}
+}
+
+	function  UpdateCommit() {
+		//alert("등록을 완료하였습니다.");
+		
+		if(confirm("수정을완료하였습니다 홈으로가시겠습니까? \n \t home:확인 \t 취소:현재페이지")==true) {
+			 return true;
+		}else{
+			return false;
+		}
+	}
+
 	function  proDelete() {
 		if(confirm("삭제를 하시겠습니까?")==true){
 			console.log(${requestScope.id})
@@ -179,8 +206,16 @@ top.window.outerWidth = screen.availWidth;
 		}
 		
 	}
-	if(${param.code==1}) 
-		alert('${param.code}');
+	if(${param.code==1}) {
+		alert('삭제를 완료하였습니다.');
+	}
+	
+	function  toMain() {
+		 	window.location.replace("${pageContext.request.contextPath}/home");
+	}
+	
+	
+	
 	
 	
 </script>

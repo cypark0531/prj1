@@ -17,21 +17,25 @@ font-family:Space Grotesk, sans-serif;
 }
 #sidebar-left {
 	
-	width: 280px;
+	width: 210px;
 	height: 500px; 
 	padding: 20px;
 	/*margin-right: 20px;*/
-	margin-left: 45px;
+	margin-left: 32px;
 	margin-bottom: 20px;
 	postion:absolute;
 	border: 3px dotted white;
 
 	margin-top:1.7em;
-	margin-left: 1.7em;
 	background-color: #e9e6e4;
 	
 }
-
+#intro::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+#pt::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
 
 
 </style>
@@ -41,20 +45,19 @@ font-family:Space Grotesk, sans-serif;
 	String ptitle = request.getParameter("ptitle");
 	String pintro = request.getParameter("pintro");
 	
-%>		
-		<h2 style="margin-bottom:-20px; margin-top:10px; margin-left: .9em; color:white; font-family:Space Grotesk, sans-serif; font-weight: 900; font-size: 60pt; text-align: center;"  >Profile</h2>
-		<div style="margin-left:3em; margin-top: 2em; width: 390px; height: 610px; color: #e9e6e4; border:3px dotted white;">	
+%>		<h2 style="margin-bottom:-20px; margin-top:10px; margin-left: .5em; color:white; font-family:Space Grotesk, sans-serif; font-weight: 900; font-size: 40pt; text-align: center;"  >Profile</h2>
+		<div style="margin-left:2em; margin-top: 2em; width: 320px; height: 610px; color: #e9e6e4; border:3px dotted white;">	
 		<div id="sidebar-left">
 		<div id = "ht" style=" color: black; font-size: 20pt; text-align: center;">${param.htitle }</div>
 		<!--  <h2><img src ="${cp}/home~~/img/${save}"</h1>-->
 			
-			<img id= "img" style="border-radius: 50%; width: 240px; height: 240px;  margin-left: 1.5em;"> 
-			<div id = "pt" style="border-top: 30em; color: black; font-size: 20pt; text-align: center;">${param.ptitle}</div>
-			<div id= "intro" style="border-top: 30em; color: black; text-align: center; margin-block:7px; ">${param.pintro}</div><br>
+			<img id= "img" style="border-radius: 50%; width: 200px; height: 200px;  margin-left: 0.3em;"> 
+			<div id = "pt" style="display:flex;  border-top: 30em; padding-left:9px; color: black; font-size: 20pt; text-align: center; width: 210px; height: 35px; overflow: scroll;">${param.ptitle}</div>
+			<div id= "intro" style="border-top: 30em; color: black; text-align: center; margin-block:7px; width:210px; height: 260px; position: fixed; overflow: scroll;  ">${param.pintro}</div><br>
 			
 
 		<input type="button" class="btn black" value="CLOSE"  onclick="javascript:self.close()" 
-		style="margin-left: 7em;  margin-top: 5em; position:fixed;  width: 100px; height: 40px; border-top-left-radius: 30%; border-bottom-right-radius: 30%; font-size: 11pt;">
+		style="margin-left: 4.7em;  margin-top: 22em;  position:fixed;  width: 80px; height: 35px; border-top-left-radius: 30%; border-bottom-right-radius: 30%; font-size: 11pt;">
 			</div>	
 	
 		<!--  <div align="right"  class="btn black"><a href = "javascript:self.close();">닫기</a></div>-->

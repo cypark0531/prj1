@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
 <%
 	request.getAttribute("id");
-
+	request.getAttribute("gid");
 %>
 
 <script type="text/javascript">
@@ -39,7 +39,7 @@ top.window.outerWidth = screen.availWidth;
 		
 	}
 	function SetUp1() {
-		window.location.href= "${pageContext.request.contextPath }/profile/insert2.jsp?id=${id}";
+		window.location.href= "${pageContext.request.contextPath }/profile/upload.jsp?id=${id}";
 		
 	}
 	
@@ -52,6 +52,11 @@ top.window.outerWidth = screen.availWidth;
 		window.location.href= "${pageContext.request.contextPath }/gallery/list.jsp?id=${id}&gid=${gid}";
 			
 	}
+	
+	function Resister() {
+		window.location.href= "${pageContext.request.contextPath }/gallery/insert.jsp?id=${id}&gid=${gid}"
+	}
+	
 	
 </script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
@@ -74,7 +79,6 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Studio</a>
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="#" class="blog-menu">Contact</a>
-  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">shop</a>
   <a href="#" class="blog-menu mention">@MagazineDope</a>
   <a href="#" class="blog-menu subscribe">Subscribe</a>
  </div>
@@ -201,16 +205,34 @@ top.window.outerWidth = screen.availWidth;
   <div class="blog-header">
    <div class="blog-article header-article">
     <div class="blog-big__title">Gallery</div>
-    <div class="blog-menu small-title date">${regdate}</div>
+	
+    <div class="blog-menu small-title date">${gvo.regdate}</div>
    </div>
-   <div class="blog-article">
-    <img src="${pageContext.request.contextPath }/homepageframe/gimg/${galsavename}" style="border-radius: 80%; width: 300px;  height:300px; margin-left: 60px;" >
-    <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${galtitle}</h2>
+   	<div class="blog-article">
+   	<c:choose>
+   	<c:when test="${gvo.galsavename=='none' }">
+   	<img src="homepageframe/gimg/none1.jpg" style="display:fixed;   border-radius: 10%; width: 300px;  height:300px; margin-left: 13px;" >
+   	</c:when>
+   	<c:otherwise>
+    <img src="${pageContext.request.contextPath }/homepageframe/gimg/${gvo.galsavename}" style=" border-radius: 10%; width: 400px;  height:300px; margin-left: 13px;" >
+   	</c:otherwise>
+   	</c:choose>
+    <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${gvo.galtitle}</h2>
     <div class="blog-detail">
      <span>By Scarlett Witch</span>
      <span>5 Min Read</span>
     </div>
-    <p style="font-size: 20px;">${galcontent }</p>
+    <p style="font-size: 20px;">${gvo.galcontent }</p>
+
+    
+    <div class="prolinks">
+    <a href="#" onclick="Resister()" style="float: left;">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
+     RESISTER
+    </a>
     <a href="#" onclick="SeeMore()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
@@ -218,6 +240,7 @@ top.window.outerWidth = screen.availWidth;
      </svg>
      SEE MORE
     </a>
+    </div>
    </div>
   </div>
  </div>

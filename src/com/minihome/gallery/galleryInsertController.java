@@ -53,12 +53,11 @@ public class galleryInsertController extends HttpServlet {
 		int n = dao.insert(vo);
 		File f = new File(saveDir+"\\"+galsavename);
 		if(n>0) {
-			
-				req.setAttribute("code", "alert('등록을 정상적으로 완료하였습니다.');");
-				req.getRequestDispatcher("/gallery/result.jsp").forward(req, resp);
+				resp.sendRedirect(req.getContextPath()+"/gallery/insert.jsp?code=1&id="+id);
 		}else {
-				req.setAttribute("code", "alert('등록을 실패아였습니다.');");
-				req.getRequestDispatcher("/gallery/insert.jsp").forward(req, resp);
+				
+			resp.sendRedirect(req.getContextPath()+"/gallery/insert.jsp?upload=2");
+			//	req.getRequestDispatcher("/gallery/insert.jsp").forward(req, resp);
 		}
 //		req.getRequestDispatcher("/home").forward(req, resp);
 		

@@ -4,9 +4,6 @@
 DROP TABLE basicsetting CASCADE CONSTRAINTS;
 DROP TABLE basket CASCADE CONSTRAINTS;
 DROP TABLE boardreply CASCADE CONSTRAINTS;
---보관함 삭제
-drop table STORAGEBOX cascade constraints;
-
 DROP TABLE board CASCADE CONSTRAINTS;
 DROP TABLE diary CASCADE CONSTRAINTS;
 DROP TABLE friend CASCADE CONSTRAINTS;
@@ -195,8 +192,6 @@ CREATE TABLE GOODS
 	-- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
-	--음악링크
-	glink varchar2(100),
 	-- 카테고리
 	gcategory varchar2(10),
 	PRIMARY KEY (gcode)
@@ -284,29 +279,6 @@ CREATE TABLE purchase
 	PRIMARY KEY (purnum)
 );
 
-create table STORAGEBOX(보관함)(
-  --보관 번호 (시퀸스)
-   anum number(10) not null primary key,
-   --아이디
-   id varchar2(20) not null fk,
-   --상품 코드
-   gcode varchar2(20) NOT NULL,
-   --음악 링크
-   glink varchar2(100),
-   -- 상품사진
-	gsaveimg varchar2(30),
-	gorgimg varchar2(30),
-	--상품이름
-	gname varchar2(30),
-	--카테고리
-	gcategory varchar2(20)
-  );
-  
-  ALTER TABLE STORAGEBOX
-	ADD FOREIGN KEY (id)
-	REFERENCES members (id)
-	ON DELETE CASCADE
-;
 
 -- 환불
 CREATE TABLE REFUND

@@ -31,7 +31,8 @@ show();
 				console.log(length);
 				for(let i=0;i<length;i++){
 				
-					
+				
+		
 				let regdate = xml.getElementsByTagName("regdate")[i].textContent;
 				let galcontent = xml.getElementsByTagName("galcontent")[i].textContent;
 				let galsavename = xml.getElementsByTagName("galsavename")[i].textContent;
@@ -82,10 +83,11 @@ show();
 					if(flag){
 						let input1 = document.createElement("input");
 						input1.type= "button";
+						input1.className = "btn1";
 						input1.value= "수정"
 						input1.onclick = function(){
 							console.log("2")
-							location.href = "asdjkl;f?id"+id+"&gid="+gid+"&galnum="+galnum
+							location.href = "${pageContext.request.contextPath }/gallery/profile/update?id="+id+"&gid="+gid+"&galnum="+galnum;
 						}
 						let input2 = document.createElement("input");
 						input2.type= "button";

@@ -19,20 +19,17 @@ public class GoodsVo {
 	private String gname;
 	private String gsaveimg;
 	private String gorgimg;
-	private String glink;
 	private String gcategory;
 	
 	public GoodsVo() {}
-
-	public GoodsVo(String gcode, int gprice, String gname, String gsaveimg, String gorgimg, String glink,
-			String gcategory) {
+	
+	public GoodsVo(String gcode, int gprice, String gname, String gsaveimg, String gorgimg, String gcategory) {
 		super();
 		this.gcode = gcode;
 		this.gprice = gprice;
 		this.gname = gname;
 		this.gsaveimg = gsaveimg;
 		this.gorgimg = gorgimg;
-		this.glink = glink;
 		this.gcategory = gcategory;
 	}
 
@@ -74,14 +71,6 @@ public class GoodsVo {
 
 	public void setGorgimg(String gorgimg) {
 		this.gorgimg = gorgimg;
-	}
-
-	public String getGlink() {
-		return glink;
-	}
-
-	public void setGlink(String glink) {
-		this.glink = glink;
 	}
 
 	public String getGcategory() {

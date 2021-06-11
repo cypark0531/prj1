@@ -29,7 +29,8 @@ public class ImgfileUploadController extends HttpServlet {
 			 private String pintro;
 			 private int popen;
 		 */
-		String id = mr.getParameter("id"); 
+		String id = mr.getParameter("id");
+		String gid = mr.getParameter("gid");
 		String porgimg = mr.getOriginalFileName("imgfile");
 		String psaveimg = mr.getFilesystemName("imgfile"); 
 		String ptitle = mr.getParameter("ptitle");
@@ -56,15 +57,15 @@ public class ImgfileUploadController extends HttpServlet {
 	//	req.setAttribute("list",list);
 	//	req.getRequestDispatcher("/homepageframe/mainhomeframe.html").forward(req, resp);
 		
-		
+		req.setAttribute("list",list);
 
 		if(n>0) {
-			req.setAttribute("code", "success");
-			req.setAttribute("list",list);
+			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
+			
 		}else {
-			req.setAttribute("code", "fail");
+			System.out.println("½ÇÆÐ!");
 		}
-		req.getRequestDispatcher("/profile/result.jsp").forward(req, resp);
+	
 	}
 		
 

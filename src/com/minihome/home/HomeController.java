@@ -11,28 +11,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
-import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
-import com.minihome.vo.FriendVo;
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
-
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ProfilesDao dao = ProfilesDao.getInstance();
-		String id = req.getParameter("id");
-		String gid = "test";
+	
+		String id = "test4";
+		String gid = "test4";
 		req.setAttribute("id", id);
 		req.setAttribute("gid", gid);
-		System.out.println("id="+id);
-		String glink=req.getParameter("glink");
-		System.out.println(glink);
+		
 		//Profiles 프로필
+		ProfilesDao dao = ProfilesDao.getInstance();
 		ArrayList<ProfilesVo> list = dao.list(id);	
 		if(list.size()<1) {
 			req.setAttribute("profile", 1);
@@ -50,34 +45,22 @@ public class HomeController extends HttpServlet {
 			pintro = vo.getPintro();
 			
 		}
-		System.out.println("占쏙옙占쏙옙 : " +psaveimg);
+		System.out.println("파일명 : " +psaveimg);
 		
 		req.setAttribute("list", list);
 		req.setAttribute("psaveimg", psaveimg);
 		req.setAttribute("ptitle", ptitle);
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
-		
 				
-		//뮤직박스
+		
+		
+		
 		String musicBox = (String)req.getAttribute("musicBox");
 		if(musicBox==null) {
 		   musicBox ="/homepageframe/music.jsp";
 		}
 		
-		//일촌 목록
-		FriendDao fridao=FriendDao.getInstance();
-		ArrayList<String> frilist=fridao.getFriend("test11");
-		ArrayList<String[]> friendlist=new ArrayList<String[]>();
-		if(frilist!=null)for(String hostid:frilist) {
-			String[] str= {hostid,"home?id="+hostid}; 
-			friendlist.add(str);
-		}
-		else {
-			String[] str= {"-","-"}; 
-			friendlist.add(str);
-		}
-		req.setAttribute("friendlist", friendlist);
 		
 		//Dairy 다이어리
 		String dPath = getDiary(req, resp);
@@ -93,19 +76,20 @@ public class HomeController extends HttpServlet {
 //			content ="/profile/insert.jsp";	
 //			
 //	}	
+		
 //		String id = "test4";
-//		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
-//		req.setAttribute("gvo", gvo);
-//		System.out.println("galcontent : "+gvo.getGalcontent());
-//		String galtitle = gvo.getGaltitle();
-//		String galcontent = gvo.getGalcontent();
-//		String galsavename = gvo.getGalsavename();
-//		Date regdate = gvo.getRegdate();
-//		
-//		req.setAttribute("galtitle",galtitle);
-//		req.setAttribute("galcontent", galcontent);
-//		req.setAttribute("galsavename", galsavename);
-//		req.setAttribute("regdate", regdate);
+		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
+		
+		  if(gvo==null) {
+			  gvo = new GalleryVo(0, "test", "값이 없습니다",  "값이 없습니다",  "값이 없습니다",  "none", 0, null);
+		  }
+		
+		req.setAttribute("gvo", gvo);
+		System.out.println(gvo);
+		
+		
+	
+		
 		
 	System.out.println(dPath);
 	String cp = req.getContextPath();

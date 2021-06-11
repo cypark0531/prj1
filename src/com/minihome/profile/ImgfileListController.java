@@ -29,7 +29,7 @@ public class ImgfileListController extends HttpServlet {
 	
 		if (id != null) {
 			req.getRequestDispatcher("/profile/profilelist(update).jsp").forward(req, resp);
-			
+	
 		} else {
 			req.getRequestDispatcher("/profile/insert.jsp").forward(req, resp);
 		}

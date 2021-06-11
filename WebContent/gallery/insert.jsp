@@ -88,7 +88,7 @@ body {
 
 	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
- 	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+ 	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;" onclick="Register()">
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>
@@ -131,7 +131,16 @@ var btn2 = document.getElementById("btn2");
  var filebox = document.getElementById("imgfile");
 	filebox.innerHTML = "Choice File"
  */
+ function  Register() {
+		//alert("등록을 완료하였습니다.");
+		
+		if(confirm("등록을완료하였습니다 홈으로가시겠습니까?")==true) {
+			
+			 window.location.replace("${pageContext.request.contextPath }/home");
+		} 
+	}
 
 	</script>
 </body>
+
 </html>
