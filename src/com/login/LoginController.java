@@ -44,10 +44,10 @@ public class LoginController extends HttpServlet{
 				resp.addCookie(idcook);
 			}else {
 				System.out.println("쿠키 비활성화");
-				Cookie idcook=new Cookie("minihomeid","");
+				Cookie idcook=new Cookie("minihomeid",null);
 				idcook.setPath("/");
 				idcook.setMaxAge(0);
-				resp.addCookie(idcook);
+				resp.addCookie(idcook);				
 			}
 			resp.sendRedirect("../home");
 		}else {
