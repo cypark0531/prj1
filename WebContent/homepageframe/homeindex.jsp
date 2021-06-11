@@ -70,20 +70,22 @@ top.window.outerWidth = screen.availWidth;
 <body style="color:#383a3d;">
 <div class="blog">
  <div class="blog-part is-menu">
+ <!--
   <a href="#" class="blog-menu">
    Work
    <svg fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right" viewBox="0 0 24 24">
     <path d="M7 17L17 7M7 7h10v10" />
    </svg>
   </a>
+  <a href="#" class="blog-menu">Contact</a>
+ -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
 
-  <a href="#" class="blog-menu">Contact</a>
-  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">Shop</a>
+  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
-  <a href="#" class="blog-menu">일촌신청</a>
-  <a href="#" class="blog-menu mention">@MagazineDope</a>
-  <a href="#" class="blog-menu subscribe">Subscribe</a>
+  
+  <a href="#" class="blog-menu mention">LOGOUT</a>
+  <a href="#" class="blog-menu subscribe">일촌 신청</a>
  </div>
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
