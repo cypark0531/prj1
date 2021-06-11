@@ -34,6 +34,26 @@ top.window.outerWidth = screen.availWidth;
 		window.resizeTo(1280,800);
 		window.scrollTo(0,250);
 	}
+	function addFriend(){
+		let xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				let xml=xhr.responseXML;
+				let result=xml.getElementsByTagName("code")[0].textContent;
+				let reason=xml.getElementsByTagName("reason")[0].textContent;
+				if(result=="success"){
+					alert("성공적으로 일촌신청되었습니다");									
+				}
+				else {
+					if(reason=="already")alert("이미 신청되었거나 일촌 상태인 회원입니다.");	
+					else alert("오류로 인해 실패했습니다.");				
+				}
+			}
+		};
+		xhr.open('get','${pageContext.request.contextPath }/friend/addfriend?hid=${gid}&gid=${id}',true);
+		xhr.send();
+	}
+	
 	function GOFriend() {
 		window.location.href= "${pageContext.request.contextPath }/friend/friend?host=${id}";
 		
@@ -70,25 +90,31 @@ top.window.outerWidth = screen.availWidth;
 <body style="color:#383a3d;">
 <div class="blog">
  <div class="blog-part is-menu">
+ <!--
   <a href="#" class="blog-menu">
    Work
    <svg fill="none" stroke="currentColor" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right" viewBox="0 0 24 24">
     <path d="M7 17L17 7M7 7h10v10" />
    </svg>
   </a>
+  <a href="#" class="blog-menu">Contact</a>
+ -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
 
-  <a href="#" class="blog-menu">Contact</a>
-  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">Shop</a>
+  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
-  <a href="#" class="blog-menu">일촌신청</a>
-  <a href="#" class="blog-menu mention">@MagazineDope</a>
-  <a href="#" class="blog-menu subscribe">Subscribe</a>
+  
+  <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
+  <a href="${pageContext.request.contextPath }/home?id=${gid}" class="blog-menu subscribe">MYHOME</a>
  </div>
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
    <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px; padding-left:1.5em;text-indent:-1.5em;">&nbsp;${htitle}</div>
-   <div class="blog-menu rounded small-title">Pinned Issue</div>
+   <div class="blog-menu rounded small-title">
+   <c:if test="${id!=gid }">
+	<input type="button" value="일촌 신청" style="width:200px; height:40px; font-size: x-large; color:black;" onclick="addFriend()">
+   </c:if>
+   </div>
   </div>
   <div class="blog-article page-number">
   <jsp:include page="${musicBox }"></jsp:include>
