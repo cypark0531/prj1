@@ -50,7 +50,7 @@ top.window.outerWidth = screen.availWidth;
 				}
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath }/friend/addfriend?hid=${gid}&gid=${hid}',true);
+		xhr.open('get','${pageContext.request.contextPath }/friend/addfriend?hid=${gid}&gid=${id}',true);
 		xhr.send();
 	}
 	
@@ -105,12 +105,15 @@ top.window.outerWidth = screen.availWidth;
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
+  <a href="${pageContext.request.contextPath }/home?id=${gid}" class="blog-menu subscribe">MYHOME</a>
  </div>
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
    <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px; padding-left:1.5em;text-indent:-1.5em;">&nbsp;${htitle}</div>
    <div class="blog-menu rounded small-title">
+   <c:if test="${id!=gid }">
 	<input type="button" value="일촌 신청" style="width:200px; height:40px; font-size: x-large; color:black;" onclick="addFriend()">
+   </c:if>
    </div>
   </div>
   <div class="blog-article page-number">

@@ -12,6 +12,6 @@ public class LogoutController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().removeAttribute("gid");
-		resp.sendRedirect("/login/login");
+		resp.sendRedirect(req.getContextPath()+"/login/login");
 	}
 }

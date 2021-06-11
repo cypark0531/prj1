@@ -16,10 +16,12 @@ public class AddFreindController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String hid=req.getParameter("hid");
 		String gid=req.getParameter("gid");
+		System.out.println("hid:"+hid+" gid:"+gid);
 		FriendDao dao=FriendDao.getInstance();
 		boolean b=dao.friendStateOK(hid,gid);
 		int n=0;
-		if(b)n=dao.addFriend(hid,gid);
+		if(!b)n=dao.addFriend(hid,gid);
+		System.out.println(b+","+n);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
@@ -30,7 +32,7 @@ public class AddFreindController extends HttpServlet{
 			pw.print("<reason></reason>");
 		}else {
 			pw.print("<code>fail</code>");
-			if(!b)pw.print("<reason>already</reason>");
+			if(b)pw.print("<reason>already</reason>");
 			else pw.print("<reason></reason>");
 		}
 		pw.print("</result>");
