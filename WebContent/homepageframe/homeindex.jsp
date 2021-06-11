@@ -34,6 +34,26 @@ top.window.outerWidth = screen.availWidth;
 		window.resizeTo(1280,800);
 		window.scrollTo(0,250);
 	}
+	function addFriend(){
+		let xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				let xml=xhr.responseXML;
+				let result=xml.getElementsByTagName("code")[0].textContent;
+				let reason=xml.getElementsByTagName("reason")[0].textContent;
+				if(result=="success"){
+					alert("성공적으로 일촌신청되었습니다");									
+				}
+				else {
+					if(reason=="already")alert("이미 신청되었거나 일촌 상태인 회원입니다.");	
+					else alert("오류로 인해 실패했습니다.");				
+				}
+			}
+		};
+		xhr.open('get','${pageContext.request.contextPath }/friend/addfriend?hid=${gid}&gid=${hid}',true);
+		xhr.send();
+	}
+	
 	function GOFriend() {
 		window.location.href= "${pageContext.request.contextPath }/friend/friend?host=${id}";
 		
@@ -85,12 +105,13 @@ top.window.outerWidth = screen.availWidth;
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   
   <a href="#" class="blog-menu mention">LOGOUT</a>
-  <a href="#" class="blog-menu subscribe">일촌 신청</a>
  </div>
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
    <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px; padding-left:1.5em;text-indent:-1.5em;">&nbsp;${htitle}</div>
-   <div class="blog-menu rounded small-title">Pinned Issue</div>
+   <div class="blog-menu rounded small-title">
+	<input type="button" value="일촌 신청" style="width:200px; height:40px; font-size: x-large; color:black;" onclick="addFriend()">
+   </div>
   </div>
   <div class="blog-article page-number">
   <jsp:include page="${musicBox }"></jsp:include>
