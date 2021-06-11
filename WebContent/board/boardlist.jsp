@@ -29,11 +29,11 @@
 
 <c:forEach var = "vo" items="${boardlist }">
 	<c:choose>
-		<c:when test="${param.gid==param.id||(vo.bopen==2&&friend==true)||vo.bopen==3 }">
+		<c:when test="${sessionScope.gid==sessionScope.id||(vo.bopen==2&&friend==true)||vo.bopen==3 }">
 		<tr>
 			<td>${vo.rnum }</td>
 			<td><a class ="title" style="color: white; text-decoration: none;" href = "${pageContext.request.contextPath }/board/detail?bnum=${vo.bnum}&btitle=${vo.btitle}
-			&rnum=${vo.rnum}&bcontent=${vo.bcontent}&regdate=${vo.regdate}&id=${param.id}&gid=${param.gid}&b=0">${vo.btitle }</a></td>
+			&rnum=${vo.rnum}&bcontent=${vo.bcontent}&regdate=${vo.regdate}&id=${sessionScope.id}&gid=${sessionScope.gid}&b=0">${vo.btitle }</a></td>
 			<td>${vo.regdate }</td>
 		</tr>
 		</c:when>
@@ -49,27 +49,27 @@
 </table>
 
 <div style="float: right;margin-right: 0.5em; height: 30px;padding-bottom: 10px;">
-	<c:if test="${param.id==param.gid }">
+	<c:if test="${sessionScope.id==sessionScope.gid }">
 	<input style="width: 60px;height: 30px;font-size: 15px;margin-top:10px; color: white; background-color: #353535; border-radius: 30%;" type = "button" value="글쓰기" id = btn1>
 	</c:if>
 </div>
 <br>
 <div style="margin-left: 2.1em ;height: 30px;margin-top: 20px;">
 	<c:if test="${startPageNum>10}">
-		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}&id=${param.id}&gid=${param.gid}">[이전]</a>
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}">[이전]</a>
 		</c:if>
 	<c:forEach var ="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i}">
-				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:white;font-weight: 900">[${i}]</span></a>
+				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}"><span style="color:white;font-weight: 900">[${i}]</span></a>
 			</c:when>
 			<c:otherwise>
-				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&id=${param.id}&gid=${param.gid}"><span style="color:gray">[${i}]</span></a>
+				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}"><span style="color:gray">[${i}]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:if test="${endPagenum<pageCount}">
-		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}&id=${param.id}&gid=${param.gid}">[다음]</a>
+		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}">[다음]</a>
 		</c:if>
 
 </div>
@@ -79,7 +79,7 @@
 <script type="text/javascript">
 	var btn1 = document.getElementById("btn1");
 	btn1.addEventListener('click', function(e) {
-		location.href = "${pageContext.request.contextPath}/board/insert.jsp?id=${param.id}&gid=${param.gid}";
+		location.href = "${pageContext.request.contextPath}/board/insert.jsp";
 	});
 	var title = document.getElementsByClassName("title");
 	for(let i=0;i<title.length;i++){

@@ -45,7 +45,7 @@ body {
 	<div class="container">
 	<div class= "inner">
 		
-	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post" onsubmit="register()">
+	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post" onsubmit="return register()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
@@ -87,9 +87,9 @@ body {
 	</table>
 	<div class="btn_right mt15" style=" float: right;" >
 
-	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
+	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; "onclick = "gohome()">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
- 	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;" onclick="Register()">
+ 	 <input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>
@@ -106,6 +106,9 @@ function limitText(e) {
 		e.value = e.value.slice(0,e.maxlength);
 	}
 	
+}
+function gohome(){
+	location.href = "${pageContext.request.contextPath}/home";
 }
 
 

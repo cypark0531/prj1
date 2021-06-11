@@ -16,8 +16,8 @@ import com.minihome.vo.ProfilesVo;
 public class imgfileDeleteController extends HttpServlet {
 		@Override
 		protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				String id = req.getParameter("id");
-				System.out.println("delte¾ÆÀÌµð³Ñ¾Æ¿ÔÀ½"+id);
+				String id = (String) req.getSession().getAttribute("id");
+				System.out.println("delteï¿½ï¿½ï¿½Ìµï¿½Ñ¾Æ¿ï¿½ï¿½ï¿½"+id);
 				String uploadPath = getServletContext().getRealPath("/homepageframe/img");
 				ProfilesDao dao = ProfilesDao.getInstance();
 				ProfilesVo vo = dao.getinfoVo(id);

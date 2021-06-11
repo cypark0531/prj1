@@ -254,7 +254,7 @@ CREATE TABLE profiles
 	-- 프로필대화명(제목)
 	ptitle varchar2(100),
 	-- 홈피 제목
-	hptitle varchar2(100),
+	htitle varchar2(100),
 	-- 프로필자기소개
 	pintro varchar2(100),
 	-- 프로필공개

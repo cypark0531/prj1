@@ -23,7 +23,7 @@
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
 	<x>0</x>
-	<y>85</y>
+	<y>0</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -146,7 +146,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2021-05-26 22:41:46</creation_date>
-			<updated_date>2021-06-06 22:29:21</updated_date>
+			<updated_date>2021-06-11 17:48:08</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -821,22 +821,6 @@
 		</word>
 		<word>
 			<id>40</id>
-			<length>100</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<char_semantics>false</char_semantics>
-			<description></description>
-			<logical_name>홈피 제목</logical_name>
-			<physical_name>hptitle</physical_name>
-			<type>varchar(n)</type>
-		</word>
-		<word>
-			<id>41</id>
 			<length>30</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -848,6 +832,22 @@
 			<char_semantics>false</char_semantics>
 			<description></description>
 			<logical_name>방명록 제목</logical_name>
+			<physical_name>htitle</physical_name>
+			<type>varchar(n)</type>
+		</word>
+		<word>
+			<id>41</id>
+			<length>100</length>
+			<decimal>null</decimal>
+			<array>false</array>
+			<array_dimension>null</array_dimension>
+			<unsigned>false</unsigned>
+			<zerofill>false</zerofill>
+			<binary>false</binary>
+			<args></args>
+			<char_semantics>false</char_semantics>
+			<description></description>
+			<logical_name>홈피 제목</logical_name>
 			<physical_name>htitle</physical_name>
 			<type>varchar(n)</type>
 		</word>
@@ -1513,7 +1513,7 @@
 				</relation>
 				<relation>
 					<id>2</id>
-					<source>0</source>
+					<source>13</source>
 					<target>1</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1535,7 +1535,7 @@
 				</relation>
 				<relation>
 					<id>3</id>
-					<source>13</source>
+					<source>0</source>
 					<target>1</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1599,7 +1599,7 @@
 				<normal_column>
 					<id>7</id>
 					<referenced_column>0</referenced_column>
-					<relation>2</relation>
+					<relation>3</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1633,7 +1633,7 @@
 				<normal_column>
 					<id>8</id>
 					<referenced_column>73</referenced_column>
-					<relation>1</relation>
+					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>호스트아이디</logical_name>
@@ -1799,7 +1799,7 @@
 				<normal_column>
 					<id>13</id>
 					<referenced_column>73</referenced_column>
-					<relation>3</relation>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>글쓴이</logical_name>
@@ -2667,7 +2667,7 @@
 			<connections>
 				<relation>
 					<id>8</id>
-					<source>6</source>
+					<source>14</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2689,7 +2689,7 @@
 				</relation>
 				<relation>
 					<id>9</id>
-					<source>13</source>
+					<source>6</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2711,7 +2711,7 @@
 				</relation>
 				<relation>
 					<id>10</id>
-					<source>14</source>
+					<source>13</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2775,7 +2775,7 @@
 				<normal_column>
 					<id>34</id>
 					<referenced_column>73</referenced_column>
-					<relation>9</relation>
+					<relation>10</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2809,7 +2809,7 @@
 				<normal_column>
 					<id>35</id>
 					<referenced_column>82</referenced_column>
-					<relation>10</relation>
+					<relation>8</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2876,7 +2876,7 @@
 				<normal_column>
 					<id>37</id>
 					<referenced_column>39</referenced_column>
-					<relation>8</relation>
+					<relation>9</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3569,7 +3569,7 @@
 			<connections>
 				<relation>
 					<id>16</id>
-					<source>13</source>
+					<source>6</source>
 					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -3591,7 +3591,7 @@
 				</relation>
 				<relation>
 					<id>17</id>
-					<source>6</source>
+					<source>13</source>
 					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -3721,7 +3721,7 @@
 				<normal_column>
 					<id>54</id>
 					<referenced_column>73</referenced_column>
-					<relation>16</relation>
+					<relation>17</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3755,7 +3755,7 @@
 				<normal_column>
 					<id>55</id>
 					<referenced_column>39</referenced_column>
-					<relation>17</relation>
+					<relation>16</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -4083,7 +4083,7 @@
 				<normal_column>
 					<id>61</id>
 					<referenced_column>73</referenced_column>
-					<relation>19</relation>
+					<relation>20</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>호스트아이디</logical_name>
@@ -4115,7 +4115,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>41</word_id>
+					<word_id>40</word_id>
 					<id>62</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -4183,7 +4183,7 @@
 				<normal_column>
 					<id>64</id>
 					<referenced_column>73</referenced_column>
-					<relation>20</relation>
+					<relation>19</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>글쓴이</logical_name>
@@ -4358,7 +4358,7 @@
 				<normal_column>
 					<id>67</id>
 					<referenced_column>73</referenced_column>
-					<relation>22</relation>
+					<relation>21</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>호스트아이디</logical_name>
@@ -4524,7 +4524,7 @@
 				<normal_column>
 					<id>72</id>
 					<referenced_column>73</referenced_column>
-					<relation>21</relation>
+					<relation>22</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name>글쓴이</logical_name>
@@ -5299,7 +5299,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>40</word_id>
+					<word_id>41</word_id>
 					<id>92</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
