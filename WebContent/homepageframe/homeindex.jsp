@@ -77,6 +77,9 @@ top.window.outerWidth = screen.availWidth;
    </svg>
   </a>
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
+
+  <a href="#" class="blog-menu">Contact</a>
+  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">Shop</a>
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   <a href="#" class="blog-menu">일촌신청</a>
   <a href="#" class="blog-menu mention">@MagazineDope</a>

@@ -21,8 +21,6 @@ import com.minihome.vo.ProfilesVo;
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		
 		String id = (String)req.getSession().getAttribute("gid");
 		if(req.getParameter("id")!=null)id =req.getParameter("id");
 		String gid = (String)req.getSession().getAttribute("gid");
@@ -139,7 +137,6 @@ public class HomeController extends HttpServlet {
 		Calendar fDay =Calendar.getInstance();
 		fDay.set(currYear, currMonth, 1);
 		int firstDay=fDay.get(fDay.DAY_OF_WEEK);
-		
 		Calendar cc =Calendar.getInstance();
 		int realYear = cc.get(c.YEAR);
 			String path = "/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth+

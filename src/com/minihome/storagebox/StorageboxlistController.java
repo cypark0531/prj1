@@ -26,6 +26,7 @@ public class StorageboxlistController extends HttpServlet{
 		int startRow=(pageNum-1)*5+1;
 		int endRow=startRow+4;
 		StorageboxDao dao=StorageboxDao.getInstance();
+		
 		ArrayList<StorageboxVo> storageboxlist = dao.storagelist(startRow, endRow);
 		int pageCount=(int)Math.ceil(dao.getCount()/5.0);
 		//페이징 갯수

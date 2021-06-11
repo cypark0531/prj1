@@ -27,9 +27,43 @@
   장바구니 테이블 table 변경
   구매목록에서 gprice 컬럼 추가시킴 (gprice값을 받아와서 refund에 보내줘야되는데 gprice값을 못얻어와서)
   goods table에 glink컬럼 추가시킴(bgm링크를 받아와야함)
-
+	
   환불 상태를 업데이트해서 완료하기
-  ex)환불안함 0 환불대기상태 1 환불완료 2
+  ex)환불안함 0 환불완료 1
+  5000>members;
+  arrayList1
+  arrayList2
+  
+  보관함리스트 : 'test'>> 아이디에
+   a 구매, b구매했어요
+   b만 환불 0,1\
+   for(vo : list){
+   		어떠한값:	vo.getgnum > 환불목록에 있습니까?
+   		int
+   		select * from refund where gnum = ?
+   		if(rs.next(){
+   			return -1
+   		}else{
+   		retrun 1
+   		환불목록에서 조회를 해요
+   		if(n>0){
+   		보관함 출력가능 so
+   		new vo2 (vo.getnum,nvb)
+   		list2.add(vo);
+   		
+   		}else{
+   		조회가 안됐다 그럼 o
+   		vo.get
+   		list2
+   		list2
+   		}
+   		순전한 구매목록
+   }
+   환불목록에는 b가 떠야죠 b를 안가져옴// 없으면? b를가져옴
+   보관함에는 a
+  그 값이 환불리스트에서 1이 떴는지?
+  그 값을 가지고 온걸
+  리스트로 뿌려주는거죠
   환불 신청을 하면 환불신청(1) 리스트만들고 고객환불리스트는 환불대기상태(리스트)로 저장 <-관리자만 들어갈수있게 만들어야되나?
   관리자가 환불리스트에서 환불수락 누르면 고객환불리스트에 환불완료라고 업데이트(2)되게 만들고 money 추가??
   *****이거 잘 모르겠음
