@@ -102,7 +102,9 @@ top.window.outerWidth = screen.availWidth;
    		<tr>
    			<td style="font-size:medium; color:black; border-bottom: 1px solid #94918f;">${list[0] }</td>
    			<td style="color:black; border-bottom: 1px solid #94918f;">
-   				<a href="${pageContext.request.contextPath }/${list[1]}" style="border-top: 0px; font-size: medium; padding-top: 0px;">이동</a>
+   				<c:if test="${list[0]!='-' }">
+   					<a href="${pageContext.request.contextPath }/${list[1]}" style="border-top: 0px; font-size: medium; padding-top: 0px;">이동</a>
+   				</c:if>
    			</td>
    		</tr>
    	</c:forEach>

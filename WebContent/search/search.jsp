@@ -17,8 +17,8 @@
 <div style="width:100%;">
 <h1 style="color:white;">회원 검색</h1>
 <div style="width:100%; margin-top:60px; height:40px;">
-	<input style="font-size:x-large; width:87%; height:40px; background-color: black; border:2px solid white; color:white;">
-	<input type="button" value="검색" style="background-color: black; border:2px solid white; color:white; width:50px; height:40px;">
+	<input id="search" style="font-size:x-large; width:87%; height:40px; background-color: black; border:2px solid white; color:white;">
+	<input id="sbtn" type="button" value="검색" style="background-color: black; border:2px solid white; color:white; width:50px; height:40px;">
 </div>
 <table id="friendtable" style="background-color: white; width:100%; margin-top:60px;">
 	<tr>
@@ -28,8 +28,7 @@
 		<tr class="tr" >
 			<td>
 			${list.id }
-			<input class="fid" type="hidden" value="${list.id }">
-			<input class="fnum" type="hidden" value="${list.friendnum }">
+			<input class="id" type="hidden" value="${list.id }">
 			</td>
 			<td>${list.name }</td>
 			<td><c:choose>
@@ -47,83 +46,13 @@
 </div>
 </body>
 <script type="text/javascript">
-	var tr=document.getElementsByClassName("tr");
-	var select=document.getElementById("select");
-	for(let i=0;i<tr.length;i++){
-		let fid=tr[i].getElementsByClassName("fid")[0].value;
-		let fnum=tr[i].getElementsByClassName("fnum")[0].value;
-		let abtn=tr[i].getElementsByClassName("abtn")[0];
-		let dbtn=tr[i].getElementsByClassName("dbtn")[0];
-		let addbtn=tr[i].getElementsByClassName("addbtn")[0];
-		
-		if(abtn!=null)abtn.onclick=function(){
-			let xhr=new XMLHttpRequest();
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4 && xhr.status==200){
-					let xml=xhr.responseXML;
-					let result=xml.getElementsByTagName("code")[0].textContent;
-					if(result=="success"){
-						location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");											
-					}
-					else alert("오류로 인해 실패했습니다.");
-				}
-			}
-			xhr.open('get','${pageContext.request.contextPath}/friend/accept?fnum='+fnum,true);
-			xhr.send();
-		}
-		
-		if(dbtn!=null)dbtn.onclick=function(){
-			let xhr=new XMLHttpRequest();
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4 && xhr.status==200){
-					let xml=xhr.responseXML;
-					let result=xml.getElementsByTagName("code")[0].textContent;
-					if(result=="success"){
-						location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page=${page}");											
-					}
-					else alert("오류로 인해 실패했습니다.");
-				}
-			}
-			xhr.open('get','${pageContext.request.contextPath}/friend/delete?fnum='+fnum,true);
-			xhr.send();
-		}
-		
-		function friendOK(){
-		let xhr= new XMLHttpRequest()
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState==4 && xhr.status==200){
-				let xml=xhr.responseXML;
-				let result=xml.getElementsByTagName("code")[0].textContent;
-				console.log("result:"+result);
-				if(result=="success"){
-					if(addbtn!=null)addbtn.disabled="disabled";
-				}
-			}
-		}
-		xhr.open('get','${pageContext.request.contextPath}/friend/friendOK?hid=${sessionScope.id}&gid='+fid,true);
-		xhr.send();
-		}
-		friendOK();
-		
-		if(addbtn!=null)addbtn.onclick=function(){
-			let xhr=new XMLHttpRequest();
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4 && xhr.status==200){
-					let xml=xhr.responseXML;
-					let result=xml.getElementsByTagName("code")[0].textContent;
-					if(result=="success")alert("신청되었습니다");
-					else alert("오류로 인해 실패했습니다.");
-				}
-			}
-			xhr.open('get','${pageContext.request.contextPath}/friend/addfriend?hid=${sessionScope.id}&gid='+fid,true);
-			xhr.send();
-		}
-		
+	var search=document.getElementById("search").value;
+	var sbtn=document.getElementById("sbtn");
+	sbtn.onclick=function(){
+		location.replace("${pageContext.request.contextPath}/search/search?str="+search);	
 	}
-	select.onblur=function(){
-		let page=select.value;
-		location.replace("${pageContext.request.contextPath}/friend/friend?host=${host}&page="+page);
-	}
+	
+	
 	
 </script>
 </html>
