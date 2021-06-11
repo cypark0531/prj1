@@ -165,11 +165,11 @@ CREATE TABLE gallery
 	-- 아이디
 	id varchar2(20) NOT NULL,
 	-- 갤러리제목
-	galtitle varchar2(20),
+	galtitle varchar2(100),
 	-- 갤러리 내용
 	galcontent varchar2(500),
 	-- 갤러리 사진
-	galorgname varchar2(30),
+	galorgname varchar2(100),
 	-- 갤러리 저장이름
 	galsavename varchar2(20),
 	-- 갤러리 오픈
