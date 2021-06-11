@@ -185,7 +185,7 @@ body {
 <script type="text/javascript">
    function check(money,gprice){
 	   if(gprice>money){
-	     alert('금액 부족함');
+	     alert('금액이 부족합니다');
 	   	 return false;
 	   }else{
 	     return true;
