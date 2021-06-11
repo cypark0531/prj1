@@ -6,16 +6,48 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	.ftable {
-		border: 2px solid aqua;
 	
+	html{
+		background-color: #E1D8B2 ;
+		font-family:'맑은 고딕', 'malgun', Dotum, sans-serif;
+		
+	}
+	
+	#all {
+		margin: 0;
+		position: relative;
+		width: 360px;
+		height: 500px;
+		border: 3px solid black;
+		overflow: scroll;
+	}
+	
+	#all::-webkit-scrollbar {
+    display: none;
+	}
+
+	
+	
+
+	.ftable {
+
+		
+		
 	}	
 	
+	.ftd {
+		font-family: "맑은고딕";
+		border-right: 1px dotted black;
+		color: black;
 
-
+		width: 180px;
+	}
+	
 
 
 </style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
+
 </head>
 <body>
 <div id = "all">
@@ -24,13 +56,30 @@
 	
 	
 </div>
-<div> <input type= "text" id = "inputContent"> <input type= "button" value = "입력" onclick="fsinsert(0)">
+<div> <input style=" margin: color:black; " type= "text" id = "inputContent" maxlength="15" oninput="limitText(this)"> <input type= "button" value = "입력" onclick="fsinsert(0)">
 </div>
 <br>
 <div id = "pageDiv">
 
 </div>
 <script type="text/javascript">
+
+
+function limitText(e) {
+	
+	if(e.maxLength==e.value.length ) {
+		alert("15자 이하로 적어주세요!");
+		e.value = e.value.slice(0,e.maxLength);
+}
+}
+
+
+
+
+
+
+
+
 var flag =true;
 function list(pageNum){
 	var spageNum = pageNum
@@ -56,17 +105,25 @@ function list(pageNum){
 				let newTd1 = document.createElement("td"); //일촌 이름
 				let newTd2 = document.createElement("td");//내용
 				let newTd3 = document.createElement("td"); // 삭제
-				let newTd4 = document.createElement("td"); // 삭제
+				let newTd4 = document.createElement("td")// 삭제
 				newTd1.className = "ftd";
 				newTd2.className = "ftd";
 				newTd3.className = "ftd";
 				newTd4.className = "ftd";
+				newTd1.style.width = "100px";
+				newTd1.style.fontSize = "15px";
+				newTd2.style.width = "600px";
+				newTd2.style.fontSize = "15px";
+				newTd3.style.fontSize = "15px";
+				newTd4.style.fontSize = "15px";
+				newTd3.style.width = "10px";
+				newTd4.style.width = "10px";
 				
 				
 				newTd3.innerHTML = "<a href = 'javascript:reply("+fsgroup+","+spageNum+")'><span id = 'span"+fsgroup+"' style='color:black;font-weight: 900'>↓</span>"+"</a>";
 				newTd1.innerHTML = gid
 				newTd2.innerHTML = fscontent
-				newTd4.innerHTML = "<a href = 'javascript:fsredelete2("+fsgroup+")'>삭제</a>";
+				newTd4.innerHTML = "<a href = 'javascript:fsredelete2("+fsgroup+")'>x</a>";
 				newTd4.onclick = fsdelete(fsgroup);
 				
 				newTr.appendChild(newTd1);

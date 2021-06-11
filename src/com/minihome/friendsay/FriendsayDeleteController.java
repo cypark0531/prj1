@@ -13,8 +13,8 @@ import com.minihome.dao.FriendsayDao;
 public class FriendsayDeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id= req.getParameter("id");
-		String gid = req.getParameter("gid");
+		String id= (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		String fsnum1 = req.getParameter("fsnum");
 		int fsnum = 0;
 		int fsgroup = 0;
@@ -27,7 +27,7 @@ public class FriendsayDeleteController extends HttpServlet{
 		
 		int n =FriendsayDao.getInstance().delete(fsgroup, fsnum);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/friendsay/friendsaylist.jsp?id="+id+"&gid="+gid);
+			resp.sendRedirect(req.getContextPath()+"/home");
 		}else {
 			System.out.println("실패");
 		}
