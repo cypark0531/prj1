@@ -76,10 +76,12 @@ top.window.outerWidth = screen.availWidth;
     <path d="M7 17L17 7M7 7h10v10" />
    </svg>
   </a>
-  <a href="#" class="blog-menu">Studio</a>
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
+
   <a href="#" class="blog-menu">Contact</a>
-  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">shop</a>
+  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${id}" class="blog-menu">Shop</a>
+  <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
+  <a href="#" class="blog-menu">일촌신청</a>
   <a href="#" class="blog-menu mention">@MagazineDope</a>
   <a href="#" class="blog-menu subscribe">Subscribe</a>
  </div>
@@ -103,7 +105,9 @@ top.window.outerWidth = screen.availWidth;
    		<tr>
    			<td style="font-size:medium; color:black; border-bottom: 1px solid #94918f;">${list[0] }</td>
    			<td style="color:black; border-bottom: 1px solid #94918f;">
-   				<a href="${pageContext.request.contextPath }/${list[1]}" style="border-top: 0px; font-size: medium; padding-top: 0px;">이동</a>
+   				<c:if test="${list[0]!='-' }">
+   					<a href="${pageContext.request.contextPath }/${list[1]}" style="border-top: 0px; font-size: medium; padding-top: 0px;">이동</a>
+   				</c:if>
    			</td>
    		</tr>
    	</c:forEach>

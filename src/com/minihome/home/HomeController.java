@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
 import com.minihome.vo.GalleryVo;
@@ -20,10 +21,11 @@ import com.minihome.vo.ProfilesVo;
 public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String gid = "test4";
-		req.setAttribute("id", id);
-		req.setAttribute("gid", gid);
+		String id = (String)req.getSession().getAttribute("gid");
+		if(req.getParameter("id")!=null)id =req.getParameter("id");
+		String gid = (String)req.getSession().getAttribute("gid");
+		req.getSession().setAttribute("id", id);
+		//req.setAttribute("gid", gid);
 		
 		//Profiles 프로필
 		ProfilesDao dao = ProfilesDao.getInstance();
@@ -45,14 +47,26 @@ public class HomeController extends HttpServlet {
 			
 		}
 		System.out.println("파일명 : " +psaveimg);
-		
+		 
 		req.setAttribute("list", list);
 		req.setAttribute("psaveimg", psaveimg);
 		req.setAttribute("ptitle", ptitle);
 		req.setAttribute("htitle", htitle);
 		req.setAttribute("pintro", pintro);
 				
-		
+		//일촌 목록
+				FriendDao fridao=FriendDao.getInstance();
+				ArrayList<String> frilist=fridao.getFriend("test11");
+				ArrayList<String[]> friendlist=new ArrayList<String[]>();
+				if(frilist!=null)for(String hostid:frilist) {
+					String[] str= {hostid,"home?id="+hostid}; 
+					friendlist.add(str);
+				}
+				else {
+					String[] str= {"-","-"}; 
+					friendlist.add(str);
+				}
+				req.setAttribute("friendlist", friendlist);
 		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
