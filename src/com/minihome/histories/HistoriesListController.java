@@ -42,6 +42,7 @@ public class HistoriesListController extends HttpServlet{
 		System.out.println("endPageNum :" + endPageNum);
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
+		}
 			boolean friend = FriendDao.getInstance().friendOK(id, gid);
 		req.setAttribute("friend", friend);
 		req.setAttribute("list", list);
@@ -52,7 +53,7 @@ public class HistoriesListController extends HttpServlet{
 		req.getRequestDispatcher("/histories/list.jsp").forward(req, resp);
 		
 
-		}
+
 		
 	}
 }
