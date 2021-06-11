@@ -12,6 +12,7 @@ Insert into PROFILES (ID,PORGIMG,PSAVEIMG,PTITLE,HPTITLE,PINTRO,POPEN) values ('
 
 
 create sequence gallery_seq;
+create sequence schedule_seq;
 create sequence profile_seq;
 create sequence friend_seq;
 
