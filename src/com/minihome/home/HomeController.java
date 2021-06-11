@@ -22,10 +22,12 @@ public class HomeController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		String id = "test4";
-		String gid = "test4";
-		req.setAttribute("id", id);
-		req.setAttribute("gid", gid);
+		
+		String id = (String)req.getSession().getAttribute("gid");
+		if(req.getParameter("id")!=null)id =req.getParameter("id");
+		String gid = (String)req.getSession().getAttribute("gid");
+		req.getSession().setAttribute("id", id);
+		//req.setAttribute("gid", gid);
 		
 		//Profiles 프로필
 		ProfilesDao dao = ProfilesDao.getInstance();
