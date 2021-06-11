@@ -27,11 +27,11 @@
 			</div>
 		</c:if>
 		<div id="loginType" style="padding-top:60px; width:450px;">
-			<input class="typing" name="id" placeholder="아이디" value=${id }><br><div style="height:10px"></div>
+			<input class="typing" name="id" placeholder="아이디" value=${requestScope.id }><br><div style="height:10px"></div>
 			<span id="idcheck"></span>
 			<input class="typing" type="password" name="pwd" placeholder="비밀번호"><br><div style="height:10px"></div>
 			<c:choose>
-				<c:when test="${id!=null }">
+				<c:when test="${requestScope.id!=null }">
 				<input type="checkbox" name="box" value="true" checked="checked"><span style="color:white">   아이디 저장</span>
 				</c:when>
 				<c:otherwise>
