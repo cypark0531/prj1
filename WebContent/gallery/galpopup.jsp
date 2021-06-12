@@ -52,7 +52,7 @@ font-family:Space Grotesk, sans-serif;
 		<!--  <h2><img src ="${cp}/home~~/img/${save}"</h1>-->
 			
 			<img id= "img" style="border-radius: 50%; width: 200px; height: 200px;  margin-left: 0.3em;"> 
-			<div id = "pt" style="display:flex;  border-top: 30em; padding-left:9px; color: black; font-size: 20pt; text-align: center; width: 220px; height: 35px; overflow: scroll;">${param.galtitle}</div>
+			<div id = "pt" style="  border-top: 30em; padding-left:9px; color: black; font-size: 20pt; text-align: center; width: 220px; height: 35px; overflow: scroll;">${param.galtitle}</div>
 			<div id= "intro" style="border-top: 30em; color: black; text-align: center; margin-block:7px; width:210px; height: 260px; position: fixed; overflow: scroll;  "><p style="text-align: center;">${param.galcontent}</p></div><br>
 			
 

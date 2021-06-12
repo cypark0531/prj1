@@ -93,7 +93,7 @@ body {
 
 		<tr>
 		<th>CONTENTS<span class="t_red"> *</span></th>
-        <td><textarea id="content" name="content" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.galcontent }</textarea></td>
+        <td><textarea id="galcontent" name="galcontent" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.galcontent }</textarea></td>
 		</tr>
 		<tr>
 			<th>MY PICTURE<br>(Attached File)</th>

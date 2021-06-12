@@ -42,8 +42,9 @@ public class galleryupdateController extends HttpServlet{
 		String gid = (String) req.getSession().getAttribute("gid");
 		System.out.println("upatecontroller아이디"+id+"gid:"+gid);
 		String galtitle = mr.getParameter("galtitle");
+		String galcontent = mr.getParameter("galcontent");
 		String galorgname = mr.getOriginalFileName("imgfile");
-		String galcontent = mr.getFilesystemName("galcontent");
+	//	String galsavename = mr.getFilesystemName("imgfile");
 		int galopen = Integer.parseInt(mr.getParameter("galopen"));
 	//	String regdate = mr.getParameter("regdate");
 		int n = 0;

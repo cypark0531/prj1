@@ -7,18 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/gallery/css/gallery.css"/>
-<style type="text/css">
-	.grid-container {
-		overflow: scoll;
-	}
-	.location-listing::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-	}
 
-
-
-
-</style>
 </head>
 <body >
 	<h1>GALLERY</h1>

@@ -94,7 +94,7 @@ public class HomeController extends HttpServlet {
 		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
 		
 		  if(gvo==null) {
-			  gvo = new GalleryVo(0, "test", "값이 없습니다",  "값이 없습니다",  "값이 없습니다",  "none", 0, null);
+			  gvo = new GalleryVo(0, "test", "The Photo Dosen't Not Exist",  "If u  Want To Upload Your photo Please Click 'REGISTER'!",  "none",  "none", 0, null);
 		  }
 		
 		req.setAttribute("gvo", gvo);

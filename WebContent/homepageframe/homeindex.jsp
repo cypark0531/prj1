@@ -110,15 +110,21 @@ top.window.outerWidth = screen.availWidth;
  </div>
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
-   <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px; padding-left:1.5em;text-indent:-1.5em;">&nbsp;${htitle}</div>
-   <div class="blog-menu rounded small-title">
+   <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px;">${htitle}<br>
+   </div>
+   <div class="blog-menu  small-title">
+
    <c:if test="${id!=gid }">
 	<input type="button" value="일촌 신청" style="width:200px; height:40px; font-size: x-large; color:black;" onclick="addFriend()">
    </c:if>
    </div>
   </div>
   <div class="blog-article page-number">
+    <marquee style= "margin-bottom:20px; width:13.4em; height:28px; direction: left;  background-color: #566574">
+   <p style=" font-family: Consolas,Monaco;  font-size:14pt; position:absolute; word-spacing: 10px; margin-top: -5px; text-align: center;">This area is music title</p>
+  </marquee>
   <jsp:include page="${musicBox }"></jsp:include>
+
   <div style="height:400px; max-width:227px;">
    <table id="friend">
    <tr>
@@ -178,7 +184,7 @@ top.window.outerWidth = screen.availWidth;
      <span>♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</span>
      
     </div>
-    <p style="font-size: 20px;">${pintro}</p>
+    <p style="font-size: 20px; text-align: center;">${pintro}</p>
     <c:if test="${id==gid}">
     <a href="#" onclick="SetUp2()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
@@ -258,7 +264,7 @@ top.window.outerWidth = screen.availWidth;
    	</c:choose>
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${gvo.galtitle}</h2>
   
-    <p style="font-size: 20px;">${gvo.galcontent }</p>
+    <p style="font-size: 20px;text-align: center;">${gvo.galcontent }</p>
 
     
     <div class="prolinks" >
@@ -284,7 +290,7 @@ top.window.outerWidth = screen.availWidth;
  <div class="blog-part right-blog">
 
   <marquee width="100%" direction="left">
-   <span>Now And Then You Miss It Sounds Make You Cry</span>
+   <span style="font-size:18pt; font-family: Consolas,Monaco;">${pintro} </span>
    <span>Now In - MoMa Sharing Exhibition NOW</span>
    <span>NYC Opens After Long Lockdown Check</span>
   </marquee>

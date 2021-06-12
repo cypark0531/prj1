@@ -110,7 +110,7 @@ top.window.outerWidth = screen.availWidth;
 	<div class= "inner">
 		<h2>PROFILE REGISTER</h2>
 	<input type="button" class="btn  mr5" value="전체삭제" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; float: right; "  onclick="toDelte()" >	
-	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update" enctype="multipart/form-data" method="post" onsubmit="return UpdateCommit()">
+	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update?id=${id}" enctype="multipart/form-data" method="post" onsubmit="return UpdateCommit()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>

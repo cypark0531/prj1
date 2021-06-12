@@ -171,7 +171,7 @@ CREATE TABLE gallery
 	-- 갤러리 사진
 	galorgname varchar2(100),
 	-- 갤러리 저장이름
-	galsavename varchar2(20),
+	galsavename varchar2(100),
 	-- 갤러리 오픈
 	galopen number(3),
 	-- 날짜
@@ -256,7 +256,7 @@ CREATE TABLE profiles
 	-- 홈피 제목
 	htitle varchar2(100),
 	-- 프로필자기소개
-	pintro varchar2(100),
+	pintro varchar2(500),
 	-- 프로필공개
 	popen number(2),
 	PRIMARY KEY (id)
