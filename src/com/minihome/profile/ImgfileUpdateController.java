@@ -17,7 +17,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class ImgfileUpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String id =  req.getParameter("id");
+		String id = (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 			System.out.println("업데이트컨트롤러doget id:"+id);
 			ProfilesDao dao = ProfilesDao.getInstance();
 			ProfilesVo vo = dao.getinfoVo(id);
@@ -30,8 +31,8 @@ public class ImgfileUpdateController extends HttpServlet {
 		MultipartRequest mr = new MultipartRequest(req, saveDir, 1024*1024*5,"utf-8",new DefaultFileRenamePolicy());
 		
 		ProfilesDao dao = ProfilesDao.getInstance();
-		String id = mr.getParameter("id");
-		String gid = mr.getParameter("gid");
+		String id = (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		System.out.println("upatecontroller아이디"+id);
 		System.out.println("gid"+gid);
 		ProfilesVo vo = dao.getinfoVo(id);

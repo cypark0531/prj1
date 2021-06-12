@@ -21,22 +21,63 @@ body {
 	font-size: 16px;
 }
 
+ .container {background-color:#121418; z-index:1; margin-left:3vh;  margin-top:3.5vh; height:600px; overflow-y: auto;  border-bottom-style: dotted; border-color :white;  width:900px;}
+  .container::-webkit-scrollbar { width: 5px; /*스크롤바의 너비*/ } 
+  .container::-webkit-scrollbar-thumb { background-color: black; /*스크롤바의 색상*/ } 
+  .container::-webkit-scrollbar-track { background-color: white; /*스크롤바 트랙 색상*/ } 
+
+
+
+.del {
+	 position: relative; 
+	width: 300px; 
+	height: 300px; 
+	margin-right:  20px; 
+	margin-bottom: 50px; 
+	float: right;
+}
+.del:before {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;left:0;right:0;
+  background-color:rgba(0,0,0,0);
+}
+
+.del:hover::before {
+  background-color:rgba(0,0,0,0.5);
+}
+
+
+.del input {
+	  position: absolute;
+	  top: 60%;
+ 	 left: 50%;
+ 	 transform: translate(-50%, -50%);
+ 	 -ms-transform: translate(-50%, -50%);
+ 	 opacity:0;
+
+}
+
+
+.del:hover input {  
+	
+  opacity: 1;
+}
+
 </style>
 
 <!-- 공통 CSS -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 </head>
 <body>
-<% 
-	
-	String id = request.getParameter("id");
-	System.out.print(id);
-	%>
+
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
 		<h1>Gallery</h1>
-	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post">
+	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/update?galnum=${vo.galnum}" enctype="multipart/form-data" method="post"  onsubmit="return UpdateCommit()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
@@ -52,14 +93,16 @@ body {
 
 		<tr>
 		<th>CONTENTS<span class="t_red"> *</span></th>
-        <td><textarea id="content" name="content" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.content }</textarea></td>
+        <td><textarea id="content" name="content" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" >${vo.galcontent }</textarea></td>
 		</tr>
 		<tr>
 			<th>MY PICTURE<br>(Attached File)</th>
 			
-			<td colspan="3" id="img_td">[Exisiting File Name ${vo.galorgname }] <br><br><input type="file" name="imgfile" id="imgfile" style="font-size: 16px; width: 340px; height: auto; position:absolute;  margin-top:130px; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none; margin: center;" onchange="readURL(this)" >					
-			
-			<img id="preview"  style="width: 300px; height: 300px; margin-right:  20px; margin-bottom: 50px; float: right;" />
+			<td colspan="3" id="img_td">[Exisiting File Name ${vo.galorgname }] <br><br><input type="file" name="imgfile" id="imgfile"  style="font-size: 16px; width: 360px; height: auto; background-color:  #121418;color: white; border: none; background-color:  #121418;color: white;font-size: 16px;border: none;" onchange="readURL(this)">				
+			<div class="del">
+			<img id="preview"  src="${pageContext.request.contextPath }/homepageframe/gimg/${vo.galorgname }"style="width: 100%; display: block; height:100%;top:0;left:0;right:0;" />
+			<input id="del" type="button" value="Delete" onclick="galDelete()" >
+			</div>
 			</td>
 		</tr>
 	
@@ -79,10 +122,9 @@ body {
 	<div class="btn_right mt15" style=" float: right;" >
 
 	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
- 	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
+ 	<input type="submit" class="btn " value="수정하기"  style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; "  >
  	<!--  	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;-->
-	<input type= "hidden" name = "id" value= "${param.id}"> 
-	<input type= "hidden" name = "gid" value= "${param.id}"> 
+
 	 </div>
 	 </form>
 	</div>
@@ -96,6 +138,15 @@ function moveFocus(e) {
 	}
 }
 
+function  UpdateCommit() {
+	//alert("등록을 완료하였습니다.");
+	
+	if(confirm("수정을완료하였습니다 홈으로가시겠습니까? \n \t home:확인 \t 취소:현재페이지")==true) {
+		 return true;
+	}else{
+		return false;
+	}
+}
 
 function readURL(input) {
 	if (input.files && input.files[0]) {
@@ -118,7 +169,29 @@ var btn2 = document.getElementById("btn2");
 	 btn1.style.display= 'none';
 	 btn2.style.display =  'inline';
  });
-/*
+
+ 
+	function  galDelete() {
+		if(confirm("삭제를 하시겠습니까?")==true){
+			console.log(${requestScope.id})
+			location.href = "${pageContext.request.contextPath}/gallery/delete?galnum=${vo.galnum}";
+	
+		}
+		
+	}
+	if(${param.code==1}) {
+		alert('삭제를 완료하였습니다.');
+	}
+	
+	function  toMain() {
+		 	window.location.replace("${pageContext.request.contextPath}/home");
+	}
+	
+ 
+ 
+ 
+ 
+ /*
  var filebox = document.getElementById("imgfile");
 	filebox.innerHTML = "Choice File"
  */

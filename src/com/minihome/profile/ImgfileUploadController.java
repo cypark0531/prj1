@@ -30,8 +30,8 @@ public class ImgfileUploadController extends HttpServlet {
 			 private String pintro;
 			 private int popen;
 		 */
-		String id = mr.getParameter("id");
-		String gid = mr.getParameter("gid");
+		String id = (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		String porgimg = mr.getOriginalFileName("imgfile");
 		String psaveimg = mr.getFilesystemName("imgfile"); 
 		String ptitle = mr.getParameter("ptitle");

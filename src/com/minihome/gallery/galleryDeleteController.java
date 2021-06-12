@@ -1,4 +1,4 @@
-package com.minihome.profile;
+package com.minihome.gallery;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,29 +10,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
-@WebServlet("/profile/delete")
-public class imgfileDeleteController extends HttpServlet {
+@WebServlet("/gallery/delete")
+public class galleryDeleteController extends HttpServlet {
 		@Override
 		protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				String id = (String) req.getSession().getAttribute("id");
-				System.out.println("delte占쏙옙占싱듸옙耭틸占쏙옙占�"+id);
+				int galnum = Integer.parseInt(req.getParameter("galnum"));
+				System.out.println("galnum(delete컨트롤러):"+galnum);
 				String uploadPath = getServletContext().getRealPath("/homepageframe/img");
-				ProfilesDao dao = ProfilesDao.getInstance();
-				ProfilesVo vo = dao.getinfoVo(id);
-				String filename = vo.getPsavegimg();
+				GalleryDao dao = GalleryDao.getInstance();
+				GalleryVo vo = dao.getinfoVo(galnum);
+				String filename = vo.getGalsavename();
 
 				try {
 					File f = new File(uploadPath+"\\"+filename);
 					boolean  n = f.delete();
 					
-					//int n1 = dao.delete(id);
-					int n1 = dao.fileupdate(id);
-					resp.sendRedirect(req.getContextPath()+"/profile/list?code=1&id="+id);
+			
+					int n1 = dao.delete(galnum);
+					int n2 = dao.fileupdate(galnum);
+					resp.sendRedirect(req.getContextPath()+"/gallery/list.jsp?code=1&galnum="+galnum);
 				}catch(Exception se) {
 						se.printStackTrace();
-						req.getRequestDispatcher("/profile/profilelist(update).jsp").forward(req, resp);
+						req.getRequestDispatcher("/gallery/update2.jsp").forward(req, resp);
 						
 				}
 					

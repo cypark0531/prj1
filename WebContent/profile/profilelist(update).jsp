@@ -103,17 +103,13 @@ top.window.outerWidth = screen.availWidth;
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 </head>
 <body>
-<% 
+
 	
-	String id = request.getParameter("id");
-	System.out.print("업데이트쪽에왔음"+id);
-	
-	
-	%>
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
 		<h2>PROFILE REGISTER</h2>
+	<input type="button" class="btn  mr5" value="전체삭제" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; float: right; "  onclick="toDelte()" >	
 	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update" enctype="multipart/form-data" method="post" onsubmit="return UpdateCommit()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
@@ -167,8 +163,7 @@ top.window.outerWidth = screen.availWidth;
 	<div class="btn_right mt15" style=" float: right;" >
 	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;" onclick="toMain()">
  	<input type="submit" class="btn " value="수정하기"  style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; "  >
-	<input type= "hidden" name = "id" value= "${param.id}"> 
-	<input type= "hidden" name = "gid" value= "${param.id}"> 
+
 	<input type = "hidden" name = "code" value = "1">
  	 </div>
 	 </form>
@@ -201,7 +196,7 @@ function readURL(input) {
 	function  proDelete() {
 		if(confirm("삭제를 하시겠습니까?")==true){
 			console.log(${requestScope.id})
-			location.href = "${pageContext.request.contextPath}/profile/delete?id=${param.id}";
+			location.href = "${pageContext.request.contextPath}/profile/delete";
 	
 		}
 		
