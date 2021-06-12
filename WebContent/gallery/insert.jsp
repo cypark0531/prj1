@@ -34,11 +34,7 @@ body {
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 </head>
 <body>
-<% 
-	
-	String id = request.getParameter("id");
-	System.out.print(id);
-	%>
+
 
  <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<h1 style="margin-left: 1em; font-size: 50pt; text-shadow:#999999 5px 5px 5px;" > Upload Gallery</h1>
@@ -90,8 +86,6 @@ body {
 	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; "onclick = "gohome()">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
  	 <input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
-	<input type= "hidden" name = "id" value= "${param.id}"> 
-	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>
 	 </form>
 	</div>

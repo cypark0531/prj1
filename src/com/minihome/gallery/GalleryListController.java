@@ -16,7 +16,8 @@ import com.minihome.vo.GalleryVo;
 public class GalleryListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String id = req.getParameter("id");
+			String id = (String) req.getSession().getAttribute("id");
+			String gid = (String) req.getSession().getAttribute("gid");
 			ArrayList<GalleryVo> list = GalleryDao.getInstance().galleryList(id);
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();

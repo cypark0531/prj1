@@ -36,9 +36,11 @@ h2 {
   grid-gap: 1em;
 }
  .wraps{
- margin-left:35em;
+ 	margin-left:37em;
  	border-top-left-radius: 10%;
- 	height: 600px; width: 600px; border: 1px solid white;
+ 	height: 600px; width: 600px; 
+	
+ 	border: 1px solid white;
  }
  
   #hello {background-color:#121418; z-index:1; margin-left:3vh;  margin-top:3.5vh; height:600px; overflow-y: auto; border-style: dashed groove none dotted; border-bottom-style: dotted; border-color :white;  width: 600px;}
@@ -68,6 +70,7 @@ h2 {
 /* hover styles */
 .location-listing {
   position: relative;
+  overflow: scoll;
 }
 
 .location-image {
@@ -100,6 +103,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .location-listing:hover .location-title {

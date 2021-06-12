@@ -7,11 +7,40 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/gallery/css/gallery.css"/>
+<style type="text/css">
+	.grid-container {
+		overflow: scoll;
+	}
+	.location-listing::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+	}
+
+
+
+
+</style>
 </head>
 <body >
 	<h1>GALLERY</h1>
 	<div class= "wraps">
-	<div id = "hello">
+	<input type="button" class="btn mr5" value="Go Home"
+	style="	width: 100px; 
+	margin-top: 0.5em; 
+	margin-right: 1em; 
+	height: 40px; 
+	font-weight:900;  
+	font-size: 16px; 
+	float: right;
+	border-top-left-radius: 10%;
+	border-bottom-right-radius: 10%;
+	background: #f0f4f8;
+	font-style: oblique;
+	font-family: Consolas,Monaco;
+	font-size: 15pt; 
+	"
+		
+	 onclick = "toMain()">
+	<div id = "hello"  style="margin-top: 60px; margin-left: 4em;">
 	
 	</div>
 	</div>
@@ -32,7 +61,7 @@ show();
 				for(let i=0;i<length;i++){
 				
 				
-		
+				let galnum = xml.getElementsByTagName("galnum")[i].textContent;
 				let regdate = xml.getElementsByTagName("regdate")[i].textContent;
 				let galcontent = xml.getElementsByTagName("galcontent")[i].textContent;
 				let galsavename = xml.getElementsByTagName("galsavename")[i].textContent;
@@ -86,16 +115,23 @@ show();
 						input1.className = "btn1";
 						input1.value= "수정"
 						input1.onclick = function(){
-							console.log("2")
-							location.href = "${pageContext.request.contextPath }/gallery/profile/update?id="+id+"&gid="+gid+"&galnum="+galnum;
+							console.log(galnum);
+							location.href ="${pageContext.request.contextPath}/gallery/update?galnum="+galnum;
 						}
 						let input2 = document.createElement("input");
 						input2.type= "button";
 						input2.value= "삭제"
 						input2.onclick = function(){
+							if(confirm("삭제를 하시겠습니까?")==true){
+								location.href = "${pageContext.request.contextPath}/gallery/delete?galnum="+galnum;
+						
+							}else{
+								return;
+							}
 							
-							location.href = "asdjkl;f?id"+id+"&gid="+gid+"&galnum="+galnum
 						}
+						
+						
 						
 						div.appendChild(input1);
 						div.appendChild(input2);
@@ -124,8 +160,16 @@ show();
 
 			}
 		};
-		xhr.open("get","${pageContext.request.contextPath}/gallery/list?id=${param.id}",true);
+		xhr.open("get","${pageContext.request.contextPath}/gallery/list?id=${id}",true);
 		xhr.send();
+	}
+	
+	if(${param.code==1}) {
+		alert('삭제를 완료하였습니다.');
+	}
+	
+	function  toMain() {
+		 	window.location.replace("${pageContext.request.contextPath}/home");
 	}
 
 	
