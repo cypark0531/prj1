@@ -26,9 +26,6 @@
 	 
 	
 </style>
-<script type="text/javascript">
-		
-	</script>
 </head>
 <body>
 
@@ -41,7 +38,7 @@
 	</c:forEach>
 	</select>
 	<span id="mt" style="margin-left: 1em;">월 :</span>
-	<select id= "month"  >
+	<select id= "month" style="color: black;"  >
 		<c:forEach var ="i" begin="1" end = "12">
 	<option id = "m${i }">${i } </option>
 	</c:forEach>
@@ -69,18 +66,16 @@
 		
 		</div>
 	
-		<div id = "pageDiv" style="display: inline-flex; margin-left: 10em; border:0;">
-		${param.id}
+		<div id = "dpageDiv" style="display: inline-flex; margin-left: 10em; border:0;">
 		</div>
 	
 	</div>
 	<script type="text/javascript">
-	
 	let days = document.getElementsByClassName("day");
 	for(let i =0;i<days.length;i++){
 		let k = i+1;
 
-		days[i].innerHTML = "<a style='font-weight:600; font-size:20px; border-top: none;' href = 'javascript:content("+k+");'>"+k+"</a>";
+		days[i].innerHTML = "<a style='font-weight:600; font-size:20px; border-top: none;' href = 'javascript:send("+k+","+1+");'>"+k+"</a>";
 
 
 	}
@@ -100,17 +95,20 @@
 			let year = document.getElementById("year").value;
 			console.log(year)
 			let month = document.getElementById("month").value;
-			location.href = "${pageContext.request.contextPath}/home?year="+year+"&month="+month+"&id=${param.id}&gid=${param.gid}"
+			location.href = "${pageContext.request.contextPath}/home?year="+year+"&month="+month;
 		}
-		
 		function content(k,pageNum){
-			reload();
+			let div = document.getElementById("main");
+			let childs = div.childNodes;
+			for(let i=childs.length-1;i>=0;i--){
+				div.removeChild(childs.item(i))
+			}
 			xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function(){
 				if(xhr.readyState==4&&xhr.status==200){
 					xml = xhr.responseXML;
 					length = xml.getElementsByTagName("dnum").length;
-					let main = document.getElementById("main");
+					let main = document.getElementById("main");;
 					for(let i=0;i<length;i++){
 						let dnum = xml.getElementsByTagName("dnum")[i].textContent;
 						let dcontent = xml.getElementsByTagName("dcontent")[i].textContent;
@@ -121,11 +119,12 @@
 						newTr = document.createElement("tr");
 						newTd1 = document.createElement("td");
 						newTd2 = document.createElement("td");
+						newTd1.style.color = "black";
+						newTd2.style.color = "black";
 						newInput1 = document.createElement("input");
 						newInput1.type= "button";
 						newInput1.value= "삭제";
 						newInput1.addEventListener('click', function(e) {
-							console.log(dnum)
 							ddelete(dnum);
 						});
 						
@@ -134,8 +133,10 @@
 						newTd1.style.width = "250px";
 						newTr.appendChild(newTd1)
 						newTr.appendChild(newTd2)
+						
 						newTable.appendChild(newTr);
 						main.appendChild(newTable);
+						console.log("g");
 					}
 						/* 
 						pw.print("<page>");
@@ -146,17 +147,15 @@
 						pw.print("<endRow>"+endRow+"</endRow>");
 						pw.print("</page>");
 						*/
-						let pageNum = xml.getElementsByTagName("pageNum")[0].textContent;
-						let startPageNum = xml.getElementsByTagName("startPageNum")[0].textContent;
-						let endPageNum = xml.getElementsByTagName("endPageNum")[0].textContent; 
-						let startRow = xml.getElementsByTagName("startRow")[0].textContent; 
-						let endRow = xml.getElementsByTagName("endRow")[0].textContent;
-						console.log(startPageNum)
-						console.log(endPageNum);
+						let dpageNum = xml.getElementsByTagName("pageNum")[0].textContent;
+						let dstartPageNum = xml.getElementsByTagName("startPageNum")[0].textContent;
+						let dendPageNum = xml.getElementsByTagName("endPageNum")[0].textContent; 
+						let dstartRow = xml.getElementsByTagName("startRow")[0].textContent; 
+						let dendRow = xml.getElementsByTagName("endRow")[0].textContent;
 						let str = "";
-						pageDiv = document.getElementById("pageDiv");
-						for(let i=startPageNum;i<=endPageNum;i++){
-							if(pageNum==i){
+						dpageDiv = document.getElementById("dpageDiv");
+						for(let i=dstartPageNum;i<=dendPageNum;i++){
+							if(dpageNum==i){
 								str = str +"<a style='border-top:none';  href = 'javascript:content("+k+","+i+")' >" +"<span style='color:black;font-weight: 700; font-size:15pt; border-top: none;'>"+[i] +"</span>"+"</a>";
 								
 							}else{
@@ -164,9 +163,8 @@
 								
 							}
 						}
-						console.log(str);
-						pageDiv.innerHTML = str;
-						console.log(pageDiv);
+
+						dpageDiv.innerHTML = str;
 						
 					}
 				}
@@ -176,14 +174,13 @@
 			
 		}
 		
-		content(${param.day},1)
 		
 		function reload(){
 			let div = document.getElementById("main");
 			let childs = div.childNodes;
 			for(let i=childs.length-1;i>=0;i--){
 				div.removeChild(childs.item(i))
-		}
+			}
 		}
 		var xhr1 = null;
 		var btnn = document.getElementById("btnn");
@@ -197,10 +194,15 @@
 			location.href = "${pageContext.request.contextPath}/diary/delete?id=${param.id}&gid=${param.gid}&dnum="+dnum;
 			
 		}
+		function send(k,pageNum){
+			content(k,pageNum);
+		}
 		
 			
-	
-			
+		console.log(${param.day});
+		window.onload = function(e){
+			content(${param.day},1);
+		}
 		
 	</script>
 	

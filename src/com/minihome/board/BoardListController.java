@@ -18,15 +18,25 @@ public class BoardListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = (String)req.getSession().getAttribute("id");
 		String gid = (String) req.getSession().getAttribute("gid");
-		
+		String searchContent = req.getParameter("searchContent");
 		String spageNum=req.getParameter("pageNum");
+		ArrayList<BoardVo> boardlist=null;
 		int pageNum=1;
 		if(spageNum!=null) {
 			pageNum= Integer.parseInt(spageNum);
 		}
+
+		
 		int startRow= (pageNum-1)*10+1;
 		int endRow= startRow+9;
-		ArrayList<BoardVo> boardlist = BoardDao.getInstance().boardList(id,startRow,endRow);
+		if(searchContent==null||searchContent.equals("")) {
+			boardlist = BoardDao.getInstance().boardList(id,startRow,endRow);
+		}else {
+			String field = req.getParameter("field");
+			
+			boardlist = BoardDao.getInstance().boardsearchList(gid, startRow, endRow, field, searchContent);
+		}
+		
 		int pageCount=(int)Math.ceil(BoardDao.getInstance().getCount(id)/10.0);
 		int startPageNum= ((pageNum-1)/10*10)+1;
 		int endPageNum= startPageNum+9;
@@ -40,10 +50,10 @@ public class BoardListController extends HttpServlet{
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);
 		req.getRequestDispatcher("/board/boardlist.jsp").forward(req, resp);
+		}
 		
 
 	}
 	
 
 	}
-}

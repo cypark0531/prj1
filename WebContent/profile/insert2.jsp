@@ -43,7 +43,7 @@ body {
 	String gid = request.getParameter("gid");
 	System.out.print(id);
 	%>
-<div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
+<div class="wrap" style=" padding: 60px 60px 60px 60px; border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
 	<h1 style="margin-left: 1em; font-size: 50pt; text-shadow:#999999 5px 5px 5px;" >PROFILE REGISTER</h1>

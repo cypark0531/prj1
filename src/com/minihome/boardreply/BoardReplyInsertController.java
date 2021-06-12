@@ -16,7 +16,8 @@ public class BoardReplyInsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int bnum = Integer.parseInt(req.getParameter("bnum"));
-		String hid = req.getParameter("id");
+		String hid =(String) req.getSession().getAttribute("id");
+		String gid =(String) req.getSession().getAttribute("gid");
 		String bcontent = req.getParameter("bcontent");
 		int rnum = Integer.parseInt(req.getParameter("rnum"));
 		String btitle= req.getParameter("btitle");
@@ -25,18 +26,18 @@ public class BoardReplyInsertController extends HttpServlet{
 		
 		String brcontent = req.getParameter("brcontent");
 		int bgroup = Integer.parseInt(req.getParameter("bgroup"));
+		System.out.println("bgroup :" + bgroup);
 		int brlevel = 0;
 		if(bgroup!=0)brlevel=1;
-		String gid = req.getParameter("gid");
 		
 		
 		
 		BoardreplyVo vo = new BoardreplyVo(0, bnum, hid, brcontent, bgroup, brlevel, 0, gid, null);
 		int n = BoardReplyDao.getInstance().reinsert(vo);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/board/detail?b="+bgroup+"&id="+hid+"&gid="+gid+
+			resp.sendRedirect(req.getContextPath()+"/board/detail?b="+bgroup+
 					"&brcontent="+brcontent+"&regdate="+
-					regdate+"&btitle="+btitle+"&rnum="+rnum+"&b="+bgroup+"&bnum="+bnum);
+					regdate+"&btitle="+btitle+"&rnum="+rnum+"&c="+bgroup+"&bnum="+bnum);
 		}else {
 			System.out.println("실패");
 		}

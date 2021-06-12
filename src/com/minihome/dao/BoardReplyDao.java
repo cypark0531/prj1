@@ -65,7 +65,7 @@ public class BoardReplyDao {
 		ArrayList<BoardreplyVo> list = new ArrayList<BoardreplyVo>();
 		try {
 		con = MyDBCP.getConnection();
-		String sql = "select * from (select rownum rnum, b.* from (select * from boardreply where bnum = ?  and brlevel = 0 order by brnum asc)b) where rnum>=? and rnum<=?";
+		String sql = "select * from (select rownum rnum, b.* from (select * from boardreply where bnum = ?  and brlevel = 0 order by brnum desc)b) where rnum>=? and rnum<=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, bnum);
 		pstmt.setInt(2, startRow);

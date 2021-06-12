@@ -102,6 +102,7 @@ top.window.outerWidth = screen.availWidth;
  -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
+  <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   
