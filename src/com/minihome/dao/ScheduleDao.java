@@ -28,8 +28,7 @@ public class ScheduleDao {
 			pstmt.setString(1, id);
 			pstmt.setInt(2, rel);
 			rs=pstmt.executeQuery();
-			rs.next();
-			{
+			if(rs.next()){
 				do {
 					list.add(rs.getInt(1));
 				}while(rs.next());

@@ -14,8 +14,8 @@ import com.minihome.vo.FriendsayVo;
 public class FriendsayInsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String gid= req.getParameter("gid");
+		String id = (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		int fsgroup = Integer.parseInt(req.getParameter("fsgroup"));
 		String fscontent = req.getParameter("inputContent");
 		System.out.println(fscontent);
@@ -24,7 +24,7 @@ public class FriendsayInsertController extends HttpServlet{
 		int n = FriendsayDao.getInstance().insert(vo);
 		
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/friendsay/friendsaylist.jsp?id="+id+"&gid="+gid);
+			resp.sendRedirect(req.getContextPath()+"/home");
 		}else {
 			System.out.println("실패");
 		}

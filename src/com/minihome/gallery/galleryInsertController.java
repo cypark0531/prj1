@@ -22,7 +22,7 @@ public class galleryInsertController extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String saveDir = getServletContext().getRealPath("/homepageframe/gimg");
 		MultipartRequest mr = new MultipartRequest(req, saveDir, 1024*1024*5,"utf-8",new DefaultFileRenamePolicy());
-		System.out.println("¾÷·Îµå°æ·Î:"+saveDir);
+		System.out.println("ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½:"+saveDir);
 		
 		/*
 		private int galnum;
@@ -35,7 +35,7 @@ public class galleryInsertController extends HttpServlet {
 		private Date regdate;
 		 */
 		//int galnum = Integer.parseInt(mr.getParameter("galnum"));
-		String id = mr.getParameter("id");
+		String id = (String) req.getSession().getAttribute("id");
 		String galtitle = mr.getParameter("galtitle");
 		String galcontent = mr.getParameter("galcontent");
 		String galorgname = mr.getOriginalFileName("imgfile");
@@ -53,10 +53,10 @@ public class galleryInsertController extends HttpServlet {
 		int n = dao.insert(vo);
 		File f = new File(saveDir+"\\"+galsavename);
 		if(n>0) {
-				resp.sendRedirect(req.getContextPath()+"/gallery/insert.jsp?code=1&id="+id);
+				resp.sendRedirect(req.getContextPath()+"/home");
 		}else {
 				
-			resp.sendRedirect(req.getContextPath()+"/gallery/insert.jsp?upload=2");
+			resp.sendRedirect(req.getContextPath()+"/gallery/insert.jsp");
 			//	req.getRequestDispatcher("/gallery/insert.jsp").forward(req, resp);
 		}
 //		req.getRequestDispatcher("/home").forward(req, resp);

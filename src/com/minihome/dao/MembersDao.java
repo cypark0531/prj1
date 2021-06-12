@@ -251,10 +251,11 @@ public class MembersDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		ArrayList<MembersVO> list=new ArrayList<>();
-		String sql="select * from members where id like ?";
+		String sql="select * from members where id like ? and rownum<=10";
 		try{
 			con=MyDBCP.getConnection();
 			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,"%"+str+"%");
 			rs=pstmt.executeQuery();
 			while(rs.next()){
 				System.out.println("asdf:"+rs.getString(1));

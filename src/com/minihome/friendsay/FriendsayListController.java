@@ -17,7 +17,9 @@ import com.minihome.vo.FriendsayVo;
 public class FriendsayListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
+		String id = (String) req.getSession().getAttribute("id");
+		System.out.println("id "+ id);
+		String gid = (String) req.getSession().getAttribute("id");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;
 		if(spageNum==null) {

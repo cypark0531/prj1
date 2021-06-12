@@ -115,7 +115,7 @@
 				}
 			}
 		}
-		xhr.open('get','${pageContext.request.contextPath}/friend/friendOK?hid=${sessionScope.id}&gid='+fid,true);
+		xhr.open('get','${pageContext.request.contextPath}/friend/friendOK?hid=${sessionScope.gid}&gid='+fid,true);
 		xhr.send();
 		}
 		friendOK();
@@ -130,7 +130,7 @@
 					else alert("오류로 인해 실패했습니다.");
 				}
 			}
-			xhr.open('get','${pageContext.request.contextPath}/friend/addfriend?hid=${sessionScope.id}&gid='+fid,true);
+			xhr.open('get','${pageContext.request.contextPath}/friend/addfriend?hid=${sessionScope.gid}&gid='+fid,true);
 			xhr.send();
 		}
 		

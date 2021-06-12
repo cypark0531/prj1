@@ -60,7 +60,7 @@ public class HomeController extends HttpServlet {
 				
 		//일촌 목록
 				FriendDao fridao=FriendDao.getInstance();
-				ArrayList<String> frilist=fridao.getFriend("test11");
+				ArrayList<String> frilist=fridao.getFriend(id);
 				ArrayList<String[]> friendlist=new ArrayList<String[]>();
 				if(frilist!=null)for(String hostid:frilist) {
 					String[] str= {hostid,"home?id="+hostid}; 

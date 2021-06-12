@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 body {
 	margin:0;
@@ -44,7 +45,7 @@ body {
 	<div class="container">
 	<div class= "inner">
 		
-	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post">
+	<form id="galleryForm" name="galleryForm"  action="${pageContext.request.contextPath }/gallery/insert" enctype="multipart/form-data" method="post" onsubmit="return register()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
 		<colgroup>
@@ -55,8 +56,8 @@ body {
 		<tbody id="tbody" >
 		<tr>
 		<th>GALLERY TITLE<span class="t_red"> *</span></th>
-		<td><input  type= "text" id="galtitle" name="galtitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
-		</tr>
+		<td><input  type= "text" id="galtitle" name="galtitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);" maxlength="20" oninput="limitText(this)"/></td>
+		</tr>   
 
 		<tr>
 		<th>CONTENTS<span class="t_red"> *</span></th>
@@ -86,9 +87,9 @@ body {
 	</table>
 	<div class="btn_right mt15" style=" float: right;" >
 
-	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
+	<input type="button" class="btn  mr5" value="메인으로" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; "onclick = "gohome()">
  	<input type="button" class="btn mr5"  id = 'btn1' value="미리보기" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
- 	 	<input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;" onclick="Register()">
+ 	 <input type="submit" class="btn " value="등록하기"  id ='btn2' style="display:none; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	<input type= "hidden" name = "id" value= "${param.id}"> 
 	<input type= "hidden" name = "gid" value= "${param.id}"> 
 	 </div>
@@ -98,6 +99,20 @@ body {
 </div>
 
 <script type="text/javascript">
+function limitText(e) {
+	console.log("dddd:"+ e.value.length +"," + e.maxLength)
+	if(e.maxLength == e.value.length) {
+		alert("10자 이하로 적어주세요!");
+		e.value = e.value.slice(0,e.maxlength);
+	}
+	
+}
+function gohome(){
+	location.href = "${pageContext.request.contextPath}/home";
+}
+
+
+
 function moveFocus(e) {
 	if(event.keyCode==13) {
 		var f =document.getElementById("galleryForm");
@@ -123,7 +138,7 @@ var btn2 = document.getElementById("btn2");
 
  
  btn1.addEventListener('click', function(e) {
-	 window.open('${pageContext.request.contextPath}/profile/popup.jsp','',"width=400,height=700,resizable = no, scrollbars = no");
+	 window.open('${pageContext.request.contextPath}/gallery/galpopup.jsp','','width=400,height=800,left=1500,top=120 ,resizable = no, scrollbars = no');
 	 btn1.style.display= 'none';
 	 btn2.style.display =  'inline';
  });
@@ -131,13 +146,15 @@ var btn2 = document.getElementById("btn2");
  var filebox = document.getElementById("imgfile");
 	filebox.innerHTML = "Choice File"
  */
- function  Register() {
+ function  register() {
 		//alert("등록을 완료하였습니다.");
 		
 		if(confirm("등록을완료하였습니다 홈으로가시겠습니까?")==true) {
-			
-			 window.location.replace("${pageContext.request.contextPath }/home");
-		} 
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 	</script>

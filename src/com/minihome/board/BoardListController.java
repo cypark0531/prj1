@@ -16,8 +16,8 @@ import com.minihome.vo.BoardVo;
 public class BoardListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String gid= req.getParameter("gid");
+		String id = (String)req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;

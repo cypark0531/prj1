@@ -18,7 +18,6 @@ public class FriendOkController extends HttpServlet{
 		String gid=req.getParameter("gid");
 		FriendDao dao=FriendDao.getInstance();
 		boolean n=dao.friendStateOK(hid,gid);
-		System.out.println(n);
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
 		pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");

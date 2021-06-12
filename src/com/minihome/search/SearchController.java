@@ -17,10 +17,9 @@ import com.minihome.vo.MembersVO;
 public class SearchController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//String id=(String)req.getSession().getAttribute("id");
-		//String str=req.getParameter("str");
-		String id="test";//임시 설정
-		String str="tes";//임시 설정
+		String id=(String)req.getSession().getAttribute("gid");
+		String str=req.getParameter("str");
+
 		System.out.println(str);
 		MembersDao mdao=MembersDao.getIntstance();
 		FriendDao fdao=FriendDao.getInstance();
@@ -32,7 +31,8 @@ public class SearchController extends HttpServlet{
 			SearchList s=new SearchList(vo.getId(), vo.getName(), fdao.getFriendState(id, vo.getId()));
 			slist.add(s);
 		}
-		//req.setAttribute("list",slist);
-		//req.getRequestDispatcher(req.getContextPath()+"/search/search.jsp").forward(req, resp);
+		req.setAttribute("str",str);
+		req.setAttribute("list",slist);
+		req.getRequestDispatcher("/search/search.jsp").forward(req, resp);
 	}
 }

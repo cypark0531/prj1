@@ -99,7 +99,7 @@ body{background-color: black;}
 	var savebtn=document.getElementById("savebtn");
 	var cancelbtn=document.getElementById("cancelbtn");
 	
-	if("${requestScope.host}"!="${sessionScope.id}"){
+	if("${requestScope.host}"!="${sessionScope.gid}"){
 		savebtn.disabled="disabled";
 		for(let i=0;i<4;i++){
 			arrday[i].readonly="readonly";
@@ -114,7 +114,7 @@ body{background-color: black;}
 				let child=calrow[j].children;
 				for(let n=3;n<child.length;n+=4 ){
 					child[n].style="height:40px";				
-					child[n].childNodes[1].style="background-color:silver; color:white;";
+					child[n].childNodes[1].style="background-color:silver; color:black;";
 					child[n].childNodes[3].style="width:84px; height:20px; color:white;";					
 				}
 			}
@@ -125,7 +125,7 @@ body{background-color: black;}
 				tds[j].childNodes[3].style="width:84px; height:80px; color:white;";
 			}
 			
-			td[i].childNodes[1].style="background-color:#FAED7D; color:white;";
+			td[i].childNodes[1].style="background-color:#FAED7D; color:black;";
 			currday=i;
 			
 			let day=0;
@@ -229,7 +229,7 @@ body{background-color: black;}
 				xhr.onreadystatechange=function(){
 					if(xhr.readyState==4 && xhr.status==200)console.log(t);
 				};				
-				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"${sessionScope.id}"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
+				xhr.open('get','${pageContext.request.contextPath}/scheduler/setdata?schnum='+arrnum[j]+'&id='+"${sessionScope.gid}"+'&schcontent='+schedule[j].value+'&schopen='+open[j].value+'&schdate='+t,true);
 				xhr.send();
 			}
 			

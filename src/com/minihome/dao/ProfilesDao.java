@@ -142,13 +142,13 @@ public class ProfilesDao {
 			rs = pstmt.executeQuery();
 			ArrayList<ProfilesVo> list = new ArrayList<>();
 			while (rs.next()) {
-				ProfilesVo vo = new ProfilesVo(rs.getString("id"),
-												rs.getString("porgimg"), 
-												rs.getString("psaveimg"), 
-												rs.getString("ptitle"),
-												rs.getString("htitle"),
-												rs.getString("pintro"),
-												rs.getInt("popen"));
+				ProfilesVo vo = new ProfilesVo(rs.getString(1),
+												rs.getString(2), 
+												rs.getString(3), 
+												rs.getString(4),
+												rs.getString(5),
+												rs.getString(6),
+												rs.getInt(7));
 				
 				list.add(vo);
 			}

@@ -18,8 +18,9 @@ public class ImgfileUploadController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String saveDir = getServletContext().getRealPath("/homepageframe/img");
+		System.out.println(saveDir);
 		MultipartRequest mr = new MultipartRequest(req, saveDir, 1024*1024*5,"utf-8",new DefaultFileRenamePolicy());
-		System.out.println("¾÷·Îµå°æ·Î:"+saveDir);
+		System.out.println("ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½:"+saveDir);
 		/*
 			 private String id;
 			 private String porgimg;
@@ -45,7 +46,7 @@ public class ImgfileUploadController extends HttpServlet {
 		System.out.println(htitle);
 		System.out.println(pintro);
 		System.out.println(popen);
-		//db¿¡ ÆÄÀÏÁ¤º¸ ÀúÀåÇÏ±â
+		//dbï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 		ProfilesDao dao = ProfilesDao.getInstance();
 		File f = new File(saveDir+"\\"+psaveimg);
 		
@@ -63,7 +64,7 @@ public class ImgfileUploadController extends HttpServlet {
 			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
 			
 		}else {
-			System.out.println("½ÇÆÐ!");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½!");
 		}
 	
 	}
