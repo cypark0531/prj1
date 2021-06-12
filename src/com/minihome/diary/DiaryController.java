@@ -14,9 +14,8 @@ public class DiaryController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Calendar c=null;
-		String id= "test";
-//		String id= req.getParameter("id");
-		String gid= req.getParameter("gid");
+		String id= (String) req.getSession().getAttribute("id");
+		String gid= (String) req.getSession().getAttribute("gid");
 		String year=(String)req.getParameter("year");
 		String month=(String)req.getParameter("month");
 		if(year!=null) {

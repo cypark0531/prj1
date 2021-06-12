@@ -15,8 +15,8 @@ import com.minihome.vo.DiaryVo;
 public class DiaryInsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String gid= req.getParameter("gid");
+		String id= (String) req.getSession().getAttribute("id");
+		String gid= (String) req.getSession().getAttribute("gid");
 		String dcontent = req.getParameter("dcontent");
 		//int dopen = Integer.parseInt(req.getParameter("dopen"));
 		
@@ -27,7 +27,7 @@ public class DiaryInsertController extends HttpServlet{
 		DiaryVo vo = new DiaryVo(0, id, dcontent,0, null);
 		int n = DiaryDao.getInstance().insert(vo, currYear, currMonth, currDay);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
+			resp.sendRedirect(req.getContextPath()+"/home");
 		}else {
 			System.out.println("실패");
 		}

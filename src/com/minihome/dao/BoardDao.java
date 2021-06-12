@@ -195,7 +195,40 @@ public class BoardDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
+	public ArrayList<BoardVo> boardsearchList(String id,int startRow,int endRow,String field,String searchContent){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<BoardVo> boardlist = new ArrayList<BoardVo>();
+		
+		try {
+			con = MyDBCP.getConnection();
+			String sql= "select * from  (select rownum rnum,board.* from(select * from board where id = ? order by bnum desc ) board) where "+ field +" like '%"+ searchContent + "%' and rnum>=? and rnum<=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				BoardVo vo = new BoardVo(
+						rs.getInt("bnum"),
+						id,
+						rs.getString("btitle"),
+						rs.getString("bcontent"),
+						rs.getInt("bopen"),
+						rs.getDate("regdate"),
+						rs.getInt(1));
+				boardlist.add(vo);
+			}
+			return boardlist;
 		
 	
 	
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
 }

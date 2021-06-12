@@ -14,13 +14,12 @@ import com.minihome.dao.DiaryDao;
 public class DiaryDeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		String gid = req.getParameter("gid");
+
 		int dnum = Integer.parseInt(req.getParameter("dnum"));
 		
 		int n = DiaryDao.getInstance().delete(dnum);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
+			resp.sendRedirect(req.getContextPath()+"/home");
 		}else {
 			System.out.println("실패");
 		}
