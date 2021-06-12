@@ -21,7 +21,7 @@
 </form>
 <form action="${pageContext.request.contextPath }/refund/refundlist">
   <input type="hidden" name="id" value="test1">
-  <input type="submit" value="환불목록">
+  <input type="submit" value="내 환불목록">
 <!-- 
   수정
   장바구니 테이블 table 변경
@@ -97,8 +97,6 @@
 	gcategory varchar2(20)
   );
   
-  아이디가 없을경우 구매를 누르면 로그인창으로 갈수있도록 만들고싶음
- 
 -->
 </form>
 </body>

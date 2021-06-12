@@ -12,11 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.BasicSettingDao;
 import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.dao.PurchaseDao;
+import com.minihome.dao.StorageboxDao;
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
+import com.minihome.vo.StorageboxVo;
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	@Override
@@ -70,8 +74,22 @@ public class HomeController extends HttpServlet {
 		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
+		//select * from storagebox where id= ? and gcategory = music;
+		boolean flag = false;
+		String glink = "";
+		 ArrayList<StorageboxVo> storageList =StorageboxDao.getInstance().storagelist(id,"music");
+		 for(StorageboxVo vo : storageList) {
+			 flag = BasicSettingDao.getInstance().checkbsset(vo.getPurnum());
+			 	if(flag) {
+			 		glink = vo.getGlink();
+			 		return;
+			 	}
+			 }
+		 
 		if(musicBox==null) {
 		   musicBox ="/homepageframe/music.jsp";
+		}else {
+			musicBox="/homepageframe/music.jsp?glink="+glink;
 		}
 		
 		

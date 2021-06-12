@@ -85,16 +85,16 @@ body {
       <div class="btn_right mt15">
         <form action="${pageContext.request.contextPath }/goods/goodslist">
         <span class="t_red" style="margin-right: 30px; float: left; font-size: 30px;">카테고리:</span>
-          <input type="hidden" name="id" value="${requestScope.id }">
+          <input type="hidden" name="id" value="${sessionScope.id }">
           <input type="submit" value="전체" class="btn mr5" style="float: left; margin-bottom:5px; width: 100px; height: 40px; font-weight:900;  font-size: 16px;  ">
         </form>
         <form action="${pageContext.request.contextPath }/music/select">
-          <input type="hidden" name="id" value="${requestScope.id }">
+          <input type="hidden" name="id" value="${sessionScope.id }">
           <input type="hidden" name="gcategory" value="music">
           <input type="submit" value="음악" class="btn mr5" style=" float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
         </form>
         <form action="${pageContext.request.contextPath }/background/select">
-          <input type="hidden" name="id" value="${requestScope.id }">
+          <input type="hidden" name="id" value="${sessionScope.id }">
           <input type="hidden" name="gcategory" value="background">
           <input type="submit" value="배경" class="btn mr5" style="float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
         </form>
@@ -143,39 +143,39 @@ body {
 	    <div class="page_wrap">
 	      <div class="page_nation">
 			  <c:if test="${startPageNum>5 }">
-			    <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${startPageNum-1 }&id=${requestScope.id}"><</a>
+			    <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${startPageNum-1 }&id=${sessionScope.id}"><</a>
 			  </c:if>
 			  <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 			    <c:choose>
 			      <c:when test="${pageNum==i }">
-			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${sessionScope.id}">
 			          <span style="color: black; ">${i }</span>
 			        </a>
 			      </c:when>
 			      <c:otherwise>
-			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${i }&id=${sessionScope.id}">
 			          <span style="color: red">${i }</span>
 			        </a>
 			      </c:otherwise>
 			    </c:choose>
 			  </c:forEach>
 			  <c:if test="${endPageNum < pageCount }">
-			     <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${endPageNum+1 }&id=${requestScope.id}">></a>
+			     <a href="${pageContext.request.contextPath }/goods/goodslist?pageNum=${endPageNum+1 }&id=${sessionScope.id}">></a>
 			  </c:if>
 		  </div>
 		</div>
 	    <div class="btn_right mt15">
 		  <form action="${pageContext.request.contextPath }/home">
-		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="id" value="${sessionScope.id }">
 		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	      <form action="${pageContext.request.contextPath }/purchase/purchaselist">
-		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="id" value="${sessionScope.id }">
 		    <input type="hidden" name="gprice" value="${requestScope.gprice }">
 		    <input type="submit" value="구매목록" class="btn mr5" style="float: right; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	      <form action="${pageContext.request.contextPath }/basket/basketlist">
-		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="id" value="${sessionScope.id }">
 		    <input type="submit" value="장바구니 목록" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 	    </div>
