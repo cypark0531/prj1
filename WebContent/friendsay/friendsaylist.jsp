@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,10 +54,11 @@
 	<h1>Friend Talk Talk </h1>
 	
 	
-	
 </div>
+<c:if test="${sessionScope.id!=sessionScope.gid }">
 <div> <input style=" border: 3px solid  #566574; border-radius:10%;  color:black; " type= "text" id = "inputContent" maxlength="15" oninput="limitText(this)"> <input type= "button" value = "INPUT" onclick="fsinsert(0)" style="border: 3px solid  #566574; color:white; background-color:#566574;font-size:15px; font-family: Consolas,Monaco;">
 </div>
+</c:if>	
 <br>
 <div id = "pageDiv">
 
@@ -122,13 +124,16 @@ function list(pageNum){
 				newTd3.innerHTML = "<a href = 'javascript:reply("+fsgroup+","+spageNum+")'><span id = 'span"+fsgroup+"' style='color:black;font-weight: 900'><img src='${pageContext.request.contextPath }/friendsay/down.png'></span>"+"</a>";
 				newTd1.innerHTML = gid
 				newTd2.innerHTML = fscontent
+
 				newTd4.innerHTML = "<a href = 'javascript:fsredelete2("+fsgroup+")'><img src='${pageContext.request.contextPath }/friendsay/close.png'></a>";
 				newTd4.onclick = fsdelete(fsgroup);
 				
 				newTr.appendChild(newTd1);
 				newTr.appendChild(newTd2);
 				newTr.appendChild(newTd3);
+				if(${sessionScope.id==sessionScope.gid}){
 				newTr.appendChild(newTd4);
+				}					
 				newTable.appendChild(newTr);
 				all.appendChild(newTable);
 				all.appendChild(newDiv);
@@ -266,19 +271,19 @@ function reply(fsgroup){
 				}
 	}
 function fsredelete(fsnum){
-	location.href = "${pageContext.request.contextPath}/friendsay/delete?id=${param.id}&gid=${param.gid}&fsnum="+fsnum;
+	location.href = "${pageContext.request.contextPath}/friendsay/delete?fsnum="+fsnum;
 }
 function fsredelete2(fsgroup){
-	location.href = "${pageContext.request.contextPath}/friendsay/delete?id=${param.id}&gid=${param.gid}&fsgroup="+fsgroup;
+	location.href = "${pageContext.request.contextPath}/friendsay/delete?fsgroup="+fsgroup;
 }
 function fsinsert(num){
 		inputContent = null;
 	if(num == 0){
 		inputContent = document.getElementById("inputContent").value;
-	location.href = "${pageContext.request.contextPath}/friendsay/insert?id=${param.id}&gid=${param.gid}&inputContent="+inputContent+"&fsgroup=0";
+	location.href = "${pageContext.request.contextPath}/friendsay/insert?inputContent="+inputContent+"&fsgroup=0";
 	}else{
 		inputContent = document.getElementById("inputContent2").value;
-		location.href = "${pageContext.request.contextPath}/friendsay/insert?id=${param.id}&gid=${param.gid}&inputContent="+inputContent+"&fsgroup="+num;
+		location.href = "${pageContext.request.contextPath}/friendsay/insert?inputContent="+inputContent+"&fsgroup="+num;
 	}
 }
 

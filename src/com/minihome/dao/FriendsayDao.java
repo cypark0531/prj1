@@ -158,7 +158,7 @@ public class FriendsayDao {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, fsgroup);
 			}else {
-				String sql = "delete form friendsay where fsnum = ?";
+				String sql = "delete from friendsay where fsnum = ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, fsnum);
 			}

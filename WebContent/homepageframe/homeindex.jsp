@@ -11,17 +11,8 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
-<%
-	request.getAttribute("id");
-	request.getAttribute("gid");
-<<<<<<< HEAD
-%>
-
-=======
-%>
 
 
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -106,13 +97,11 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Contact</a>
  -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
-  <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
-<<<<<<< HEAD
+  <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>s
+
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
-=======
+
   <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
-  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
@@ -171,7 +160,6 @@ top.window.outerWidth = screen.availWidth;
   <div class="blog-header">
    <div class="blog-article header-article">
     <div class="blog-big__title">Profile</div>
-    <div class="blog-menu small-title date">12.06.2021</div>
    </div>
    
  
@@ -277,7 +265,12 @@ top.window.outerWidth = screen.availWidth;
     <p style="font-size: 20px;text-align: center;">${gvo.galcontent }</p>
 
     
+  
     <div class="prolinks" >
+  
+    
+    <c:choose>
+    <c:when test="${id==gid }">
     <a href="#" onclick="Resister()" style="float: left;">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
@@ -285,13 +278,25 @@ top.window.outerWidth = screen.availWidth;
      </svg>
      RESISTER
     </a>
-    <a href="#" onclick="SeeMore()" style="float: right;">
+        <a href="#" onclick="SeeMore()" style="float: right;">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
      </svg>
      SEE MORE
     </a>
+   </c:when>
+	<c:otherwise>
+	  <a href="#" onclick="SeeMore()" style="float: right;">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
+      <path d="M15 10l5 5-5 5" />
+      <path d="M4 4v7a4 4 0 004 4h12" />
+     </svg>
+     SEE MORE
+    </a>
+  	</c:otherwise>
+    </c:choose>
+
     </div>
    </div>
   </div>

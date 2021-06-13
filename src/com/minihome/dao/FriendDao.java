@@ -21,7 +21,7 @@ public class FriendDao {
 		boolean friend = false;
 		try {
 			con = MyDBCP.getConnection();
-			String sql = "Select * from friend where (hid = ? and gid = ?) or (hid = ? and gid = ?)";
+			String sql = "Select * from friend where (hid = ? and gid = ?) or (hid = ? and gid = ?) and friendstate =3";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, gid);
@@ -29,11 +29,7 @@ public class FriendDao {
 			pstmt.setString(4, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				if(rs.getInt("friendState")==3) {
-					friend = true;
-				}else {
-					friend = false;
-				}
+				friend = true;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
