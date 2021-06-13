@@ -18,10 +18,8 @@ import com.minihome.vo.HistoriesVo;
 public class HistoriesListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id= "test";
-		String gid= "test2";
-//		String id = req.getParameter("id");
-//		String gid= req.getParameter("gid");
+		String id = (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;
 		if(spageNum!=null) {

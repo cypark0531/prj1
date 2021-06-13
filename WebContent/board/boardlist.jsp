@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- h1타이틀 지워도 될듯 -->
-<div style="position:relative; width:800px;  height: 44em; margin:7.5em auto;  border:  dotted 6px white;  background-size: 7px 2px;  text-align: center;">
+<div style="position:relative; width:800px;  height: 44em; margin:2em auto;  border:  dotted 6px white;  background-size: 7px 2px;  text-align: center;">
 <h1 style=" margin-top: 0; font-size: 60pt; text-shadow:#999999 5px 5px 5px;">Board</h1>
 <div style="  margin: 0 auto;   width: 450px ;">
 <table class="table02" style="text-align: center;">
@@ -61,10 +61,10 @@
 	<c:forEach var ="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i}">
-				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}"><span style="color:white;font-weight: 900">[${i}]</span></a>
+				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&searchContent=${param.searchContent}&field=${param.field}"><span style="color:white;font-weight: 900">[${i}]</span></a>
 			</c:when>
 			<c:otherwise>
-				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}"><span style="color:gray">[${i}]</span></a>
+				<a href = "${pageContext.request.contextPath }/board/list?pageNum=${i}&searchContent=${param.searchContent}&field=${param.field}"><span style="color:gray">[${i}]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
@@ -77,7 +77,6 @@
 <div style="float: right;">
 	<form action= "${pageContext.request.contextPath}/board/list" method="post">
  <select name = "field" style = "color: black;">
- 	<option value= "id">작성자</option>
  	<option value= "bcontent">글내용</option>
  	<option value= "btitle">제목</option>
  </select>
