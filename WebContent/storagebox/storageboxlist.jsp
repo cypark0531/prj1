@@ -113,7 +113,9 @@ body {
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="glink" value="${vo.glink }">
 		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
-		          <input type="hidden" name="gsaveimg" value="${vo.gname }">
+		          <input type="hidden" name="gname" value="${vo.gname }">
+		          <input type="hidden" name="anum" value="${vo.anum }">
+		          <input type="hidden" name="basicsetting" value="${vo.basicsetting}">
 		          <input type="submit" value="적용" class="btn mr5" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
 		        </form>
 			  </td>

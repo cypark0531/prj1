@@ -76,10 +76,10 @@ body {
 <div id="wrapper" style=" padding: 30px 30px;  border-style: dotted;">
   <div class="container">
     <div class="inner">
-      <h2>보관함</h2>
+      <h2>음악 보관함</h2>
       <!-- 카테고리 -->
       <div class="btn_right mt15">
-        <form action="${pageContext.request.contextPath }/storagebox/storageboxlist">
+       <%-- <form action="${pageContext.request.contextPath }/storagebox/storageboxlist">
         <span class="t_red" style="margin-right: 30px; float: left; font-size: 30px;">카테고리:</span>
           <input type="hidden" name="id" value="${sessionScope.id }">
           <input type="submit" value="전체" class="btn mr5" style="float: left; margin-bottom:5px; width: 100px; height: 40px; font-weight:900;  font-size: 16px;  ">
@@ -88,12 +88,12 @@ body {
           <input type="hidden" name="id" value="${sessionScope.id }">
           <input type="hidden" name="gcategory" value="music">
           <input type="submit" value="음악" class="btn mr5" style=" float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
-        </form>
-        <form action="${pageContext.request.contextPath }/storageback/secect">
+        </form> --%>
+        <%-- <form action="${pageContext.request.contextPath }/storageback/secect">
           <input type="hidden" name="id" value="${sessionScope.id }">
           <input type="hidden" name="gcategory" value="background">
           <input type="submit" value="배경" class="btn mr5" style="float: left; width: 100px; height: 40px; font-weight:900;  font-size: 16px; ">
-        </form>
+        </form> --%>
       </div> 
 		<table style="width: 100%; "class="table02" >
 		  <tr>
@@ -113,7 +113,7 @@ body {
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="glink" value="${vo.glink }">
 		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
-		          <input type="hidden" name="gsaveimg" value="${vo.gname }">
+		          <input type="hidden" name="gname" value="${vo.gname }">
 		          <input type="submit" value="적용" class="btn mr5" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; text-align: center;">
 		        </form>
 			  </td>
@@ -123,24 +123,24 @@ body {
 	    <div class="page_wrap">
 	      <div class="page_nation">
 			  <c:if test="${startPageNum>5 }">
-			    <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${startPageNum-1 }&id=${sessionScope.id}"><</a>
+			    <a href="${pageContext.request.contextPath }/storagemusic/secect?pageNum=${startPageNum-1 }&id=${sessionScope.id}"><</a>
 			  </c:if>
 			  <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 			    <c:choose>
 			      <c:when test="${pageNum==i }">
-			        <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${i }&id=${sessionScope.id}">
+			        <a href="${pageContext.request.contextPath }/storagemusic/secect?pageNum=${i }&id=${sessionScope.id}">
 			          <span style="color: black; ">${i }</span>
 			        </a>
 			      </c:when>
 			      <c:otherwise>
-			        <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${i }&id=${sessionScope.id}">
+			        <a href="${pageContext.request.contextPath }/storagemusic/secect?pageNum=${i }&id=${sessionScope.id}">
 			          <span style="color: red">${i }</span>
 			        </a>
 			      </c:otherwise>
 			    </c:choose>
 			  </c:forEach>
 			  <c:if test="${endPageNum < pageCount }">
-			     <a href="${pageContext.request.contextPath }/storagebox/storageboxlist?pageNum=${endPageNum+1 }&id=${sessionScope.id}">></a>
+			     <a href="${pageContext.request.contextPath }/storagemusic/secect?pageNum=${endPageNum+1 }&id=${sessionScope.id}">></a>
 			  </c:if>
 		  </div>
 		</div>

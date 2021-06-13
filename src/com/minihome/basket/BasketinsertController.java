@@ -21,11 +21,15 @@ public class BasketinsertController extends HttpServlet{
 		String gname=req.getParameter("gname");
 		String gorgimg=req.getParameter("gsaveimg");
 		String gsaveimg=req.getParameter("gsaveimg");
+		String glink=req.getParameter("glink");
+		String gcategory = req.getParameter("gcategory");
 		BasketDao dao=BasketDao.getInstance();
-		BasketVo vo=new BasketVo(0, id, gcode, gprice, gname, gsaveimg, gorgimg);
+		BasketVo vo=new BasketVo(0, id, gcode, gprice, gname, gsaveimg, gorgimg,gcategory);
 		int n=dao.binsert(vo);
 		if(n>0) {
 		  	req.setAttribute("id", id);
+		  	req.setAttribute("glink", glink);
+		  	req.setAttribute("gcategory", gcategory);
 		  	req.getRequestDispatcher("../goods/goodslist").forward(req, resp);
 		}else {
 			req.setAttribute("code", "fail");

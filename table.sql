@@ -56,6 +56,8 @@ CREATE TABLE basket
     gname varchar2(100) NOT NULL UNIQUE,
 	-- 상품코드
 	gcode varchar2(20) NOT NULL,
+	-- 카테고리
+	gcategory varchar2(10),
 	PRIMARY KEY (basnum)
 );
 
@@ -331,6 +333,23 @@ CREATE TABLE visit
 	regdate date,
 	PRIMARY KEY (vnum)
 );
+--보관함
+create table STORAGEBOX(
+  --보관 번호 (시퀸스)
+   anum number(10) not null primary key,
+   --아이디
+   id varchar2(20) not null,
+   --상품 코드
+   gcode varchar2(20) NOT NULL,
+   --음악 링크
+   glink varchar2(100) UNIQUE,
+   -- 상품사진
+	gsaveimg varchar2(30),
+	gorgimg varchar2(30),
+	purnum number(10),
+	--카테고리
+	gcategory varchar2(20)
+  );
 
 
 
@@ -476,7 +495,6 @@ ALTER TABLE basicsetting
 	ADD FOREIGN KEY (purnum)
 	REFERENCES purchase (purnum)
 	ON DELETE CASCADE
-	
 ;
 
 

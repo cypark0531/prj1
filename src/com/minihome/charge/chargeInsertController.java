@@ -27,6 +27,6 @@ public class chargeInsertController extends HttpServlet{
 		}else {
 			System.out.println("실패");
 		}
-		resp.sendRedirect(req.getContextPath()+"/home");
+		resp.sendRedirect(req.getContextPath()+"/updatemember/update");
 	}
 }

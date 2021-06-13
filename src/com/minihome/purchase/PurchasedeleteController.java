@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.minihome.dao.MembersDao;
 import com.minihome.dao.PurchaseDao;
 import com.minihome.dao.RefundDao;
+import com.minihome.dao.StorageboxDao;
 import com.minihome.vo.PurchaseVo;
 import com.minihome.vo.RefundVo;
 @WebServlet("/purchase/delete")
@@ -25,14 +26,11 @@ public class PurchasedeleteController extends HttpServlet{
 		//환불목록에 추가
 		RefundVo vo=new RefundVo(0, id, gcode, 0, purnum, null);
 		RefundDao dao= RefundDao.getInstance();
-//		System.out.println(id);
-//		System.out.println(purnum);
-//		System.out.println(gcode);
-//		System.out.println(gprice);
 		int n=dao.RefundInsert(vo);
 		if(n>0) {
 			MembersDao.getIntstance().getMoney(id);//돈 조회
 			MembersDao.getIntstance().moneyRefund(id, gprice);//환불
+			StorageboxDao.getInstance().storageboxdel(purnum);//보관함에서 삭제
 			req.setAttribute("code", "success");
 			req.setAttribute("gprice", gprice);
 			req.getRequestDispatcher("/goods/goodslist").forward(req, resp);

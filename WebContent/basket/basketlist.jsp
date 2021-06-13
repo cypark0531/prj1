@@ -55,9 +55,13 @@ body {
 		      <td>
 		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check('${requestScope.money},${vo.gprice }')">
 		      <%--   <input type="hidden" name="money" value="${requestScope.money}"> --%>
-		          <input type="hidden" name="id" value="${sessionScope.id}">
+		          <input type="hidden" name="id" value="${sessionScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
+		          <input type="hidden" name="glink" value="${requestScope.glink }">
+		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
+		          <input type="hidden" name="gname" value="${vo.gname }">
+		          <input type="hidden" name="gcategory" value="${vo.gcategory }">
 		          <input type="submit" value="구매" class="btn mr5" style="float: left; margin-bottom:5px; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		        </form>
 			  </td>
@@ -93,14 +97,20 @@ body {
   </div>
 </div>
 <script type="text/javascript">
-   function check(money,gprice){
-   	if(gprice>money){
-   		alert('금액 부족함');
-   		return false;
-   	}else{
-   		return true;
-   	}
-  } 
+function check(money,gprice){
+	   if(gprice>money){
+	     alert('금액이 부족합니다');
+	   	 return false;
+	   }else{
+		 if (confirm("구매하시겠습니까?") == true){
+		   alert("구매 되었습니다!");
+		   return true;
+		 }else{
+		   return false;
+		 }
+	     return true;
+	   }
+}
  </script>
 </body>
 </html>
