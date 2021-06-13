@@ -38,7 +38,7 @@ body {
 	<td><input type="radio" name = "cash" value= "300" onclick="bb()"></td><td>30000원</td><td>300 coins</td>
 	</tr>
 	<tr>
-	<td><input type="radio" name = "cash" value= "another" onclick="aa()"></td><td><input style="color:black;" type= "text" name= "another"  id = "etc" disabled="disabled">원</td>
+	<td><input type="radio" name = "cash" value= "another" onclick="aa()"></td><td><input style="color:black;" type= "text" value="write charge" name= "another"  id = "etc" disabled="disabled">원</td>
 	</tr>
 	</table>
 
@@ -54,11 +54,14 @@ function aa(){
 }
 function bb(){
 	var etc = document.getElementById("etc");
-	etc.value = "";
+	etc.value = "write charge";
 	etc.disabled = "disabled";
 }
 function check1(){
 	var cash = document.getElementById("etc");
+	if(cash.value=="write charge"){
+		return true;
+	}
 	var check2 = false;
 	var chargeJ = /^[0-9]{1,12}$/;
 	var empJ = /\s/g;

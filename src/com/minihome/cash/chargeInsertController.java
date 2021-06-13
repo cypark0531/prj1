@@ -1,4 +1,4 @@
-package com.minihome.charge;
+package com.minihome.cash;
 
 import java.io.IOException;
 
@@ -20,7 +20,7 @@ public class chargeInsertController extends HttpServlet{
 		if(scash.equals("another")) {
 			cash =  Integer.parseInt(req.getParameter("another"))/100;
 		}else {
-			cash = Integer.parseInt("cash");
+			cash = Integer.parseInt(req.getParameter("cash"));
 		}
 		int n = MembersDao.getIntstance().moneyRefund(id, cash);
 		if(n>0) {
