@@ -74,24 +74,24 @@ public class HomeController extends HttpServlet {
 		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
-		//select * from storagebox where id= ? and gcategory = music;
-		boolean flag = false;
-		String glink = "";
-		 ArrayList<StorageboxVo> storageList =StorageboxDao.getInstance().storagelist(id,"music");
-		 for(StorageboxVo vo : storageList) {
-			 flag = BasicSettingDao.getInstance().checkbsset(vo.getPurnum());
-			 	if(flag) {
-			 		glink = vo.getGlink();
-			 		return;
-			 	}
-			 }
+//		//select * from storagebox where id= ? and gcategory = music;
+//		boolean flag = false;
+//		String glink = "";
+//		ArrayList<StorageboxVo> storageList =StorageboxDao.getInstance().storagelist(id,"music");
+//		for(StorageboxVo vo : storageList) {
+//			flag = BasicSettingDao.getInstance().checkbsset(vo.getPurnum());
+//			if(flag) {
+//				glink = vo.getGlink();
+//			 	return;
+//				}
+//			}
 		 
 		if(musicBox==null) {
 		   musicBox ="/homepageframe/music.jsp";
-		}else {
-			musicBox="/homepageframe/music.jsp?glink="+glink;
+//		}else {
+//			musicBox="/homepageframe/music.jsp?glink="+glink;
 		}
-		
+//		
 		
 		//Dairy 다이어리
 		String dPath = getDiary(req, resp);

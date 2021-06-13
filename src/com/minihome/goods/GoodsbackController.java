@@ -15,7 +15,7 @@ import com.minihome.vo.GoodsVo;
 public class GoodsbackController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		 String gcategory=req.getParameter("gcategory");
 		 String spageNum=req.getParameter("pageNum");
 		 int pageNum=1;
@@ -35,7 +35,6 @@ public class GoodsbackController extends HttpServlet{
 				endPageNum=pageCount;
 			}
 		  req.setAttribute("gclist", gclist);
-		  req.setAttribute("id", id);
 		  req.setAttribute("gcategory", gcategory);
 		  req.setAttribute("pageCount", pageCount);
 		  req.setAttribute("startPageNum", startPageNum);

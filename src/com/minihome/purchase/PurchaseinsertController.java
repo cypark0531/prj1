@@ -20,7 +20,7 @@ public class PurchaseinsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //		String id= (String) req.getSession().getAttribute("id");
-		String id= req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		String gcode=req.getParameter("gcode");
 		String glink=req.getParameter("glink");
 		int gprice = Integer.parseInt(req.getParameter("gprice"));

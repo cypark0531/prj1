@@ -15,7 +15,7 @@ import com.minihome.vo.StorageboxVo;
 public class StorageboxlistController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		String glink=req.getParameter("glink");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;

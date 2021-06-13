@@ -116,7 +116,7 @@ body {
 		      <td>
 		        <form action="${pageContext.request.contextPath }/purchase/insert" method="post" onsubmit="return check(${requestScope.money},${vo.gprice })">
 		      <%--   <input type="hidden" name="money" value="${requestScope.money}"> --%>
-		          <input type="hidden" name="id" value="${requestScope.id }">
+		          <input type="hidden" name="id" value="${sessionScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="glink" value="${vo.glink }">
@@ -128,7 +128,7 @@ body {
 			  </td>
 		      <td>
 	            <form action="${pageContext.request.contextPath }/basket/insert" method="post" onsubmit="return ccheck()">
-	              <input type="hidden" name="id" value="${requestScope.id }">
+	              <input type="hidden" name="id" value="${sessionScope.id }">
 		          <input type="hidden" name="gprice" value="${vo.gprice }">
 		          <input type="hidden" name="gcode" value="${vo.gcode }">
 		          <input type="hidden" name="gname" value="${vo.gname }">

@@ -13,7 +13,7 @@ import com.minihome.dao.BasketDao;
 public class BasketdeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		int basnum=Integer.parseInt(req.getParameter("basnum"));
 		BasketDao dao =BasketDao.getInstance();
 		int n=dao.delete(basnum);

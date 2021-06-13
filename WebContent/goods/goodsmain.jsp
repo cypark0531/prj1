@@ -93,10 +93,13 @@
    -- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
+	purnum number(10),
 	--카테고리
 	gcategory varchar2(20)
   );
   
+  환불버튼 해결안됨....
+  대표설정 못함...
 -->
 </form>
 </body>
