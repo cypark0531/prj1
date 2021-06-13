@@ -6,24 +6,24 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <style type="text/css">
 	*{margin:0px;padding:0px;}
-	body{background-color: black;}
-	.typing{width:100%; height:40px; font-size:30px; border:2px solid black;}
-	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color: white; color:black;}
-	.btn2{width:223px; height:40px; font-size:15px; border:2px solid black; background-color: white; color:black;}
+	body{  background-color: #121418;}
+	.typing{width:100%; height:40px; font-size:30px;border-radius: 10px; border: hidden; font-family: 'Jua', sans-serif; }
+	.btn1{width:100%; height:40px; font-size:25px; border:2px solid black; background-color: white; color:black; font-family: 'Jua', sans-serif; background-color: #566574; color: white; border: hidden; border-radius: 10px}
+	.btn2{width:223px; height:40px; font-size:15px; border:2px solid black; background-color: white; color:black; font-family: 'Jua', sans-serif; background-color: #566574; color: white; border: hidden; border-radius: 10px}
 	 
 </style>
 </head>
 <body>
-<div id="wrap" style="margin:auto;margin-top:100px; width:600px; height: 800px; border-color: white; border-style: dotted;">
+<div id="wrap" style=" background-color: #e9e6e4;  font-family: 'Jua', sans-serif; color:#566574; margin:auto;margin-top:100px; width:600px; height: 800px; border-color: white; border-style: dotted;">
 	<div style="padding-top:50px; padding-left:75px; width:450px;">
-	
 	<form method="post" action="${pageContext.request.contextPath }/login/login">
-		<img src="${pageContext.request.contextPath }/login/loginlogo450x150.png">
+		<img src="${pageContext.request.contextPath }/login/loginlogo450x15001.png">
 		<c:if test="${fail!=null }">
 			<div style="margin-top:60px; width:450px; height:30px; background-color: black; text-align: center;">
-				<span style="color:white;">올바른 아이디와 비밀번호를 입력해주세요</span>
+				<span style="color: #566574;">올바른 아이디와 비밀번호를 입력해주세요</span>
 			</div>
 		</c:if>
 		<div id="loginType" style="padding-top:60px; width:450px;">
@@ -35,7 +35,7 @@
 				<input type="checkbox" name="box" value="true" checked="checked"><span style="color:white">   아이디 저장</span>
 				</c:when>
 				<c:otherwise>
-				<input type="checkbox" name="box" value="true"><span style="color:white">   아이디 저장</span>
+				<input type="checkbox" name="box" value="true"><span style="color:#566574;">   아이디 저장</span>
 				</c:otherwise>
 			</c:choose>
 			   

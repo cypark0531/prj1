@@ -7,12 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 	
-	html{
-		background-color: #E1D8B2 ;
-		font-family:'맑은 고딕', 'malgun', Dotum, sans-serif;
-		
-	}
-	
+
 	#all {
 		margin: 0;
 		position: relative;
