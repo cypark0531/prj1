@@ -21,7 +21,7 @@
 	<div style="padding-top:50px; ">
 	<h1 style="padding-top:50px; margin-bottom:10px; color:white;">사용자 정보 관리</h1>
 	
-	<form method="post" action="${pageContext.request.contextPath }/login/regist" style="margin-top:50px;">
+	<form method="post" action="${pageContext.request.contextPath }/updatemember/update" style="margin-top:50px;">
 		<div id="registBox" >
 		<table>
 		
@@ -45,7 +45,7 @@
 			<th>
 				닉네임
 			</th>
-			<td>
+			<td id="nametd">
 				<input class="input" name="name" id="name" value="${vo.name }" >
 				<span id="namecheck"></span>
 			</td>
@@ -118,21 +118,23 @@
 	var pwdbtn=document.getElementById("pwdbtn");
 	var updatebtn=document.getElementById("updatebtn");
 	var cancelbtn=document.getElementById("cancelbtn");
-	var name=document.getElementById("name");
-	var n=name.value;
+	var nametd=document.getElementById("nametd");
+	var name=nametd.firstElementChild.value;
+	//var n=name.value;
 	var email=document.getElementById("email");
 	var e=email.value;
 	var phone=document.getElementById("phone");
 	var answer=document.getElementById("answer");
 	var charge=document.getElementById("charge");
-	console.log(name);
-	console.log(e);
-	console.log(phone.value);
-	console.log(answer.value);
 	var namecheck=document.getElementById("namecheck");
 	var emailcheck=document.getElementById("emailcheck");
 	var phonecheck=document.getElementById("phonecheck");
 	var answercheck=document.getElementById("answercheck");
+	console.log(nametd);
+	console.log(name);
+	console.log(email);
+	console.log(phone);
+	console.log(answer);
 
 	var checking=31;
 	
@@ -144,8 +146,8 @@
 		window.location.href= "${pageContext.request.contextPath }/home";
 	};
 	
-	name.onfocus=function(){
-		console.log(name.value);
+	nametd.firstElementChild.onfocus=function(){
+		console.log(nametd.firstElementChild.value);
 		if(checking%2==1)checking-=1;
 		console.log(checking);
 		updatebtn.disabled=true;
@@ -170,9 +172,10 @@
 		updatebtn.style.backgroundColor="silver";
 	}
 	
-	name.onblur=function(){
-		console.log(name.value);
-		if(name.value=="" || name.value==null){
+	nametd.firstElementChild.onblur=function(){
+		var n=nametd.firstElementChild.value;
+		console.log(name);
+		if(n=="" || n==null){
 			namecheck.innerHTML="닉네임을 입력하세요";
 		}else{
 			let xhr=new XMLHttpRequest();
@@ -180,7 +183,7 @@
 				if(xhr.readyState==4 && xhr.status==200){
 					let xml= xhr.responseXML;
 					let using = xml.getElementsByTagName("using")[0].textContent;
-					if(using=="true" && name.value!=n){
+					if(using=="true" && n!=name){
 						namecheck.innerHTML="이미 사용되는 닉네임입니다";
 					}
 					else {
@@ -268,6 +271,9 @@
 	}
 	pwdbtn.onclick=function(){
 		window.location.href= "${pageContext.request.contextPath }/updatemember/updatepwd";
+	}
+	charge.onclick=function(){
+		window.location.href= "${pageContext.request.contextPath }/cash/cashcharge.jsp";
 	}
 	
 </script>

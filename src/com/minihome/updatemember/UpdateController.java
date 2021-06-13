@@ -22,6 +22,16 @@ public class UpdateController extends HttpServlet{
  	}
  	@Override
  	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
- 		
+ 		String id=(String)req.getSession().getAttribute("gid");
+ 		String name=req.getParameter("name");
+ 		String email=req.getParameter("email");
+ 		String phone=req.getParameter("phone");
+ 		String question=req.getParameter("question");
+ 		String answer=req.getParameter("answer");
+ 		System.out.println(name+" "+email+" "+phone+" "+question+" "+answer);
+ 		MembersDao dao =MembersDao.getIntstance();
+ 		MembersVO vo=new MembersVO(id, null, name, email, phone, question, answer, 0, 0);
+ 		dao.update(vo);
+ 		resp.sendRedirect(req.getContextPath()+"/home");
  	}
 }

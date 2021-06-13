@@ -309,7 +309,7 @@ public class MembersDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
-	public int updatePwd(MembersVO vo) {
+	public int update(MembersVO vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		String sql="update members set name=?, phone=?,question=?,answer=? where id=?";
