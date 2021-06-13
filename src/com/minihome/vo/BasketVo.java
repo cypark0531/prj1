@@ -19,12 +19,14 @@ public class BasketVo {
 	private String gname;
 	private String gsaveimg;
 	private String gorgimg;
+	private String gcategory;
 	
 	public BasketVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BasketVo(int basnum, String id, String gcode, int gprice, String gname, String gsaveimg, String gorgimg) {
+	public BasketVo(int basnum, String id, String gcode, int gprice, String gname, String gsaveimg, String gorgimg,
+			String gcategory) {
 		super();
 		this.basnum = basnum;
 		this.id = id;
@@ -33,6 +35,7 @@ public class BasketVo {
 		this.gname = gname;
 		this.gsaveimg = gsaveimg;
 		this.gorgimg = gorgimg;
+		this.gcategory = gcategory;
 	}
 
 	public int getBasnum() {
@@ -91,5 +94,11 @@ public class BasketVo {
 		this.gorgimg = gorgimg;
 	}
 
-	
+	public String getGcategory() {
+		return gcategory;
+	}
+
+	public void setGcategory(String gcategory) {
+		this.gcategory = gcategory;
+	}
 }

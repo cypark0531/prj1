@@ -10,11 +10,11 @@ public class StorageboxVo {
 	private String gname;
 	private int purnum;	
 	private String gcategory;
+	private int basicsetting;
 public StorageboxVo() {
-	// TODO Auto-generated constructor stub
 }
 public StorageboxVo(int anum, String id, String gcode, String glink, String gsaveimg, String gorgimg, String gname,
-		int purnum, String gcategory) {
+		int purnum, String gcategory, int basicsetting) {
 	super();
 	this.anum = anum;
 	this.id = id;
@@ -25,6 +25,7 @@ public StorageboxVo(int anum, String id, String gcode, String glink, String gsav
 	this.gname = gname;
 	this.purnum = purnum;
 	this.gcategory = gcategory;
+	this.basicsetting = basicsetting;
 }
 public int getAnum() {
 	return anum;
@@ -79,6 +80,12 @@ public String getGcategory() {
 }
 public void setGcategory(String gcategory) {
 	this.gcategory = gcategory;
+}
+public int getBasicsetting() {
+	return basicsetting;
+}
+public void setBasicsetting(int basicsetting) {
+	this.basicsetting = basicsetting;
 }
 
 }

@@ -93,13 +93,21 @@
    -- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
+	gname varchar2(20),
 	purnum number(10),
 	--카테고리
 	gcategory varchar2(20)
   );
   
-  환불버튼 해결안됨....
-  대표설정 못함...
+  환불버튼 해결
+  노래 이름 받아서 띄우기 (완료)
+  보관함 삭제(완료)
+  아이디별 보관함 (완료)
+  음악 보관함 (완료)
+  
+  대표설정 어떻게 해야됨?
+  glink를 가져와서 
+  
 -->
 </form>
 </body>

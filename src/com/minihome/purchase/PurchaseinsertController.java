@@ -28,6 +28,7 @@ public class PurchaseinsertController extends HttpServlet{
 		String gorgimg= req.getParameter("gsaveimg");
 		String gname= req.getParameter("gname");
 		String gcategory= req.getParameter("gcategory");
+		int basicsetting=0;
 		System.out.println(id);
 		System.out.println(gprice);
 		if(gprice <= MembersDao.getIntstance().getMoney(id)) {
@@ -37,7 +38,7 @@ public class PurchaseinsertController extends HttpServlet{
 			int purnum=dao.PurchaseInsert(vo);
 			//보관함 추가
 			StorageboxDao dao1=StorageboxDao.getInstance();
-			StorageboxVo vo2=new StorageboxVo(0, id, gcode, glink, gsaveimg, gorgimg, gname, purnum, gcategory);
+			StorageboxVo vo2=new StorageboxVo(0, id, gcode, glink, gsaveimg, gorgimg, gname, purnum, gcategory,basicsetting);
 			int c=dao1.storageinsert(vo2);
 			//회원 돈 업데이트
 			int b=MembersDao.getIntstance().moneyUpdate(id, gprice);

@@ -134,6 +134,7 @@ body {
 		          <input type="hidden" name="gname" value="${vo.gname }">
 		          <input type="hidden" name="glink" value="${vo.glink }">
 		          <input type="hidden" name="gsaveimg" value="${vo.gsaveimg }">
+		          <input type="hidden" name="gcategory" value="${vo.gcategory }">
 	              <input type="submit" value="장바구니" class="btn mr5" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 	            </form>
 	          </td>
@@ -188,6 +189,12 @@ body {
 	     alert('금액이 부족합니다');
 	   	 return false;
 	   }else{
+		 if (confirm("구매하시겠습니까?") == true){
+		   alert("구매 되었습니다!");
+		   return true;
+		 }else{
+		   return false;
+		 }
 	     return true;
 	   }
    }

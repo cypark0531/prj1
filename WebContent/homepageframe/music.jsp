@@ -8,14 +8,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/music.css">
 <%
-	String id=request.getParameter("id");
-    String glink=request.getParameter("glink");
-	if(glink!=null){
-	     pageContext.setAttribute("glink", glink);
+    String gcpdelist=request.getParameter("gcodelist");
+	System.out.println("fdsfsdfsdfsd====="+gcpdelist);
+
+	if(gcpdelist!=null){
+	     pageContext.setAttribute("gcpdelist", gcpdelist);
 	}else{
-	     glink="https:/"+"/drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV";
-	     pageContext.setAttribute("glink", glink);
-	     System.out.println(glink);
+		gcpdelist="https:/"+"/drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV";
+	     System.out.println(gcpdelist); 
 	}
     %>
 </head>
@@ -23,8 +23,9 @@
 <div class="holder" style= "margin-block-end:auto;">
   <div class="audio green-audio-player" style="display: contents;">
     <form action="${pageContext.request.contextPath}/storagebox/storageboxlist" style="float: right; margin-top: -63px;">
-      <input type="hidden" name="id" value="${requestScope.id }">
-      <input type="hidden" name="glink" value="${glink}">
+      <input type="hidden" name="id" value="${sessionScope.id }">
+      <input type="hidden" name="gcategory" value="music">
+      <input type="hidden" name="glink" value="${gcpdelist}">
       <input type="submit" value="edit" >
     </form>
   	<!-- <input type="button" style="float: right;" value="edit" id="musicedit"> -->
@@ -66,7 +67,7 @@
     <!-- 음악 플레이어 -->
    <!--  <audio crossorigin autoplay="autoplay"> -->
     <audio loop autoplay="autoplay">
-      <source src="${glink }"/>
+      <source src="${requestScope.gcodelist}"/>
     </audio> 
   </div>
   
