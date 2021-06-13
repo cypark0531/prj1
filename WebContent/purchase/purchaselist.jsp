@@ -106,7 +106,7 @@ body {
 		          	  이미 환불되었습니다.
 		          	</c:when>
 		          	<c:otherwise>
-		          	  <form action="${pageContext.request.contextPath }/purchase/delete" method="post">
+		          	  <form action="${pageContext.request.contextPath }/purchase/delete" method="post" onsubmit="return refundcheck()">
 		          		<input type="hidden" name="id" value="${vo.id }">
 			            <input type="hidden" name="gcode" value="${vo.gcode }">
 			            <input type="hidden" name="purnum" value="${vo.purnum }">
@@ -157,4 +157,14 @@ body {
   </div>
 </div>
 </body>
+<script type="text/javascript">
+function refundcheck(){
+		if (confirm("환불하시겠습니까?") == true){
+			alert("환불되었습니다");
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
 </html>

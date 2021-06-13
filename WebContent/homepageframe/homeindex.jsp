@@ -8,20 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<style>
+	body{
+		background: url("goodsimgfile/${requestScope.backvo.gsaveimg}");
+	}
+</style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
-<%
-	request.getAttribute("id");
-	request.getAttribute("gid");
-<<<<<<< HEAD
-%>
 
-=======
-%>
-
-
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -87,10 +81,7 @@ top.window.outerWidth = screen.availWidth;
 </script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
-<style type="text/css">
 
-
-</style>
 
 </head>
 <body style="color:#383a3d;">
@@ -107,14 +98,9 @@ top.window.outerWidth = screen.availWidth;
  -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
-<<<<<<< HEAD
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
-=======
   <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
-  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
-  
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
   <a href="${pageContext.request.contextPath }/home?id=${gid}" class="blog-menu subscribe">MYHOME</a>
  </div>
@@ -122,8 +108,8 @@ top.window.outerWidth = screen.availWidth;
   <div class="blog-article header-article">
    <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px;">${htitle}<br>
    </div>
-   <div class="blog-menu  small-title">
-
+   <div class="blog-menu small-title">
+   
    <c:if test="${id!=gid }">
 	<input type="button" value="일촌 신청" style="width:200px; height:40px; font-size: x-large; color:black;" onclick="addFriend()">
    </c:if>
@@ -131,7 +117,7 @@ top.window.outerWidth = screen.availWidth;
   </div>
   <div class="blog-article page-number">
     <marquee style= "margin-bottom:20px; width:13.4em; height:28px; direction: left;  background-color: #566574">
-   <p style=" font-family: Consolas,Monaco;  font-size:14pt; position:absolute; word-spacing: 10px; margin-top: -5px; text-align: center;">This area is music title</p>
+   <p style=" font-family: Consolas,Monaco;  font-size:14pt; position:absolute; word-spacing: 10px; margin-top: -5px; text-align: center;">${requestScope.gname }</p>
   </marquee>
   <jsp:include page="${musicBox }"></jsp:include>
 

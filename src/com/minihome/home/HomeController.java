@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.minihome.dao.BasicSettingDao;
 import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
+import com.minihome.dao.GoodsDao;
 import com.minihome.dao.ProfilesDao;
 import com.minihome.dao.PurchaseDao;
 import com.minihome.dao.StorageboxDao;
 import com.minihome.vo.GalleryVo;
+import com.minihome.vo.GoodsVo;
 import com.minihome.vo.ProfilesVo;
 import com.minihome.vo.StorageboxVo;
 @WebServlet("/home")
@@ -29,7 +31,46 @@ public class HomeController extends HttpServlet {
 		if(req.getParameter("id")!=null)id =req.getParameter("id");
 		String gid = (String)req.getSession().getAttribute("gid");
 		req.getSession().setAttribute("id", id);
+		String gcategory=req.getParameter("gcategory");
+		String gsaveimg=req.getParameter("gsaveimg");
+		int anum=0;
+		if(req.getParameter("anum")!=null)anum=Integer.parseInt(req.getParameter("anum"));
+		System.out.println("이미지 파일명23432="+gsaveimg);
+		req.setAttribute("gsaveimg", gsaveimg);
 		//req.setAttribute("gid", gid);
+		
+		
+		
+		
+		
+		StorageboxDao dao00=StorageboxDao.getInstance();
+		int n=dao00.update2(anum);
+		if(n>0) {
+			dao00.update1(anum, dao00.findc(anum));
+		}
+		req.setAttribute("apply", anum);
+		StorageboxVo backvo=dao00.findback();
+		StorageboxVo musicvo=dao00.findmusic();
+		req.setAttribute("gname", musicvo.getGname());
+		GoodsDao dao01=GoodsDao.getInstance();
+		String gcodelist=dao01.gcodelist(musicvo.getGcode());
+		req.setAttribute("backvo", backvo);
+		req.setAttribute("gcodelist", gcodelist);
+		System.out.println("Fdsfdsfdsfsd="+gcodelist);
+		
+		
+		
+		//백그라운드
+//		GoodsDao dao0= GoodsDao.getInstance();
+//		ArrayList<GoodsVo> gclist=dao0.gcList("background");
+//		String gsaveimg=null;
+//		for(GoodsVo vo: gclist) {
+//			gsaveimg = vo.getGsaveimg();
+//			System.out.println("이미지 파일명321321312  "+gsaveimg);
+//		}
+//		req.setAttribute("gclist", gclist);
+//		req.setAttribute("gsaveimg", gsaveimg);
+		
 		
 		//Profiles 프로필
 		ProfilesDao dao = ProfilesDao.getInstance();
@@ -74,24 +115,10 @@ public class HomeController extends HttpServlet {
 		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
-//		//select * from storagebox where id= ? and gcategory = music;
-//		boolean flag = false;
-//		String glink = "";
-//		ArrayList<StorageboxVo> storageList =StorageboxDao.getInstance().storagelist(id,"music");
-//		for(StorageboxVo vo : storageList) {
-//			flag = BasicSettingDao.getInstance().checkbsset(vo.getPurnum());
-//			if(flag) {
-//				glink = vo.getGlink();
-//			 	return;
-//				}
-//			}
-		 
 		if(musicBox==null) {
 		   musicBox ="/homepageframe/music.jsp";
-//		}else {
-//			musicBox="/homepageframe/music.jsp?glink="+glink;
 		}
-//		
+		
 		
 		//Dairy 다이어리
 		//String dPath = "/diary/main?id=test&gid=test";
@@ -101,14 +128,10 @@ public class HomeController extends HttpServlet {
 //			content ="/profile/insert.jsp";	
 //			
 //	}	
-		
-//		String id = "test4";
 		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
-		
-		  if(gvo==null) {
-			  gvo = new GalleryVo(0, "test", "The Photo Dosen't Not Exist",  "If u  Want To Upload Your photo Please Click 'REGISTER'!",  "none",  "none", 0, null);
-		  }
-		
+		if(gvo==null) {
+			gvo = new GalleryVo(0, "test", "The Photo Dosen't Not Exist",  "If u  Want To Upload Your photo Please Click 'REGISTER'!",  "none",  "none", 0, null);
+		}
 		req.setAttribute("gvo", gvo);
 		System.out.println(gvo);
 		
@@ -151,6 +174,8 @@ public class HomeController extends HttpServlet {
 					"&firstDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay+"&realYear="+realYear;
 			return path;
 	}
+	
+	
 	
 	
 }

@@ -22,7 +22,7 @@ public class BasketDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=MyDBCP.getConnection();
-			String sql="insert into basket values(basket_seq.nextval,?,?,?,?,?,?)";
+			String sql="insert into basket values(basket_seq.nextval,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getGsaveimg());
@@ -30,6 +30,7 @@ public class BasketDao {
 			pstmt.setInt(4, vo.getGprice());
 			pstmt.setString(5, vo.getGname());
 			pstmt.setString(6, vo.getGcode());
+			pstmt.setString(7, vo.getGcategory());
 			return pstmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -58,7 +59,8 @@ public class BasketDao {
 						rs.getInt("gprice"),
 						rs.getString("gname"),
 						rs.getString("gsaveimg"), 
-						rs.getString("gorgimg"));
+						rs.getString("gorgimg"),
+						rs.getString("gcategory"));
 				blist.add(vo);
 			}
 			return blist;

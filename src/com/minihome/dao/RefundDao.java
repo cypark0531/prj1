@@ -67,33 +67,4 @@ public class RefundDao {
 			MyDBCP.close(con, pstmt, rs);
 		}
 	}
-//	public ArrayList<RefundVo> relist(String id){
-//		Connection con=null;
-//		PreparedStatement pstmt=null;
-//		ResultSet rs=null;
-//		try {
-//			con=MyDBCP.getConnection();	
-//			String sql="select purnum from refund where id=?";
-//			pstmt=con.prepareStatement(sql);
-//			pstmt.setString(1, id);
-//			rs=pstmt.executeQuery();
-//			ArrayList<RefundVo> rlist=new ArrayList<RefundVo>();
-//			while(rs.next()) {
-//				RefundVo vo=new RefundVo(
-//						rs.getInt("refnum"),
-//						rs.getString("id"), 
-//						rs.getString("gcode"),
-//						rs.getInt("refstate"),
-//						rs.getInt("purnum"),
-//						rs.getDate("regdate"));
-//				rlist.add(vo);
-//			}
-//			return rlist;
-//		}catch (SQLException e) {
-//			e.printStackTrace();
-//			return null;
-//		}finally {
-//			MyDBCP.close(con, pstmt, rs);
-//		}
-//	}
 }

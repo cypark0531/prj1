@@ -18,6 +18,7 @@ public class StorageboxlistController extends HttpServlet{
 		String id = (String)req.getSession().getAttribute("id");
 		String glink=req.getParameter("glink");
 		String spageNum=req.getParameter("pageNum");
+		System.out.println("Fdsfdsfsdfds="+glink);
 		int pageNum=1;
 		if(spageNum!=null) {
 			pageNum=Integer.parseInt(spageNum);
@@ -27,7 +28,7 @@ public class StorageboxlistController extends HttpServlet{
 		int endRow=startRow+4;
 		StorageboxDao dao=StorageboxDao.getInstance();
 		
-		ArrayList<StorageboxVo> storageboxlist = dao.storagelist(startRow, endRow);
+		ArrayList<StorageboxVo> storageboxlist = dao.storagelist(id,startRow, endRow);
 		int pageCount=(int)Math.ceil(dao.getCount()/5.0);
 		//페이징 갯수
 		int startPageNum=((pageNum-1)/5*5)+1;

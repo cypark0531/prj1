@@ -166,6 +166,36 @@ public class GoodsDao {
 			MyDBCP.close(con, pstmt, rs);
 		}
 	}
+	public ArrayList<GoodsVo> gcList(String gcategory){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=MyDBCP.getConnection();
+			String sql="select * from goods where gcategory=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, gcategory);
+			rs=pstmt.executeQuery();
+			ArrayList<GoodsVo> gclist = new ArrayList<GoodsVo>();
+			while(rs.next()) {
+				GoodsVo vo=new GoodsVo(
+						rs.getString("gcode"),
+						rs.getInt("gprice"), 
+						rs.getString("gname"),
+						rs.getString("gsaveimg"), 
+						rs.getString("gorgimg"), 
+						rs.getString("glink"), 
+						rs.getString("gcategory"));
+				gclist.add(vo);
+			}
+			return gclist;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
 	public int goodsinsert(GoodsVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -195,4 +225,43 @@ public class GoodsDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
+	public String gcodelist(String gcode) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=MyDBCP.getConnection();
+			String sql="select glink from goods where gcode=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, gcode);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString("glink");
+			}
+			return null;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

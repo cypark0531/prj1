@@ -6,16 +6,18 @@ public class BasicsettingVo {
 	private int bsset;
 	private String id;
 	private int purnum;
+	private String glink;
 	public BasicsettingVo() {
 		super();
 	}
-	public BasicsettingVo(int bsnum, String bscategory, int bsset, String id, int purnum) {
+	public BasicsettingVo(int bsnum, String bscategory, int bsset, String id, int purnum, String glink) {
 		super();
 		this.bsnum = bsnum;
 		this.bscategory = bscategory;
 		this.bsset = bsset;
 		this.id = id;
 		this.purnum = purnum;
+		this.glink = glink;
 	}
 	public int getBsnum() {
 		return bsnum;
@@ -46,6 +48,12 @@ public class BasicsettingVo {
 	}
 	public void setPurnum(int purnum) {
 		this.purnum = purnum;
+	}
+	public String getGlink() {
+		return glink;
+	}
+	public void setGlink(String glink) {
+		this.glink = glink;
 	}
 	
 }
