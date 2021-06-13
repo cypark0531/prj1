@@ -269,4 +269,65 @@ public class MembersDao {
 			MyDBCP.close(con, pstmt, rs);
 		}
 	}
+	public MembersVO getMember(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from members where id =?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			rs.next();
+			MembersVO vo=new MembersVO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), 0);
+			
+			return vo;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}finally{
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	public int updatePwd(String id,String pwd) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="update members set pwd=? where id=?";
+		try{
+			System.out.println(pwd+" "+id);
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,pwd);
+			pstmt.setString(2,id);
+			int n=pstmt.executeUpdate();
+			return n;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return -1;
+		}finally{
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
+	public int updatePwd(MembersVO vo) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		String sql="update members set name=?, phone=?,question=?,answer=? where id=?";
+		try{
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,vo.getName());
+			pstmt.setString(2,vo.getPhone());
+			pstmt.setString(3,vo.getQuestion());
+			pstmt.setString(4,vo.getAnswer());
+			pstmt.setString(5,vo.getId());
+			int n=pstmt.executeUpdate();
+			return n;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return -1;
+		}finally{
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
 }

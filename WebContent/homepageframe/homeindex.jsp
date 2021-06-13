@@ -107,6 +107,7 @@ top.window.outerWidth = screen.availWidth;
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
+  <a href="${pageContext.request.contextPath }/updatemember/update" class="blog-menu subscribe">SETTING</a>
   <a href="${pageContext.request.contextPath }/home?id=${gid}" class="blog-menu subscribe">MYHOME</a>
  </div>
  <div class="blog-header blog-is-sticky">
