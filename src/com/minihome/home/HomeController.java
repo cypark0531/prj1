@@ -17,8 +17,12 @@ import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.GoodsDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.dao.ProfilesDao;
+import com.minihome.dao.VisitDao;
+
 import com.minihome.dao.PurchaseDao;
 import com.minihome.dao.StorageboxDao;
+
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.GoodsVo;
 import com.minihome.vo.ProfilesVo;
@@ -38,6 +42,22 @@ public class HomeController extends HttpServlet {
 		System.out.println("이미지 파일명23432="+gsaveimg);
 		req.setAttribute("gsaveimg", gsaveimg);
 		//req.setAttribute("gid", gid);
+		
+		
+		//Visit
+			boolean exist = VisitDao.getInstance().existToday(id);
+			System.out.println(exist);
+		if(exist==false) {
+			VisitDao.getInstance().insert(id);
+		}
+		if(gid!=id) {
+			VisitDao.getInstance().updateVisit(id);
+		}
+		int today = VisitDao.getInstance().countToday(id);
+		int allday = VisitDao.getInstance().countAll(id);
+		
+		req.setAttribute("today", today);
+		req.setAttribute("allday", allday);
 		
 		
 		

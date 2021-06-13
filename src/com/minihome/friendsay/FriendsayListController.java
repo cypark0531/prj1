@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.FriendDao;
 import com.minihome.dao.FriendsayDao;
 import com.minihome.vo.FriendsayVo;
 @WebServlet("/friendsay/list")
@@ -19,7 +20,7 @@ public class FriendsayListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = (String) req.getSession().getAttribute("id");
 		System.out.println("id "+ id);
-		String gid = (String) req.getSession().getAttribute("id");
+		String gid = (String) req.getSession().getAttribute("gid");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;
 		if(spageNum==null) {
@@ -45,6 +46,7 @@ public class FriendsayListController extends HttpServlet{
 		PrintWriter pw= resp.getWriter();
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 		pw.print("<result>");
+		//boolean friend = FriendDao.getInstance().friendOK(id, gid);
 		for(FriendsayVo vo : list) {
 			pw.print("<reply>");
 			pw.print("<fsnum>"+vo.getFsnum()+"</fsnum>");

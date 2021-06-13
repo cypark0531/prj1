@@ -28,14 +28,10 @@ body {
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 </head>
 <body>
-<% 
-	String id = request.getParameter("id");
-	System.out.print(id);
-	%>
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
-		<h2>VISITOR'S BOOK</h2>
+		<h1 style="margin-left: 1em; font-size: 50pt; text-shadow:#999999 5px 5px 5px;" >WRITE GUESTBOOK</h1>
 	<form id="profileForm" name="profilemsmsForm"  action="${pageContext.request.contextPath }/histories/insert?id=${param.id}&gid=${param.id}" method="post">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
@@ -47,11 +43,11 @@ body {
 		<tbody id="tbody" >
 		<tr>
 		<th>VISITOR'S BOOK TITLE<span class="t_red"> *</span></th>
-		<td><input  type= "text" id="ptitle" name="htitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
+		<td><input  type= "text" id="htitle" name="htitle" value="" class="tbox1"  style=" width:400px; height:auto; background-color:  #121418;color: white;font-size: 16px;border: none; " autofocus="autofocus"  tabindex="1" onkeyup="moveFocus(this);"></td>
 		</tr>
 		<tr>
 		<th>VISITOR'S BOOK CONTENT<span class="t_red"> *</span></th>
-                            <td><textarea id="pintro" name="hcontent" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
+                            <td><textarea id="hintro" name="hcontent" cols="10" rows="5" class="textarea01" style="width:700px; height:200px; background-color:  #121418;color: white;font-size: 16px;border: none;" tabindex="3" onkeyup="moveFocus(this);" ></textarea></td>
 		</tr>
 	
 		</tbody>

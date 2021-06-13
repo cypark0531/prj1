@@ -59,12 +59,14 @@
 		</table>
 		
 		<div id = "main">
-		</div>
-		<div>
-		<input type= "text"  id = "insertContent" style="color: black;">
-		<input type= "button" value= "글쓰기" id = "btnn">
 		
 		</div>
+		<c:if test="${sessionScope.id==sessionScope.gid }">
+		<div>
+		<input type= "text"  id = "insertContent" style="color: black;">
+		<input type= "button" value= "글쓰기" id = "btnn" onclick = "btnninsert()">
+		</div>
+		</c:if>
 	
 		<div id = "dpageDiv" style="display: inline-flex; margin-left: 10em; border:0;">
 		</div>
@@ -121,14 +123,16 @@
 						newTd2 = document.createElement("td");
 						newTd1.style.color = "black";
 						newTd2.style.color = "black";
+						
 						newInput1 = document.createElement("input");
 						newInput1.type= "button";
 						newInput1.value= "삭제";
 						newInput1.addEventListener('click', function(e) {
 							ddelete(dnum);
 						});
-						
+						if(${sessionScope.id==sessionScope.gid}){
 						newTd2.appendChild(newInput1);
+						}
 						newTd1.innerHTML = dcontent;
 						newTd1.style.width = "250px";
 						newTr.appendChild(newTd1)
@@ -183,8 +187,7 @@
 			}
 		}
 		var xhr1 = null;
-		var btnn = document.getElementById("btnn");
-		btnn.onclick = function(){
+		function btnninsert(){
 			let insertContent = document.getElementById("insertContent").value;
 			location.href = "${pageContext.request.contextPath}/diary/insert?id=${param.id}&gid=${param.gid}&dcontent="+insertContent;
 				

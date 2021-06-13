@@ -29,8 +29,11 @@
 	"
 		
 	 onclick = "toMain()">
+	 
+	 
+
 	<div id = "hello"  style="margin-top: 60px; margin-left: 4em;">
-	
+		
 	</div>
 	</div>
 <script type="text/javascript">
@@ -48,8 +51,7 @@ show();
 				let length = xml. getElementsByTagName("regdate").length
 				console.log(length);
 				for(let i=0;i<length;i++){
-				
-				
+			
 				let galnum = xml.getElementsByTagName("galnum")[i].textContent;
 				let regdate = xml.getElementsByTagName("regdate")[i].textContent;
 				let galcontent = xml.getElementsByTagName("galcontent")[i].textContent;
