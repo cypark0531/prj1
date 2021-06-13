@@ -12,11 +12,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.BasicSettingDao;
 import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.dao.VisitDao;
+
+import com.minihome.dao.PurchaseDao;
+import com.minihome.dao.StorageboxDao;
+
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
+import com.minihome.vo.StorageboxVo;
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
 	@Override
@@ -25,7 +32,22 @@ public class HomeController extends HttpServlet {
 		if(req.getParameter("id")!=null)id =req.getParameter("id");
 		String gid = (String)req.getSession().getAttribute("gid");
 		req.getSession().setAttribute("id", id);
-		//req.setAttribute("gid", gid);
+		
+		
+		//Visit
+			boolean exist = VisitDao.getInstance().existToday(id);
+			System.out.println(exist);
+		if(exist==false) {
+			VisitDao.getInstance().insert(id);
+		}
+		if(gid!=id) {
+			VisitDao.getInstance().updateVisit(id);
+		}
+		int today = VisitDao.getInstance().countToday(id);
+		int allday = VisitDao.getInstance().countAll(id);
+		
+		req.setAttribute("today", today);
+		req.setAttribute("allday", allday);
 		
 		//Profiles 프로필
 		ProfilesDao dao = ProfilesDao.getInstance();
@@ -70,10 +92,24 @@ public class HomeController extends HttpServlet {
 		
 		
 		String musicBox = (String)req.getAttribute("musicBox");
+//		//select * from storagebox where id= ? and gcategory = music;
+//		boolean flag = false;
+//		String glink = "";
+//		ArrayList<StorageboxVo> storageList =StorageboxDao.getInstance().storagelist(id,"music");
+//		for(StorageboxVo vo : storageList) {
+//			flag = BasicSettingDao.getInstance().checkbsset(vo.getPurnum());
+//			if(flag) {
+//				glink = vo.getGlink();
+//			 	return;
+//				}
+//			}
+		 
 		if(musicBox==null) {
 		   musicBox ="/homepageframe/music.jsp";
+//		}else {
+//			musicBox="/homepageframe/music.jsp?glink="+glink;
 		}
-		
+//		
 		
 		//Dairy 다이어리
 		//String dPath = "/diary/main?id=test&gid=test";

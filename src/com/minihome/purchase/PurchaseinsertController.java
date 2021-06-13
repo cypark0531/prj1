@@ -19,7 +19,8 @@ import com.minihome.vo.StorageboxVo;
 public class PurchaseinsertController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+//		String id= (String) req.getSession().getAttribute("id");
+		String id = (String)req.getSession().getAttribute("id");
 		String gcode=req.getParameter("gcode");
 		String glink=req.getParameter("glink");
 		int gprice = Integer.parseInt(req.getParameter("gprice"));
@@ -33,14 +34,14 @@ public class PurchaseinsertController extends HttpServlet{
 			//구매목록추가
 			PurchaseDao dao=PurchaseDao.getInstance();
 			PurchaseVo vo=new PurchaseVo(0, id, gcode,gprice, null);
-			int n=dao.PurchaseInsert(vo);
+			int purnum=dao.PurchaseInsert(vo);
 			//보관함 추가
 			StorageboxDao dao1=StorageboxDao.getInstance();
-			StorageboxVo vo2=new StorageboxVo(0, id, gcode, glink, gsaveimg, gorgimg, gname, gcategory);
+			StorageboxVo vo2=new StorageboxVo(0, id, gcode, glink, gsaveimg, gorgimg, gname, purnum, gcategory);
 			int c=dao1.storageinsert(vo2);
 			//회원 돈 업데이트
 			int b=MembersDao.getIntstance().moneyUpdate(id, gprice);
-			if(n>0) {
+			if(purnum>0) {
 				if(b>0) {
 					if(c>0) {
 						req.setAttribute("id", id);

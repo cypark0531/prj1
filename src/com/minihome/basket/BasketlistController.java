@@ -15,7 +15,7 @@ import com.minihome.vo.BasketVo;
 public class BasketlistController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		BasketDao dao=BasketDao.getInstance();
 		ArrayList<BasketVo> basketlist = dao.blist(id);
 		req.setAttribute("basketlist", basketlist);

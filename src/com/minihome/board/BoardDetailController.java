@@ -19,7 +19,6 @@ public class BoardDetailController extends HttpServlet{
 		String btitle = req.getParameter("btitle");
 		int rnum = Integer.parseInt(req.getParameter("rnum"));
 		String bcontent = req.getParameter("bcontent");
-		int b = Integer.parseInt(req.getParameter("b"));
 		String regdate = req.getParameter("regdate");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;

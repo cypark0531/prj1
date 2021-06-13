@@ -36,6 +36,28 @@ public class BoardDao {
 				MyDBCP.close(con, pstmt, rs);
 			}
 		}
+	public int searchgetCount(String id,String field,String searchContent) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con =MyDBCP.getConnection();
+			
+			String sql = "select NVL(count(bnum),0) from board where id = ? and "+ field +" like '%"+ searchContent + "%'";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mnum = rs.getInt(1);
+			return mnum;
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				MyDBCP.close(con, pstmt, rs);
+			}
+		}
 	public int getmaxNum() {
 		Connection con = null;
 		PreparedStatement pstmt = null;

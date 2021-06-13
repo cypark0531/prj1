@@ -27,7 +27,7 @@ public class FriendsayDeleteController extends HttpServlet{
 		
 		int n =FriendsayDao.getInstance().delete(fsgroup, fsnum);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/home");
+			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
 		}else {
 			System.out.println("실패");
 		}

@@ -16,18 +16,41 @@ public class PurchaseDao {
 	public static PurchaseDao getInstance() {
 		return instance;
 	}
-	
+	public int getmaxNum() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con =MyDBCP.getConnection();
+			String sql = "select NVL(max(purnum),0) mnum from purchase";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			int mnum = rs.getInt("mnum");
+			return mnum;
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+				return -1;
+			}finally {
+				MyDBCP.close(con, pstmt, rs);
+			}
+		}
 	public int PurchaseInsert(PurchaseVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
+		int purnum = getmaxNum()+1;
 		try {
 			con=MyDBCP.getConnection();
-			String sql="insert into purchase values(purchase_seq.nextval,?,?,?,sysdate)";
+			String sql="insert into purchase values(?,?,?,?,sysdate)";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getGcode());
-			pstmt.setInt(3, vo.getGprice());
-			return pstmt.executeUpdate();
+			pstmt.setInt(1, purnum);
+			pstmt.setString(2, vo.getId());
+			pstmt.setString(3, vo.getGcode());
+			pstmt.setInt(4, vo.getGprice());
+			pstmt.executeUpdate();
+			return purnum;
 		}catch (SQLException se) {
 			se.printStackTrace();
 			return -1;
@@ -52,6 +75,7 @@ public class PurchaseDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
+	
 	
 	public ArrayList<PurchaseVo> list(String id, int startRow, int endRow){
 		Connection con=null;
