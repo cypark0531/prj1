@@ -348,7 +348,8 @@ create table STORAGEBOX(
 	gorgimg varchar2(30),
 	purnum number(10),
 	--카테고리
-	gcategory varchar2(20)
+	gcategory varchar2(20),
+	basicsetting number(2)
   );
 
 

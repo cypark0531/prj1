@@ -15,6 +15,7 @@ create sequence gallery_seq;
 create sequence schedule_seq;
 create sequence profile_seq;
 create sequence friend_seq;
+create sequence storagebox_seq;
 
 
 
