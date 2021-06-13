@@ -21,7 +21,7 @@ public class DiaryListController extends HttpServlet{
 		int year = Integer.parseInt(req.getParameter("year"));
 		int month = Integer.parseInt(req.getParameter("month"));
 		int date = Integer.parseInt(req.getParameter("date"));
-		String id = req.getParameter("id");
+		String id = (String) req.getSession().getAttribute("id");
 
 		
 		String spageNum=req.getParameter("pageNum");

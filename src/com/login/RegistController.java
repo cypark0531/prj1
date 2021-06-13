@@ -36,7 +36,7 @@ public class RegistController extends HttpServlet{
 		
 		
 		
-		ProfilesVo provo  = new ProfilesVo(id,"none1.jpg", "none1.jpg","등록을해주세요", "등록을해주세요", "등록을해주세요",0);
+		ProfilesVo provo  = new ProfilesVo(id,"none1.jpg", "none1.jpg","Profile Dosen't Not Exist.", "Plz Register!", "PlzRegister",0);
 		ProfilesDao prodao = ProfilesDao.getInstance();
 		int  pro =  prodao.insert(provo);
 		

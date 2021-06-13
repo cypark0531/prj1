@@ -115,11 +115,11 @@ public class GalleryDao  {
 			con = MyDBCP.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,vo.getGaltitle());
-			pstmt.setString(2, vo.getGalorgname());
-			pstmt.setString(3, vo.getGalsavename());
-			pstmt.setString(4, vo.getGalcontent());
+			pstmt.setString(2, vo.getGalcontent());
+			pstmt.setString(3, vo.getGalorgname());
+			pstmt.setString(4, vo.getGalsavename());
 			pstmt.setInt(5, vo.getGalopen());
-			pstmt.setString(6, vo.getId());
+			pstmt.setInt(6, vo.getGalnum());
 			int n = pstmt.executeUpdate();
 			return n;
 		}catch (SQLException se) {
@@ -193,6 +193,51 @@ public class GalleryDao  {
 		}
 		return null;
 	}
+	
+	public int fileupdate(int galnum) {	
+		String sql = "update gallery set galorgname=null, galsavename=null where galnum= ?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,galnum);
+			int n = pstmt.executeUpdate();
+			return n;
+		}catch (SQLException se) {
+			se.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	public int delete(int galnum) {
+		String sql = "delete from gallery where galnum=?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = MyDBCP.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, galnum);
+			int n = pstmt.executeUpdate();
+			return n;
+		}catch(SQLException se) {
+			se.printStackTrace();
+		return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+			
+		}
+	}
+	
 
 
 	

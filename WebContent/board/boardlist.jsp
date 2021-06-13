@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/profile/css/common.css"/>
 <style type="text/css">
 	body{
-		background-color: black;
+		background-color: #121418;
 	
 	}
 
@@ -17,7 +17,7 @@
 </head>
 <body>
 <!-- h1타이틀 지워도 될듯 -->
-<div style="position:relative; width:800px;  height: 44em; margin-top:2em;  margin-left: 27em;  border:  dotted 6px white;  background-size: 7px 2px;  text-align: center;">
+<div style="position:relative; width:800px;  height: 44em; margin:7.5em auto;  border:  dotted 6px white;  background-size: 7px 2px;  text-align: center;">
 <h1 style=" margin-top: 0; font-size: 60pt; text-shadow:#999999 5px 5px 5px;">Board</h1>
 <div style="  margin: 0 auto;   width: 450px ;">
 <table class="table02" style="text-align: center;">
@@ -53,7 +53,7 @@
 	<input style="width: 60px;height: 30px;font-size: 15px;margin-top:10px; color: white; background-color: #353535; border-radius: 30%;" type = "button" value="글쓰기" id = btn1>
 	</c:if>
 </div>
-<br>
+
 <div style="margin-left: 2.1em ;height: 30px;margin-top: 20px;">
 	<c:if test="${startPageNum>10}">
 		<a href="${pageContext.request.contextPath }/board/list?pageNum=${startPagenum-1}">[이전]</a>
@@ -72,6 +72,18 @@
 		<a href="${pageContext.request.contextPath }/board/list?pageNum=${endPageNum+1}">[다음]</a>
 		</c:if>
 
+</div>
+<br>
+<div style="float: right;">
+	<form action= "${pageContext.request.contextPath}/board/list" method="post">
+ <select name = "field" style = "color: black;">
+ 	<option value= "id">작성자</option>
+ 	<option value= "bcontent">글내용</option>
+ 	<option value= "btitle">제목</option>
+ </select>
+ <input style="color: black;"type = "text" name = "searchContent">
+ <input  type= "submit" value="검색">
+ </form>
 </div>
 </div>
 

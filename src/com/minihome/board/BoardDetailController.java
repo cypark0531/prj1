@@ -36,7 +36,6 @@ public class BoardDetailController extends HttpServlet{
 			//boolean friend = FriendDao.getInstance().friendOK(id, gid);
 		
 		}
-
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("startPageNum", startPageNum);
 		req.setAttribute("endPageNum", endPageNum);

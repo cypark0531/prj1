@@ -14,8 +14,14 @@
 <%
 	request.getAttribute("id");
 	request.getAttribute("gid");
+<<<<<<< HEAD
 %>
 
+=======
+%>
+
+
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -101,7 +107,12 @@ top.window.outerWidth = screen.availWidth;
  -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
+<<<<<<< HEAD
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
+=======
+  <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
+  <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
+>>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
@@ -109,15 +120,21 @@ top.window.outerWidth = screen.availWidth;
  </div>
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
-   <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px; padding-left:1.5em;text-indent:-1.5em;">&nbsp;${htitle}</div>
-   <div class="blog-menu rounded small-title">
+   <div class="blog-big__title" style="font-size: 50px; margin-bottom: 32px;">${htitle}<br>
+   </div>
+   <div class="blog-menu  small-title">
+
    <c:if test="${id!=gid }">
 	<input type="button" value="일촌 신청" style="width:200px; height:40px; font-size: x-large; color:black;" onclick="addFriend()">
    </c:if>
    </div>
   </div>
   <div class="blog-article page-number">
+    <marquee style= "margin-bottom:20px; width:13.4em; height:28px; direction: left;  background-color: #566574">
+   <p style=" font-family: Consolas,Monaco;  font-size:14pt; position:absolute; word-spacing: 10px; margin-top: -5px; text-align: center;">This area is music title</p>
+  </marquee>
   <jsp:include page="${musicBox }"></jsp:include>
+
   <div style="height:400px; max-width:227px;">
    <table id="friend">
    <tr>
@@ -163,15 +180,22 @@ top.window.outerWidth = screen.availWidth;
    <c:when test="${profile==2}">
   
    <div class="blog-article">
-   
+   <c:choose>
+	<c:when test="${psaveimg!=null }">
     <img alt="" src="${pageContext.request.contextPath }/homepageframe/img/${psaveimg}" style="border-radius: 50%; width: 220px;  height:220px; margin-left: 100px;"/>
+    </c:when>
+    <c:otherwise>
+    <img alt="" src="homepageframe/gimg/none1.jpg" style="border-radius: 50%; width: 220px;  height:220px; margin-left: 100px;"/>
+    
+    </c:otherwise>
+    </c:choose>
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${ptitle}</h2>
     <div class="blog-detail">
      <span>♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</span>
      
     </div>
-    <p style="font-size: 20px;">${pintro}</p>
-    <c:if test="${requestScope.id==requestScope.gid}">
+    <p style="font-size: 20px; text-align: center;">${pintro}</p>
+    <c:if test="${id==gid}">
     <a href="#" onclick="SetUp2()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
@@ -234,10 +258,10 @@ top.window.outerWidth = screen.availWidth;
   
   <!-- Gallery갤러리 -->
   <div class="blog-header">
-   <div class="blog-article header-article">
-    <div class="blog-big__title">Gallery</div>
+   <div class="blog-article header-article" >
+    <div class="blog-big__title" style="height: 160px; ">Gallery</div>
 	
-    <div class="blog-menu small-title date">${gvo.regdate}</div>
+    <div class="blog-menu small-title date" style="color:#383a3d; font-style: oblique; font-family: Consolas,Monaco ">update date: ${gvo.regdate}</div>
    </div>
    	<div class="blog-article">
    	<c:choose>
@@ -249,14 +273,11 @@ top.window.outerWidth = screen.availWidth;
    	</c:otherwise>
    	</c:choose>
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${gvo.galtitle}</h2>
-    <div class="blog-detail">
-     <span>By Scarlett Witch</span>
-     <span>5 Min Read</span>
-    </div>
-    <p style="font-size: 20px;">${gvo.galcontent }</p>
+  
+    <p style="font-size: 20px;text-align: center;">${gvo.galcontent }</p>
 
     
-    <div class="prolinks">
+    <div class="prolinks" >
     <a href="#" onclick="Resister()" style="float: left;">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
@@ -264,7 +285,7 @@ top.window.outerWidth = screen.availWidth;
      </svg>
      RESISTER
     </a>
-    <a href="#" onclick="SeeMore()">
+    <a href="#" onclick="SeeMore()" style="float: right;">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
@@ -279,15 +300,15 @@ top.window.outerWidth = screen.availWidth;
  <div class="blog-part right-blog">
 
   <marquee width="100%" direction="left">
-   <span>Now And Then You Miss It Sounds Make You Cry</span>
+   <span style="font-size:18pt; font-family: Consolas,Monaco;">${pintro} </span>
    <span>Now In - MoMa Sharing Exhibition NOW</span>
    <span>NYC Opens After Long Lockdown Check</span>
   </marquee>
   <div class="blog-right-title-container">
  
-   <div class="blog-right-title" >
+   <div class="blog-right-title" style="color:#383a3d" >
    </div>
-   <div class="blog-menu rounded">See All</div>
+   <div class="blog-menu rounded" style="width: 100%; color:#383a3d; font-weight: 900; font-size:35px; font-family: Consolas,Monaco " >Frineds Talk Talk</div>
   </div>
   
   <jsp:include page="/friendsay/friendsaylist.jsp"/>

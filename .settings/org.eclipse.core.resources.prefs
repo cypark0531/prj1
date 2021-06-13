@@ -1,6 +1,10 @@
 eclipse.preferences.version=1
 encoding//WebContent/visit/Footer.jsp=UTF-8
+encoding//src/com/login/RegistController.java=UTF-8
+encoding//src/com/minihome/gallery=UTF-8
+encoding//src/com/minihome/gallery/galleryDeleteController.java=UTF-8
 encoding//src/com/minihome/home/HomeController.java=UTF-8
+encoding//src/com/minihome/profile/ImgfileUploadController.java=UTF-8
 encoding/<project>=UTF-8
 encoding/insert.sql=MS949
 encoding/table.sql=MS949

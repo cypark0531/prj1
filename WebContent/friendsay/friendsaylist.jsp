@@ -5,21 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 <style type="text/css">
 	
-	html{
-		background-color: #E1D8B2 ;
-		font-family:'맑은 고딕', 'malgun', Dotum, sans-serif;
-		
-	}
-	
+
 	#all {
 		margin: 0;
 		position: relative;
 		width: 360px;
 		height: 500px;
-		border: 3px solid black;
+		border-style: double;
+		border-color: #566574;
 		overflow: scroll;
+
 	}
 	
 	#all::-webkit-scrollbar {
@@ -36,11 +35,11 @@
 	}	
 	
 	.ftd {
-		font-family: "맑은고딕";
+		font-family: 'Nanum Pen Script', cursive;
 		border-right: 1px dotted black;
 		color: black;
 
-		width: 180px;
+		width: 50px;
 	}
 	
 
@@ -56,7 +55,7 @@
 	
 	
 </div>
-<div> <input style=" margin: color:black; " type= "text" id = "inputContent" maxlength="15" oninput="limitText(this)"> <input type= "button" value = "입력" onclick="fsinsert(0)">
+<div> <input style=" border: 3px solid  #566574; border-radius:10%;  color:black; " type= "text" id = "inputContent" maxlength="15" oninput="limitText(this)"> <input type= "button" value = "INPUT" onclick="fsinsert(0)" style="border: 3px solid  #566574; color:white; background-color:#566574;font-size:15px; font-family: Consolas,Monaco;">
 </div>
 <br>
 <div id = "pageDiv">
@@ -111,19 +110,19 @@ function list(pageNum){
 				newTd3.className = "ftd";
 				newTd4.className = "ftd";
 				newTd1.style.width = "100px";
-				newTd1.style.fontSize = "15px";
+				newTd1.style.fontSize = "20px";
 				newTd2.style.width = "600px";
-				newTd2.style.fontSize = "15px";
-				newTd3.style.fontSize = "15px";
-				newTd4.style.fontSize = "15px";
-				newTd3.style.width = "10px";
-				newTd4.style.width = "10px";
+				newTd2.style.fontSize = "20px";
+				newTd3.style.fontSize = "20px";
+				newTd4.style.fontSize = "20px";
+				newTd3.style.width = "35px";
+				newTd4.style.width = "35px";
 				
 				
-				newTd3.innerHTML = "<a href = 'javascript:reply("+fsgroup+","+spageNum+")'><span id = 'span"+fsgroup+"' style='color:black;font-weight: 900'>↓</span>"+"</a>";
+				newTd3.innerHTML = "<a href = 'javascript:reply("+fsgroup+","+spageNum+")'><span id = 'span"+fsgroup+"' style='color:black;font-weight: 900'><img src='${pageContext.request.contextPath }/friendsay/down.png'></span>"+"</a>";
 				newTd1.innerHTML = gid
 				newTd2.innerHTML = fscontent
-				newTd4.innerHTML = "<a href = 'javascript:fsredelete2("+fsgroup+")'>x</a>";
+				newTd4.innerHTML = "<a href = 'javascript:fsredelete2("+fsgroup+")'><img src='${pageContext.request.contextPath }/friendsay/close.png'></a>";
 				newTd4.onclick = fsdelete(fsgroup);
 				
 				newTr.appendChild(newTd1);
@@ -253,7 +252,7 @@ function reply(fsgroup){
 			}
 				xhr1.open("get","${pageContext.request.contextPath}/friendsay/replylist?fsgroup="+fsgroup+"&pageNum=${param.pageNum}",true)
 				xhr1.send();
-				span.innerHTML = "↑";
+				span.innerHTML = "<img src='${pageContext.request.contextPath }/friendsay/up.png'>";
 			flag = false;
 			}else{
 				let reply = document.getElementById("reply"+fsgroup);
@@ -261,7 +260,7 @@ function reply(fsgroup){
 				let childs = reply.childNodes;
 				for(let i=childs.length-1;i>=0;i--){
 					reply.removeChild(childs.item(i))
-					span.innerHTML = "↓";
+					span.innerHTML = "<img src='${pageContext.request.contextPath }/friendsay/down.png'>";
 					flag = true;
 					}
 				}

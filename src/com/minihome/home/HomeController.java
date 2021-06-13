@@ -94,15 +94,9 @@ public class HomeController extends HttpServlet {
 //		
 		
 		//Dairy 다이어리
-		String dPath = getDiary(req, resp);
 		//String dPath = "/diary/main?id=test&gid=test";
 //		System.out.println("path" + req.getParameter("path"));
-		if(req.getParameter("dPath")!=null) {
-			dPath = (String) req.getParameter("dPath");
-			dPath += "?id="+ req.getParameter("id")+ "&gid="+req.getParameter("gid");
-			
-		}
-		req.setAttribute("dPath", dPath);
+		
 //		if(content==null)	{
 //			content ="/profile/insert.jsp";	
 //			
@@ -112,7 +106,7 @@ public class HomeController extends HttpServlet {
 		GalleryVo gvo  = GalleryDao.getInstance().getRecent(id);
 		
 		  if(gvo==null) {
-			  gvo = new GalleryVo(0, "test", "값이 없습니다",  "값이 없습니다",  "값이 없습니다",  "none", 0, null);
+			  gvo = new GalleryVo(0, "test", "The Photo Dosen't Not Exist",  "If u  Want To Upload Your photo Please Click 'REGISTER'!",  "none",  "none", 0, null);
 		  }
 		
 		req.setAttribute("gvo", gvo);
@@ -121,8 +115,8 @@ public class HomeController extends HttpServlet {
 		
 	
 		
-		
-	System.out.println(dPath);
+	String dPath = getDiary(req, resp);
+	req.setAttribute("dPath", dPath);
 	String cp = req.getContextPath();
 	ServletContext application = getServletContext();
 	application.setAttribute("cp", cp);
@@ -138,18 +132,14 @@ public class HomeController extends HttpServlet {
 	}
 	public String getDiary(HttpServletRequest req, HttpServletResponse resp) {
 		Calendar c=null;
-//		String id= req.getParameter("id");
-		String id= "test";
-//		String gid= req.getParameter("gid");
-		String gid = "test";
 		String year=(String)req.getParameter("year");
 		String month=(String)req.getParameter("month");
 		if(year!=null) {
 		c=Calendar.getInstance();
 		c.set(Integer.parseInt(year), Integer.parseInt(month)-1, 1);
 		}else c=Calendar.getInstance();
-		int currYear=c.get(c.YEAR);//�쁽�옱�뀈
-		int currMonth=c.get(c.MONTH)+1;//�쁽�옱�썡
+		int currYear=c.get(c.YEAR);
+		int currMonth=c.get(c.MONTH)+1;
 		int currDay= c.get(c.DAY_OF_MONTH);
 		int lastDay=c.getActualMaximum(c.DAY_OF_MONTH);
 		Calendar fDay =Calendar.getInstance();
@@ -157,7 +147,7 @@ public class HomeController extends HttpServlet {
 		int firstDay=fDay.get(fDay.DAY_OF_WEEK);
 		Calendar cc =Calendar.getInstance();
 		int realYear = cc.get(c.YEAR);
-			String path = "/diary/diary.jsp?id="+id+"&gid="+gid+"&year="+currYear+"&month="+currMonth+
+			String path = "/diary/diary.jsp?year="+currYear+"&month="+currMonth+
 					"&firstDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay+"&realYear="+realYear;
 			return path;
 	}
