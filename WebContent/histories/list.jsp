@@ -21,10 +21,14 @@ body {
   height: 100vh;
 	font-size: 16px;
 }
+#wrap::-webkit-scrollbar{display: none;}
+#btn1{ float: right;
+}
 </style>
 </head>
 <body>
 <h1 style=" margin-top: 0; font-size: 60pt; text-shadow:#999999 5px 5px 5px;">GUEST BOOK</h1>
+<div id="wrap" style="overflow: scroll; width: 400px; margin : 0 auto;">
 <div>
 
 <c:forEach var = "vo" items="${list }">
@@ -33,19 +37,19 @@ body {
 		<th>${vo.gid }</th>
 	</tr>
 	<tr>
-		<td>${vo.htitle }</td>
+		<td >${vo.htitle }</td>
 	<tr>	
-		<td  style="height: 100px;">${vo.hcontent }</td>
+		<td  style="height: 80px;">${vo.hcontent }</td>
 	</tr>
 	<tr>
 		<td>${vo.regdate }</td>
 	</tr>
 	</table>
 	<br>
-	<br>
-	<c:if test="${vo.gid==param.gid&&param.id==param.gid}">
-	<input type = "button" value="삭제" id = btn2 onclick = "delete1(${vo.hnum})">
+	<c:if test="${vo.gid==sessionScope.id||sessionScope.id==sessionScope.gid}">
+	<input type = "button" id= "btn1" value="삭제" id = btn2 onclick = "delete1(${vo.hnum})">
 	</c:if>
+	<br>
 </c:forEach>
 
 </div>
@@ -70,11 +74,12 @@ body {
 
 </div>
 <div>
-	<c:if test="${param.id!=param.gid&&friend==true }">
+	<c:if test="${sessionScope.id!=sessionScope.gid&&friend==true }">
 	<input type = "button" value="방명록쓰기" id = btn1 onclick = "insert()">
 	</c:if>
 	
 	
+</div>
 </div>
 <script type="text/javascript">
 	function insert(){

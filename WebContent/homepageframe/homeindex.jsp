@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
 
-
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -309,8 +308,11 @@ top.window.outerWidth = screen.availWidth;
    <span>Now In - MoMa Sharing Exhibition NOW</span>
    <span>NYC Opens After Long Lockdown Check</span>
   </marquee>
+  <div class = "today">
+ 	today : ${requestScope.today }&nbsp;&nbsp;total : ${requestScope.allday }
+ 	</div>
   <div class="blog-right-title-container">
- 
+ 	
    <div class="blog-right-title" style="color:#383a3d" >
    </div>
    <div class="blog-menu rounded" style="width: 100%; color:#383a3d; font-weight: 900; font-size:35px; font-family: Consolas,Monaco " >Frineds Talk Talk</div>

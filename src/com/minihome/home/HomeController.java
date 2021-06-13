@@ -16,8 +16,11 @@ import com.minihome.dao.BasicSettingDao;
 import com.minihome.dao.FriendDao;
 import com.minihome.dao.GalleryDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.dao.VisitDao;
+
 import com.minihome.dao.PurchaseDao;
 import com.minihome.dao.StorageboxDao;
+
 import com.minihome.vo.GalleryVo;
 import com.minihome.vo.ProfilesVo;
 import com.minihome.vo.StorageboxVo;
@@ -29,7 +32,22 @@ public class HomeController extends HttpServlet {
 		if(req.getParameter("id")!=null)id =req.getParameter("id");
 		String gid = (String)req.getSession().getAttribute("gid");
 		req.getSession().setAttribute("id", id);
-		//req.setAttribute("gid", gid);
+		
+		
+		//Visit
+			boolean exist = VisitDao.getInstance().existToday(id);
+			System.out.println(exist);
+		if(exist==false) {
+			VisitDao.getInstance().insert(id);
+		}
+		if(gid!=id) {
+			VisitDao.getInstance().updateVisit(id);
+		}
+		int today = VisitDao.getInstance().countToday(id);
+		int allday = VisitDao.getInstance().countAll(id);
+		
+		req.setAttribute("today", today);
+		req.setAttribute("allday", allday);
 		
 		//Profiles 프로필
 		ProfilesDao dao = ProfilesDao.getInstance();
