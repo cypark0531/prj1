@@ -15,7 +15,7 @@ import com.minihome.vo.GoodsVo;
 public class GoodsmusicController extends HttpServlet{
   @Override
 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	  String id=req.getParameter("id");
+	  String id = (String)req.getSession().getAttribute("id");
 	  String spageNum=req.getParameter("pageNum");
 	  String gcategory=req.getParameter("gcategory");
 	  int pageNum=1;
@@ -34,7 +34,6 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
 	    endPageNum=pageCount;
 	  }
 	  req.setAttribute("gclist", gclist);  
-	  req.setAttribute("id", id);
 	  req.setAttribute("gcategory", gcategory);
 	  req.setAttribute("pageCount", pageCount);
 	  req.setAttribute("startPageNum", startPageNum);

@@ -96,12 +96,16 @@ body {
 		      <c:set var="a" value="1"/>
 		      <!-- 환불 버튼 누르면 /purchase/purchasedeleteController로 감 -->
 		          <c:forEach var = "vo1" items="${relist }">
-		            <c:if test="${vo.purnum!= vo1.purnum}">
-		          	  <c:set var="a" value="2"/>		          
+		          <!-- 이거 궁금함 purnum을 != 이렇게 환불 버튼이 계속 활성화됨 -->
+		            <c:if test="${vo.purnum == vo1.purnum}">
+		          	  <c:set var="a" value="2"/>
 		            </c:if>
 		          </c:forEach>
 		          <c:choose>
 		            <c:when test="${a==2 }">
+		          	  이미 환불되었습니다.
+		          	</c:when>
+		          	<c:otherwise>
 		          	  <form action="${pageContext.request.contextPath }/purchase/delete" method="post">
 		          		<input type="hidden" name="id" value="${vo.id }">
 			            <input type="hidden" name="gcode" value="${vo.gcode }">
@@ -109,9 +113,6 @@ body {
 			            <input type="hidden" name="gprice" value="${vo.gprice }">
 			            <input type="submit" value="환불" class="btn mr5" style="float: rigth; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 			    	  </form>
-		          	</c:when>
-		          	<c:otherwise>
-		          	  이미 환불되었습니다.
 		          	</c:otherwise>
 				  </c:choose>
 			  </td>
@@ -121,34 +122,34 @@ body {
 		<div class="page_wrap">
 	      <div class="page_nation">
 			  <c:if test="${startPageNum>8 }">
-			    <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${startPageNum-1 }&id=${requestScope.id}"><</a>
+			    <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${startPageNum-1 }&id=${sessionScope.id}"><</a>
 			  </c:if>
 			  <c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 			    <c:choose>
 			      <c:when test="${pageNum==i }">
-			        <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${i }&id=${sessionScope.id}">
 			          <span style="color: black; ">${i }</span>
 			        </a>
 			      </c:when>
 			      <c:otherwise>
-			        <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${i }&id=${requestScope.id}">
+			        <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${i }&id=${sessionScope.id}">
 			          <span style="color: red">${i }</span>
 			        </a>
 			      </c:otherwise>
 			    </c:choose>
 			  </c:forEach>
 			  <c:if test="${endPageNum < pageCount }">
-			     <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${endPageNum+1 }&id=${requestScope.id}">></a>
+			     <a href="${pageContext.request.contextPath }/purchase/purchaselist?pageNum=${endPageNum+1 }&id=${sessionScope.id}">></a>
 			  </c:if>
 		  </div>
 		</div>
 		<div class="btn_right mt15"> 
 		  <form action="${pageContext.request.contextPath }/home">
-		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="id" value="${sessionScope.id }">
 		    <input type="submit" value="메인으로" class="btn mr5" style="float: left; width: 130px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>  
 		  <form action="${pageContext.request.contextPath }/goods/goodslist">
-		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="id" value="${sessionScope.id }">
   			<input type="submit" value="상품목록" class="btn mr5" style="float: rigth; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
         </div>

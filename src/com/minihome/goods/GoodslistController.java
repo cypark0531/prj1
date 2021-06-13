@@ -16,7 +16,7 @@ import com.minihome.vo.GoodsVo;
 public class GoodslistController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;
 		if(spageNum!=null) {
@@ -41,7 +41,6 @@ public class GoodslistController extends HttpServlet{
 		req.setAttribute("startPageNum", startPageNum);
 		req.setAttribute("endPageNum",endPageNum);
 		req.setAttribute("pageNum", pageNum);
-		req.setAttribute("id", id);
 		req.getRequestDispatcher("/goods/goodslist.jsp").forward(req, resp);
 	}
 }

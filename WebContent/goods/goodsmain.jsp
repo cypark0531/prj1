@@ -21,7 +21,7 @@
 </form>
 <form action="${pageContext.request.contextPath }/refund/refundlist">
   <input type="hidden" name="id" value="test1">
-  <input type="submit" value="환불목록">
+  <input type="submit" value="내 환불목록">
 <!-- 
   수정
   장바구니 테이블 table 변경
@@ -93,12 +93,13 @@
    -- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
+	purnum number(10),
 	--카테고리
 	gcategory varchar2(20)
   );
   
-  아이디가 없을경우 구매를 누르면 로그인창으로 갈수있도록 만들고싶음
- 
+  환불버튼 해결안됨....
+  대표설정 못함...
 -->
 </form>
 </body>

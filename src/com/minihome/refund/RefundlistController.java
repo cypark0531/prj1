@@ -15,7 +15,7 @@ import com.minihome.vo.RefundVo;
 public class RefundlistController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		System.out.println(id);
 		RefundDao dao=RefundDao.getInstance();
 		ArrayList<RefundVo> vo=dao.list(id);

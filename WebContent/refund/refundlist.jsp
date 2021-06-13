@@ -47,7 +47,7 @@ body {
 		</table>
 		<div class="btn_right mt15"> 
 		  <form action="${pageContext.request.contextPath }/goods/goodslist">
-		    <input type="hidden" name="id" value="${requestScope.id }">
+		    <input type="hidden" name="id" value="${sessionScope.id }">
   			<input type="submit" value="상품목록" class="btn mr5" style="float: rigth; width: 100px; height: 40px; font-weight:900;  font-size: 16px;">
 		  </form>
 		</div>

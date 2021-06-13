@@ -19,7 +19,7 @@ public class StorageboxDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=MyDBCP.getConnection();
-			String sql="insert into storagebox values(storagebox_seq.nextval,?,?,?,?,?,?,?)";
+			String sql="insert into storagebox values(storagebox_seq.nextval,?,?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getGcode());
@@ -27,7 +27,8 @@ public class StorageboxDao {
 			pstmt.setString(4, vo.getGsaveimg());
 			pstmt.setString(5, vo.getGorgimg());
 			pstmt.setString(6, vo.getGname());
-			pstmt.setString(7, vo.getGcategory());
+			pstmt.setInt(7, vo.getPurnum());
+			pstmt.setString(8, vo.getGcategory());
 			return pstmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -64,6 +65,40 @@ public class StorageboxDao {
 						rs.getString("gsaveimg"),
 						rs.getString("gorgimg"),
 						rs.getString("gname"),
+						rs.getInt("purnum"),
+						rs.getString("gcategory"));
+				slist.add(vo);
+			}
+			return slist;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, rs);
+		}
+	}
+	public ArrayList<StorageboxVo> storagelist(String id ,String gcategory){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="select * from storagebox where id= ? and gcategory = ?";
+		try {
+			con=MyDBCP.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(1, gcategory);
+			rs=pstmt.executeQuery();
+			ArrayList<StorageboxVo> slist = new ArrayList<StorageboxVo>();
+			while(rs.next()) {
+				StorageboxVo vo=new StorageboxVo(
+						rs.getInt("anum"),
+						rs.getString("id"),
+						rs.getString("gcode"), 
+						rs.getString("glink"),
+						rs.getString("gsaveimg"),
+						rs.getString("gorgimg"),
+						rs.getString("gname"),
+						rs.getInt("purnum"),
 						rs.getString("gcategory"));
 				slist.add(vo);
 			}
@@ -125,6 +160,7 @@ public class StorageboxDao {
 						rs.getString("gsaveimg"), 
 						rs.getString("gorgimg"), 
 						rs.getString("gname"), 
+						rs.getInt("purnum"),
 						rs.getString("gcategory"));
 				sclist.add(vo);
 			}

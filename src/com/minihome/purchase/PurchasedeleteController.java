@@ -17,7 +17,7 @@ import com.minihome.vo.RefundVo;
 public class PurchasedeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		int purnum=Integer.parseInt(req.getParameter("purnum"));
 		String gcode=req.getParameter("gcode");
 		int gprice = Integer.parseInt(req.getParameter("gprice"));

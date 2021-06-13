@@ -15,7 +15,7 @@ import com.minihome.vo.StorageboxVo;
 public class StorageboxmusicController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 String id=req.getParameter("id");
+		String id = (String)req.getSession().getAttribute("id");
 		  String spageNum=req.getParameter("pageNum");
 		  String gcategory=req.getParameter("gcategory");
 		  int pageNum=1;
