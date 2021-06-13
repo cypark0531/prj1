@@ -170,8 +170,6 @@ public class HomeController extends HttpServlet {
 	req.setAttribute("musicBox", musicBox);
 	req.getRequestDispatcher("/homepageframe/homeindex.jsp").forward(req, resp);
 
-	
-
 	}
 	public String getDiary(HttpServletRequest req, HttpServletResponse resp) {
 		Calendar c=null;
@@ -194,8 +192,4 @@ public class HomeController extends HttpServlet {
 					"&firstDay="+firstDay+"&lastDay="+lastDay+"&day="+currDay+"&realYear="+realYear;
 			return path;
 	}
-	
-	
-	
-	
 }

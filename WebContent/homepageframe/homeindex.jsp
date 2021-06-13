@@ -15,11 +15,6 @@
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
-<<<<<<< HEAD
-
-=======
-
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
 <script type="text/javascript">
 
 top.window.moveTo(0,0);
@@ -101,17 +96,9 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Contact</a>
  -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
-<<<<<<< HEAD
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
-=======
-  <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>s
-
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
+  <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
   <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
