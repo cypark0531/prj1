@@ -108,8 +108,7 @@ top.window.outerWidth = screen.availWidth;
 <div class="wrap" style=" padding: 60px 60px 60px 60px;  border-style: dotted;" >
 	<div class="container">
 	<div class= "inner">
-		<h2>PROFILE REGISTER</h2>
-	<input type="button" class="btn  mr5" value="전체삭제" style="width: 100px; height: 40px; font-weight:900;  font-size: 16px; float: right; "  onclick="toDelte()" >	
+		<h2 style="margin-left: 1em; font-size: 50pt; text-shadow:#999999 5px 5px 5px;" >PROFILE SETUP</h2>
 	<form id="profileForm" name="profilemsmsForm" action="${pageContext.request.contextPath }/profile/update?id=${id}" enctype="multipart/form-data" method="post" onsubmit="return UpdateCommit()">
 	<table   class="table02"  >
 	<caption><strong style="font-size: 20px; color: #ffffff;">'<span class="t_red">*</span>' This mark is required input items.</strong></caption>
@@ -209,7 +208,7 @@ function readURL(input) {
 		 	window.location.replace("${pageContext.request.contextPath}/home");
 	}
 	
-	
+
 	
 	
 	
