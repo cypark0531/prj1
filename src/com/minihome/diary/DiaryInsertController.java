@@ -27,7 +27,7 @@ public class DiaryInsertController extends HttpServlet{
 		DiaryVo vo = new DiaryVo(0, id, dcontent,0, null);
 		int n = DiaryDao.getInstance().insert(vo, currYear, currMonth, currDay);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/home");
+			resp.sendRedirect(req.getContextPath()+"/home?id="+id+"&gid="+gid);
 		}else {
 			System.out.println("실패");
 		}

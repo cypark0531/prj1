@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Stylish&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <style>
 	body{
 		background: url("goodsimgfile/${requestScope.backvo.gsaveimg}");
@@ -16,6 +17,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
 <script type="text/javascript">
+
+
 
 top.window.moveTo(0,0);
 if (document.all) {
@@ -98,6 +101,8 @@ top.window.outerWidth = screen.availWidth;
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
+  <a href="${pageContext.request.contextPath }/board/list?" class="blog-menu">BOARD</a>
+  <a href="${pageContext.request.contextPath }/histories/list?" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
   <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
@@ -123,13 +128,13 @@ top.window.outerWidth = screen.availWidth;
   <jsp:include page="${musicBox }"></jsp:include>
 
   <div style="height:400px; max-width:227px;">
-   <table id="friend">
+   <table id="friend" style="margin-left: -15px;">
    <tr>
-   	<th style="font-size:x-large; text-align: left; color:black;">일촌 목록</th>
+   	<th class="blog-menu rounded" style="font-size:x-large; text-align: left; color:black; font-family: Consolas,Monaco;color: #383a3d;" >FRIENDS LIST</th>
    </tr>
    	<tr>
-   		<th style="font-size:large; color:black; width:70%; border-bottom: 1px solid #94918f;">아이디</th>
-   		<th style="font-size:large; color:black; width:100%; border-bottom: 1px solid #94918f;">홈페이지</th>
+   		<th style="font-family: Consolas,Monaco; font-size:large; color:black; width:70%; border-bottom: 1px solid #94918f;">아이디</th>
+   		<th style="font-family: Consolas,Monaco; font-size:large; color:black; width:100%; border-bottom: 1px solid #94918f;">홈페이지</th>
    	</tr>
    	<c:forEach var="list" items="${requestScope.friendlist }">
    		<tr>
@@ -143,7 +148,7 @@ top.window.outerWidth = screen.availWidth;
    	</c:forEach>
    </table>
   </div>
-   <a href="#" onclick="GOFriend()">
+   <a href="#" onclick="GOFriend()" style="position: fixed; margin-left: 70px;">
    	<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
    	<path d="M15 10l5 5-5 5" />
    	<path d="M4 4v7a4 4 0 004 4h12" />
@@ -158,6 +163,7 @@ top.window.outerWidth = screen.availWidth;
   <div class="blog-header">
    <div class="blog-article header-article">
     <div class="blog-big__title">Profile</div>
+        <div class="blog-menu small-title date"></div>
    </div>
    
  
@@ -167,7 +173,7 @@ top.window.outerWidth = screen.availWidth;
   
    <div class="blog-article">
    <c:choose>
-	<c:when test="${psaveimg!=null }">
+	<c:when test="${psaveimg!=null}">
     <img alt="" src="${pageContext.request.contextPath }/homepageframe/img/${psaveimg}" style="border-radius: 50%; width: 220px;  height:220px; margin-left: 100px;"/>
     </c:when>
     <c:otherwise>
@@ -258,18 +264,18 @@ top.window.outerWidth = screen.availWidth;
     <img src="${pageContext.request.contextPath }/homepageframe/gimg/${gvo.galsavename}" style=" display:flex; border-radius: 10%; width: 300px;  height:300px; margin-left: 3em; " >
    	</c:otherwise>
    	</c:choose>
-    <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${gvo.galtitle}</h2>
+    <h2 style="text-align: center; margin-top: 10px;font-family: '맑은 고딕', 'malgun', Dotum, sans-serif;">	<!--<span>Widespread</span>-->${gvo.galtitle}</h2>
   
-    <p style="font-size: 20px;text-align: center;">${gvo.galcontent }</p>
+    <p style="font-size: 20px;text-align: center;font-family: '맑은 고딕', 'malgun', Dotum, sans-serif;">${gvo.galcontent }</p>
 
     
   
-    <div class="prolinks" >
+    <div class="prolinks" style="position: flex;" >
   
     
     <c:choose>
     <c:when test="${id==gid }">
-    <a href="#" onclick="Resister()" style="float: left;">
+    <a href="#" onclick="Resister()" style="float: left; ">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
       <path d="M4 4v7a4 4 0 004 4h12" />
@@ -300,19 +306,17 @@ top.window.outerWidth = screen.availWidth;
   </div>
  </div>
  
- <div class="blog-part right-blog">
+ <div class="blog-part right-blog" >
 
-  <marquee width="100%" direction="left">
+  <marquee width="100%" direction="left" style="margin-bottom:10px;"  >
    <span style="font-size:18pt; font-family: Consolas,Monaco;">${pintro} </span>
-   <span>Now In - MoMa Sharing Exhibition NOW</span>
-   <span>NYC Opens After Long Lockdown Check</span>
   </marquee>
-  <div class = "today">
+  <div class = "today" style="font-family: Consolas,Monaco; font-weight: 900; text-decoration: underline; background-color: #566574; color: white; text-align: center; ">
  	today : ${requestScope.today }&nbsp;&nbsp;total : ${requestScope.allday }
  	</div>
-  <div class="blog-right-title-container">
+  <div class="blog-right-title-container" style="margin-top: 20px; ">
  	
-   <div class="blog-right-title" style="color:#383a3d" >
+   <div class="blog-right-title" style="color:#383a3d; margin-top: -20px;" >
    </div>
    <div class="blog-menu rounded" style="width: 100%; color:#383a3d; font-weight: 900; font-size:35px; font-family: Consolas,Monaco " >Frineds Talk Talk</div>
   </div>

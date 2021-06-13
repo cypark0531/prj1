@@ -45,21 +45,20 @@
 		</select>
 		<input type= "button" value= "선택" onclick="change()">
 	<br>
-	<table style="border-bottom: none; border-top: none;">
+	<table style="border-bottom: none; border-top: none; border: 1px; ">
 		<tr style="margin-left:30px; text-align: center;">
 		<c:forEach var = "i" begin = "1" end = "16">
-		<td><div class  = "day" id= "d${i}"></div></td>
+		<td style="text-align: center;"><div class ="day" id= "d${i}"></div></td>
 		</c:forEach>
 		</tr>
 		<tr>
 		<c:forEach var = "i" begin = "17" end = "${param.lastDay }">
-		<td><div class = "day" id= "d${i}"></div></td>
+		<td style="text-align: center;"><div class = "day" id= "d${i}"></div></td>
 		</c:forEach>
 		</tr>
 		</table>
 		
 		<div id = "main">
-		
 		</div>
 		<c:if test="${sessionScope.id==sessionScope.gid }">
 		<div>

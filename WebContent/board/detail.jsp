@@ -31,7 +31,7 @@ body{
 				<tr  style = "height: 70%">
 					<td colspan="3" height="160px">${param.bcontent }</td>
 				</tr>
-				<c:if test="${param.id==param.gid }">
+				<c:if test="${sessionScope.id==sessionScope.gid }">
 					<tr>
 						<td colspan="3" class="btn_right"><input type="button"
 							value="수정하기" class="btn black mr5" id="btn1" onclick="goUpdate()">
@@ -141,7 +141,10 @@ body{
 				newTr.appendChild(newTd2);
 				newTr.appendChild(newTd3);
 				newTr.appendChild(newTd4);
-				newTr.appendChild(newTd5);
+				let gid1 = "${sessionScope.gid}";
+				if(${sessionScope.id==sessionScope.gid}||gid1==gid){
+				newTr.appendChild(newTd5);				
+				}
 				newTable.appendChild(newTr);
 				replyDiv.appendChild(newTable);
 				replyDiv.appendChild(newDiv);
@@ -194,6 +197,7 @@ function reredelete(brnum,bgroup){
 					let newTd2 = document.createElement("td");
 					let newTd3 = document.createElement("td");
 					let newTd4 = document.createElement("td");
+					gid =  xml.getElementsByTagName("gid")[i].textContent;
 					let brnum = xml.getElementsByTagName("brnum")[i].textContent;
 					newTd1.innerHTML = xml.getElementsByTagName("gid")[i].textContent;
 					newTd2.innerHTML = xml.getElementsByTagName("brcontent")[i].textContent;
@@ -207,7 +211,9 @@ function reredelete(brnum,bgroup){
 					newTr.appendChild(newTd1);
 					newTr.appendChild(newTd2);
 					newTr.appendChild(newTd3);
+					if(${sessionScope.id==sessionScope.gid}||"${sessionScope.gid}"==gid){
 					newTr.appendChild(newTd4);
+					}
 					newTable.appendChild(newTr);
 					replyDiv1.appendChild(newTable);
 					
@@ -272,9 +278,7 @@ function reredelete(brnum,bgroup){
 	}
 		console.log(${param.c});
 	  if(${!empty param.c}){
-		  let pageNum = 1;
-		  let paramb = ${param.b}
-			replylist(paramb,1);
+			replylist(${param.b},1);
 		}
 
 	
