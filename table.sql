@@ -344,7 +344,7 @@ create table STORAGEBOX(
    --상품 코드
    gcode varchar2(20) NOT NULL,
    --음악 링크
-   glink varchar2(100) UNIQUE,
+   glink varchar2(100),
    -- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
