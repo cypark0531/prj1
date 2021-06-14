@@ -9,10 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.minihome.dao.GoodsDao;
 import com.minihome.dao.MembersDao;
 import com.minihome.dao.ProfilesDao;
+import com.minihome.dao.StorageboxDao;
+import com.minihome.vo.GoodsVo;
 import com.minihome.vo.MembersVO;
 import com.minihome.vo.ProfilesVo;
+import com.minihome.vo.StorageboxVo;
 @WebServlet("/login/regist")
 public class RegistController extends HttpServlet{
 	@Override
@@ -28,6 +32,20 @@ public class RegistController extends HttpServlet{
 		String phone=req.getParameter("phone");
 		String question=req.getParameter("question");
 		String answer=req.getParameter("answer");
+		int anum=Integer.parseInt(req.getParameter("anum"));
+		String gcode=req.getParameter("gcode");
+		String glink=req.getParameter("glink");
+		String gsaveimg=req.getParameter("gsaveimg");
+		String gorgimg=req.getParameter("gorgimg");
+		String gname=req.getParameter("gname");
+		int purnum=Integer.parseInt(req.getParameter("purnum"));
+		String  gcategory=req.getParameter("gcategory");
+		String basicsetting=req.getParameter("basicsetting");
+		
+		gname="";
+		StorageboxVo vo1=new StorageboxVo(anum, id, gcode, glink, gsaveimg, gorgimg, gname, purnum, gcategory, 0);
+		int dao1=StorageboxDao.getInstance().storageinsert(vo1);
+		
 		
 		MembersVO vo= new MembersVO(id, pwd, name, email, phone, question, answer, 0, 0);
 		ProfilesDao pdao= ProfilesDao.getInstance();
@@ -43,11 +61,6 @@ public class RegistController extends HttpServlet{
 		ArrayList<ProfilesVo> list = new ArrayList<>();
 		list =prodao.list(id);
 
-		
-		
-		
-		
-	
 		if(n>0 ) {
 			resp.sendRedirect(req.getContextPath()+"/login/login.jsp");
 			req.setAttribute("list", list);

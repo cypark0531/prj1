@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css2?family=Stylish&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <style>
+
 	
+
 	body{
 		background: url("goodsimgfile/${requestScope.backvo.gsaveimg}");
 	}
@@ -18,11 +20,7 @@
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
-
-
 <script type="text/javascript">
-
-
 
 top.window.moveTo(0,0);
 if (document.all) {
@@ -103,12 +101,11 @@ top.window.outerWidth = screen.availWidth;
   <a href="#" class="blog-menu">Contact</a>
  -->
   <a href="${pageContext.request.contextPath }/scheduler/calendar?host=${id}" class="blog-menu">SCHEDULER</a>
-
   <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
-
-
+  <a href="${pageContext.request.contextPath }/board/list?id=${gid}" class="blog-menu">BOARD</a>
+  <a href="${pageContext.request.contextPath }/board/list?" class="blog-menu">BOARD</a>
+  <a href="${pageContext.request.contextPath }/histories/list?" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
-
 
   <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>

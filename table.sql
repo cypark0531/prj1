@@ -194,6 +194,8 @@ CREATE TABLE GOODS
 	-- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
+	--링크
+	 glink varchar2(100) UNIQUE,
 	-- 카테고리
 	gcategory varchar2(10),
 	PRIMARY KEY (gcode)
@@ -342,13 +344,15 @@ create table STORAGEBOX(
    --상품 코드
    gcode varchar2(20) NOT NULL,
    --음악 링크
-   glink varchar2(100) UNIQUE,
+   glink varchar2(100),
    -- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
+	gname varchar2(20),
 	purnum number(10),
 	--카테고리
-	gcategory varchar2(20)
+	gcategory varchar2(20),
+	basicsetting number(2)
   );
 
 
@@ -496,8 +500,6 @@ ALTER TABLE basicsetting
 	REFERENCES purchase (purnum)
 	ON DELETE CASCADE
 ;
-
-
 ALTER TABLE REFUND
 	ADD FOREIGN KEY (purnum)
 	REFERENCES purchase (purnum)

@@ -256,14 +256,15 @@ public class StorageboxDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
-	public StorageboxVo findback() {
+	public StorageboxVo findback(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try{
 			con=MyDBCP.getConnection();
-			String sql="select * from storagebox where basicsetting=1 and gcategory='background'";
+			String sql="select * from storagebox where basicsetting=1 and gcategory='background' and id=?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				StorageboxVo glist= new StorageboxVo(0, 
@@ -305,14 +306,15 @@ public class StorageboxDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
-	public StorageboxVo findmusic() {
+	public StorageboxVo findmusic(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try{
 			con=MyDBCP.getConnection();
-			String sql="select * from storagebox where basicsetting=1 and gcategory='music'";
+			String sql="select * from storagebox where basicsetting=1 and gcategory='music' and id =?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				StorageboxVo glist= new StorageboxVo(0, 
@@ -331,6 +333,53 @@ public class StorageboxDao {
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+	}
+	public int findanum(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		boolean result = false;
+		try{
+			con=MyDBCP.getConnection();
+			String sql="select * from storagebox where basicsetting=1 and gcategory = 'music' and id = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int anum = rs.getInt("anum");
+				return anum;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}finally {
+			MyDBCP.close(con, pstmt, null);
+		}
+		return -1;
+	}
+	public int musicdefault(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=MyDBCP.getConnection();
+			String sql="insert into storagebox values(storagebox_seq.nextval,?,?,?,?,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, "default");
+			pstmt.setString(3, null);
+			pstmt.setString(4, null);
+			pstmt.setString(5, null);
+			pstmt.setString(6, "not exist music");
+			pstmt.setInt(7, 1);
+			pstmt.setString(8, "music");
+			pstmt.setInt(9, 1);
+			return pstmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
 		}finally {
 			MyDBCP.close(con, pstmt, null);
 		}
