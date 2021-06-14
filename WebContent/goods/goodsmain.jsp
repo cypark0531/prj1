@@ -80,24 +80,6 @@
   구매하면 보관함에 insert 시켜야됨
   환불되면 보관함에서 delete 되야됨
   
-  보관함 목록(링크있어야됨)
-  create table STORAGE_BOX(보관함)(
-  --보관 번호 (시퀸스)
-   anum number(10) not null primary key,
-   --아이디
-   id varchar2(20) not null fk,
-   --상품 코드
-   gcode varchar2(20) NOT NULL,
-   --음악 링크
-   glink varchar2(100),
-   -- 상품사진
-	gsaveimg varchar2(30),
-	gorgimg varchar2(30),
-	gname varchar2(20),
-	purnum number(10),
-	--카테고리
-	gcategory varchar2(20)
-  );
   
   환불버튼 해결
   노래 이름 받아서 띄우기 (완료)
@@ -105,8 +87,7 @@
   아이디별 보관함 (완료)
   음악 보관함 (완료)
   
-  대표설정 어떻게 해야됨?
-  glink를 가져와서 
+  musicvo값을 ""주기
   
 -->
 </form>

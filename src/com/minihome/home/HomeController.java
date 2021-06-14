@@ -62,7 +62,11 @@ public class HomeController extends HttpServlet {
 		
 		
 		
-		
+		if(StorageboxDao.getInstance().findanum(id)!=-1) {
+			anum = StorageboxDao.getInstance().findanum(id);
+			}else {
+				StorageboxDao.getInstance().musicdefault(id);
+			}
 		StorageboxDao dao00=StorageboxDao.getInstance();
 		int n=dao00.update2(anum);
 		if(n>0) {
@@ -70,7 +74,7 @@ public class HomeController extends HttpServlet {
 		}
 		req.setAttribute("apply", anum);
 		StorageboxVo backvo=dao00.findback();
-		StorageboxVo musicvo=dao00.findmusic();
+		StorageboxVo musicvo=dao00.findmusic(id);
 		req.setAttribute("gname", musicvo.getGname());
 		GoodsDao dao01=GoodsDao.getInstance();
 		String gcodelist=dao01.gcodelist(musicvo.getGcode());

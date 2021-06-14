@@ -21,11 +21,15 @@ create sequence storagebox_seq;
 
 
 
-Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu01',200,'프리스타일-Y','프리스타일.jpg','music');
-Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu02',190,'이은미-애인있어요','프리스타일.jpg','music');
-Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('mu03',210,'MC몽-180도','180도.jpg','music');
-Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('bg01',60,'반짝배경','starbg.jpg','background');
-Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,GIMG,GCATEGORY) values ('bg02',70,'하와이배경','hawai.jpg','background');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('snow', 10, '눈사람-정승환', '눈사람1.jpg', '눈사람1.jpg', 'https://drive.google.com/uc?export=download&id=1Wj2TOzTKCwpWjilAJSlstLKAlrjycIRK', 'music');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('plus', 10, '상상더하기-라붐', '상상더하기.jpg', '상상더하기.jpg', 'https://drive.google.com/uc?export=download&id=1ieBCxuxTAxEUF9RnqHd5p28PaIp8xGRX', 'music');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('celebrity', 10, 'celebrity-IU', 'celebrity1.jpg', 'celebrity1.jpg', 'https://drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV', 'music');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('tree', 10, '배경1', '1.jpg', '1.jpg',null, 'background');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('Avatar', 10, '배경2', '002.jpg', '002.jpg', null 'background');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('tree2', 10, '배경3', '4.jpg', '4.jpg',null, 'background');
+Insert into SCOTT.GOODS (GCODE,GPRICE,GNAME,gsaveimg,gorgimg,glink,GCATEGORY) values ('dog', 10, '배경4', '31.png', '31.png', null,'background');
+
+insert into scott.storagebox(anum,id,gcode,glink,gsaveimg,gorgimg,gname,purnum,gcategory,basicsetting) values(1,'test1','snow','https://drive.google.com/uc?export=download&id=1Wj2TOzTKCwpWjilAJSlstLKAlrjycIRK','눈사람1.jpg','눈사람1.jpg','눈사람','44','music',1);
 
 Insert into SCOTT.PURCHASE (PURNUM,ID,GCODE,REGDATE) values (1,'test','mu01',to_date('21/05/31','RR/MM/DD'));
 Insert into SCOTT.PURCHASE (PURNUM,ID,GCODE,REGDATE) values (2,'test2','mu02',to_date('21/05/31','RR/MM/DD'));

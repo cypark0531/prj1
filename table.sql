@@ -348,6 +348,7 @@ create table STORAGEBOX(
    -- 상품사진
 	gsaveimg varchar2(30),
 	gorgimg varchar2(30),
+	gname varchar2(20),
 	purnum number(10),
 	--카테고리
 	gcategory varchar2(20),
