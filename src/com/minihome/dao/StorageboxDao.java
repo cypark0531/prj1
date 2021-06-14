@@ -256,14 +256,15 @@ public class StorageboxDao {
 			MyDBCP.close(con, pstmt, null);
 		}
 	}
-	public StorageboxVo findback() {
+	public StorageboxVo findback(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try{
 			con=MyDBCP.getConnection();
-			String sql="select * from storagebox where basicsetting=1 and gcategory='background'";
+			String sql="select * from storagebox where basicsetting=1 and gcategory='background' and id=?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				StorageboxVo glist= new StorageboxVo(0, 
@@ -343,7 +344,7 @@ public class StorageboxDao {
 		boolean result = false;
 		try{
 			con=MyDBCP.getConnection();
-			String sql="select basicsetting from storagebox where basicsetting=1 and gcategory = 'music' and id = ?";
+			String sql="select * from storagebox where basicsetting=1 and gcategory = 'music' and id = ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();

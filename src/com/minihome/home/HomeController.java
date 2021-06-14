@@ -62,25 +62,33 @@ public class HomeController extends HttpServlet {
 		
 		
 		
-		if(StorageboxDao.getInstance().findanum(id)!=-1) {
-			anum = StorageboxDao.getInstance().findanum(id);
-			}else {
-				StorageboxDao.getInstance().musicdefault(id);
-			}
+//		if(StorageboxDao.getInstance().findanum(id)!=-1) {
+//			anum = StorageboxDao.getInstance().findanum(id);
+//			System.out.println("fdsfsd=="+anum);
+//			}else {
+//				StorageboxDao.getInstance().musicdefault(id);
+//			}
 		StorageboxDao dao00=StorageboxDao.getInstance();
 		int n=dao00.update2(anum);
 		if(n>0) {
 			dao00.update1(anum, dao00.findc(anum));
 		}
+		System.out.println(n);
 		req.setAttribute("apply", anum);
-		StorageboxVo backvo=dao00.findback();
-		StorageboxVo musicvo=dao00.findmusic(id);
-		req.setAttribute("gname", musicvo.getGname());
+		StorageboxVo backvo=dao00.findback(id);
 		GoodsDao dao01=GoodsDao.getInstance();
-		String gcodelist=dao01.gcodelist(musicvo.getGcode());
-		req.setAttribute("backvo", backvo);
-		req.setAttribute("gcodelist", gcodelist);
-		System.out.println("Fdsfdsfdsfsd="+gcodelist);
+		StorageboxVo musicvo=dao00.findmusic(id);
+		if(musicvo !=null) {
+			req.setAttribute("gname", musicvo.getGname());
+			String gcodelist=dao01.gcodelist(musicvo.getGcode());
+			req.setAttribute("gcodelist", gcodelist);
+			System.out.println(musicvo);
+			System.out.println("Fdsfdsfdsfsd="+gcodelist);
+		}
+		if(backvo !=null) {
+			req.setAttribute("backvo", backvo);
+		}
+		
 		
 		
 		

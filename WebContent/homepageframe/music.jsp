@@ -8,14 +8,14 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/music.css">
 <%
-    String gcpdelist=request.getParameter("gcodelist");
-	System.out.println("fdsfsdfsdfsd====="+gcpdelist);
+    String codelist=(String)request.getAttribute("gcodelist");
+	System.out.println("fdsfsdfsdfsd====="+codelist);
 
-	if(gcpdelist!=null){
-	     pageContext.setAttribute("gcpdelist", gcpdelist);
+	if(codelist!=null){
+	     pageContext.setAttribute("codelist", codelist);
 	}else{
-		gcpdelist="https:/"+"/drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV";
-	     System.out.println(gcpdelist); 
+		codelist="https:/"+"/drive.google.com/uc?export=download&id=1YjVNrvzGIwtbSyyrzXw50c4mtmxVgGbV";
+	     System.out.println(codelist); 
 	}
     %>
 </head>
@@ -25,7 +25,7 @@
     <form action="${pageContext.request.contextPath}/storagebox/storageboxlist" style="float: right; margin-top: -63px;">
       <input type="hidden" name="id" value="${sessionScope.id }">
       <input type="hidden" name="gcategory" value="music">
-      <input type="hidden" name="glink" value="${gcpdelist}">
+      <input type="hidden" name="glink" value="${codelist}">
       <input type="submit" value="edit" >
     </form>
   	<!-- <input type="button" style="float: right;" value="edit" id="musicedit"> -->
@@ -67,7 +67,7 @@
     <!-- 음악 플레이어 -->
    <!--  <audio crossorigin autoplay="autoplay"> -->
     <audio loop autoplay="autoplay">
-      <source src="${requestScope.gcodelist}"/>
+      <source src="${codelist}"/>
     </audio> 
   </div>
   
