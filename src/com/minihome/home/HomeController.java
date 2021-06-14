@@ -104,12 +104,13 @@ public class HomeController extends HttpServlet {
 		String ptitle = null;
 		String pintro = null;
 		String htitle = null;
+
 		for(ProfilesVo vo :list) {
 			psaveimg = vo.getPsavegimg();	
 			ptitle = vo.getPtitle();
 			htitle = vo.getHtitle();
 			pintro = vo.getPintro();
-			
+			req.setAttribute("popen", vo.getPopen());
 		}
 		System.out.println("파일명 : " +psaveimg);
 		 

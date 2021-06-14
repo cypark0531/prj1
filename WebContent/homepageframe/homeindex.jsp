@@ -11,14 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Stylish&family=Sunflower:wght@300&display=swap" rel="stylesheet">
 <style>
 	
-
-
-
-<style>
 	body{
 		background: url("goodsimgfile/${requestScope.backvo.gsaveimg}");
 	}
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
+
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/homepageframe/css/homeindex.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css"/>
@@ -113,7 +109,7 @@ top.window.outerWidth = screen.availWidth;
 
   <a href="${pageContext.request.contextPath }/goods/goodslist?id=${gid}" class="blog-menu">SHOP</a>
 
->>>>>>> branch 'master' of https://github.com/cypark0531/prj1.git
+
   <a href="${pageContext.request.contextPath }/histories/list?id=${gid}" class="blog-menu">GUEST BOOK</a>  
   <a href="${pageContext.request.contextPath }/search/search.jsp" class="blog-menu">SEARCH</a>
   <a href="${pageContext.request.contextPath }/login/logout" class="blog-menu mention">LOGOUT</a>
@@ -194,10 +190,9 @@ top.window.outerWidth = screen.availWidth;
     <h2 style="text-align: center; margin-top: 10px;">	<!--<span>Widespread</span>-->${ptitle}</h2>
     <div class="blog-detail">
      <span>♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥ ♥</span>
-     
     </div>
     <p style="font-size: 20px; text-align: center;">${pintro}</p>
-    <c:if test="${id==gid}">
+    <c:if test="${sessionScope.id==sessionScope.gid}">
     <a href="#" onclick="SetUp2()">
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-corner-down-right" viewBox="0 0 24 24">
       <path d="M15 10l5 5-5 5" />
@@ -328,7 +323,7 @@ top.window.outerWidth = screen.availWidth;
  	
    <div class="blog-right-title" style="color:#383a3d; margin-top: -20px;" >
    </div>
-   <div class="blog-menu rounded" style="width: 100%; color:#383a3d; font-weight: 900; font-size:35px; font-family: Consolas,Monaco " >Frineds Talk Talk</div>
+   <div class="blog-menu rounded" style="width: 100%; color:#383a3d; font-weight: 900; font-size:35px; font-family: Consolas,Monaco " >FRIENDS TALK TALK</div>
   </div>
   
   <jsp:include page="/friendsay/friendsaylist.jsp"/>
